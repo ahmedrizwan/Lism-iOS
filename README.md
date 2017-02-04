@@ -1,7 +1,7 @@
 # Lism-iOS
 Lism App for iOS 
 
-- Support
+## Support
 
-1. iOS 10 and up
-2. iPhone only
+- iOS 10 and up
+- iPhone only

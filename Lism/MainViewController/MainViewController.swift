@@ -44,12 +44,14 @@ class MainViewController: UIViewController {
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = UIColor(colorLiteralRed: 244.0/255.0, green: 244.0/255.0, blue: 244.0/255.0, alpha: 1.0)
         loginButton.setTitleColor(UIColor(colorLiteralRed: 21.0/255.0, green: 21.0/255.0, blue: 21.0/255.0, alpha: 1.0), for: .normal)
+        loginButton.addTarget(self, action: #selector(onLoginButtonPress), for: .touchUpInside)
         
         registerButton = UIButton()
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.setTitle("Register", for: .normal)
         registerButton.backgroundColor = UIColor(colorLiteralRed: 94.0/255.0, green: 94.0/255.0, blue: 94.0/255.0, alpha: 1.0)
         registerButton.setTitleColor(UIColor.white, for: .normal)
+        
         
         let stackView = UIStackView(arrangedSubviews: [loginButton, registerButton])
         stackView.axis = .vertical
@@ -67,7 +69,8 @@ class MainViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction func onLoginButtonPress() {
-        
+        let loginViewController = LoginViewController()
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

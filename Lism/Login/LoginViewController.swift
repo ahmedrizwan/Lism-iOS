@@ -37,7 +37,6 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
-    
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false

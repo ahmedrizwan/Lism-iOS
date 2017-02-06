@@ -22,8 +22,8 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A2825B422A1C52E6F99D68A20EF893EE /* Pods-Lism-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Lism-acknowledgements.plist"; sourceTree = "<group>"; };
 		A5697455E75B1D94D2C9A534AC41DD10 /* Pods_Lism.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Lism.framework; path = "Pods-Lism.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D1624FB465B5FF08ADB8F6FBAAEF80 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVOSCloud.framework; path = "iOS/release-v3.3.5/Dynamic/AVOSCloud.framework"; sourceTree = "<group>"; };
 		B16DC259EEFD9B2868D090577B256951 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B38CEF477A1DDCD229E58F4B158958F6 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVOSCloud.framework; path = "iOS/release-v3.1.5.2/AVOSCloud/Dynamic/AVOSCloud.framework"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CF3ACBD7C5C7ABDC4135C513401E5D8B /* Pods-Lism-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lism-resources.sh"; sourceTree = "<group>"; };
 		E7F238880FBD89B966BAB6F8CF52E656 /* Pods-Lism.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lism.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +59,14 @@
 			path = "Target Support Files/Pods-Lism";
 			sourceTree = "<group>";
 		};
+		4E4A48C9B0556C4CA231A7F9A85C2FFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5D1624FB465B5FF08ADB8F6FBAAEF80 /* AVOSCloud.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		579E5DE339AAFA273528958C07BC1E76 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,14 +83,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7DAFC49758785ED82BD139082AB5BC6D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B38CEF477A1DDCD229E58F4B158958F6 /* AVOSCloud.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +97,7 @@
 		8F098E2A9B484AA0135B76FF9DF9B178 /* AVOSCloudDynamic */ = {
 			isa = PBXGroup;
 			children = (
-				7DAFC49758785ED82BD139082AB5BC6D /* Frameworks */,
+				4E4A48C9B0556C4CA231A7F9A85C2FFA /* Frameworks */,
 				986AE143EF7D03F78220D6BF74F63ED8 /* Resources */,
 			);
 			name = AVOSCloudDynamic;

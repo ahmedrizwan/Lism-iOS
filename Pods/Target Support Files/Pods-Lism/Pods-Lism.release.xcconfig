@@ -1,4 +1,4 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AVOSCloudDynamic/**" "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.1.5.2/AVOSCloud/Dynamic"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AVOSCloudDynamic/**" "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.3.5/Dynamic"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AVOSCloudDynamic"
 LD_RUNPATH_SEARCH_PATHS = @loader_path/../Frameworks $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'

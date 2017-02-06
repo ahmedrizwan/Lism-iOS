@@ -89,10 +89,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.1.5.2/AVOSCloud/Dynamic/AVOSCloud.framework"
+  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.3.5/Dynamic/AVOSCloud.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.1.5.2/AVOSCloud/Dynamic/AVOSCloud.framework"
+  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.3.5/Dynamic/AVOSCloud.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

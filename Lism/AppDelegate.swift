@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import AVOSCloud
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -25,8 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navigationController
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
+
+        setUpAVCloud()
         
         return true
+    }
+    
+    func setUpAVCloud() {
+        let applicationID = "Cn9eVkpohxi0u2ki6qXNwujn-gzGzoHsz"
+        let clientKey = "8BB9DoKO0GVCdUq4O8FCxX0j"
+        
+        AVOSCloud.setApplicationId(applicationID, clientKey: clientKey)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

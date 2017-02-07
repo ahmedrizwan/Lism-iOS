@@ -137,14 +137,12 @@ class LoginViewController: UIViewController {
             query?.getFirstObjectInBackground({ (object, error) in
                 if object !== nil {
                     let avUser = object as! AVUser
-                    print("Username \(avUser.username) Password \(avUser.password)")
                     let avUsername = avUser.username!
                     AVUser.logInWithUsername(inBackground: avUsername, password: self.passwordTextField.text!, block: { (user, error) in
                         if error == nil {
                             // TODO: do something here when login is successfull
                         } else {
                             // TODO: do something here when login has failed
-                            print("Failed Login \(error)")
                         }
                     })
                 }

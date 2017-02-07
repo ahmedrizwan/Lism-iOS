@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
         button.setTitle("Register", for: .normal)
         button.backgroundColor = UIColor(colorLiteralRed: 94.0/255.0, green: 94.0/255.0, blue: 94.0/255.0, alpha: 1.0)
         button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(onRegisterButtonPress), for: .touchUpInside)
         
         return button
     }()
@@ -83,6 +84,11 @@ class MainViewController: UIViewController {
     @IBAction func onLoginButtonPress() {
         let loginViewController = LoginViewController()
         navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    @IBAction func onRegisterButtonPress() {
+        let registrationViewController = RegistrationViewController()
+        navigationController?.pushViewController(registrationViewController, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

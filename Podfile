@@ -8,7 +8,8 @@ target 'Lism' do
       pod 'AVOSCloud'
       pod 'AVOSCloudIM'
       pod 'AVOSCloudCrashReporting'
-
+      pod 'Fabric'
+      pod 'Digits'
   # Pods for Lism
 
 end

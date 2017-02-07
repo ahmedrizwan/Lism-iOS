@@ -7,6 +7,23 @@
 //
 
 import UIKit
+import AVOSCloud
+
+extension String {
+    
+    func isValidEmail() -> Bool {
+        let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let result = emailTest.evaluate(with: self)
+        
+        return result
+    }
+    
+    func isValidPassword() -> Bool {
+        
+        return self.characters.count > 5
+    }
+}
 
 class LoginViewController: UIViewController {
     
@@ -42,6 +59,7 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor.black
+        button.addTarget(self, action: #selector(onLoginButtonPress), for: .touchUpInside)
         
         return button
     }()
@@ -52,6 +70,15 @@ class LoginViewController: UIViewController {
         button.setTitleColor(UIColor.blue, for: .normal)
         
         return button
+    }()
+    
+    lazy var validationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.red
+        label.font = UIFont(name: "Arial", size: 12.0)
+        
+        return label
     }()
     
     lazy var stackView: UIStackView = {
@@ -91,6 +118,39 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func onLoginButtonPress() {
+        if let isValidEmail = usernameTextField.text?.isValidEmail(), !isValidEmail {
+            validationLabel.text = "Please enter a valid username"
+            stackView.insertArrangedSubview(validationLabel, at: 0)
+            
+        } else if let isValidPassword = passwordTextField.text?.isValidPassword(), !isValidPassword {
+            validationLabel.text = "Password length should be greater than 5"
+            
+        } else {
+            let query = AVUser.query()
+            let username = usernameTextField.text!
+            query?.whereKey("email", equalTo: username)
+            query?.getFirstObjectInBackground({ (object, error) in
+                if object !== nil {
+                    let avUser = object as! AVUser
+                    print("Username \(avUser.username) Password \(avUser.password)")
+                    let avUsername = avUser.username!
+                    AVUser.logInWithUsername(inBackground: avUsername, password: self.passwordTextField.text!, block: { (user, error) in
+                        if error == nil {
+                            // TODO: do something here when login is successfull
+                        } else {
+                            // TODO: do something here when login has failed
+                            print("Failed Login \(error)")
+                        }
+                    })
+                }
+            })
+        }
+        
     }
     
     // MARK: - Keyboard

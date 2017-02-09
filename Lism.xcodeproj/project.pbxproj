@@ -17,6 +17,7 @@
 		3E0B852A1E4990CC000197E6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0B85291E4990CC000197E6 /* MobileCoreServices.framework */; };
 		3E0B852C1E4990D6000197E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0B852B1E4990D6000197E6 /* CoreTelephony.framework */; };
 		3E0B852E1E4990E0000197E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0B852D1E4990E0000197E6 /* CoreLocation.framework */; };
+		3E0B85321E49C101000197E6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B85311E49C101000197E6 /* RegistrationViewController.swift */; };
 		3EBBEA241E4777F8005FCB3B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBBEA231E4777F8005FCB3B /* LoginViewController.swift */; };
 		3EDABE0B1E45D07A000AB41A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDABE0A1E45D07A000AB41A /* AppDelegate.swift */; };
 		3EDABE121E45D07A000AB41A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EDABE111E45D07A000AB41A /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		3E0B85291E4990CC000197E6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3E0B852B1E4990D6000197E6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3E0B852D1E4990E0000197E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3E0B85311E49C101000197E6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = Registration/RegistrationViewController.swift; sourceTree = "<group>"; };
 		3EBBEA231E4777F8005FCB3B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
 		3EDABE071E45D07A000AB41A /* Lism.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lism.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EDABE0A1E45D07A000AB41A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		3E0B85301E49C0E8000197E6 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				3E0B85311E49C101000197E6 /* RegistrationViewController.swift */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
 		3EBBEA221E4777ED005FCB3B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		3EDABE091E45D07A000AB41A /* Lism */ = {
 			isa = PBXGroup;
 			children = (
+				3E0B85301E49C0E8000197E6 /* Registration */,
 				3E0B852F1E49BB5B000197E6 /* Extensions */,
 				3EBBEA221E4777ED005FCB3B /* Login */,
 				3EDABE1C1E45E7DB000AB41A /* Main */,
@@ -165,6 +176,7 @@
 				3EDABE051E45D07A000AB41A /* Resources */,
 				056007A34035A68D62E1EA1D /* [CP] Embed Pods Frameworks */,
 				A728587C7E40F82C958B162F /* [CP] Copy Pods Resources */,
+				3E0B85331E49DD4C000197E6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -237,6 +249,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lism/Pods-Lism-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3E0B85331E49DD4C000197E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 103f640fefb1912b95a17f1918ba4e9aa14cafbd 89bd6f02cba15c78f9a0ab35f0e852d38ce9d9fd45109232b22888da805c3868";
+		};
 		69165AEE8E5BD80716B1F793 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +301,7 @@
 			files = (
 				3EBBEA241E4777F8005FCB3B /* LoginViewController.swift in Sources */,
 				3EDABE1E1E45E900000AB41A /* MainViewController.swift in Sources */,
+				3E0B85321E49C101000197E6 /* RegistrationViewController.swift in Sources */,
 				3EDABE0B1E45D07A000AB41A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

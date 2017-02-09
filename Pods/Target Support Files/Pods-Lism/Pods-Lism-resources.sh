@@ -78,9 +78,11 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "AVOSCloudDynamic/iOS/release-v3.3.5/Dynamic/AVOSCloud.framework"
+  install_resource "Digits/iOS/DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AVOSCloudDynamic/iOS/release-v3.3.5/Dynamic/AVOSCloud.framework"
+  install_resource "Digits/iOS/DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -1,0 +1,47 @@
+PODS:
+  - AVOSCloud (4.0.0)
+  - AVOSCloudCrashReporting (4.0.0):
+    - AVOSCloud (= 4.0.0)
+    - AVOSCloudCrashReporting/_ARC (= 4.0.0)
+    - AVOSCloudCrashReporting/_NOARC (= 4.0.0)
+  - AVOSCloudCrashReporting/_ARC (4.0.0):
+    - AVOSCloud (= 4.0.0)
+    - AVOSCloudCrashReporting/_NOARC (= 4.0.0)
+  - AVOSCloudCrashReporting/_NOARC (4.0.0):
+    - AVOSCloud (= 4.0.0)
+  - AVOSCloudDynamic (3.3.5)
+  - AVOSCloudIM (4.0.0):
+    - AVOSCloud (= 4.0.0)
+    - AVOSCloudIM/_ARC (= 4.0.0)
+    - AVOSCloudIM/_NOARC (= 4.0.0)
+  - AVOSCloudIM/_ARC (4.0.0):
+    - AVOSCloud (= 4.0.0)
+    - AVOSCloudIM/_NOARC (= 4.0.0)
+  - AVOSCloudIM/_NOARC (4.0.0):
+    - AVOSCloud (= 4.0.0)
+  - Digits (2.8.0):
+    - TwitterCore (= 2.8.0)
+  - Fabric (1.6.11)
+  - TwitterCore (2.8.0):
+    - Fabric
+
+DEPENDENCIES:
+  - AVOSCloud
+  - AVOSCloudCrashReporting
+  - AVOSCloudDynamic (= 3.3.5)
+  - AVOSCloudIM
+  - Digits
+  - Fabric
+
+SPEC CHECKSUMS:
+  AVOSCloud: 77ff5c0695c09356b55fa52aa409f06a9cf6144a
+  AVOSCloudCrashReporting: 42fc8761f9fbe07d9cd4dc8e7b3b42f0768bc37b
+  AVOSCloudDynamic: 82df67e1c48c00dfbe7b7d8c61b4634c597b8aba
+  AVOSCloudIM: 799cedd7c16be4e4372d29ae680106228d47288f
+  Digits: 401151fdcc955738142d53b89112960d3c2e3930
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
+
+PODFILE CHECKSUM: 9620e04f89fc4f645843bfeb9a106e48b6639cba
+
+COCOAPODS: 1.2.0

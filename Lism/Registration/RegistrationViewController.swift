@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVOSCloud
+import DigitsKit
 
 class RegistrationViewController: UIViewController {
 
@@ -17,6 +19,15 @@ class RegistrationViewController: UIViewController {
         let attributedTitleString = NSAttributedString(string: "Register Your LisM", attributes: [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: font!])
         label.attributedText = attributedTitleString
         label.textAlignment = .center
+        
+        return label
+    }()
+    
+    lazy var validationLabel: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.red
+        label.font = UIFont(name: "Arial", size: 16.0)
         
         return label
     }()
@@ -83,12 +94,13 @@ class RegistrationViewController: UIViewController {
         button.setTitle("Next", for: .normal)
         button.backgroundColor = UIColor.gray
         button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(onNextButtonPress), for: .touchUpInside)
         
         return button
     }()
     
     lazy var stackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.fullNameTextField, self.emailTextField, self.usernameTextField, self.passwordTextField, self.rePasswordTextField])
+        let sv = UIStackView(arrangedSubviews: [self.validationLabel, self.fullNameTextField, self.emailTextField, self.usernameTextField, self.passwordTextField, self.rePasswordTextField])
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
         sv.distribution = .fill
@@ -113,10 +125,22 @@ class RegistrationViewController: UIViewController {
         return constraint
     }()
     
+    lazy var nextButtonPinToBottomConstraint: NSLayoutConstraint = {
+        let constraint = NSLayoutConstraint(item: self.nextButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        
+        return constraint
+    }()
+    lazy var nextButtonWidthConstraint: NSLayoutConstraint = {
+        let constraint = NSLayoutConstraint(item: self.nextButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.view.frame.width)
+        
+        return constraint
+    }()
+    
     var keyboardIsShowing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Digits.sharedInstance().logOut()
 
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -131,8 +155,6 @@ class RegistrationViewController: UIViewController {
         let titleLabelTrailingStackViewConstraint = NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: stackView, attribute: .top, multiplier: 1.0, constant: -110.0)
         view.addConstraints([titleLabelCenterXConstraint, titleLabelTrailingStackViewConstraint])
         
-        let nextButtonPinToBottomConstraint = NSLayoutConstraint(item: nextButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-        let nextButtonWidthConstraint = NSLayoutConstraint(item: nextButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.width)
         view.addSubview(nextButton)
         view.addConstraints([nextButtonPinToBottomConstraint, nextButtonWidthConstraint])
         
@@ -142,6 +164,66 @@ class RegistrationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: - AV Actions
+    
+    func registerAVUser() {
+        let avUser = AVUser()
+        avUser.username = usernameTextField.text!
+        avUser.password = passwordTextField.text!
+        avUser.email = emailTextField.text!
+        avUser.setObject(fullNameTextField.text!, forKey: "fullName")
+        avUser.signUpInBackground { (result, error) in
+            if error == nil {
+                self.verifyPhoneNumber()
+            } else {
+                print("ERROR Signing UP \(error)")
+            }
+        }
+    }
+    
+    // MARK: - Digits Actions
+    
+    func verifyPhoneNumber() {
+        Digits.sharedInstance().authenticate(completion: { (session, error) in
+            let avUser = AVUser.current()
+            if session != nil {
+                let phoneNumber = session!.phoneNumber!
+                let message = "Phone Number: \(phoneNumber)"
+                let alertController = UIAlertController(title: "You are Logged in!", message: message, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: .none))
+                self.present(alertController, animated: true, completion: .none)
+                avUser?.setObject(phoneNumber, forKey: "mobilePhoneNumber")
+                avUser?.saveEventually()
+            } else {
+                avUser?.deleteEventually()
+                print("Auth error \(error!.localizedDescription)")
+            }
+        })
+        
+    }
+    
+    // MARK: - Button Actions
+    
+    func onNextButtonPress() {
+
+        if let fullName = fullNameTextField.text, fullName.characters.count == 0 {
+            validationLabel.text = "Please enter name"
+        } else if let email = emailTextField.text, email.characters.count == 0 {
+            validationLabel.text = "Please enter email"
+        } else if let email = emailTextField.text, !email.isValidEmail() {
+            validationLabel.text = "Email not valid"
+        } else if let username = usernameTextField.text, username.characters.count == 0 {
+            validationLabel.text = "Please enter username"
+        } else if let password = passwordTextField.text, !password.isValidPassword() {
+            validationLabel.text = "Password length should be greater than 6"
+        } else if let password = passwordTextField.text, let rePassword = rePasswordTextField.text, password != rePassword {
+            validationLabel.text = "Password do not match"
+        } else {
+            registerAVUser()
+        }
     }
     
     // MARK: - Keyboard
@@ -207,5 +289,5 @@ extension RegistrationViewController: UITextFieldDelegate {
         
         return false
     }
+    
 }
-

@@ -16,30 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    let AVApplicationID = "Cn9eVkpohxi0u2ki6qXNwujn-gzGzoHsz"
+    let AVClientID = "8BB9DoKO0GVCdUq4O8FCxX0j"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let navigationController = UINavigationController()
-        let mainViewController = MainViewController()
-        navigationController.viewControllers = [mainViewController]
+        let homeViewController = HomeViewController()
+        var homeNavigationController = UINavigationController()
+        homeNavigationController = UINavigationController(rootViewController: homeViewController)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = navigationController
+        self.window?.rootViewController = homeNavigationController
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
-
-        Fabric.with([Digits.self])
         
+        let mainViewController = MainViewController()
+        homeNavigationController.present(mainViewController, animated: true, completion: nil)
+        
+        setUpDigits()
         setUpAVCloud()
         
         return true
     }
     
+    func setUpDigits() {
+        Fabric.with([Digits.self])
+    }
+    
     func setUpAVCloud() {
-        let applicationID = "Cn9eVkpohxi0u2ki6qXNwujn-gzGzoHsz"
-        let clientKey = "8BB9DoKO0GVCdUq4O8FCxX0j"
-        
-        AVOSCloud.setApplicationId(applicationID, clientKey: clientKey)
+        AVOSCloud.setApplicationId(AVApplicationID, clientKey: AVClientID)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         let font = UIFont(name: "Arial", size: 32.0)
         let attributedTitleString = NSAttributedString(string: "Enter", attributes: [NSFontAttributeName: font!, NSForegroundColorAttributeName: UIColor(colorLiteralRed: 129.0/255.0, green: 4.0/255.0, blue: 21.0/255.0, alpha: 1.0)])
         button.setAttributedTitle(attributedTitleString, for: .normal)
+        button.addTarget(self, action: #selector(onEnterButtonPress), for: .touchUpInside)
         
         return button
     }()
@@ -79,17 +80,22 @@ class MainViewController: UIViewController {
         view.addConstraints([pinToBottomConstraint, widthConstraint])
     }
     
-    // MARK: IBActions
+    // MARK: Button Actions
     
-    @IBAction func onLoginButtonPress() {
+    func onLoginButtonPress() {
         let loginViewController = LoginViewController()
         navigationController?.pushViewController(loginViewController, animated: true)
     }
     
-    @IBAction func onRegisterButtonPress() {
+    func onRegisterButtonPress() {
         let registrationViewController = RegistrationViewController()
         navigationController?.pushViewController(registrationViewController, animated: true)
     }
+    
+    func onEnterButtonPress() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

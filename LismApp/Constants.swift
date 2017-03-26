@@ -26,4 +26,11 @@ struct DeviceType
     static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
     static let IS_IPAD              = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
 }
+    static func showAlert(message:String,view:UIViewController)
+    {
+        let alert = UIAlertController(title: "Alert",message:message,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK",style:UIAlertActionStyle.default,handler: nil))
+        view.present(alert, animated: true, completion: nil)
+    }
 }

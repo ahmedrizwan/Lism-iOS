@@ -10,6 +10,8 @@
 		39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39414B7C1E8622BF004A39A4 /* Constants.swift */; };
 		394DBF7C1E818EDB005E7D92 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 394DBF7A1E818EDB005E7D92 /* filter.png */; };
 		394DBF7D1E818EDB005E7D92 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 394DBF7B1E818EDB005E7D92 /* list.png */; };
+		39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */; };
+		39556CDD1E87E16900113C99 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 39556CDC1E87E16900113C99 /* logo.png */; };
 		39638B2B1E79900A003B54EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B2A1E79900A003B54EE /* AppDelegate.swift */; };
 		39638B301E79900A003B54EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39638B2E1E79900A003B54EE /* Main.storyboard */; };
 		39638B321E79900A003B54EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39638B311E79900A003B54EE /* Assets.xcassets */; };
@@ -27,6 +29,10 @@
 		39638B711E7991F0003B54EE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B6C1E7991F0003B54EE /* LoginViewController.swift */; };
 		39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B6E1E7991F0003B54EE /* RegistrationViewController.swift */; };
 		39638B731E7991F0003B54EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B701E7991F0003B54EE /* MainViewController.swift */; };
+		3970198B1E880806002F0A9B /* back_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 397019891E880806002F0A9B /* back_btn.png */; };
+		3970198C1E880806002F0A9B /* cart_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3970198A1E880806002F0A9B /* cart_btn.png */; };
+		3970198E1E880C38002F0A9B /* scroll_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3970198D1E880C37002F0A9B /* scroll_btn.png */; };
+		397019901E882035002F0A9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3970198F1E882035002F0A9B /* User.swift */; };
 		3985354D1E7DA69D00406BBB /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 398535351E7DA69D00406BBB /* add_photo.png */; };
 		3985354E1E7DA69D00406BBB /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 398535361E7DA69D00406BBB /* background.png */; };
 		3985354F1E7DA69D00406BBB /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 398535371E7DA69D00406BBB /* calendar.png */; };
@@ -78,6 +84,8 @@
 		39414B7C1E8622BF004A39A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		394DBF7A1E818EDB005E7D92 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		394DBF7B1E818EDB005E7D92 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		39556CDC1E87E16900113C99 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../Graphics/logo.png; sourceTree = "<group>"; };
 		39638B271E79900A003B54EE /* LismApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LismApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39638B2A1E79900A003B54EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39638B2F1E79900A003B54EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +109,10 @@
 		39638B6C1E7991F0003B54EE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		39638B6E1E7991F0003B54EE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		39638B701E7991F0003B54EE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		397019891E880806002F0A9B /* back_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_btn.png; sourceTree = "<group>"; };
+		3970198A1E880806002F0A9B /* cart_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_btn.png; sourceTree = "<group>"; };
+		3970198D1E880C37002F0A9B /* scroll_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll_btn.png; sourceTree = "<group>"; };
+		3970198F1E882035002F0A9B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		398535351E7DA69D00406BBB /* add_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_photo.png; sourceTree = "<group>"; };
 		398535361E7DA69D00406BBB /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		398535371E7DA69D00406BBB /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
@@ -252,6 +264,10 @@
 		398535341E7DA69D00406BBB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3970198D1E880C37002F0A9B /* scroll_btn.png */,
+				397019891E880806002F0A9B /* back_btn.png */,
+				3970198A1E880806002F0A9B /* cart_btn.png */,
+				39556CDC1E87E16900113C99 /* logo.png */,
 				394DBF7A1E818EDB005E7D92 /* filter.png */,
 				394DBF7B1E818EDB005E7D92 /* list.png */,
 				398535351E7DA69D00406BBB /* add_photo.png */,
@@ -287,6 +303,7 @@
 			children = (
 				398535661E7DBAAA00406BBB /* ProductCollectionViewCell.swift */,
 				398535671E7DBAAA00406BBB /* ProductViewController.swift */,
+				39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -305,6 +322,7 @@
 		3985356B1E7DBD5A00406BBB /* BO */ = {
 			isa = PBXGroup;
 			children = (
+				3970198F1E882035002F0A9B /* User.swift */,
 				3985356C1E7DBD5A00406BBB /* Product.swift */,
 			);
 			path = BO;
@@ -452,6 +470,7 @@
 				398535611E7DA69D00406BBB /* settings.png in Resources */,
 				398535631E7DA69D00406BBB /* wechat_button.png in Resources */,
 				398535501E7DA69D00406BBB /* cart.png in Resources */,
+				3970198B1E880806002F0A9B /* back_btn.png in Resources */,
 				398535541E7DA69D00406BBB /* heart.png in Resources */,
 				398535621E7DA69D00406BBB /* wechat.png in Resources */,
 				39638B351E79900A003B54EE /* LaunchScreen.storyboard in Resources */,
@@ -460,6 +479,8 @@
 				3985355B1E7DA69D00406BBB /* notifications.png in Resources */,
 				3985354F1E7DA69D00406BBB /* calendar.png in Resources */,
 				398535531E7DA69D00406BBB /* full_logo.png in Resources */,
+				3970198E1E880C38002F0A9B /* scroll_btn.png in Resources */,
+				3970198C1E880806002F0A9B /* cart_btn.png in Resources */,
 				3985354E1E7DA69D00406BBB /* background.png in Resources */,
 				398535551E7DA69D00406BBB /* heart_red.png in Resources */,
 				398535521E7DA69D00406BBB /* cart_remove.png in Resources */,
@@ -475,6 +496,7 @@
 				394DBF7C1E818EDB005E7D92 /* filter.png in Resources */,
 				398535601E7DA69D00406BBB /* red_dot.png in Resources */,
 				3985355F1E7DA69D00406BBB /* plus.png in Resources */,
+				39556CDD1E87E16900113C99 /* logo.png in Resources */,
 				3985355C1E7DA69D00406BBB /* overlay.png in Resources */,
 				394DBF7D1E818EDB005E7D92 /* list.png in Resources */,
 				398535511E7DA69D00406BBB /* cart_button.png in Resources */,
@@ -552,11 +574,13 @@
 			files = (
 				39638B711E7991F0003B54EE /* LoginViewController.swift in Sources */,
 				39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */,
+				39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */,
 				398535691E7DBAAA00406BBB /* ProductViewController.swift in Sources */,
 				39638B2B1E79900A003B54EE /* AppDelegate.swift in Sources */,
 				398535681E7DBAAA00406BBB /* ProductCollectionViewCell.swift in Sources */,
 				39638B731E7991F0003B54EE /* MainViewController.swift in Sources */,
 				3985356D1E7DBD5A00406BBB /* Product.swift in Sources */,
+				397019901E882035002F0A9B /* User.swift in Sources */,
 				39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

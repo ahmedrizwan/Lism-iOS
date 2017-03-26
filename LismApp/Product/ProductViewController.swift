@@ -7,15 +7,26 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     var items : [Product] = []
     var favoritesList : [Product] = []
+    var selectedIndex : Int!
     @IBOutlet weak var totalItemsLabel : UILabel!
+    @IBOutlet weak var topView : UIView!
     @IBOutlet weak var productsCollectionView : UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationController?.isNavigationBarHidden = true
+      //  self.navigationController?.isNavigationBarHidden = true
 
         self.getProductList()
         
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "logo")
+        imageView.image = image
+        self.navigationController?.navigationBar.backItem?.title = ""
+
+        navigationItem.titleView = imageView
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,10 +174,63 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
     }
-   
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //
+        
+        let scrollPos = self.productsCollectionView.contentOffset.y ;
+        print(scrollPos)
+          if(scrollPos >= 5  ){
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            //
+            //write a code to hide
+            self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+        }, completion: nil)
+          }
+        else if (scrollPos <= 0)
+            {
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    //
+                    //write a code to hide
+                    self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 105, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                }, completion: nil)
+            }
+        
+        
+        if(scrollPos >= 60 ){
+            //Fully hide your toolbar
+     
+            UIView.animate(withDuration: 0.5, animations: {
+                //
+                //write a code to hide
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 0, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+              
+            }, completion: nil)
+        } else  if(scrollPos <= 0 ){
+            //Slide it up incrementally, etc.
+            UIView.animate(withDuration: 0.5, animations: {
+                //
+              self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+            }, completion: nil)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
+        selectedIndex = indexPath.item
+        self.performSegue(withIdentifier: "ProductViewToProductDetailsVC", sender: self)
+
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ProductViewToProductDetailsVC") {
+            let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
+            viewController.productBO = items[selectedIndex]
+
+            // pass data to next view
+        }
     }
 }
 

@@ -77,6 +77,7 @@ class MainViewController: UIViewController {
         let pinToBottomConstraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         let widthConstraint = NSLayoutConstraint(item: stackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.width)
         view.addConstraints([pinToBottomConstraint, widthConstraint])
+        
     }
     
     // MARK: IBActions

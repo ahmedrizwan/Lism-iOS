@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
         navigationController.viewControllers = [mainViewController]
+        navigationController.navigationBar.barTintColor = UIColor.white
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController

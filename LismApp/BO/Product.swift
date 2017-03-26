@@ -24,7 +24,7 @@ class Product: NSObject {
     var favorite: Bool = false
 
     var productImageUrl: URL!
-
+    var productImagesArray: [URL] = []
     
     func ProductInintWithDic(dict:AVObject) {
         
@@ -37,11 +37,15 @@ class Product: NSObject {
                 let avImageObject  = obj as! AVObject
                 if let productImageUrl = avImageObject.object(forKey: "imageUrl") {
                      self.productImageUrl =   URL(string: productImageUrl as! String)
+                    self.productImagesArray.append( self.productImageUrl)
                 }
                 
             }
 
         }
+        
+      
+
         if let objectId = dict.object(forKey: "objectId") {
             self.objectId = objectId as! String
         }
@@ -53,6 +57,9 @@ class Product: NSObject {
         if let name = dict.value(forKey: "name") {
             self.name = name as! String
         }
+        if let brand = dict.value(forKey: "brand") {
+            self.name = brand as! String
+        }
         if let address = dict.value(forKey: "address") {
             self.address = address as! String
         }
@@ -62,6 +69,11 @@ class Product: NSObject {
     
         if let priceSelling = dict.value(forKey: "priceSelling") {
             self.sellingPrice = priceSelling as! String
+        }
+        
+        
+        if let productLikes = dict.value(forKey: "productLikes") {
+            self.productLikes = productLikes as! Int
         }
         
 

@@ -20,8 +20,15 @@ class ProductDetailViewController: UIViewController,iCarouselDataSource,iCarouse
     @IBOutlet var vwCarousel: iCarousel!
     override func viewDidLoad() {
         let backImg: UIImage = UIImage(named: "back_btn")!
+        
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, for: .normal, barMetrics: .default)
-        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "logo")
+        imageView.image = image
+        navigationController?.navigationBar.backItem?.title = ""
+        
+        navigationController?.navigationItem.titleView = imageView
         self.updateProductDetails()
         vwCarousel.type = iCarouselType.rotary
         vwCarousel .reloadData()

@@ -18,15 +18,13 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
       //  self.navigationController?.isNavigationBarHidden = true
 
         self.getProductList()
-        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         imageView.contentMode = .scaleAspectFit
-        
         let image = UIImage(named: "logo")
         imageView.image = image
-        self.navigationController?.navigationBar.backItem?.title = ""
-
-        navigationItem.titleView = imageView
+        navigationController?.navigationBar.backItem?.title = ""
+        
+        navigationController?.navigationItem.titleView = imageView
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,18 +141,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         {
         cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
-        cell.retailPriceLabel.text = "Est. Retail ¥ \(productObj.priceRetail)" ;
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
 
+        cell.retailPriceTextView.text = "Size \(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
 
-        if(productObj.size != "")
-        {
-            cell.sizeLabel.text = "Size \(productObj.size)" ;
-        }
-        else
-        {
-         cell.sizeLabel.isHidden = true
-        }
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)
@@ -233,6 +223,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         if (segue.identifier == "ProductViewToProductDetailsVC") {
             let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
             viewController.productBO = items[selectedIndex]
+            navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
 
             // pass data to next view
         }

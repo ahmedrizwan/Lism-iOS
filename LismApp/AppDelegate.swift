@@ -35,7 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         navigationController.viewControllers = [mainViewController]
         navigationController.navigationBar.barTintColor = UIColor.white
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        imageView.contentMode = .scaleAspectFit
         
+        let image = UIImage(named: "logo")
+        imageView.image = image
+        navigationController.navigationBar.backItem?.title = ""
+        
+        navigationController.navigationItem.titleView = imageView
+
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController
         self.window?.backgroundColor = UIColor.white

@@ -52,7 +52,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("userLikes")
         query.limit = ProductViewController.ITEM_LIMIT
         query.findObjectsInBackground { (objects, error) in
-            
+            if(error == nil)
+            {
                 for obj in objects!
                 {
                     let productObj:Product =  Product()
@@ -61,6 +62,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
             
             self.loadFavoritesList()
+            }
 
         }
     }
@@ -70,7 +72,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
         query.findObjectsInBackground { (objects, error) in
-            
+            if(error == nil)
+            {
             for obj in objects!
             {
                 let productObj:Product =  Product()
@@ -78,6 +81,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 self.favoritesList.append(productObj)
             }
             self.comapreToUpdateFavoriteProductsList()
+            }
         }
     
     
@@ -107,7 +111,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.limit = ProductViewController.ITEM_LIMIT
         query.skip = size
         query.findObjectsInBackground { (objects, error) in
-            
+            if(error == nil)
+            {
             for obj in objects!
             {
                 let productObj:Product =  Product()
@@ -115,7 +120,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 self.items.append(productObj)
             }
             self.comapreToUpdateFavoriteProductsList()
-            
+            }
             
         }
     }
@@ -142,7 +147,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
 
 
-        if(productObj.size != nil)
+        if(productObj.size != "")
         {
             cell.sizeLabel.text = "Size \(productObj.size)" ;
         }

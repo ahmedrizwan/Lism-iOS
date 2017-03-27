@@ -16,13 +16,13 @@ class Product: NSObject {
     var name: String = String()
     var priceRetail : String = String()
     var productLikes : Int = Int()
-    var size: String!
+    var size: String = String()
     var brand: String = String()
     var status: String = String()
     var condition: String = String()
     var sellingPrice: String = String()
     var favorite: Bool = false
-
+    var user :User!
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
     
@@ -44,8 +44,11 @@ class Product: NSObject {
 
         }
         
-      
-
+            
+        if let primaryImageUrl = dict.object(forKey: "primaryImageUrl") {
+            self.productImageUrl =   URL(string: primaryImageUrl as! String)
+        }
+        
         if let objectId = dict.object(forKey: "objectId") {
             self.objectId = objectId as! String
         }

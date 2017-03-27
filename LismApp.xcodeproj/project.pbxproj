@@ -60,6 +60,9 @@
 		398535681E7DBAAA00406BBB /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398535661E7DBAAA00406BBB /* ProductCollectionViewCell.swift */; };
 		398535691E7DBAAA00406BBB /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398535671E7DBAAA00406BBB /* ProductViewController.swift */; };
 		3985356D1E7DBD5A00406BBB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3985356C1E7DBD5A00406BBB /* Product.swift */; };
+		39F93D971E89486B0008B276 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F93D951E89486B0008B276 /* iCarousel.m */; };
+		39F93D981E89486B0008B276 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39F93D961E89486B0008B276 /* Info.plist */; };
+		39F93D9A1E8948BC0008B276 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F93D991E8948BC0008B276 /* QuartzCore.framework */; };
 		AE552491F6D2F6FD2F5777BB /* Pods_LismApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687FCEFCAB6035A537DF1DD3 /* Pods_LismApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +144,10 @@
 		398535671E7DBAAA00406BBB /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		3985356C1E7DBD5A00406BBB /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		3985356E1E7DC1D500406BBB /* LismApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LismApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		39F93D941E89486B0008B276 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		39F93D951E89486B0008B276 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		39F93D961E89486B0008B276 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39F93D991E8948BC0008B276 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		687FCEFCAB6035A537DF1DD3 /* Pods_LismApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LismApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3080B3E5460F503EA91638 /* Pods-LismApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LismApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LismApp/Pods-LismApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F39D81121F237E40CFFAE5DB /* Pods-LismApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LismApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LismApp/Pods-LismApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F93D9A1E8948BC0008B276 /* QuartzCore.framework in Frameworks */,
 				39638B6A1E79917D003B54EE /* CoreLocation.framework in Frameworks */,
 				39638B681E799175003B54EE /* CoreTelephony.framework in Frameworks */,
 				39638B661E79916E003B54EE /* MobileCoreServices.framework in Frameworks */,
@@ -206,6 +214,7 @@
 		39638B291E79900A003B54EE /* LismApp */ = {
 			isa = PBXGroup;
 			children = (
+				39F93D921E8948580008B276 /* Libraries */,
 				3985356B1E7DBD5A00406BBB /* BO */,
 				3985356A1E7DBD4700406BBB /* VCs */,
 				398535341E7DA69D00406BBB /* Images */,
@@ -328,9 +337,28 @@
 			path = BO;
 			sourceTree = "<group>";
 		};
+		39F93D921E8948580008B276 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				39F93D931E89486B0008B276 /* iCarousel */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		39F93D931E89486B0008B276 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				39F93D941E89486B0008B276 /* iCarousel.h */,
+				39F93D951E89486B0008B276 /* iCarousel.m */,
+				39F93D961E89486B0008B276 /* Info.plist */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
 		603DFCE724E74E8F4BF027A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39F93D991E8948BC0008B276 /* QuartzCore.framework */,
 				39638B691E79917D003B54EE /* CoreLocation.framework */,
 				39638B671E799175003B54EE /* CoreTelephony.framework */,
 				39638B651E79916E003B54EE /* MobileCoreServices.framework */,
@@ -477,6 +505,7 @@
 				398535571E7DA69D00406BBB /* image_add.png in Resources */,
 				3985355D1E7DA69D00406BBB /* person.png in Resources */,
 				3985355B1E7DA69D00406BBB /* notifications.png in Resources */,
+				39F93D981E89486B0008B276 /* Info.plist in Resources */,
 				3985354F1E7DA69D00406BBB /* calendar.png in Resources */,
 				398535531E7DA69D00406BBB /* full_logo.png in Resources */,
 				3970198E1E880C38002F0A9B /* scroll_btn.png in Resources */,
@@ -576,6 +605,7 @@
 				39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */,
 				39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */,
 				398535691E7DBAAA00406BBB /* ProductViewController.swift in Sources */,
+				39F93D971E89486B0008B276 /* iCarousel.m in Sources */,
 				39638B2B1E79900A003B54EE /* AppDelegate.swift in Sources */,
 				398535681E7DBAAA00406BBB /* ProductCollectionViewCell.swift in Sources */,
 				39638B731E7991F0003B54EE /* MainViewController.swift in Sources */,

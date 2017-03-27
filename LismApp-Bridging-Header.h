@@ -4,3 +4,4 @@
 
 @import RestKit;
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "iCarousel.h"

@@ -7,8 +7,8 @@ class ProductDetailViewController: UIViewController,iCarouselDataSource,iCarouse
 {
     @IBOutlet weak var scrollView : UIScrollView!
     var productBO : Product!
-    
-    @IBOutlet weak var productImage : UIImageView!
+    var commentsArray : [Comments]!
+    @IBOutlet weak var userImage : UIImageView!
     @IBOutlet weak var favoriteBtn : UIButton!
     @IBOutlet weak var productNameLabel : UILabel!
     @IBOutlet weak var priceSizeNameTextView : UITextView!
@@ -19,16 +19,23 @@ class ProductDetailViewController: UIViewController,iCarouselDataSource,iCarouse
 
     @IBOutlet var vwCarousel: iCarousel!
     override func viewDidLoad() {
-        let backImg: UIImage = UIImage(named: "back_btn")!
+     //   let backImg: UIImage = (UIImage(named: "back_btn")
+        let backImage = UIImage(named: "back_btn")
+        UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImage, for: .normal, barMetrics: .default)
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-1000, -1000), for: .default)
+
         
-        UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, for: .normal, barMetrics: .default)
+      //  UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, for: .normal, barMetrics: .default)
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         imageView.contentMode = .scaleAspectFit
+        
+      
+        
         let image = UIImage(named: "logo")
         imageView.image = image
-        navigationController?.navigationBar.backItem?.title = ""
+        self.navigationController?.navigationBar.backItem?.title = ""
         
-        navigationController?.navigationItem.titleView = imageView
+        navigationItem.titleView = imageView
         self.updateProductDetails()
         vwCarousel.type = iCarouselType.rotary
         vwCarousel .reloadData()
@@ -68,6 +75,32 @@ class ProductDetailViewController: UIViewController,iCarouselDataSource,iCarouse
 
         return itemView
     }
+    
+    
+    func loadComments()
+    {
+        let query: AVQuery = (productBO?.relationObjForComments.query())!
+        query.findObjectsInBackground { (objects, error) in
+            
+            if(error == nil)
+            {
+                for obj in objects!
+                {
+                let commentBO:Comments =  Comments()
+                commentBO.CommentInintWithDic(dict: obj as! AVObject)
+                self.commentsArray.append(commentBO)
+                }
+            }
+            else
+            {
+                //show error mesage
+            }
+        }
+        
+        
+    }
+
+ 
     @IBAction func addToCart(sender : AnyObject)
     {
     

@@ -18,13 +18,15 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
       //  self.navigationController?.isNavigationBarHidden = true
 
         self.getProductList()
+        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         imageView.contentMode = .scaleAspectFit
+        
         let image = UIImage(named: "logo")
         imageView.image = image
-        navigationController?.navigationBar.backItem?.title = ""
-        
-        navigationController?.navigationItem.titleView = imageView
+        self.navigationController?.navigationBar.backItem?.title = ""
+
+        navigationItem.titleView = imageView
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,17 +136,17 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "prodcutsCustomCell", for: indexPath as IndexPath) as! ProductCollectionViewCell
-         let productObj = self.items[indexPath.item]
+        let productObj = self.items[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.nameLabel.text = productObj.name
         if(productObj.productImageUrl != nil)
         {
-        cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
+            cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
-
+        
         cell.retailPriceTextView.text = "Size \(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
-
+        
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)
@@ -223,8 +225,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         if (segue.identifier == "ProductViewToProductDetailsVC") {
             let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
             viewController.productBO = items[selectedIndex]
-            navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-
 
             // pass data to next view
         }

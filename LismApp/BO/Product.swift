@@ -25,6 +25,8 @@ class Product: NSObject {
     var user :User!
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
+    var relationObjForComments: AVRelation = AVRelation()
+
     
     func ProductInintWithDic(dict:AVObject) {
         
@@ -77,6 +79,10 @@ class Product: NSObject {
         
         if let productLikes = dict.value(forKey: "productLikes") {
             self.productLikes = productLikes as! Int
+        }
+        
+        if let comments = dict.value(forKey: "comments") {
+            self.relationObjForComments = comments as! AVRelation
         }
         
 

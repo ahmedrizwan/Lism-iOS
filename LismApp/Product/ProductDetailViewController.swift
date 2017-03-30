@@ -100,7 +100,12 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
         // try out other sources such as `afNetworkingSource`, `alamofireSource` or `sdWebImageSource` or `kingfisherSource`
         slideshow.setImageInputs(sdWebImageSource)
-
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(ProductDetailViewController.didTap))
+        slideshow.addGestureRecognizer(recognizer)
+    }
+    
+    func didTap() {
+        slideshow.presentFullScreenController(from: self)
     }
     
     

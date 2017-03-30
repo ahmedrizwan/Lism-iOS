@@ -82,6 +82,11 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             self.comapreToUpdateFavoriteProductsList()
             }
+            else
+            {
+                self.productsCollectionView.reloadData()
+
+            }
         }
     
     

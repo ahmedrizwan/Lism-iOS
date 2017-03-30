@@ -25,7 +25,7 @@ class Product: NSObject {
     var user :User!
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
-    var relationObjForComments: AVRelation = AVRelation()
+    var queryObj: AVQuery!
 
     
     func ProductInintWithDic(dict:AVObject) {
@@ -34,6 +34,8 @@ class Product: NSObject {
         print(dict)
        let avRelationObj =  dict.relation(forKey: "images") 
         avRelationObj.query().findObjectsInBackground { (objects, error) in
+            if(error == nil)
+            {
             for obj in objects!
             {
                 let avImageObject  = obj as! AVObject
@@ -43,7 +45,7 @@ class Product: NSObject {
                 }
                 
             }
-
+            }
         }
         
             
@@ -68,6 +70,11 @@ class Product: NSObject {
         if let address = dict.value(forKey: "address") {
             self.address = address as! String
         }
+        
+        if let prod_desc = dict.value(forKey: "description") {
+            self.prodcut_description = "This small and cute handbag is perfect for going shopping with all your besties!"//prod_desc as! String
+        }
+
         if let priceRetail = dict.value(forKey: "priceRetail") {
             self.priceRetail = priceRetail as! String
         }
@@ -82,10 +89,26 @@ class Product: NSObject {
         }
         
         if let comments = dict.value(forKey: "comments") {
-            self.relationObjForComments = comments as! AVRelation
+            self.queryObj = (comments as! AVRelation).query()
         }
         
+       
+        
 
+        if let category = dict.value(forKey: "category") {
+            self.category = category as! String
+        }
+        
+        
+        if let color = dict.value(forKey: "color") {
+            self.color = color as! String
+        }
+        
+        if let condition = dict.value(forKey: "condition") {
+            self.condition = condition as! String
+        }
+
+        
     }
     
     

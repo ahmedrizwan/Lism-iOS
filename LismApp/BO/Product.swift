@@ -26,6 +26,7 @@ class Product: NSObject {
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
     var queryObj: AVQuery!
+    var updatedAtValue: Date = Date()
 
     
     func ProductInintWithDic(dict:AVObject) {
@@ -69,6 +70,9 @@ class Product: NSObject {
         }
         if let address = dict.value(forKey: "address") {
             self.address = address as! String
+        }
+        if let updatedAtValue = dict.value(forKey: "updatedAt") {
+            self.updatedAtValue = updatedAtValue as! Date
         }
         
         if let prod_desc = dict.value(forKey: "description") {

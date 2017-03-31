@@ -10,6 +10,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     var selectedIndex : Int!
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var topView : UIView!
+    @IBOutlet weak var progressView : UIActivityIndicatorView!
+
     @IBOutlet weak var productsCollectionView : UICollectionView!
 
     override func viewDidLoad() {
@@ -51,6 +53,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("user")
         query.includeKey("userLikes")
         query.limit = ProductViewController.ITEM_LIMIT
+         self.progressView.startAnimating()
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
@@ -72,6 +75,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
         query.findObjectsInBackground { (objects, error) in
+            self.progressView.isHidden = true
             if(error == nil)
             {
             for obj in objects!

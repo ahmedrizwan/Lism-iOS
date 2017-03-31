@@ -2,8 +2,13 @@
 import Foundation
 import UIKit
 import AVOSCloud
-
-class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
+extension Date {
+ 
+    func days(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
+    }
+}
+class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UIScrollViewDelegate
 {
     @IBOutlet weak var scrollView : UIScrollView!
     var productBO : Product!
@@ -24,6 +29,11 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var productDescriptionBtn : UIButton!
     @IBOutlet weak var thirdViewBtn : UIButton!
 
+    @IBOutlet weak var commentsBtnView : UIView!
+    @IBOutlet weak var productDescriptionBtnView : UIView!
+    @IBOutlet weak var thirdViewBtnView : UIView!
+    
+
 
 
     @IBOutlet weak var descriptonTextView : UITextView!
@@ -40,25 +50,15 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     
     
     @IBOutlet var slideshow: ImageSlideshow!
+    
+    @IBOutlet weak var horizontalScrolView : UIScrollView!
+
     override func viewDidLoad() {
      //   let backImg: UIImage = (UIImage(named: "back_btn")
-        let backImage = UIImage(named: "back_btn")
-        UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImage, for: .normal, barMetrics: .default)
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-1000, -1000), for: .default)
-
-
-      //  UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, for: .normal, barMetrics: .default)
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
-        imageView.contentMode = .scaleAspectFit
-        
-      
-               let image = UIImage(named: "logo")
-        imageView.image = image
-        self.navigationController?.navigationBar.backItem?.title = ""
-        
-        navigationItem.titleView = imageView
+       self.navigationController?.navigationBar.isHidden = true
         self.updateProductDetails()
         
+        scrollView.delegate = self
         self.addShadow(button: productDescriptionBtn)
         self.addShadow(button: thirdViewBtn)
         self.addShadow(button: commentsBtn)
@@ -69,6 +69,9 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         scrollView.frame =  CGRect(x:  scrollView.frame.origin.x, y:  scrollView.frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
+        horizontalScrolView.contentSize = CGSize(width: self.view.frame.width * 2, height: horizontalScrolView.frame.size.height)
+        
+
         self.showDescriptionView(sender: "" as AnyObject)
 
 
@@ -88,7 +91,17 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         {
         sdWebImageSource.append(SDWebImageSource(urlString: url.absoluteString)!)
         }
-       
+    
+        if  Date().days(from: self.productBO.updatedAtValue) > 0
+        
+        {
+            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAtValue)) ago"
+
+        }
+        else
+        {
+            daysAgoLabel.isHidden = false
+        }
         slideshow.slideshowInterval = 5.0
         slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
@@ -109,12 +122,21 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
+    
     func addShadow(button : UIButton)
     {
-        button.layer.shadowOpacity = 0.7
-       // button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 10, height: 10)
-        button.layer.shadowRadius = 5
+              
+        
+        let shadowPath = UIBezierPath(rect: button.bounds).cgPath
+        
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset =  CGSize(width: 5, height: 5)
+
+        button.layer.shadowOpacity = 0.4
+        button.layer.masksToBounds = false
+        button.layer.shadowPath = shadowPath
+        button.layer.cornerRadius = 2
+        
     }
    
     
@@ -150,18 +172,23 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
-    
+      @IBAction func backBtnAction(sender : AnyObject)
+      {
+    self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func showDescriptionView(sender : AnyObject)
     {
 
+        self.horizontalScrolView.setContentOffset(CGPoint(x: 0,y : 0 ), animated: true)
         commentsBtn.isHidden = true
         productDescriptionBtn.isHidden = false
         thirdViewBtn.isHidden = true
         
-        descriptonView.isHidden = false;
+        policyView.isHidden = true;
+    descriptonView.isHidden = false;
         commentsView.isHidden = true;
-    
+    self.view.bringSubview(toFront: productDescriptionBtnView)
         descriptonTextView.text = self.productBO.prodcut_description
         colorMaterialTextView.text =   "Color: \(productBO.color) \n Material: \(productBO.size) \n Condition: \(productBO.condition)"
 
@@ -169,25 +196,31 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     
     @IBAction func showCommentsView(sender : AnyObject)
     {
-    
+        self.horizontalScrolView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width, y : 0 ), animated: true)
+
         commentsBtn.isHidden = false
         productDescriptionBtn.isHidden = true
         thirdViewBtn.isHidden = true
+        self.view.bringSubview(toFront: commentsBtnView)
 
         
         descriptonView.isHidden = true;
         commentsView.isHidden = false;
+        policyView.isHidden = true;
+
         self.loadComments()
     }
     @IBAction func showPolicyView(sender : AnyObject)
     {
+        self.horizontalScrolView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width*2,  y : 0 ), animated: true)
         commentsBtn.isHidden = true
         productDescriptionBtn.isHidden = true
         thirdViewBtn.isHidden = false
-        
+        self.view.bringSubview(toFront: thirdViewBtnView)
+
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
-
+        policyView.isHidden = false;
     
     }
     func addToCartAction(message: String)
@@ -208,9 +241,41 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+
+        if(scrollView == self.horizontalScrolView)
+        {
+        if(scrollView.contentOffset.x == 0)
+        {
+            self.showDescriptionView(sender: UIButton())
+        }
+        else if (scrollView.contentOffset.x ==  UIScreen.main.bounds.width)
+        {
+            self.showCommentsView(sender: UIButton())
+        }
+        else if (scrollView.contentOffset.x ==  UIScreen.main.bounds.width*2)
+        {
+            self.showPolicyView(sender: UIButton())
+        }
+        }
+        else if(scrollView.contentOffset.y < (self.scrollView.contentSize.height - self.scrollView.bounds.size.height)/2)
+        {
+            scrollBtn.isHidden = false;
+
+        }
+        else
+        {
+            scrollBtn.isHidden = true;
+
+        }
+    }
+    
     @IBAction func moveToScrollBottom()
     {
-    
+        scrollBtn.isHidden = true;
+        self.scrollView.setContentOffset(CGPoint(x: 0, y :  self.scrollView.contentSize.height - self.scrollView.bounds.size.height), animated: true)
+
     }
     // MARK: UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

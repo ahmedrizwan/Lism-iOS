@@ -78,6 +78,11 @@
 		398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F9B571E8D81FC00845946 /* UIImageView+Tools.swift */; };
 		398F9B691E8D81FC00845946 /* ZoomAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F9B581E8D81FC00845946 /* ZoomAnimatedTransitioning.swift */; };
 		398F9B6E1E8D81FC00845946 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F9B5E1E8D81FC00845946 /* SDWebImageSource.swift */; };
+		399A0DF21E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */; };
+		399A0DF31E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */; };
+		399A0DF41E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */; };
+		399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF51E90416F00FA1B8C /* newlogo.png */; };
+		399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF61E90416F00FA1B8C /* topbarimage.png */; };
 		39F93D971E89486B0008B276 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F93D951E89486B0008B276 /* iCarousel.m */; };
 		39F93D981E89486B0008B276 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39F93D961E89486B0008B276 /* Info.plist */; };
 		39F93D9A1E8948BC0008B276 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F93D991E8948BC0008B276 /* QuartzCore.framework */; };
@@ -188,6 +193,11 @@
 		398F9B571E8D81FC00845946 /* UIImageView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tools.swift"; sourceTree = "<group>"; };
 		398F9B581E8D81FC00845946 /* ZoomAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		398F9B5E1E8D81FC00845946 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
+		399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-01.jpg"; sourceTree = "<group>"; };
+		399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-03.jpg"; sourceTree = "<group>"; };
+		399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-04.jpg"; sourceTree = "<group>"; };
+		399A0DF51E90416F00FA1B8C /* newlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newlogo.png; sourceTree = "<group>"; };
+		399A0DF61E90416F00FA1B8C /* topbarimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarimage.png; sourceTree = "<group>"; };
 		39F93D941E89486B0008B276 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		39F93D951E89486B0008B276 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		39F93D961E89486B0008B276 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -333,6 +343,9 @@
 		398535341E7DA69D00406BBB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */,
+				399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */,
+				399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */,
 				39FA9C151E8ACA6300C617D8 /* bg.png */,
 				39FA9C161E8ACA6300C617D8 /* line.png */,
 				39FA9C171E8ACA6300C617D8 /* selected.png */,
@@ -369,6 +382,8 @@
 				398535461E7DA69D00406BBB /* person_male.png */,
 				398535471E7DA69D00406BBB /* plus.png */,
 				398535481E7DA69D00406BBB /* red_dot.png */,
+				399A0DF51E90416F00FA1B8C /* newlogo.png */,
+				399A0DF61E90416F00FA1B8C /* topbarimage.png */,
 				398535491E7DA69D00406BBB /* settings.png */,
 				3985354A1E7DA69D00406BBB /* wechat.png */,
 				3985354B1E7DA69D00406BBB /* wechat_button.png */,
@@ -625,11 +640,13 @@
 				398535631E7DA69D00406BBB /* wechat_button.png in Resources */,
 				398F9B491E8D70DE00845946 /* tag.png in Resources */,
 				398535501E7DA69D00406BBB /* cart.png in Resources */,
+				399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */,
 				3970198B1E880806002F0A9B /* back_btn.png in Resources */,
 				398535541E7DA69D00406BBB /* heart.png in Resources */,
 				39FA9C1E1E8ACA6300C617D8 /* selected.png in Resources */,
 				398535621E7DA69D00406BBB /* wechat.png in Resources */,
 				39638B351E79900A003B54EE /* LaunchScreen.storyboard in Resources */,
+				399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */,
 				398535571E7DA69D00406BBB /* image_add.png in Resources */,
 				3985355D1E7DA69D00406BBB /* person.png in Resources */,
 				3985355B1E7DA69D00406BBB /* notifications.png in Resources */,
@@ -649,6 +666,7 @@
 				398F9B611E8D81FC00845946 /* ic_cross_white@3x.png in Resources */,
 				398535521E7DA69D00406BBB /* cart_remove.png in Resources */,
 				39FA9C221E8ACA6300C617D8 /* layer.png in Resources */,
+				399A0DF31E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg in Resources */,
 				398535581E7DA69D00406BBB /* image_camera.png in Resources */,
 				3985355A1E7DA69D00406BBB /* minus.png in Resources */,
 				398535591E7DA69D00406BBB /* less_is_more_white_icon.png in Resources */,
@@ -659,6 +677,7 @@
 				39FA9C1C1E8ACA6300C617D8 /* bg.png in Resources */,
 				398535561E7DA69D00406BBB /* heart_white.png in Resources */,
 				39638B301E79900A003B54EE /* Main.storyboard in Resources */,
+				399A0DF41E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg in Resources */,
 				394DBF7C1E818EDB005E7D92 /* filter.png in Resources */,
 				398535601E7DA69D00406BBB /* red_dot.png in Resources */,
 				3985355F1E7DA69D00406BBB /* plus.png in Resources */,
@@ -667,6 +686,7 @@
 				3985355C1E7DA69D00406BBB /* overlay.png in Resources */,
 				394DBF7D1E818EDB005E7D92 /* list.png in Resources */,
 				39FA9C211E8ACA6300C617D8 /* icon1.png in Resources */,
+				399A0DF21E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg in Resources */,
 				398535511E7DA69D00406BBB /* cart_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,7 +1,12 @@
 
 import UIKit
 import AVOSCloud
-
+extension UIImageView {
+    func tintImageColor(color : UIColor) {
+        self.image = self.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.tintColor = color
+    }
+}
 class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate,UICollectionViewDelegateFlowLayout{
     static let ITEM_LIMIT = 10
     
@@ -30,7 +35,11 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         navigationItem.titleView = imageView
     }
+    override func viewDidAppear(_ animated: Bool) {
+    
+        self.progressView.isHidden = true
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,8 +62,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("user")
         query.includeKey("userLikes")
         query.limit = ProductViewController.ITEM_LIMIT
-         self.progressView.startAnimating()
+         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
+            self.progressView.isHidden = true
+
             if(error == nil)
             {
                 for obj in objects!
@@ -66,6 +77,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             
             self.loadFavoritesList()
             }
+            
 
         }
     }
@@ -75,7 +87,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
         query.findObjectsInBackground { (objects, error) in
-            self.progressView.isHidden = true
             if(error == nil)
             {
             for obj in objects!
@@ -155,7 +166,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
         
         cell.retailPriceTextView.text = "Size \(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
-        
+     
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)
@@ -166,7 +177,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-        return CGSize(width: collectionView.bounds.width/2 - 20, height: 240)
+        return CGSize(width: collectionView.bounds.width/2 - 40, height: 240)
         
     }
     // MARK: - UICollectionViewDelegate protocol
@@ -229,6 +240,30 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
     }
     
+    @IBAction func minusBtnClickedAction (sender : UIButton)
+    {
+        sender.imageView?.tintImageColor(color: UIColor.red)
+
+        
+    }
+    
+    @IBAction func profileBtnClickedAction (sender : UIButton)
+    {
+        
+    }
+    
+    @IBAction func heartBtnClickedAction (sender : UIButton)
+    {
+        
+    }
+    
+    @IBAction func plusBtnClickedAction (sender : UIButton)
+    {
+        
+    }
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ProductViewToProductDetailsVC") {
@@ -238,5 +273,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             // pass data to next view
         }
     }
+
+
 }
 

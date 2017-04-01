@@ -4,10 +4,10 @@ import AVFoundation
 import UIKit
 import AVOSCloud
 
-class Product: NSObject {
+class Product: AVObject {
   
     
-    var objectId: String = String()
+    var objectIdForProduct: String = String()
     var prodcut_description: String = String()
     var category: String = String()
     var address: String = String()
@@ -54,8 +54,8 @@ class Product: NSObject {
             self.productImageUrl =   URL(string: primaryImageUrl as! String)
         }
         
-        if let objectId = dict.object(forKey: "objectId") {
-            self.objectId = objectId as! String
+        if let objectIdForProduct = dict.object(forKey: "objectId") {
+            self.objectIdForProduct = objectIdForProduct as! String
         }
         
         if let size = dict.value(forKey: "size") {

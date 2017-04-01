@@ -47,7 +47,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var policyView : UIView!
 
     
-    
+    var messageForCart : String = String ()
     
     @IBOutlet var slideshow: ImageSlideshow!
     
@@ -62,18 +62,64 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.addShadow(button: productDescriptionBtn)
         self.addShadow(button: thirdViewBtn)
         self.addShadow(button: commentsBtn)
-       
+       self.checkIfItemIsInCart()
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        scrollView.frame =  CGRect(x:  scrollView.frame.origin.x, y:  scrollView.frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
+    
+    
+   
+    
+    
+    func checkIfItemIsInCart()
+    {
+    
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
+        let query: AVQuery = ((AVUser.current()?.relation(forKey: "userCart"))?.query())!
+        query.whereKey("objectId", equalTo: self.productBO.objectIdForProduct)
+        query.getFirstObjectInBackground { (object, error) in
+            
+            if(error == nil)
+            {
+              if(object != nil)
+                {
+                //item in the cart assetes update required
+                    self.removeFromCartAction()
+                }
+                else
+                {
+                //not in the cart assets update required
+                    self.addToCartAction()
+                }
+            }
+            else
+            {
+                //show error mesage
+            }
+        }
+        
+    }
+    func removeFromCartAction()
+    {
+        messageForCart = " removed from cart successfully."
+    
+        AVUser.current()?.relation(forKey: "userCart").remove(self.productBO as AVObject)
+    }
+    
+    func addToCartAction()
+    {
+        messageForCart = " added to cart successfully."
+
+        AVUser.current()?.relation(forKey: "userCart").add(self.productBO as AVObject)
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 450)
         horizontalScrolView.contentSize = CGSize(width: self.view.frame.width * 2, height: horizontalScrolView.frame.size.height)
         
 
         self.showDescriptionView(sender: "" as AnyObject)
-
+        
 
     }
     func updateProductDetails()
@@ -168,13 +214,30 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
  
     @IBAction func addToCart(sender : AnyObject)
     {
-    
+        self.addToCartAction(message: messageForCart)
     }
     
+    func updateCount(relation : AVRelation)
+    {
+        
+        relation.query().countObjectsInBackground{(objects, error) in
+            
+            if(error == nil)
+            {
+                print (objects)
+                self.checkIfItemIsInCart()
+            }
+            else
+            {
+                //show error mesage
+            }
+        }
+        
+    }
     
-      @IBAction func backBtnAction(sender : AnyObject)
-      {
-    self.navigationController?.popViewController(animated: true)
+    @IBAction func backBtnAction(sender : AnyObject)
+    {
+    self.navigationController!.popViewController(animated: true)
     }
     
     @IBAction func showDescriptionView(sender : AnyObject)
@@ -225,11 +288,13 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func addToCartAction(message: String)
     {
-        let query: AVQuery = (AVUser.current()?.relation(forKey: "userCart").query())!
-        query.findObjectsInBackground { (objects, error) in
+        let relation: AVRelation = (AVUser.current()?.relation(forKey: "userCart"))!
+        
+        AVUser.current()?.saveInBackground { (objects, error) in
             
             if(error == nil)
             {
+                self.updateCount(relation: relation)
                 Constants.showAlert(message: self.productBO.name + message,view: self)
             }
             else

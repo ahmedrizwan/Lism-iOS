@@ -21,6 +21,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var userNameLabel : UILabel!
     @IBOutlet weak var daysAgoLabel : UILabel!
     @IBOutlet weak var likesLabel : UILabel!
+    @IBOutlet weak var cartCountLabel : UILabel!
+
+    @IBOutlet weak var cartBtn : UIButton!
+    @IBOutlet weak var allCartBtn : UIButton!
 
     @IBOutlet weak var descriptonView : UIView!
     @IBOutlet weak var scrollBtn : UIButton!
@@ -52,30 +56,34 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet var slideshow: ImageSlideshow!
     
     @IBOutlet weak var horizontalScrolView : UIScrollView!
-
+    var relation: AVRelation = AVRelation()
+    
     override func viewDidLoad() {
      //   let backImg: UIImage = (UIImage(named: "back_btn")
        self.navigationController?.navigationBar.isHidden = true
         self.updateProductDetails()
-        
+        self.cartBtn.isHidden = true
+
         scrollView.delegate = self
         self.addShadow(button: productDescriptionBtn)
         self.addShadow(button: thirdViewBtn)
         self.addShadow(button: commentsBtn)
-       self.checkIfItemIsInCart()
+        self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
+        self.updateCount(relation: self.relation)
+        
         
     }
     
     
    
-    
+
     
     func checkIfItemIsInCart()
     {
     
         
-        let query: AVQuery = ((AVUser.current()?.relation(forKey: "userCart"))?.query())!
-        query.whereKey("objectId", equalTo: self.productBO.objectIdForProduct)
+        let query: AVQuery = self.relation.query()
+        query.whereKey("objectId", equalTo: self.productBO.objectId!)
         query.getFirstObjectInBackground { (object, error) in
             
             if(error == nil)
@@ -84,15 +92,22 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
                 {
                 //item in the cart assetes update required
                     self.removeFromCartAction()
+                    self.cartBtn.isHidden = false
                 }
                 else
                 {
                 //not in the cart assets update required
                     self.addToCartAction()
+                    self.cartBtn.isHidden = true
+
                 }
             }
             else
             {
+               
+                self.addToCartAction()
+                self.cartBtn.isHidden = true
+
                 //show error mesage
             }
         }
@@ -102,19 +117,19 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     {
         messageForCart = " removed from cart successfully."
     
-        AVUser.current()?.relation(forKey: "userCart").remove(self.productBO as AVObject)
+       relation.remove(self.productBO as AVObject)
     }
     
     func addToCartAction()
     {
         messageForCart = " added to cart successfully."
 
-        AVUser.current()?.relation(forKey: "userCart").add(self.productBO as AVObject)
+       relation.add(self.productBO as AVObject)
 
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 450)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 400)
         horizontalScrolView.contentSize = CGSize(width: self.view.frame.width * 2, height: horizontalScrolView.frame.size.height)
         
 
@@ -124,7 +139,18 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func updateProductDetails()
     {
-               favoriteBtn.isSelected = productBO.favorite
+        
+        if let profileImage = self.productBO.user.value(forKey: "profileImage")
+        {
+        let parseFile = profileImage as! AVFile
+            parseFile.getDataInBackground({ (data, error) in
+                self.userImage.image = UIImage.init(data: data!)
+                 self.userImage.layer.cornerRadius =  self.userImage.frame.size.width/2
+                 self.userImage.clipsToBounds = true
+            })
+            print("file exists");
+        }
+        favoriteBtn.isSelected = productBO.favorite
         likesLabel.text = "\(productBO.productLikes)"
         productNameLabel.text = productBO.name
         userNameLabel.text = "@" + (AVUser.current()?.username!)!
@@ -225,6 +251,16 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
             if(error == nil)
             {
                 print (objects)
+                if( objects > 0 )
+                {
+                //self.cartCountLabel.text = "\(objects)"
+                    self.allCartBtn.isHidden = false
+                    self.allCartBtn.setTitle("\(objects)", for: .normal)
+                }
+                else
+                {
+                    self.allCartBtn.isHidden = true
+                }
                 self.checkIfItemIsInCart()
             }
             else
@@ -288,13 +324,13 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func addToCartAction(message: String)
     {
-        let relation: AVRelation = (AVUser.current()?.relation(forKey: "userCart"))!
+       
         
         AVUser.current()?.saveInBackground { (objects, error) in
             
             if(error == nil)
             {
-                self.updateCount(relation: relation)
+                self.updateCount(relation: self.relation)
                 Constants.showAlert(message: self.productBO.name + message,view: self)
             }
             else
@@ -347,11 +383,11 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         return self.commentsArray.count
     }
     
-    // cell height
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
+//    // cell height
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
+//    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

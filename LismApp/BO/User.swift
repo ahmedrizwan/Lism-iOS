@@ -4,24 +4,24 @@ import AVFoundation
 import UIKit
 import AVOSCloud
 
-class User: NSObject {
+class User: AVUser {
   
     
-    var objectId: String = String()
     var userName: String = String()
-
+    var profileImage : AVFile = AVFile()
     
+  
+
     func UserInintWithDic(dict:AVObject) {
         
        
-        if let objectId = dict.object(forKey: "objectId") {
-            self.objectId = objectId as! String
-        }
-        
         if let userName = dict.value(forKey: "userName") {
             self.userName = userName as! String
         }
         
+        if let profileImage = dict.value(forKey: "profileImage") {
+            self.profileImage = profileImage as! AVFile
+        }
        
     
     }

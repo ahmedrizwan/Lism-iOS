@@ -4,7 +4,7 @@ import AVFoundation
 import UIKit
 import AVOSCloud
 
-class Product: AVObject {
+class Product: AVObject,AVSubclassing {
   
     
     var objectIdForProduct: String = String()
@@ -22,18 +22,22 @@ class Product: AVObject {
     var condition: String = String()
     var sellingPrice: String = String()
     var favorite: Bool = false
-    var user :User!
+    var user : AVUser!
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
     var queryObj: AVQuery!
     var updatedAtValue: Date = Date()
 
+   override  class  func initialize() {
+        Product.registerSubclass()
+    }
     
+    class func parseClassName() -> String {
+        return "Product"
+    }
     func ProductInintWithDic(dict:AVObject) {
         
-        
-        print(dict)
-       let avRelationObj =  dict.relation(forKey: "images") 
+       let avRelationObj =  dict.relation(forKey: "images")
         avRelationObj.query().findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
@@ -84,7 +88,10 @@ class Product: AVObject {
         }
     
         if let priceSelling = dict.value(forKey: "priceSelling") {
+            if priceSelling is String
+            {
             self.sellingPrice = priceSelling as! String
+            }
         }
         
         
@@ -108,6 +115,10 @@ class Product: AVObject {
             self.color = color as! String
         }
         
+        if let user = dict.value(forKey: "user") {
+            self.user = user as! AVUser
+           
+        }
         if let condition = dict.value(forKey: "condition") {
             self.condition = condition as! String
         }

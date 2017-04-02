@@ -16,14 +16,14 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
-
+    
     @IBOutlet weak var productsCollectionView : UICollectionView!
-
+    var lastScrollPos : CGPoint!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-      //  self.navigationController?.isNavigationBarHidden = true
-
+        //  self.navigationController?.isNavigationBarHidden = true
+        
         self.getProductList()
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
@@ -32,13 +32,13 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         let image = UIImage(named: "logo")
         imageView.image = image
         self.navigationController?.navigationBar.backItem?.title = ""
-
+        
         navigationItem.titleView = imageView
     }
     override func viewDidAppear(_ animated: Bool) {
-    
+        
         self.progressView.isHidden = true
-
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,14 +46,14 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
-
+        
         if(item.tag == 0)
         {
-       
+            
         }
         //This method will be called when user changes tab.
     }
-
+    
     func getProductList()
     {
         
@@ -62,49 +62,47 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("user")
         query.includeKey("userLikes")
         query.limit = ProductViewController.ITEM_LIMIT
-         self.progressView.isHidden = false
+        self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
-
+            
             if(error == nil)
             {
                 for obj in objects!
                 {
-                    let productObj:Product =  Product()
+                    let productObj:Product =  obj as! Product
+                    
+                    
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
                     self.items.append(productObj)
                 }
-            
-            self.loadFavoritesList()
+                
+                self.loadFavoritesList()
             }
             
-
+            
         }
     }
     
     func loadFavoritesList()
     {
-
+        
         let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
-            for obj in objects!
-            {
-                let productObj:Product =  Product()
-                productObj.ProductInintWithDic(dict: obj as! AVObject)
-                self.favoritesList.append(productObj)
+                for obj in objects!
+                {
+                    let productObj:Product =  obj as! Product
+                    productObj.ProductInintWithDic(dict: obj as! AVObject)
+                    self.favoritesList.append(productObj)
+                }
+                self.comapreToUpdateFavoriteProductsList()
             }
-            self.comapreToUpdateFavoriteProductsList()
-            }
-            else
-            {
-                self.productsCollectionView.reloadData()
-
-            }
+            
         }
-    
-    
+        
+        
     }
     func comapreToUpdateFavoriteProductsList()
     {
@@ -133,13 +131,13 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
-            for obj in objects!
-            {
-                let productObj:Product =  Product()
-                productObj.ProductInintWithDic(dict: obj as! AVObject)
-                self.items.append(productObj)
-            }
-            self.comapreToUpdateFavoriteProductsList()
+                for obj in objects!
+                {
+                    let productObj:Product =  obj as! Product
+                    productObj.ProductInintWithDic(dict: obj as! AVObject)
+                    self.items.append(productObj)
+                }
+                self.comapreToUpdateFavoriteProductsList()
             }
             
         }
@@ -166,7 +164,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
         
         cell.retailPriceTextView.text = "Size \(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
-     
+        
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)
@@ -176,74 +174,66 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
+        
         return CGSize(width: collectionView.bounds.width/2 - 40, height: 240)
         
     }
     // MARK: - UICollectionViewDelegate protocol
     @IBAction func filterBtnAction(sender: AnyObject)
     {
-    
-    
+        
+        
     }
     @IBAction func listBtnAction(sender: AnyObject)
     {
         
         
     }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastScrollPos =  self.productsCollectionView.contentOffset
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //
         
-        let scrollPos = self.productsCollectionView.contentOffset.y ;
+        let scrollPos = self.productsCollectionView.contentOffset ;
         print(scrollPos)
-          if(scrollPos >= 5  ){
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            //
-            //write a code to hide
-            self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
-        }, completion: nil)
-          }
-        else if (scrollPos <= 0)
-            {
+        if(scrollPos.y > lastScrollPos.y  ){
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                //
+                //moving up
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
                 
-                UIView.animate(withDuration: 0.5, animations: {
-                    //
-                    //write a code to hide
-                    self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 105, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
-                }, completion: nil)
-            }
-        
-        
-        if(scrollPos >= 60 ){
-            //Fully hide your toolbar
-     
-            UIView.animate(withDuration: 0.5, animations: {
-                //
-                //write a code to hide
                 self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 0, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
-              
-            }, completion: nil)
-        } else  if(scrollPos <= 0 ){
-            //Slide it up incrementally, etc.
-            UIView.animate(withDuration: 0.5, animations: {
-                //
-              self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: nil)
         }
+        else if (scrollPos.y < lastScrollPos.y)
+        {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                //
+                //move down
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 105, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+            }, completion: nil)
+        }
+        
+        
+        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
         selectedIndex = indexPath.item
         self.performSegue(withIdentifier: "ProductViewToProductDetailsVC", sender: self)
-
+        
     }
     
     @IBAction func minusBtnClickedAction (sender : UIButton)
     {
         sender.imageView?.tintImageColor(color: UIColor.red)
-
+        
         
     }
     
@@ -269,11 +259,11 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         if (segue.identifier == "ProductViewToProductDetailsVC") {
             let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
             viewController.productBO = items[selectedIndex]
-
+            
             // pass data to next view
         }
     }
-
-
+    
+    
 }
 

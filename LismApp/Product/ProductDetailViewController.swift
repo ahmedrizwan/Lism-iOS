@@ -175,10 +175,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
             daysAgoLabel.isHidden = false
         }
         slideshow.slideshowInterval = 5.0
-        slideshow.pageControlPosition = PageControlPosition.underScrollView
+       // slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
         slideshow.pageControl.pageIndicatorTintColor = UIColor.black
-        slideshow.contentScaleMode = UIViewContentMode.scaleAspectFit
+        slideshow.contentScaleMode = UIViewContentMode.scaleToFill
         slideshow.currentPageChanged = { page in
             print("current page:", page)
         }

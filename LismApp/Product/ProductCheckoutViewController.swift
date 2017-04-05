@@ -41,7 +41,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
                     self.totalPrice =  self.totalPrice + productObj.sellingPrice
                     self.checkoutArray.append(productObj)
                 }
-                    self.totalLabel.text = "¥ \(self.totalLabel)"
+                    self.totalLabel.text = "¥ \(self.totalPrice)"
                     self.checkOutTableView.reloadData()
             }
             
@@ -61,7 +61,10 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
             self.progressView.isHidden = true
             if(error == nil)
             {
+                self.totalLabel.text = "¥ \(self.totalPrice - productObj.sellingPrice)"
+
                  self.checkoutArray.remove(at: item)
+                
                 self.checkOutTableView.reloadData()
             }
             

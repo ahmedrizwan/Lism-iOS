@@ -16,12 +16,16 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     var isShowing = false
     var isHiding = false
 
+    
+    var isShowingTopbar = false
+    var isHidingTopbar = false
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     
     @IBOutlet weak var productsCollectionView : UICollectionView!
     var lastScrollPos : CGPoint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -91,6 +95,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
         
         let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
+        query.includeKey("user")
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
@@ -200,43 +205,77 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         //
         
         let scrollPos = self.productsCollectionView.contentOffset.y ;
-        print(scrollPos)
-        print(lastScrollPos.y)
 
         if(scrollPos > lastScrollPos.y  ){
-            
-            UIView.animate(withDuration: 0.5, animations: {
+            if(!isHiding)
+            {
+                 isHiding = true
+                print("hiding collection")
+            UIView.animate(withDuration:0.45, animations: {
                 //
                 //write a code to hide
                 self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
-            }, completion: nil)
+            }, completion: { _ in
+                self.isHiding = false
+                // completion
+                })
+            }
         }
-        else if (scrollPos <= lastScrollPos.y)
+        else if (scrollPos <= 60)
         {
             
-            UIView.animate(withDuration: 0.5, animations: {
+            if(!isShowing)
+            {
+                print("showing collection")
+
+                self.isShowing = true
+            UIView.animate(withDuration: 0.45, animations: {
                 //
+                
                 //write a code to hide
                 self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 105, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
-            }, completion: nil)
+            },  completion: { _ in
+                self.isShowing = false
+                // completion
+                })
+            }
         }
         
         
-        if(scrollPos > lastScrollPos.y ){
+        if(scrollPos + 300 > lastScrollPos.y && isHiding ){
             //Fully hide your toolbar
-            
-            UIView.animate(withDuration: 0.5, animations: {
+            if(!isHidingTopbar)
+            {
+                print("hiding toolbar")
+
+                self.isHidingTopbar = true
+            UIView.animate(withDuration: 0.95, animations: {
                 //
                 //write a code to hide
                 self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 0, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
                 
-            }, completion: nil)
-        } else  if(scrollPos <=  lastScrollPos.y ){
+            },  completion: { _ in
+                self.isHidingTopbar = false
+                // completion
+                })
+            }
+        } else  if(scrollPos <=  lastScrollPos.y )
+        {
             //Slide it up incrementally, etc.
+            if(!isShowingTopbar)
+            {
+                print("showding toolbar")
+
+                self.isShowingTopbar = true
+
             UIView.animate(withDuration: 0.5, animations: {
                 //
                 self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
-            }, completion: nil)
+            }, completion: { _ in
+                self.isShowingTopbar = false
+                // completion
+                })
+            }
         }
     }
     

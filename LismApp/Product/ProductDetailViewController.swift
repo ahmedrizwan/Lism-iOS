@@ -156,7 +156,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         userNameLabel.text = "@" + (AVUser.current()?.username!)!
 
         priceSizeNameTextView.text = "\(productBO.brand) \n  Size \(productBO.size) \n  Est. Retail ¥ \(productBO.priceRetail)"
-        sellingPriceLabel.text = "¥" + productBO.sellingPrice
+        sellingPriceLabel.text = "¥ \(productBO.sellingPrice)"
         
           var sdWebImageSource = [InputSource]()
         for url in self.productBO.productImagesArray

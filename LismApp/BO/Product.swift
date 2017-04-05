@@ -20,8 +20,10 @@ class Product: AVObject,AVSubclassing {
     var brand: String = String()
     var status: String = String()
     var condition: String = String()
-    var sellingPrice: String = String()
+    var sellingPrice: Int = Int()
     var favorite: Bool = false
+    var isAddedToCheckOut: Bool = false
+
     var user : AVUser!
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
@@ -88,10 +90,9 @@ class Product: AVObject,AVSubclassing {
         }
     
         if let priceSelling = dict.value(forKey: "priceSelling") {
-            if priceSelling is String
-            {
-            self.sellingPrice = priceSelling as! String
-            }
+          
+            self.sellingPrice = priceSelling as! Int
+    
         }
         
         

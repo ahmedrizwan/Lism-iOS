@@ -79,6 +79,9 @@
 		398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F9B571E8D81FC00845946 /* UIImageView+Tools.swift */; };
 		398F9B691E8D81FC00845946 /* ZoomAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F9B581E8D81FC00845946 /* ZoomAnimatedTransitioning.swift */; };
 		398F9B6E1E8D81FC00845946 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F9B5E1E8D81FC00845946 /* SDWebImageSource.swift */; };
+		399111A71E953B49005A047F /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 399111A51E953B49005A047F /* checkbox_checked.png */; };
+		399111A81E953B49005A047F /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 399111A61E953B49005A047F /* checkbox.png */; };
+		399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399111A91E953D83005A047F /* CheckoutCustomCell.swift */; };
 		399A0DF21E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */; };
 		399A0DF31E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */; };
 		399A0DF41E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */; };
@@ -196,6 +199,9 @@
 		398F9B571E8D81FC00845946 /* UIImageView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tools.swift"; sourceTree = "<group>"; };
 		398F9B581E8D81FC00845946 /* ZoomAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		398F9B5E1E8D81FC00845946 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
+		399111A51E953B49005A047F /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_checked.png; sourceTree = "<group>"; };
+		399111A61E953B49005A047F /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		399111A91E953D83005A047F /* CheckoutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCustomCell.swift; sourceTree = "<group>"; };
 		399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-01.jpg"; sourceTree = "<group>"; };
 		399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-03.jpg"; sourceTree = "<group>"; };
 		399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-04.jpg"; sourceTree = "<group>"; };
@@ -347,6 +353,8 @@
 		398535341E7DA69D00406BBB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				399111A51E953B49005A047F /* checkbox_checked.png */,
+				399111A61E953B49005A047F /* checkbox.png */,
 				39219B201E92BB7E00231916 /* imageOverlay.png */,
 				399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */,
 				399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */,
@@ -405,6 +413,7 @@
 				39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */,
 				390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */,
 				39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */,
+				399111A91E953D83005A047F /* CheckoutCustomCell.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -647,6 +656,7 @@
 				398F9B491E8D70DE00845946 /* tag.png in Resources */,
 				398535501E7DA69D00406BBB /* cart.png in Resources */,
 				399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */,
+				399111A81E953B49005A047F /* checkbox.png in Resources */,
 				3970198B1E880806002F0A9B /* back_btn.png in Resources */,
 				398535541E7DA69D00406BBB /* heart.png in Resources */,
 				39FA9C1E1E8ACA6300C617D8 /* selected.png in Resources */,
@@ -693,6 +703,7 @@
 				3985355C1E7DA69D00406BBB /* overlay.png in Resources */,
 				394DBF7D1E818EDB005E7D92 /* list.png in Resources */,
 				39FA9C211E8ACA6300C617D8 /* icon1.png in Resources */,
+				399111A71E953B49005A047F /* checkbox_checked.png in Resources */,
 				399A0DF21E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg in Resources */,
 				398535511E7DA69D00406BBB /* cart_button.png in Resources */,
 			);
@@ -771,6 +782,7 @@
 				39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */,
 				398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */,
 				39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */,
+				399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */,
 				398F9B651E8D81FC00845946 /* ImageSlideshowItem.swift in Sources */,
 				398F9B6E1E8D81FC00845946 /* SDWebImageSource.swift in Sources */,
 				39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */,

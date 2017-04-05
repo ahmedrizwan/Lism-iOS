@@ -129,7 +129,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 400)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 450)
         horizontalScrolView.contentSize = CGSize(width: self.view.frame.width * 2, height: horizontalScrolView.frame.size.height)
         
 
@@ -215,14 +215,15 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     func loadComments()
     {
         
-       
+        self.productBO.queryObj.includeKey("user")
+
        self.productBO.queryObj.findObjectsInBackground { (objects, error) in
             
             if(error == nil)
             {
                 for obj in objects!
                 {
-                let commentBO:Comments =  Comments()
+                let commentBO:Comments = obj as! Comments
                 commentBO.CommentInintWithDic(dict: obj as! AVObject)
                 self.commentsArray.append(commentBO)
                 }
@@ -237,6 +238,13 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
     }
 
+    func postComment()
+    {
+        var comment = Comments()
+        comment.user = AVUser.current()!
+        comment.comment = "hey"
+    
+    }
  
     @IBAction func addToCart(sender : AnyObject)
     {

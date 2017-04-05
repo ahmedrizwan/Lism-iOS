@@ -13,6 +13,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     var items : [Product] = []
     var favoritesList : [Product] = []
     var selectedIndex : Int!
+    var isShowing = false
+    var isHiding = false
+
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
@@ -192,36 +195,51 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastScrollPos =  self.productsCollectionView.contentOffset
     }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //
         
-        let scrollPos = self.productsCollectionView.contentOffset ;
+        let scrollPos = self.productsCollectionView.contentOffset.y ;
         print(scrollPos)
-        if(scrollPos.y > lastScrollPos.y  ){
+        print(lastScrollPos.y)
+
+        if(scrollPos > lastScrollPos.y  ){
             
             UIView.animate(withDuration: 0.5, animations: {
                 //
-                //moving up
+                //write a code to hide
                 self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
-                
-                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 0, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: nil)
         }
-        else if (scrollPos.y < lastScrollPos.y)
+        else if (scrollPos <= lastScrollPos.y)
         {
             
             UIView.animate(withDuration: 0.5, animations: {
                 //
-                //move down
+                //write a code to hide
                 self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 105, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
-                
-                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: nil)
         }
         
         
-        
+        if(scrollPos > lastScrollPos.y ){
+            //Fully hide your toolbar
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                //
+                //write a code to hide
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 0, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+                
+            }, completion: nil)
+        } else  if(scrollPos <=  lastScrollPos.y ){
+            //Slide it up incrementally, etc.
+            UIView.animate(withDuration: 0.5, animations: {
+                //
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+            }, completion: nil)
+        }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")

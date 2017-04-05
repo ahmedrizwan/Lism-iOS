@@ -84,6 +84,7 @@
 		399A0DF41E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */; };
 		399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF51E90416F00FA1B8C /* newlogo.png */; };
 		399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF61E90416F00FA1B8C /* topbarimage.png */; };
+		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
 		39F93D971E89486B0008B276 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F93D951E89486B0008B276 /* iCarousel.m */; };
 		39F93D981E89486B0008B276 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39F93D961E89486B0008B276 /* Info.plist */; };
 		39F93D9A1E8948BC0008B276 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F93D991E8948BC0008B276 /* QuartzCore.framework */; };
@@ -200,6 +201,7 @@
 		399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-04.jpg"; sourceTree = "<group>"; };
 		399A0DF51E90416F00FA1B8C /* newlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newlogo.png; sourceTree = "<group>"; };
 		399A0DF61E90416F00FA1B8C /* topbarimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarimage.png; sourceTree = "<group>"; };
+		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
 		39F93D941E89486B0008B276 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		39F93D951E89486B0008B276 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		39F93D961E89486B0008B276 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				398535671E7DBAAA00406BBB /* ProductViewController.swift */,
 				39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */,
 				390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */,
+				39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				39638B711E7991F0003B54EE /* LoginViewController.swift in Sources */,
 				39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */,
 				398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */,
+				39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */,
 				398F9B651E8D81FC00845946 /* ImageSlideshowItem.swift in Sources */,
 				398F9B6E1E8D81FC00845946 /* SDWebImageSource.swift in Sources */,
 				39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */,

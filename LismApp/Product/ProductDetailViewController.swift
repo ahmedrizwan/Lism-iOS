@@ -440,7 +440,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsCustomCell", for: indexPath ) as! CommentsCustomCell
-        let commentBO =  self.commentsArray[indexPath.row] 
+        let commentBO =  self.commentsArray[indexPath.row - 1]
 
         
         

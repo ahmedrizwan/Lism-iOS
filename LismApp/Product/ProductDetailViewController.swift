@@ -70,7 +70,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.addShadow(button: commentsBtn)
         self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
         self.updateCount(relation: self.relation)
-        
+        self.commentsTableView.allowsSelection = true
         
     }
     
@@ -135,7 +135,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 
         self.showDescriptionView(sender: "" as AnyObject)
         
-
+        
     }
     func updateProductDetails()
     {
@@ -227,6 +227,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
                 commentBO.CommentInintWithDic(dict: obj as! AVObject)
                 self.commentsArray.append(commentBO)
                 }
+                
                 self.commentsTableView.reloadData()
             }
             else
@@ -238,13 +239,36 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
     }
 
-    func postComment()
+    func postComment(index : Int)
     {
-        var comment = Comments()
-        comment.user = AVUser.current()!
-        comment.comment = "hey"
-    
-    }
+        let indexPath = IndexPath(row: 0, section: 0)
+
+        let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
+
+        let comment = Comments()
+        comment.setObject(AVUser.current()!, forKey: "user")
+        comment.setObject(cell.inputTextField.text, forKey: "comment")
+        comment.saveInBackground  { (objects, error) in
+            let commentRelation =  self.productBO.relation(forKey: "comments")
+            commentRelation.add(comment)
+            
+            self.productBO.saveInBackground { (objects, error) in
+                
+                if(error == nil)
+                {
+                    cell.inputTextField.text  = ""
+                    self.loadComments()
+                }
+                else
+                {
+                    //show error mesage
+                }
+            }
+            
+
+        }
+        
+        }
  
     @IBAction func addToCart(sender : AnyObject)
     {
@@ -388,7 +412,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     // MARK: UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.commentsArray.count
+        return self.commentsArray.count  + 1
     }
     
 //    // cell height
@@ -402,15 +426,30 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        if(indexPath.row == 0)
+        {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCommentsCustomCell", for: indexPath ) as! PostCommentsCustomCell
+//        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
+//        customView.backgroundColor = UIColor.white
+//        cell.inputTextField.inputAccessoryView = customView
+            cell.delegate = self;
+            cell.postBtn.tag  = indexPath.row
+        return cell
+        }
+        else
+        {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsCustomCell", for: indexPath ) as! CommentsCustomCell
         let commentBO =  self.commentsArray[indexPath.row] 
 
+        
         
         // connect objects with our information from arrays
         cell.nameLabel.text = commentBO.user.username
         cell.commentsTextView.text = commentBO.comment
 
              return cell
+        }
     }
 }
 

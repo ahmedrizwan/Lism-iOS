@@ -207,29 +207,31 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         let scrollPos = self.productsCollectionView.contentOffset.y ;
 
         if(scrollPos > lastScrollPos.y  ){
-            if(!isHiding && self.productsCollectionView.frame.origin.y != 60)
+            if(!self.isHiding)
             {
                  isHiding = true
-                print("hiding collection")
-            UIView.animate(withDuration:0.25, animations: {
+            UIView.animate(withDuration:0.35, animations: {
                 //
                 //write a code to hide
                 self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             }, completion: { _ in
                 self.isHiding = false
+                print("hiding collection")
+                print(self.productsCollectionView.frame.origin.y )
+
                 // completion
                 })
             }
         }
-        else if (scrollPos <= 60 && self.productsCollectionView.frame.origin.y != 105)
+        else if (scrollPos <= 60)
         {
             
-            if(!isShowing)
+            if(!self.isShowing)
             {
                 print("showing collection")
 
                 self.isShowing = true
-            UIView.animate(withDuration: 0.25, animations: {
+            UIView.animate(withDuration: 0.35, animations: {
                 //
                 
                 //write a code to hide
@@ -242,14 +244,14 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         
         
-        if(scrollPos + 300 > lastScrollPos.y && isHiding ){
+        if(scrollPos  > lastScrollPos.y  + 10 && isHiding ){
             //Fully hide your toolbar
-            if(!isHidingTopbar && self.topView.frame.origin.y != 0)
+            if(!self.isHidingTopbar )
             {
                 print("hiding toolbar")
 
                 self.isHidingTopbar = true
-            UIView.animate(withDuration: 0.85, animations: {
+            UIView.animate(withDuration: 0.75, animations: {
                 //
                 //write a code to hide
                 self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 0, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
@@ -262,13 +264,13 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         } else  if(scrollPos <=  lastScrollPos.y )
         {
             //Slide it up incrementally, etc.
-            if(!isShowingTopbar && self.topView.frame.origin.y != 65)
+            if(!self.isShowingTopbar)
             {
                 print("showding toolbar")
 
                 self.isShowingTopbar = true
 
-            UIView.animate(withDuration: 0.85, animations: {
+            UIView.animate(withDuration: 0.45, animations: {
                 //
                 self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: { _ in

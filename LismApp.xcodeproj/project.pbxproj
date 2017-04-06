@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		390C18A01E8C1D9E00C7E6B9 /* CommentsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */; };
 		391D8FD91E8ABEE000B962F5 /* FFAPSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */; };
+		391E633F1E96AE3200343C71 /* PostCommentsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E633E1E96AE3200343C71 /* PostCommentsCustomCell.swift */; };
 		39219B211E92BB7E00231916 /* imageOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 39219B201E92BB7E00231916 /* imageOverlay.png */; };
 		393C10A71E8978B1007E3755 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C10A61E8978B1007E3755 /* Comments.swift */; };
 		39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39414B7C1E8622BF004A39A4 /* Constants.swift */; };
@@ -122,6 +123,7 @@
 		390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCustomCell.swift; sourceTree = "<group>"; };
 		391D8FD71E8ABEE000B962F5 /* FFAPSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFAPSegmentedControl.h; sourceTree = "<group>"; };
 		391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFAPSegmentedControl.m; sourceTree = "<group>"; };
+		391E633E1E96AE3200343C71 /* PostCommentsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentsCustomCell.swift; sourceTree = "<group>"; };
 		39219B201E92BB7E00231916 /* imageOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageOverlay.png; sourceTree = "<group>"; };
 		393C10A61E8978B1007E3755 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		39414B7C1E8622BF004A39A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 		398535651E7DBAAA00406BBB /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				391E633E1E96AE3200343C71 /* PostCommentsCustomCell.swift */,
 				398535661E7DBAAA00406BBB /* ProductCollectionViewCell.swift */,
 				398535671E7DBAAA00406BBB /* ProductViewController.swift */,
 				39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */,
@@ -782,6 +785,7 @@
 				39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */,
 				398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */,
 				39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */,
+				391E633F1E96AE3200343C71 /* PostCommentsCustomCell.swift in Sources */,
 				399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */,
 				398F9B651E8D81FC00845946 /* ImageSlideshowItem.swift in Sources */,
 				398F9B6E1E8D81FC00845946 /* SDWebImageSource.swift in Sources */,

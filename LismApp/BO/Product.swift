@@ -22,7 +22,7 @@ class Product: AVObject,AVSubclassing {
     var condition: String = String()
     var sellingPrice: Int = Int()
     var favorite: Bool = false
-    var isAddedToCheckOut: Bool = false
+    var isAddedToCheckOut: Bool = true
 
     var user : AVUser!
     var productImageUrl: URL!

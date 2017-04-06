@@ -582,7 +582,7 @@ Est. Retail ¥2,00</string>
                                             <constraint firstAttribute="bottom" secondItem="ONL-4e-7jM" secondAttribute="bottom" id="zCT-rd-21d"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnW-Vo-x0O">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnW-Vo-x0O">
                                         <rect key="frame" x="0.0" y="227" width="375" height="190"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYZ-hF-oPp" userLabel="DescriptionView">
@@ -608,7 +608,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7F091045-F391-4F76-B9F9-ED49E99C2425" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="89F608CD-0282-4F6E-A5CB-56BE715BD2F8" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="28" y="88" width="310" height="2"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="2" id="IKi-VF-q9L"/>
@@ -648,25 +648,57 @@ Est. Retail ¥2,00</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <prototypes>
-                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentsCustomCell" rowHeight="60" id="Fbi-sz-S4r" customClass="CommentsCustomCell" customModule="LismApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="1" width="375" height="60"/>
+                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCommentsCustomCell" rowHeight="40" id="Fbi-sz-S4r" customClass="PostCommentsCustomCell" customModule="LismApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="1" width="375" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fbi-sz-S4r" id="c98-bY-llP">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write comment to post" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="neg-zT-Y98">
+                                                                            <rect key="frame" x="14" y="10" width="222" height="30"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <nil key="textColor"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <textInputTraits key="textInputTraits"/>
+                                                                        </textField>
+                                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v86-Xe-DrK">
+                                                                            <rect key="frame" x="244" y="10" width="46" height="30"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                                            <state key="normal" title="Post"/>
+                                                                            <connections>
+                                                                                <action selector="postBtnActionWithSender:" destination="Fbi-sz-S4r" eventType="touchUpInside" id="N4V-At-7Nk"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </tableViewCellContentView>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <connections>
+                                                                    <outlet property="inputTextField" destination="neg-zT-Y98" id="7Qd-PB-zbM"/>
+                                                                    <outlet property="postBtn" destination="v86-Xe-DrK" id="e47-jx-UEH"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentsCustomCell" rowHeight="60" id="c43-DK-Vcj" customClass="CommentsCustomCell" customModule="LismApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="41" width="375" height="60"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c43-DK-Vcj" id="BHy-Ye-JF1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blutrote Kiisse BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxv-SK-8lf">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blutrote Kiisse BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjY-ib-crJ">
                                                                             <rect key="frame" x="20" y="2" width="347" height="28"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="347" id="SXg-PQ-Otb"/>
-                                                                                <constraint firstAttribute="height" constant="28" id="eYp-Xr-5ec"/>
+                                                                                <constraint firstAttribute="width" constant="347" id="E60-5S-UJG"/>
+                                                                                <constraint firstAttribute="height" constant="28" id="usv-QG-6cM"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MWO-JG-kf0">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7By-KI-Lh3">
                                                                             <rect key="frame" x="14" y="30" width="338" height="46"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </string>
@@ -677,18 +709,18 @@ Est. Retail ¥2,00</string>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="MWO-JG-kf0" firstAttribute="leading" secondItem="c98-bY-llP" secondAttribute="leading" constant="14" id="Bzf-yJ-g4S"/>
-                                                                        <constraint firstItem="MWO-JG-kf0" firstAttribute="top" secondItem="c98-bY-llP" secondAttribute="top" constant="30" id="Miz-BM-aAD"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="MWO-JG-kf0" secondAttribute="bottom" constant="-16" id="Rev-Sz-aPl"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="MWO-JG-kf0" secondAttribute="trailing" constant="23" id="Wxa-Yr-ijZ"/>
-                                                                        <constraint firstItem="oxv-SK-8lf" firstAttribute="top" secondItem="c98-bY-llP" secondAttribute="top" constant="2" id="eXv-UW-jxp"/>
-                                                                        <constraint firstItem="oxv-SK-8lf" firstAttribute="leading" secondItem="c98-bY-llP" secondAttribute="leading" constant="20" id="enp-SB-6lD"/>
+                                                                        <constraint firstItem="7By-KI-Lh3" firstAttribute="leading" secondItem="BHy-Ye-JF1" secondAttribute="leading" constant="14" id="C5z-R7-fBP"/>
+                                                                        <constraint firstItem="gjY-ib-crJ" firstAttribute="leading" secondItem="BHy-Ye-JF1" secondAttribute="leading" constant="20" id="E6q-zr-TVW"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="7By-KI-Lh3" secondAttribute="trailing" constant="23" id="Pa5-jR-Yyl"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="7By-KI-Lh3" secondAttribute="bottom" constant="-16" id="R3F-C5-KDg"/>
+                                                                        <constraint firstItem="7By-KI-Lh3" firstAttribute="top" secondItem="BHy-Ye-JF1" secondAttribute="top" constant="30" id="Ujm-yW-s32"/>
+                                                                        <constraint firstItem="gjY-ib-crJ" firstAttribute="top" secondItem="BHy-Ye-JF1" secondAttribute="top" constant="2" id="leB-Jm-PWS"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <connections>
-                                                                    <outlet property="commentsTextView" destination="MWO-JG-kf0" id="qld-yH-6c4"/>
-                                                                    <outlet property="nameLabel" destination="oxv-SK-8lf" id="DBU-mB-rAz"/>
+                                                                    <outlet property="commentsTextView" destination="7By-KI-Lh3" id="X3q-Cf-7aq"/>
+                                                                    <outlet property="nameLabel" destination="gjY-ib-crJ" id="mtw-GK-i9v"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
@@ -1181,11 +1213,11 @@ Est. Retail ¥2,00</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXr-HX-ZWT" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936.8" y="-5.8470764617691158"/>
+            <point key="canvasLocation" x="2330" y="-5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="7F091045-F391-4F76-B9F9-ED49E99C2425" width="2081" height="292">
+        <image name="89F608CD-0282-4F6E-A5CB-56BE715BD2F8" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

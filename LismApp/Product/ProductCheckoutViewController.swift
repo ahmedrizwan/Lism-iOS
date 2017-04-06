@@ -61,6 +61,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
             self.progressView.isHidden = true
             if(error == nil)
             {
+                self.totalPrice  =  self.totalPrice - productObj.sellingPrice
                 self.totalLabel.text = "¥ \(self.totalPrice - productObj.sellingPrice)"
 
                  self.checkoutArray.remove(at: item)
@@ -78,7 +79,22 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
 
             cell.checkBtn.isSelected = !cell.checkBtn.isSelected
             let productObj = self.checkoutArray[indexPath.item]
+        
             productObj.isAddedToCheckOut = cell.checkBtn.isSelected
+        if(productObj.isAddedToCheckOut)
+        {
+            self.totalPrice  =  self.totalPrice + productObj.sellingPrice
+
+            self.totalLabel.text = "¥ \(self.totalPrice )"
+
+        }
+        else
+        {
+            self.totalPrice  =  self.totalPrice - productObj.sellingPrice
+
+            self.totalLabel.text = "¥ \(self.totalPrice )"
+
+        }
     }
     
     // MARK: UITableView
@@ -120,7 +136,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
                     parseFile.getDataInBackground({ (data, error) in
                          DispatchQueue.main.async(execute: {
                         cell.userImageView.image = UIImage.init(data: data!)
-                        cell.userImageView.layer.cornerRadius =  cell.userImageView.frame.size.width/2
+                        cell.userImageView.layer.cornerRadius =  cell.userImageView.frame.size.width/2 - 2
                         cell.userImageView.clipsToBounds = true
                         })
                     })

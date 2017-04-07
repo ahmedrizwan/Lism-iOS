@@ -36,7 +36,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var commentsBtnView : UIView!
     @IBOutlet weak var productDescriptionBtnView : UIView!
     @IBOutlet weak var thirdViewBtnView : UIView!
-    
+    @IBOutlet var constraintForViewHeight : NSLayoutConstraint!
 
 
 
@@ -71,6 +71,9 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
         self.updateCount(relation: self.relation)
         self.commentsTableView.allowsSelection = true
+        
+        self.commentsTableView.estimatedRowHeight = 50
+        self.commentsTableView.rowHeight = UITableViewAutomaticDimension
         
     }
     
@@ -129,7 +132,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 450)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
         horizontalScrolView.contentSize = CGSize(width: self.view.frame.width * 2, height: horizontalScrolView.frame.size.height)
         
 
@@ -375,7 +378,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
+        print(scrollView.contentOffset.x)
 
         if(scrollView == self.horizontalScrolView)
         {
@@ -402,6 +405,14 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
             scrollBtn.isHidden = true;
 
         }
+//        if(scrollView.contentOffset.y >= 50)
+//        {
+//        constraintForViewHeight.constant = constraintForViewHeight.constant  - 1        }
+//      else
+//        {
+//            constraintForViewHeight.constant = constraintForViewHeight.constant  + 1
+//
+//        }
     }
     
     @IBAction func moveToScrollBottom()
@@ -415,15 +426,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         return self.commentsArray.count  + 1
     }
     
-//    // cell height
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-//    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
@@ -447,7 +450,6 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         // connect objects with our information from arrays
         cell.nameLabel.text = commentBO.user.username
         cell.commentsTextView.text = commentBO.comment
-
              return cell
         }
     }

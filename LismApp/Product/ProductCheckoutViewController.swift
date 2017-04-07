@@ -136,7 +136,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
                     parseFile.getDataInBackground({ (data, error) in
                          DispatchQueue.main.async(execute: {
                         cell.userImageView.image = UIImage.init(data: data!)
-                        cell.userImageView.layer.cornerRadius =  cell.userImageView.frame.size.width/2 - 2
+                        cell.userImageView.layer.cornerRadius =  cell.userImageView.frame.size.width/2 
                         cell.userImageView.clipsToBounds = true
                         })
                     })

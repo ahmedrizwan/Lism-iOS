@@ -13,6 +13,8 @@
 		39219B211E92BB7E00231916 /* imageOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 39219B201E92BB7E00231916 /* imageOverlay.png */; };
 		393C10A71E8978B1007E3755 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C10A61E8978B1007E3755 /* Comments.swift */; };
 		39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39414B7C1E8622BF004A39A4 /* Constants.swift */; };
+		3945611B1E982B5B00BECA81 /* overlay_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3945611A1E982B5B00BECA81 /* overlay_bg.png */; };
+		3945611D1E98451B00BECA81 /* person_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3945611C1E98451B00BECA81 /* person_bg.png */; };
 		394DBF7C1E818EDB005E7D92 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 394DBF7A1E818EDB005E7D92 /* filter.png */; };
 		394DBF7D1E818EDB005E7D92 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 394DBF7B1E818EDB005E7D92 /* list.png */; };
 		39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */; };
@@ -83,9 +85,6 @@
 		399111A71E953B49005A047F /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 399111A51E953B49005A047F /* checkbox_checked.png */; };
 		399111A81E953B49005A047F /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 399111A61E953B49005A047F /* checkbox.png */; };
 		399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399111A91E953D83005A047F /* CheckoutCustomCell.swift */; };
-		399A0DF21E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */; };
-		399A0DF31E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */; };
-		399A0DF41E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */; };
 		399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF51E90416F00FA1B8C /* newlogo.png */; };
 		399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF61E90416F00FA1B8C /* topbarimage.png */; };
 		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
@@ -127,6 +126,8 @@
 		39219B201E92BB7E00231916 /* imageOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageOverlay.png; sourceTree = "<group>"; };
 		393C10A61E8978B1007E3755 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		39414B7C1E8622BF004A39A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3945611A1E982B5B00BECA81 /* overlay_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay_bg.png; sourceTree = "<group>"; };
+		3945611C1E98451B00BECA81 /* person_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_bg.png; sourceTree = "<group>"; };
 		394DBF7A1E818EDB005E7D92 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		394DBF7B1E818EDB005E7D92 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
@@ -204,9 +205,6 @@
 		399111A51E953B49005A047F /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_checked.png; sourceTree = "<group>"; };
 		399111A61E953B49005A047F /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		399111A91E953D83005A047F /* CheckoutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCustomCell.swift; sourceTree = "<group>"; };
-		399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-01.jpg"; sourceTree = "<group>"; };
-		399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-03.jpg"; sourceTree = "<group>"; };
-		399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LessIsMore_UI_Design_V6_OL-04.jpg"; sourceTree = "<group>"; };
 		399A0DF51E90416F00FA1B8C /* newlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newlogo.png; sourceTree = "<group>"; };
 		399A0DF61E90416F00FA1B8C /* topbarimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarimage.png; sourceTree = "<group>"; };
 		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
@@ -355,12 +353,10 @@
 		398535341E7DA69D00406BBB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3945611C1E98451B00BECA81 /* person_bg.png */,
 				399111A51E953B49005A047F /* checkbox_checked.png */,
 				399111A61E953B49005A047F /* checkbox.png */,
 				39219B201E92BB7E00231916 /* imageOverlay.png */,
-				399A0DEF1E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg */,
-				399A0DF01E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg */,
-				399A0DF11E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg */,
 				39FA9C151E8ACA6300C617D8 /* bg.png */,
 				39FA9C161E8ACA6300C617D8 /* line.png */,
 				39FA9C171E8ACA6300C617D8 /* selected.png */,
@@ -400,6 +396,7 @@
 				399A0DF51E90416F00FA1B8C /* newlogo.png */,
 				399A0DF61E90416F00FA1B8C /* topbarimage.png */,
 				398535491E7DA69D00406BBB /* settings.png */,
+				3945611A1E982B5B00BECA81 /* overlay_bg.png */,
 				3985354A1E7DA69D00406BBB /* wechat.png */,
 				3985354B1E7DA69D00406BBB /* wechat_button.png */,
 				3985354C1E7DA69D00406BBB /* wechat_white.png */,
@@ -686,9 +683,10 @@
 				398F9B611E8D81FC00845946 /* ic_cross_white@3x.png in Resources */,
 				398535521E7DA69D00406BBB /* cart_remove.png in Resources */,
 				39FA9C221E8ACA6300C617D8 /* layer.png in Resources */,
-				399A0DF31E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-03.jpg in Resources */,
 				398535581E7DA69D00406BBB /* image_camera.png in Resources */,
+				3945611D1E98451B00BECA81 /* person_bg.png in Resources */,
 				3985355A1E7DA69D00406BBB /* minus.png in Resources */,
+				3945611B1E982B5B00BECA81 /* overlay_bg.png in Resources */,
 				398535591E7DA69D00406BBB /* less_is_more_white_icon.png in Resources */,
 				3985355E1E7DA69D00406BBB /* person_male.png in Resources */,
 				39638B321E79900A003B54EE /* Assets.xcassets in Resources */,
@@ -697,7 +695,6 @@
 				39FA9C1C1E8ACA6300C617D8 /* bg.png in Resources */,
 				398535561E7DA69D00406BBB /* heart_white.png in Resources */,
 				39638B301E79900A003B54EE /* Main.storyboard in Resources */,
-				399A0DF41E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-04.jpg in Resources */,
 				394DBF7C1E818EDB005E7D92 /* filter.png in Resources */,
 				398535601E7DA69D00406BBB /* red_dot.png in Resources */,
 				3985355F1E7DA69D00406BBB /* plus.png in Resources */,
@@ -707,7 +704,6 @@
 				394DBF7D1E818EDB005E7D92 /* list.png in Resources */,
 				39FA9C211E8ACA6300C617D8 /* icon1.png in Resources */,
 				399111A71E953B49005A047F /* checkbox_checked.png in Resources */,
-				399A0DF21E901EF800FA1B8C /* LessIsMore_UI_Design_V6_OL-01.jpg in Resources */,
 				398535511E7DA69D00406BBB /* cart_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

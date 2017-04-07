@@ -28,7 +28,7 @@ struct DeviceType
 }
     static func showAlert(message:String,view:UIViewController)
     {
-        let alert = UIAlertController(title: "Alert",message:message,
+        let alert = UIAlertController(title: "",message:message,
                                       preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK",style:UIAlertActionStyle.default,handler: nil))
         view.present(alert, animated: true, completion: nil)

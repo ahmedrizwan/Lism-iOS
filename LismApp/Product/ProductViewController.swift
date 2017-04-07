@@ -25,7 +25,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     @IBOutlet weak var productsCollectionView : UICollectionView!
     var lastScrollPos : CGPoint!
-
+    var  refresher = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -41,6 +41,12 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.navigationController?.navigationBar.backItem?.title = ""
         
         navigationItem.titleView = imageView
+        self.navigationController?.navigationBar.isHidden = true
+        
+        self.productsCollectionView!.alwaysBounceVertical = true
+        refresher.tintColor = UIColor.red
+        refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
+        self.productsCollectionView!.addSubview(refresher)
     }
     override func viewDidAppear(_ animated: Bool) {
         
@@ -64,35 +70,48 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     func getProductList()
     {
         
-        let query: AVQuery = AVQuery(className: "Product")
-        query.includeKey("images")
-        query.includeKey("user")
-        query.includeKey("userLikes")
-        query.limit = ProductViewController.ITEM_LIMIT
-        self.progressView.isHidden = false
-        query.findObjectsInBackground { (objects, error) in
-            self.progressView.isHidden = true
-            
-            if(error == nil)
-            {
-                for obj in objects!
-                {
-                    let productObj:Product =  obj as! Product
+        
+        DispatchQueue.global().async {
+            do {
+                let query: AVQuery = AVQuery(className: "Product")
+                query.includeKey("images")
+                query.includeKey("user")
+                query.includeKey("userLikes")
+                query.limit = ProductViewController.ITEM_LIMIT
+                self.progressView.isHidden = false
+                query.findObjectsInBackground { (objects, error) in
+                    self.progressView.isHidden = true
+                    self.refresher.endRefreshing()
+
+                    if(error == nil)
+                    {
+                        for obj in objects!
+                        {
+                            let productObj:Product =  obj as! Product
+                            
+                            
+                            productObj.ProductInintWithDic(dict: obj as! AVObject)
+                            self.items.append(productObj)
+                        }
+                        
+                        self.loadFavoritesList()
+                    }
                     
                     
-                    productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.items.append(productObj)
                 }
-                
-                self.loadFavoritesList()
+            } catch {
+                print("Failed")
             }
-            
-            
+            DispatchQueue.main.async(execute: {
+        
+            })
         }
     }
     
     func loadFavoritesList()
     {
+        
+        
         
         let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
         query.includeKey("user")
@@ -130,25 +149,39 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     func getMoreProductList(size: Int)
     {
         
-        let query: AVQuery = AVQuery(className: "Product")
-        query.includeKey("images")
-        query.includeKey("user")
-        query.includeKey("userLikes")
-        query.limit = ProductViewController.ITEM_LIMIT
-        query.skip = size
-        query.findObjectsInBackground { (objects, error) in
-            if(error == nil)
-            {
-                for obj in objects!
-                {
-                    let productObj:Product =  obj as! Product
-                    productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.items.append(productObj)
+       
+        
+        DispatchQueue.global().async {
+            do {
+                let query: AVQuery = AVQuery(className: "Product")
+                query.includeKey("images")
+                query.includeKey("user")
+                query.includeKey("userLikes")
+                query.limit = ProductViewController.ITEM_LIMIT
+                query.skip = size
+                query.findObjectsInBackground { (objects, error) in
+                    if(error == nil)
+                    {
+                        for obj in objects!
+                        {
+                            let productObj:Product =  obj as! Product
+                            productObj.ProductInintWithDic(dict: obj as! AVObject)
+                            self.items.append(productObj)
+                        }
+                        DispatchQueue.main.async(execute: {
+                            self.comapreToUpdateFavoriteProductsList()
+
+                        })
+                    }
+                    
                 }
-                self.comapreToUpdateFavoriteProductsList()
+                
+            } catch {
+                print("Failed")
             }
-            
+           
         }
+        
     }
     // MARK: - UICollectionViewDataSource protocol
     
@@ -270,7 +303,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
                 self.isShowingTopbar = true
 
-            UIView.animate(withDuration: 0.45, animations: {
+            UIView.animate(withDuration: 0.75, animations: {
                 //
                 self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 65, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: { _ in

@@ -37,6 +37,8 @@ class LoginViewController: UIViewController {
         return UIImageView(image: image)
     }()
     
+    
+    
     lazy var usernameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false

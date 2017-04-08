@@ -13,10 +13,7 @@ class Comments: AVObject,AVSubclassing  {
     var user: AVUser = AVUser()
     var comment: String = String()
     
-    override  class  func initialize() {
-        Comments.registerSubclass()
-    }
-    
+
     class func parseClassName() -> String {
         return "Comment"
     }

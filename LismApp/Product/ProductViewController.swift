@@ -71,41 +71,34 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
         
         
-        DispatchQueue.global().async {
-            do {
-                let query: AVQuery = AVQuery(className: "Product")
-                query.includeKey("images")
-                query.includeKey("user")
-                query.includeKey("userLikes")
-                query.limit = ProductViewController.ITEM_LIMIT
-                self.progressView.isHidden = false
-                query.findObjectsInBackground { (objects, error) in
-                    self.progressView.isHidden = true
-                    self.refresher.endRefreshing()
-
-                    if(error == nil)
-                    {
-                        for obj in objects!
-                        {
-                            let productObj:Product =  obj as! Product
-                            
-                            
-                            productObj.ProductInintWithDic(dict: obj as! AVObject)
-                            self.items.append(productObj)
-                        }
-                        
-                        self.loadFavoritesList()
-                    }
-                    
-                    
-                }
-            } catch {
-                print("Failed")
-            }
-            DispatchQueue.main.async(execute: {
         
-            })
+        let query: AVQuery = AVQuery(className: "Product")
+        query.includeKey("images")
+        query.includeKey("user")
+        query.includeKey("userLikes")
+        query.limit = ProductViewController.ITEM_LIMIT
+        self.progressView.isHidden = false
+        query.findObjectsInBackground { (objects, error) in
+            self.progressView.isHidden = true
+            self.refresher.endRefreshing()
+            
+            if(error == nil)
+            {
+                for obj in objects!
+                {
+                    let productObj:Product =  obj as! Product
+                    
+                    
+                    productObj.ProductInintWithDic(dict: obj as! AVObject)
+                    self.items.append(productObj)
+                }
+                
+                self.loadFavoritesList()
+            }
+            
+            
         }
+
     }
     
     func loadFavoritesList()
@@ -150,9 +143,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
         
        
-        
-        DispatchQueue.global().async {
-            do {
+    
                 let query: AVQuery = AVQuery(className: "Product")
                 query.includeKey("images")
                 query.includeKey("user")
@@ -176,13 +167,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                     
                 }
                 
-            } catch {
-                print("Failed")
-            }
-           
-        }
         
     }
+    
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make

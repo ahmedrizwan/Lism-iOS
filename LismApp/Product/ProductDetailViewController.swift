@@ -49,6 +49,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 
 
     @IBOutlet weak var policyView : UIView!
+    @IBOutlet weak var policyTextView : UITextView!
 
     
     var messageForCart : String = String ()
@@ -69,7 +70,6 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.addShadow(button: thirdViewBtn)
         self.addShadow(button: commentsBtn)
         self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
-        self.updateCount(relation: self.relation)
         self.commentsTableView.allowsSelection = true
         
         self.commentsTableView.estimatedRowHeight = 50
@@ -78,7 +78,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
-   
+    override func viewWillAppear(_ animated: Bool) {
+        self.updateCount(relation: self.relation)
+
+    }
 
     
     func checkIfItemIsInCart()
@@ -133,11 +136,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     override func viewDidAppear(_ animated: Bool) {
         
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
-        horizontalScrolView.contentSize = CGSize(width: self.view.frame.width * 2, height: horizontalScrolView.frame.size.height)
+        horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height)
         
-
-        self.showDescriptionView(sender: "" as AnyObject)
         
+            self.showDescriptionView(sender: "" as AnyObject)
         
     }
     func updateProductDetails()
@@ -158,7 +160,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         productNameLabel.text = productBO.name
         userNameLabel.text = "@" + (AVUser.current()?.username!)!
 
-        priceSizeNameTextView.text = "\(productBO.brand) \n  Size \(productBO.size) \n  Est. Retail ¥ \(productBO.priceRetail)"
+        priceSizeNameTextView.text = "\(productBO.brand) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)"
         sellingPriceLabel.text = "¥ \(productBO.sellingPrice)"
         
           var sdWebImageSource = [InputSource]()
@@ -305,6 +307,24 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         }
         
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        self.descriptonView.frame = CGRect(x: 0, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: self.descriptonView.frame.height )
+        
+        self.commentsView.frame = CGRect(x: UIScreen.main.bounds.width, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height )
+        
+        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width  , height: self.policyView.frame.height )
+        
+       
+    
+        policyTextView.setContentOffset(CGPoint.zero, animated: false)
+      
+        
+        
+       
+    }
+    
     
     @IBAction func backBtnAction(sender : AnyObject)
     {
@@ -355,7 +375,14 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
         policyView.isHidden = false;
-    
+      
+        self.updateConstraints()
+    }
+    func updateConstraints()
+    {
+        self.view.setNeedsUpdateConstraints()
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
     }
     func addToCartAction(message: String)
     {

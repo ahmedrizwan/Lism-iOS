@@ -6,3 +6,4 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "iCarousel.h"
 #import "FFAPSegmentedControl.h"
+#import <AVOSCloud/AVObject+Subclass.h>

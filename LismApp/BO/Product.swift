@@ -4,7 +4,7 @@ import AVFoundation
 import UIKit
 import AVOSCloud
 
-class Product: AVObject,AVSubclassing {
+class Product: AVObject, AVSubclassing {
   
     
     var objectIdForProduct: String = String()
@@ -30,14 +30,16 @@ class Product: AVObject,AVSubclassing {
     var queryObj: AVQuery!
     var updatedAtValue: Date = Date()
 
-   override  class  func initialize() {
-        Product.registerSubclass()
-    }
-    
-    class func parseClassName() -> String {
+//   override  class  func initialize() {
+  //      Product.registerSubclass()
+   // }
+    static func parseClassName() -> String {
         return "Product"
     }
+    
+   
     func ProductInintWithDic(dict:AVObject) {
+        
         
        let avRelationObj =  dict.relation(forKey: "images")
         avRelationObj.query().findObjectsInBackground { (objects, error) in

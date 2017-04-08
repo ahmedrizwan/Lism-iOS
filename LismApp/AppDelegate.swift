@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        setUpAVCloud()
+        Product.registerSubclass()
+        Comments.registerSubclass()
+
         // Override point for customization after application launch.
         
         let navigationController = UINavigationController()
@@ -51,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Digits.self])
         
-        setUpAVCloud()
         
         return true
     }

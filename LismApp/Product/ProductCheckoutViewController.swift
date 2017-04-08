@@ -16,6 +16,8 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
     var checkoutArray : [Product] = []
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var totalLabel : UILabel!
+    let relation = (AVUser.current()?.relation(forKey: "userCart"))! as AVRelation
+
     var totalPrice = 0
     override func viewDidLoad() {
         //   let backImg: UIImage = (UIImage(named: "back_btn")
@@ -28,7 +30,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
     func loadCheckoutProducts()
     {
         progressView.isHidden = false
-        let query: AVQuery = (AVUser.current()?.relation(forKey: "userCart").query())!
+        let query: AVQuery = relation.query()
         query.includeKey("user")
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
@@ -38,6 +40,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
                 {
                     let productObj:Product =  obj as! Product
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
+                    self.relation.add(productObj)
                     self.totalPrice =  self.totalPrice + productObj.sellingPrice
                     self.checkoutArray.append(productObj)
                 }
@@ -54,7 +57,6 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
     func removeCompletelyFromCheckoutOrder(item : Int)
     {
         let productObj = self.checkoutArray[item]
-        let relation = (AVUser.current()?.relation(forKey: "userCart"))! as AVRelation
         relation.remove(productObj)
     
         (AVUser.current())?.saveInBackground{ (objects, error) in
@@ -62,7 +64,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
             if(error == nil)
             {
                 self.totalPrice  =  self.totalPrice - productObj.sellingPrice
-                self.totalLabel.text = "¥ \(self.totalPrice - productObj.sellingPrice)"
+                self.totalLabel.text = "¥ \( self.totalPrice )"
 
                  self.checkoutArray.remove(at: item)
                 

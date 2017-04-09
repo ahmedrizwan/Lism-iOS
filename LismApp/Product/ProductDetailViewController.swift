@@ -13,6 +13,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var scrollView : UIScrollView!
     var productBO : Product!
     var commentsArray : [Comments] = []
+    @IBOutlet weak var progressBar : UIActivityIndicatorView!
+
     @IBOutlet weak var userImage : UIImageView!
     @IBOutlet weak var favoriteBtn : UIButton!
     @IBOutlet weak var productNameLabel : UILabel!
@@ -36,7 +38,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var commentsBtnView : UIView!
     @IBOutlet weak var productDescriptionBtnView : UIView!
     @IBOutlet weak var thirdViewBtnView : UIView!
-    @IBOutlet var constraintForViewHeight : NSLayoutConstraint!
+    @IBOutlet var constraintForViewidth : NSLayoutConstraint!
 
 
 
@@ -72,9 +74,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
         self.commentsTableView.allowsSelection = true
         
-        self.commentsTableView.estimatedRowHeight = 50
+        self.commentsTableView.estimatedRowHeight = 70
         self.commentsTableView.rowHeight = UITableViewAutomaticDimension
-        
+        self.progressBar.isHidden = true
+
     }
     
     
@@ -91,7 +94,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         let query: AVQuery = self.relation.query()
         query.whereKey("objectId", equalTo: self.productBO.objectId!)
         query.getFirstObjectInBackground { (object, error) in
-            
+            self.progressBar.isHidden = true
+
             if(error == nil)
             {
               if(object != nil)
@@ -121,21 +125,21 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func removeFromCartAction()
     {
-        messageForCart = " removed from cart successfully."
+        messageForCart = " removed from cart."
     
        relation.remove(self.productBO as AVObject)
     }
     
     func addToCartAction()
     {
-        messageForCart = " added to cart successfully."
+        messageForCart = " added to cart."
 
        relation.add(self.productBO as AVObject)
 
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
         horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height)
         
         
@@ -204,15 +208,15 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     {
               
         
-        let shadowPath = UIBezierPath(rect: button.bounds).cgPath
+       // let shadowPath = UIBezierPath(rect: button.bounds).cgPath
         
         button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset =  CGSize(width: 5, height: 5)
+        button.layer.shadowOffset =  CGSize(width: 0, height: 4)
 
-        button.layer.shadowOpacity = 0.4
-        button.layer.masksToBounds = false
-        button.layer.shadowPath = shadowPath
-        button.layer.cornerRadius = 2
+        button.layer.shadowOpacity = 0.2
+        //button.layer.masksToBounds = false
+       // button.layer.shadowPath = shadowPath
+        button.layer.cornerRadius = 0.5
         
     }
    
@@ -249,6 +253,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         let indexPath = IndexPath(row: 0, section: 0)
 
         let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none;
 
         let comment = Comments()
         comment.setObject(AVUser.current()!, forKey: "user")
@@ -282,7 +287,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     
     func updateCount(relation : AVRelation)
     {
-        
+        progressBar.isHidden = false
         relation.query().countObjectsInBackground{(objects, error) in
             
             if(error == nil)
@@ -314,11 +319,15 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
         self.commentsView.frame = CGRect(x: UIScreen.main.bounds.width, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height )
         
-        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width  , height: self.policyView.frame.height )
+        self.commentsTableView.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height )
         
-       
+      
+
+        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.policyView.frame.origin.y, width:UIScreen.main.bounds.width  , height: self.policyView.frame.height )
+        
+          self.policyTextView.frame = CGRect(x: 20, y: 0, width:UIScreen.main.bounds.width - 40    , height: self.policyTextView.frame.height )
+        
     
-        policyTextView.setContentOffset(CGPoint.zero, animated: false)
       
         
         
@@ -366,17 +375,18 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     @IBAction func showPolicyView(sender : AnyObject)
     {
+        self.view.bringSubview(toFront: thirdViewBtnView)
+
         self.horizontalScrolView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width*2,  y : 0 ), animated: true)
         commentsBtn.isHidden = true
         productDescriptionBtn.isHidden = true
         thirdViewBtn.isHidden = false
-        self.view.bringSubview(toFront: thirdViewBtnView)
+        self.view.layoutIfNeeded()
 
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
         policyView.isHidden = false;
       
-        self.updateConstraints()
     }
     func updateConstraints()
     {
@@ -460,9 +470,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         if(indexPath.row == 0)
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCommentsCustomCell", for: indexPath ) as! PostCommentsCustomCell
-//        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
-//        customView.backgroundColor = UIColor.white
-//        cell.inputTextField.inputAccessoryView = customView
+
             cell.delegate = self;
             cell.postBtn.tag  = indexPath.row
         return cell

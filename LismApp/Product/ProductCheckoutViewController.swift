@@ -129,7 +129,8 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
         cell.checkBtn.tag = indexPath.row
         cell.removeBtn.tag  = indexPath.row
 
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none;
+
         DispatchQueue.global().async {
             do {
                 if let profileImage = productObj.user.value(forKey: "profileImage")

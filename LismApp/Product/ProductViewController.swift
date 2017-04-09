@@ -203,7 +203,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width/2 - 40, height: 240)
+        return CGSize(width: collectionView.bounds.width/2 - 20, height: 240)
         
     }
     // MARK: - UICollectionViewDelegate protocol

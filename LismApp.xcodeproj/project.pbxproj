@@ -87,6 +87,7 @@
 		399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399111A91E953D83005A047F /* CheckoutCustomCell.swift */; };
 		399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF51E90416F00FA1B8C /* newlogo.png */; };
 		399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF61E90416F00FA1B8C /* topbarimage.png */; };
+		39A688F21E9A7B5100E4A5CC /* bg_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A688F11E9A7B5100E4A5CC /* bg_layer.png */; };
 		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
 		39F93D971E89486B0008B276 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F93D951E89486B0008B276 /* iCarousel.m */; };
 		39F93D981E89486B0008B276 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39F93D961E89486B0008B276 /* Info.plist */; };
@@ -207,6 +208,7 @@
 		399111A91E953D83005A047F /* CheckoutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCustomCell.swift; sourceTree = "<group>"; };
 		399A0DF51E90416F00FA1B8C /* newlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newlogo.png; sourceTree = "<group>"; };
 		399A0DF61E90416F00FA1B8C /* topbarimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarimage.png; sourceTree = "<group>"; };
+		39A688F11E9A7B5100E4A5CC /* bg_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_layer.png; sourceTree = "<group>"; };
 		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
 		39F93D941E89486B0008B276 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		39F93D951E89486B0008B276 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				398535441E7DA69D00406BBB /* overlay.png */,
 				398535451E7DA69D00406BBB /* person.png */,
 				398535461E7DA69D00406BBB /* person_male.png */,
+				39A688F11E9A7B5100E4A5CC /* bg_layer.png */,
 				398535471E7DA69D00406BBB /* plus.png */,
 				398535481E7DA69D00406BBB /* red_dot.png */,
 				399A0DF51E90416F00FA1B8C /* newlogo.png */,
@@ -686,6 +689,7 @@
 				398535581E7DA69D00406BBB /* image_camera.png in Resources */,
 				3945611D1E98451B00BECA81 /* person_bg.png in Resources */,
 				3985355A1E7DA69D00406BBB /* minus.png in Resources */,
+				39A688F21E9A7B5100E4A5CC /* bg_layer.png in Resources */,
 				3945611B1E982B5B00BECA81 /* overlay_bg.png in Resources */,
 				398535591E7DA69D00406BBB /* less_is_more_white_icon.png in Resources */,
 				3985355E1E7DA69D00406BBB /* person_male.png in Resources */,

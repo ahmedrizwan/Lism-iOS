@@ -47,7 +47,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         refresher.tintColor = UIColor.red
         refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
         self.productsCollectionView!.addSubview(refresher)
+        self.addShadowToView()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         self.progressView.isHidden = true
@@ -56,6 +58,16 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addShadowToView()
+    {
+        topView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        topView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        topView.layer.shadowOpacity = 1.0
+        topView.layer.shadowRadius = 0.0
+        topView.layer.masksToBounds = false
+        topView.layer.cornerRadius = 4.0
     }
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
@@ -203,7 +215,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width/2 - 20, height: 240)
+        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2)
         
     }
     // MARK: - UICollectionViewDelegate protocol

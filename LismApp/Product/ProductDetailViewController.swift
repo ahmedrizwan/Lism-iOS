@@ -53,7 +53,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var policyView : UIView!
     @IBOutlet weak var policyTextView : UITextView!
 
-    
+    var isFoundIncart : Bool = false
     var messageForCart : String = String ()
     
     @IBOutlet var slideshow: ImageSlideshow!
@@ -101,13 +101,16 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
               if(object != nil)
                 {
                 //item in the cart assetes update required
-                    self.removeFromCartAction()
+                   // self.removeFromCartAction()
+                    self.isFoundIncart = true
+
                     self.cartBtn.isHidden = false
                 }
                 else
                 {
+                    self.isFoundIncart = false
                 //not in the cart assets update required
-                    self.addToCartAction()
+                    //self.addToCartAction()
                     self.cartBtn.isHidden = true
 
                 }
@@ -115,7 +118,9 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
             else
             {
                
-                self.addToCartAction()
+                self.isFoundIncart = false
+
+                //self.addToCartAction()
                 self.cartBtn.isHidden = true
 
                 //show error mesage
@@ -282,6 +287,14 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
  
     @IBAction func addToCart(sender : AnyObject)
     {
+        if(isFoundIncart)
+        {
+        self.removeFromCartAction()
+        }
+        else
+        {
+            self.addToCartAction()
+        }
         self.addToCartAction(message: messageForCart)
     }
     

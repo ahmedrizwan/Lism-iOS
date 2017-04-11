@@ -181,7 +181,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         if  Date().days(from: self.productBO.updatedAtValue) > 0
         
         {
-            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAtValue)) ago"
+            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAtValue))d ago"
 
         }
         else

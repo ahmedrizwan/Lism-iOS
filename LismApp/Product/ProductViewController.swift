@@ -48,6 +48,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
         self.productsCollectionView!.addSubview(refresher)
         self.addShadowToView()
+        self.automaticallyAdjustsScrollViewInsets = false
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -202,9 +204,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
+
         
-        cell.retailPriceTextView.text = "Size \(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
-        
+        cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)

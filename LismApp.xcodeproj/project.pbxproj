@@ -87,6 +87,7 @@
 		399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399111A91E953D83005A047F /* CheckoutCustomCell.swift */; };
 		399A0DF71E90416F00FA1B8C /* newlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF51E90416F00FA1B8C /* newlogo.png */; };
 		399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF61E90416F00FA1B8C /* topbarimage.png */; };
+		39A47C641E9D3D2200D32FD9 /* logo_full_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A47C631E9D3D2200D32FD9 /* logo_full_2.png */; };
 		39A688F21E9A7B5100E4A5CC /* bg_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A688F11E9A7B5100E4A5CC /* bg_layer.png */; };
 		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
 		39F93D971E89486B0008B276 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F93D951E89486B0008B276 /* iCarousel.m */; };
@@ -131,7 +132,7 @@
 		3945611C1E98451B00BECA81 /* person_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_bg.png; sourceTree = "<group>"; };
 		394DBF7A1E818EDB005E7D92 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		394DBF7B1E818EDB005E7D92 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
-		39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 0; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; tabWidth = 1; usesTabs = 1; };
 		39556CDC1E87E16900113C99 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../Graphics/logo.png; sourceTree = "<group>"; };
 		39638B271E79900A003B54EE /* LismApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LismApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39638B2A1E79900A003B54EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		399111A91E953D83005A047F /* CheckoutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCustomCell.swift; sourceTree = "<group>"; };
 		399A0DF51E90416F00FA1B8C /* newlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newlogo.png; sourceTree = "<group>"; };
 		399A0DF61E90416F00FA1B8C /* topbarimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarimage.png; sourceTree = "<group>"; };
+		39A47C631E9D3D2200D32FD9 /* logo_full_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_full_2.png; sourceTree = "<group>"; };
 		39A688F11E9A7B5100E4A5CC /* bg_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_layer.png; sourceTree = "<group>"; };
 		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
 		39F93D941E89486B0008B276 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				399A0DF61E90416F00FA1B8C /* topbarimage.png */,
 				398535491E7DA69D00406BBB /* settings.png */,
 				3945611A1E982B5B00BECA81 /* overlay_bg.png */,
+				39A47C631E9D3D2200D32FD9 /* logo_full_2.png */,
 				3985354A1E7DA69D00406BBB /* wechat.png */,
 				3985354B1E7DA69D00406BBB /* wechat_button.png */,
 				3985354C1E7DA69D00406BBB /* wechat_white.png */,
@@ -672,6 +675,7 @@
 				398F9B5F1E8D81FC00845946 /* .gitkeep in Resources */,
 				398F9B481E8D70DE00845946 /* policy.png in Resources */,
 				398F9B621E8D81FC00845946 /* .gitkeep in Resources */,
+				39A47C641E9D3D2200D32FD9 /* logo_full_2.png in Resources */,
 				39F93D981E89486B0008B276 /* Info.plist in Resources */,
 				39FA9C1D1E8ACA6300C617D8 /* line.png in Resources */,
 				39219B211E92BB7E00231916 /* imageOverlay.png in Resources */,

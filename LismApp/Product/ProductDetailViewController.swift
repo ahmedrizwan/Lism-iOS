@@ -169,7 +169,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         productNameLabel.text = productBO.name
         userNameLabel.text = "@" + (AVUser.current()?.username!)!
 
-        priceSizeNameTextView.text = "\(productBO.brand) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)"
+
+									self.produceAttributedText(string: "\(productBO.brand) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)", textView:  priceSizeNameTextView)
         sellingPriceLabel.text = "¥ \(productBO.sellingPrice)"
         
           var sdWebImageSource = [InputSource]()
@@ -201,8 +202,27 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         slideshow.setImageInputs(sdWebImageSource)
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(ProductDetailViewController.didTap))
         slideshow.addGestureRecognizer(recognizer)
+					
+					
     }
-    
+	func produceAttributedText(string: String, textView : UITextView)
+	{
+		
+		let attributedString = NSMutableAttributedString(string:string)
+		attributedString.addAttribute(NSFontAttributeName , value: UIFont(name: "Avenir", size: CGFloat(10))!,range: NSMakeRange(0, attributedString.length))
+		
+		let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+		paragraphStyle.lineSpacing = 0.55
+		paragraphStyle.maximumLineHeight = 11 // change line spacing between each line like 30 or 40
+
+		paragraphStyle.alignment = NSTextAlignment.left
+		
+		attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(colorLiteralRed: 182.0/255.0, green: 182.0/255.0, blue: 182.0/255.0, alpha: 1.0), range: NSMakeRange(0, attributedString.length))
+		
+		attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+		textView.attributedText=attributedString
+		
+	}
     func didTap() {
         slideshow.presentFullScreenController(from: self)
     }
@@ -362,11 +382,12 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         thirdViewBtn.isHidden = true
         
         policyView.isHidden = true;
-    descriptonView.isHidden = false;
+					 descriptonView.isHidden = false;
         commentsView.isHidden = true;
     self.view.bringSubview(toFront: productDescriptionBtnView)
         descriptonTextView.text = self.productBO.prodcut_description
-        colorMaterialTextView.text =   "Color: \(productBO.color) \n Material: \(productBO.size) \n Condition: \(productBO.condition)"
+					
+					self.produceAttributedText(string: "Color: \(productBO.color) \nMaterial: \(productBO.size) \nCondition: \(productBO.condition)", textView: colorMaterialTextView)
 
     }
     
@@ -447,12 +468,12 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         }
         else if(scrollView.contentOffset.y < (self.scrollView.contentSize.height - self.scrollView.bounds.size.height)/2)
         {
-            scrollBtn.isHidden = false;
+     //       scrollBtn.isHidden = false;
 
         }
         else
         {
-            scrollBtn.isHidden = true;
+       //     scrollBtn.isHidden = true;
 
         }
 //        if(scrollView.contentOffset.y >= 50)

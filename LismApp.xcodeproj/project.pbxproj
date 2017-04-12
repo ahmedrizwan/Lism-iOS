@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39098D3F1E9E94C100BF87A4 /* full_logo_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 39098D3E1E9E94C100BF87A4 /* full_logo_new.png */; };
 		390C18A01E8C1D9E00C7E6B9 /* CommentsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */; };
 		391D8FD91E8ABEE000B962F5 /* FFAPSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */; };
 		391E633F1E96AE3200343C71 /* PostCommentsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E633E1E96AE3200343C71 /* PostCommentsCustomCell.swift */; };
@@ -121,6 +122,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39098D3E1E9E94C100BF87A4 /* full_logo_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_logo_new.png; sourceTree = "<group>"; };
 		390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCustomCell.swift; sourceTree = "<group>"; };
 		391D8FD71E8ABEE000B962F5 /* FFAPSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFAPSegmentedControl.h; sourceTree = "<group>"; };
 		391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFAPSegmentedControl.m; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				399A0DF61E90416F00FA1B8C /* topbarimage.png */,
 				398535491E7DA69D00406BBB /* settings.png */,
 				3945611A1E982B5B00BECA81 /* overlay_bg.png */,
+				39098D3E1E9E94C100BF87A4 /* full_logo_new.png */,
 				39A47C631E9D3D2200D32FD9 /* logo_full_2.png */,
 				3985354A1E7DA69D00406BBB /* wechat.png */,
 				3985354B1E7DA69D00406BBB /* wechat_button.png */,
@@ -688,6 +691,7 @@
 				3985354E1E7DA69D00406BBB /* background.png in Resources */,
 				398535551E7DA69D00406BBB /* heart_red.png in Resources */,
 				398F9B611E8D81FC00845946 /* ic_cross_white@3x.png in Resources */,
+				39098D3F1E9E94C100BF87A4 /* full_logo_new.png in Resources */,
 				398535521E7DA69D00406BBB /* cart_remove.png in Resources */,
 				39FA9C221E8ACA6300C617D8 /* layer.png in Resources */,
 				398535581E7DA69D00406BBB /* image_camera.png in Resources */,

@@ -74,7 +74,7 @@ class Product: AVObject, AVSubclassing {
             self.name = name as! String
         }
         if let brand = dict.value(forKey: "brand") {
-            self.name = brand as! String
+            self.brand = brand as! String
         }
         if let address = dict.value(forKey: "address") {
             self.address = address as! String

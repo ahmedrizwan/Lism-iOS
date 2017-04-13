@@ -166,13 +166,20 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         }
         favoriteBtn.isSelected = productBO.favorite
         likesLabel.text = "\(productBO.productLikes)"
-        productNameLabel.text = productBO.name
+        productNameLabel.text = productBO.brand
         userNameLabel.text = "@" + (AVUser.current()?.username!)!
 
 
-									self.produceAttributedText(string: "\(productBO.brand) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)", textView:  priceSizeNameTextView)
-        sellingPriceLabel.text = "¥ \(productBO.sellingPrice)"
-        
+									self.produceAttributedText(string: "\(productBO.name) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)", textView:  priceSizeNameTextView)
+
+		
+					
+					var textFieldText = "¥ \(productBO.sellingPrice)"
+					let attributedString = NSMutableAttributedString(string: textFieldText)
+					attributedString.addAttribute(NSKernAttributeName, value: 2, range: NSMakeRange(0, textFieldText.characters.count))
+					
+					sellingPriceLabel.attributedText = attributedString
+
           var sdWebImageSource = [InputSource]()
         for url in self.productBO.productImagesArray
         {

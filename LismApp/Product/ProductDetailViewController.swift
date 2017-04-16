@@ -144,8 +144,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
-        horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 750)
+        horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height + 60)
         
         
             self.showDescriptionView(sender: "" as AnyObject)
@@ -359,13 +359,13 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
         self.commentsView.frame = CGRect(x: UIScreen.main.bounds.width, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height )
         
-        self.commentsTableView.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height )
+        self.commentsTableView.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height - 60 )
         
       
 
-        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.policyView.frame.origin.y, width:UIScreen.main.bounds.width  , height: self.policyView.frame.height )
+        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.policyView.frame.origin.y, width:UIScreen.main.bounds.width  , height: self.policyView.frame.height + 60 )
         
-          self.policyTextView.frame = CGRect(x: 20, y: 0, width:UIScreen.main.bounds.width - 40    , height: self.policyTextView.frame.height )
+          self.policyTextView.frame = CGRect(x: 20, y: 0, width:UIScreen.main.bounds.width - 40    , height: self.policyView.frame.height)
         
     
       

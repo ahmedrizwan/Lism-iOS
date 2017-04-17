@@ -79,6 +79,9 @@ class Product: AVObject, AVSubclassing {
         if let address = dict.value(forKey: "address") {
             self.address = address as! String
         }
+        if let status = dict.value(forKey: "status") {
+            self.status = status as! String
+        }
         if let updatedAtValue = dict.value(forKey: "updatedAt") {
             self.updatedAtValue = updatedAtValue as! Date
         }

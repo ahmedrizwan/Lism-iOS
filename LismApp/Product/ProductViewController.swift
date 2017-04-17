@@ -7,7 +7,7 @@ extension UIImageView {
         self.tintColor = color
     }
 }
-class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate,UICollectionViewDelegateFlowLayout{
+class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout{
     static let ITEM_LIMIT = 10
     
     var items : [Product] = []
@@ -95,7 +95,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         if(item.tag == 0)
         {
-            
+            //load new view
+            self.performSegue(withIdentifier: "ProductToSellView", sender: self)
         }
         //This method will be called when user changes tab.
     }

@@ -93,6 +93,7 @@
 		39B76E161EA521C900528824 /* SellItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B76E151EA521C900528824 /* SellItemsViewController.swift */; };
 		39B76E181EA527B700528824 /* SellItemsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B76E171EA527B700528824 /* SellItemsCustomCell.swift */; };
 		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
+		39E6DB871EA6765500B3E91B /* SellMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E6DB861EA6765500B3E91B /* SellMoreViewController.swift */; };
 		39F93D971E89486B0008B276 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F93D951E89486B0008B276 /* iCarousel.m */; };
 		39F93D981E89486B0008B276 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39F93D961E89486B0008B276 /* Info.plist */; };
 		39F93D9A1E8948BC0008B276 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F93D991E8948BC0008B276 /* QuartzCore.framework */; };
@@ -218,6 +219,7 @@
 		39B76E151EA521C900528824 /* SellItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellItemsViewController.swift; sourceTree = "<group>"; };
 		39B76E171EA527B700528824 /* SellItemsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellItemsCustomCell.swift; sourceTree = "<group>"; };
 		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
+		39E6DB861EA6765500B3E91B /* SellMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellMoreViewController.swift; sourceTree = "<group>"; };
 		39F93D941E89486B0008B276 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		39F93D951E89486B0008B276 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		39F93D961E89486B0008B276 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				399111A91E953D83005A047F /* CheckoutCustomCell.swift */,
 				39B76E151EA521C900528824 /* SellItemsViewController.swift */,
 				39B76E171EA527B700528824 /* SellItemsCustomCell.swift */,
+				39E6DB861EA6765500B3E91B /* SellMoreViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				398535691E7DBAAA00406BBB /* ProductViewController.swift in Sources */,
 				398F9B641E8D81FC00845946 /* ImageSlideshow.swift in Sources */,
 				39F93D971E89486B0008B276 /* iCarousel.m in Sources */,
+				39E6DB871EA6765500B3E91B /* SellMoreViewController.swift in Sources */,
 				398F9B671E8D81FC00845946 /* UIImage+AspectFit.swift in Sources */,
 				398F9B661E8D81FC00845946 /* InputSource.swift in Sources */,
 				39B76E181EA527B700528824 /* SellItemsCustomCell.swift in Sources */,

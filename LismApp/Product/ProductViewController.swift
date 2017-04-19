@@ -22,7 +22,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
-    
+     @IBOutlet weak var tabBar : UITabBar!
+    @IBOutlet weak var selectedTabBarItem : UITabBarItem!
+
     @IBOutlet weak var productsCollectionView : UICollectionView!
     var lastScrollPos : CGPoint!
     var  refresher = UIRefreshControl()
@@ -49,7 +51,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.productsCollectionView!.addSubview(refresher)
         self.addShadowToView()
         self.automaticallyAdjustsScrollViewInsets = false
-
+        tabBar.selectedItem = selectedTabBarItem
     }
     
     func produceAttributedText(string: String, textView : UITextView)

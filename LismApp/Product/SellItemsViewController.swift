@@ -2,7 +2,7 @@
 import Foundation
 import AVOSCloud
 
-class SellItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class SellItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UITabBarDelegate
 {
     @IBOutlet weak var noItemForSalesView : UIView!
     @IBOutlet weak var noItemForSalesHeading : UILabel!
@@ -14,7 +14,9 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var sellButtonReference : UIButton!
 
-    
+    @IBOutlet weak var tabBar : UITabBar!
+    @IBOutlet weak var selectedTabBarItem : UITabBarItem!
+
     @IBOutlet weak var  productsTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     var  refresher = UIRefreshControl()
@@ -29,7 +31,14 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.getProductList()
         //if no items posted for sale so far then we will show no items details view
+    tabBar.selectedItem = selectedTabBarItem
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.progressView.isHidden = true
+
+    }
+    
 
     func updateNoItemsDetailsView()
     {
@@ -135,5 +144,15 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         textView.attributedText=attributedString
         
     }
-
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Selected item",item.tag)
+        
+        if(item.tag == 0)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "SellToProductView", sender: self)
+        }
+        //This method will be called when user changes tab.
+    }
+    
 }

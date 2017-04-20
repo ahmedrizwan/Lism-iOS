@@ -10,7 +10,8 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 
     @IBOutlet weak var mainColorsView : UIView!
 
-    
+    @IBOutlet weak var selectedCategoryBtn : UIButton!
+
     @IBOutlet weak var addCamBtn1 : UIButton!
     @IBOutlet weak var addCamBtn2 : UIButton!
     @IBOutlet weak var addCamBtn3 : UIButton!
@@ -29,7 +30,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     var nextBtnToEnable = UIButton()
 
     var colors :[String] = []
-    var categories :[AVObject] = []
+    var categories : [String: Any]!
     var brands :[AVObject] = []
     var itemConditions :[AVObject] = []
 
@@ -166,7 +167,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBAction func categoryButtonAction(sender : AnyObject)
     {
         
-        
+        self.showAlertcontroller(title: "Categories" , objectToDisplay : self.categories)
     }
     @IBAction func selectColorButtonAction(sender : AnyObject)
     {
@@ -180,13 +181,27 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
-            self.categories = objects as! [AVObject]
+            self.categories = self.convertToDictionary(text:(objects?[0] as! AVObject).value(forKey: "value") as! String)!
+                for (_, value) in self.categories {
+                    print("key: \(value)")
+                }
             }
             
             
         }
         
     }
+    func convertToDictionary(text: String) ->[String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return  [String: [String]]()
+    }
+
 
     func loadBrandsInfo()
     {
@@ -236,24 +251,81 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         }
     }
 
-    func showAlertcontroller(title: String,arrayToDisplay : [String])
+    func showAlertcontroller(title: String, objectToDisplay : [String: Any])
 {
+ 
+    
+    
     
     let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
     alertController.view.tintColor = UIColor.darkGray
 
     let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
     }
-    for obj in arrayToDisplay
-    {
-            let okAction = UIAlertAction(title: obj, style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-        print(result.title!)
+    for (key, value) in objectToDisplay {
+        print("key: \(value)")
+        let okAction = UIAlertAction(title: "\(key)", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            
+            self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])
+            print(result.title!)
+            self.selectedCategoryBtn.setTitle(result.title!, for: .normal)
         }
         alertController.addAction(okAction)
+        
     }
     alertController.addAction(cancelAction)
     self.present(alertController, animated: true, completion: nil)
     }
+    
+    
+    
+    
+    
+    func showAlertcontrollerArray(title: String, objectToDisplay : [Any])
+    {
+        
+        
+        
+        
+        let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.view.tintColor = UIColor.darkGray
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+        }
+        var title = ""
+        for value in objectToDisplay {
+            print("key: \(value)")
+            if(value is String)
+            {
+                title = value as! String
+            }
+            else if (value is NSDictionary)
+            {
+            let dict = value as! NSDictionary
+                for (key, value) in dict
+                {
+                    title = key as! String
+                }
+            }
+            let okAction = UIAlertAction(title: title, style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                if (value is NSDictionary)
+                {
+                    let dict = value as! NSDictionary
+                    
+                    self.showAlertcontrollerArray(title: title , objectToDisplay: dict.value(forKey: result.title!) as! [Any])
+                }
+                self.selectedCategoryBtn.setTitle(result.title!, for: .normal)
+                print(result.title!)
+            }
+            
+            alertController.addAction(okAction)
+            
+        }
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     
     
     

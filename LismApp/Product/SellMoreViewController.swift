@@ -11,6 +11,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBOutlet weak var mainColorsView : UIView!
 
     @IBOutlet weak var selectedCategoryBtn : UIButton!
+    @IBOutlet weak var sizesBtn : UIButton!
 
     @IBOutlet weak var addCamBtn1 : UIButton!
     @IBOutlet weak var addCamBtn2 : UIButton!
@@ -26,11 +27,16 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBOutlet weak var colorsBtn : UIButton!
 
     var selectedBtn = UIButton()
+     var btnToUpdateText = UIButton()
     var crossBtnToEnable = UIButton()
     var nextBtnToEnable = UIButton()
 
     var colors :[String] = []
     var categories : [String: Any]!
+    var sizes : [String: Any]!
+
+     var isShoesOrClothing = false
+    
     var brands :[AVObject] = []
     var itemConditions :[AVObject] = []
 
@@ -166,9 +172,15 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     
     @IBAction func categoryButtonAction(sender : AnyObject)
     {
-        
+        btnToUpdateText = sender as! UIButton
         self.showAlertcontroller(title: "Categories" , objectToDisplay : self.categories)
     }
+    @IBAction func sizeButtonAction(sender : AnyObject)
+    {
+        btnToUpdateText = sender as! UIButton
+        self.showAlertcontroller(title: "Size" , objectToDisplay : self.sizes)
+    }
+    
     @IBAction func selectColorButtonAction(sender : AnyObject)
     {
         colorsTableViewParent.isHidden = false;
@@ -255,8 +267,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 {
  
     
-    
-    
+
     let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
     alertController.view.tintColor = UIColor.darkGray
 
@@ -266,9 +277,21 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         print("key: \(value)")
         let okAction = UIAlertAction(title: "\(key)", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             
+            
+    
+            self.btnToUpdateText.setTitle(result.title!, for: .normal)
+            if(self.selectedCategoryBtn.titleLabel?.text == "Shoes" || self.selectedCategoryBtn.titleLabel?.text == "Clothing")
+            {
+                
+                self.sizesBtn.isHidden = false
+                
+            }
+            else
+            {
+                self.sizesBtn.isHidden = true
+            }
             self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])
             print(result.title!)
-            self.selectedCategoryBtn.setTitle(result.title!, for: .normal)
         }
         alertController.addAction(okAction)
         
@@ -283,8 +306,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     
     func showAlertcontrollerArray(title: String, objectToDisplay : [Any])
     {
-        
-        
+      
         
         
         let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
@@ -293,6 +315,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
         }
         var title = ""
+    
         for value in objectToDisplay {
             print("key: \(value)")
             if(value is String)
@@ -302,11 +325,20 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
             else if (value is NSDictionary)
             {
             let dict = value as! NSDictionary
-                for (key, value) in dict
+                for (key, _) in dict
                 {
                     title = key as! String
                 }
             }
+            
+            if(title == "sizes")
+            {
+                let dict = value as! NSDictionary
+                self.sizes = dict.value(forKey: "sizes") as! [String: Any]
+                //populate this dict
+            }
+            else
+            {
             let okAction = UIAlertAction(title: title, style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 if (value is NSDictionary)
                 {
@@ -314,11 +346,13 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
                     
                     self.showAlertcontrollerArray(title: title , objectToDisplay: dict.value(forKey: result.title!) as! [Any])
                 }
-                self.selectedCategoryBtn.setTitle(result.title!, for: .normal)
+                self.btnToUpdateText.setTitle(result.title!, for: .normal)
+
                 print(result.title!)
             }
-            
-            alertController.addAction(okAction)
+                alertController.addAction(okAction)
+
+            }
             
         }
         alertController.addAction(cancelAction)

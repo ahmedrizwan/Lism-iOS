@@ -279,7 +279,7 @@ Est. Retail ¥2,00</string>
                     <connections>
                         <outlet property="productsCollectionView" destination="eBP-Wk-OIG" id="fip-kM-vZr"/>
                         <outlet property="progressView" destination="wGa-mc-I2k" id="hcT-NP-Svo"/>
-                        <outlet property="selectedTabBarItem" destination="YSG-XC-cdh" id="ScL-I8-F48"/>
+                        <outlet property="selectedTabBarItem" destination="jTn-ju-gvt" id="BOc-1x-1pJ"/>
                         <outlet property="tabBar" destination="eCE-av-p6j" id="iHI-fi-15f"/>
                         <outlet property="topView" destination="XN5-ZA-A2U" id="fI0-0F-ixF"/>
                         <outlet property="totalItemsLabel" destination="VAy-ia-oNS" id="wyN-fq-EZM"/>
@@ -639,7 +639,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F330BDCB-4321-4217-8C34-8B418FD6285F" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B22D71A9-C4A8-4B3E-8D73-844649418929" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1553,7 +1553,7 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="noItemForSalesView" destination="x2b-W6-MAm" id="AZ5-1I-Gub"/>
                         <outlet property="productsTableView" destination="ilP-aK-05F" id="4kG-mB-m2W"/>
                         <outlet property="progressView" destination="jlk-CL-V1u" id="mdf-Wd-B5g"/>
-                        <outlet property="selectedTabBarItem" destination="Zve-kw-pQL" id="wI6-4l-cFR"/>
+                        <outlet property="selectedTabBarItem" destination="jwI-RU-eMy" id="669-4p-gvX"/>
                         <outlet property="sellButtonReference" destination="GFm-fb-SaK" id="R9g-T0-vLz"/>
                         <outlet property="tabBar" destination="JyC-8w-Uma" id="cen-Fa-CXC"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="SellToProductView" id="L3M-j5-nQY"/>
@@ -1572,11 +1572,11 @@ Step3: Adda captivating description and post it!</string>
                         <viewControllerLayoutGuide type="bottom" id="grD-Ct-hmH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9eR-Pl-zqh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1050"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="D7t-4z-hKQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1050"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p65-Ey-8fV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -1617,13 +1617,17 @@ Step3: Adda captivating description and post it!</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AtQ-mD-4a3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="986"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DL9-6j-Cm6">
                                         <rect key="frame" x="15" y="0.0" width="345" height="93"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-C3-N6l">
                                                 <rect key="frame" x="-1" y="22" width="62" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="62" id="MS5-Pz-ymE"/>
+                                                    <constraint firstAttribute="width" constant="62" id="gQe-WJ-XIO"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="addPhotoAsset 1"/>
                                                 <connections>
                                                     <action selector="camera1AddButtonActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="scP-be-3Uf"/>
@@ -1631,6 +1635,10 @@ Step3: Adda captivating description and post it!</string>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksC-jO-6an">
                                                 <rect key="frame" x="70" y="22" width="62" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="62" id="3kq-1q-vEd"/>
+                                                    <constraint firstAttribute="height" constant="62" id="8KU-ro-jMJ"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
                                                 <connections>
                                                     <action selector="camera2AddButtonActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="Grv-tc-ZZx"/>
@@ -1638,6 +1646,10 @@ Step3: Adda captivating description and post it!</string>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBO-lc-JOi">
                                                 <rect key="frame" x="141" y="22" width="62" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="62" id="AV7-yW-KEz"/>
+                                                    <constraint firstAttribute="width" constant="62" id="DJh-jt-oI8"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
                                                 <connections>
                                                     <action selector="camera3AddButtonActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="afs-uh-CDi"/>
@@ -1645,6 +1657,10 @@ Step3: Adda captivating description and post it!</string>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMX-F3-PeA">
                                                 <rect key="frame" x="212" y="23" width="62" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="62" id="Lgw-mU-itt"/>
+                                                    <constraint firstAttribute="height" constant="62" id="vi5-lF-2M3"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
                                                 <connections>
                                                     <action selector="camera4AddButtonActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="lsk-ib-ago"/>
@@ -1652,6 +1668,10 @@ Step3: Adda captivating description and post it!</string>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kQ-yO-7QT">
                                                 <rect key="frame" x="283" y="22" width="62" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="62" id="e4C-7K-1kK"/>
+                                                    <constraint firstAttribute="height" constant="62" id="zqw-ge-noy"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
                                                 <connections>
                                                     <action selector="camera5AddButtonActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="TrU-vG-Mdu"/>
@@ -1660,7 +1680,9 @@ Step3: Adda captivating description and post it!</string>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-41-xZO">
                                                 <rect key="frame" x="47" y="15" width="22" height="22"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="S59-qE-gdJ"/>
                                                     <constraint firstAttribute="width" constant="22" id="Whb-MV-c4s"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="r38-Qf-m9c"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="close_btn.png"/>
                                                 <connections>
@@ -1670,7 +1692,9 @@ Step3: Adda captivating description and post it!</string>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aW9-5v-VTH">
                                                 <rect key="frame" x="119" y="15" width="22" height="22"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="3aI-h1-XEo"/>
                                                     <constraint firstAttribute="width" constant="22" id="5S7-q1-siz"/>
+                                                    <constraint firstAttribute="height" constant="22" id="62x-bz-OfZ"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="close_btn.png"/>
                                                 <connections>
@@ -1679,6 +1703,10 @@ Step3: Adda captivating description and post it!</string>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfC-QM-B04">
                                                 <rect key="frame" x="189" y="15" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="juq-v3-cfA"/>
+                                                    <constraint firstAttribute="width" constant="22" id="wEn-Ub-m1m"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="close_btn.png"/>
                                                 <connections>
                                                     <action selector="crossButton3ActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="LAw-At-GOe"/>
@@ -1688,6 +1716,8 @@ Step3: Adda captivating description and post it!</string>
                                                 <rect key="frame" x="261" y="15" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="22" id="8oa-Hb-Hi7"/>
+                                                    <constraint firstAttribute="height" constant="22" id="MXk-0b-Rsw"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="waj-Wr-fb4"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="close_btn.png"/>
                                                 <connections>
@@ -1696,6 +1726,10 @@ Step3: Adda captivating description and post it!</string>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4g-e3-wgO">
                                                 <rect key="frame" x="330" y="15" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="7Dv-uH-CqA"/>
+                                                    <constraint firstAttribute="width" constant="22" id="YSY-xP-uyf"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="close_btn.png"/>
                                                 <connections>
                                                     <action selector="crossButton5ActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="IGz-lA-pXi"/>
@@ -1708,6 +1742,7 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstItem="0kQ-yO-7QT" firstAttribute="leading" secondItem="8gv-s6-SPa" secondAttribute="trailing" id="3VV-H2-tWQ"/>
                                             <constraint firstItem="aW9-5v-VTH" firstAttribute="leading" secondItem="mWY-41-xZO" secondAttribute="trailing" constant="50" id="5Ls-I0-Af2"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="baseline" secondItem="TBO-lc-JOi" secondAttribute="baseline" id="7d6-mf-tF3"/>
+                                            <constraint firstItem="mWY-41-xZO" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="15" id="8ph-hb-WA7"/>
                                             <constraint firstItem="SfC-QM-B04" firstAttribute="bottom" secondItem="8gv-s6-SPa" secondAttribute="bottom" id="9hM-aU-wb3"/>
                                             <constraint firstItem="mWY-41-xZO" firstAttribute="bottom" secondItem="aW9-5v-VTH" secondAttribute="bottom" id="9kc-JO-zoA"/>
                                             <constraint firstItem="0kQ-yO-7QT" firstAttribute="firstBaseline" secondItem="ksC-jO-6an" secondAttribute="firstBaseline" id="AP8-1b-l3f"/>
@@ -1715,6 +1750,8 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstItem="TBO-lc-JOi" firstAttribute="baseline" secondItem="0kQ-yO-7QT" secondAttribute="baseline" id="Cpf-ar-QMR"/>
                                             <constraint firstItem="TBO-lc-JOi" firstAttribute="firstBaseline" secondItem="0kQ-yO-7QT" secondAttribute="firstBaseline" id="DDi-WR-OyC"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="firstBaseline" secondItem="TBO-lc-JOi" secondAttribute="firstBaseline" id="DL9-8G-2wp"/>
+                                            <constraint firstItem="ksC-jO-6an" firstAttribute="width" secondItem="Zfw-C3-N6l" secondAttribute="width" id="Eyj-by-Wgn"/>
+                                            <constraint firstItem="TBO-lc-JOi" firstAttribute="width" secondItem="Zfw-C3-N6l" secondAttribute="width" id="F4g-Jb-4Aa"/>
                                             <constraint firstItem="mWY-41-xZO" firstAttribute="leading" secondItem="DL9-6j-Cm6" secondAttribute="leading" constant="47" id="FQv-2R-Qor"/>
                                             <constraint firstItem="mWY-41-xZO" firstAttribute="top" secondItem="aW9-5v-VTH" secondAttribute="top" id="Hfs-2O-Kiu"/>
                                             <constraint firstItem="TBO-lc-JOi" firstAttribute="centerX" secondItem="DL9-6j-Cm6" secondAttribute="centerX" id="HmF-Zc-h4b"/>
@@ -1723,25 +1760,35 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstItem="PMX-F3-PeA" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="23" id="KSg-Nn-bob"/>
                                             <constraint firstItem="8gv-s6-SPa" firstAttribute="leading" secondItem="SfC-QM-B04" secondAttribute="trailing" constant="50" id="KmZ-bA-nYf"/>
                                             <constraint firstAttribute="trailing" secondItem="h4g-e3-wgO" secondAttribute="trailing" constant="-7" id="LBD-Bk-vax"/>
+                                            <constraint firstItem="SfC-QM-B04" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="15" id="Mkm-eV-6NN"/>
                                             <constraint firstAttribute="bottom" secondItem="mWY-41-xZO" secondAttribute="bottom" constant="56" id="P4C-K8-utk"/>
+                                            <constraint firstItem="aW9-5v-VTH" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="15" id="PsO-zj-pbS"/>
                                             <constraint firstItem="8gv-s6-SPa" firstAttribute="bottom" secondItem="h4g-e3-wgO" secondAttribute="bottom" id="TmW-GO-TbR"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="leading" secondItem="Zfw-C3-N6l" secondAttribute="trailing" constant="9" id="TwM-ku-3vt"/>
                                             <constraint firstItem="h4g-e3-wgO" firstAttribute="leading" secondItem="8gv-s6-SPa" secondAttribute="trailing" constant="47" id="UAb-82-TAg"/>
                                             <constraint firstItem="0kQ-yO-7QT" firstAttribute="leading" secondItem="PMX-F3-PeA" secondAttribute="trailing" constant="9" id="W2s-Kt-zPe"/>
+                                            <constraint firstItem="TBO-lc-JOi" firstAttribute="height" secondItem="Zfw-C3-N6l" secondAttribute="height" id="WFw-VF-ndm"/>
                                             <constraint firstItem="SfC-QM-B04" firstAttribute="leading" secondItem="aW9-5v-VTH" secondAttribute="trailing" constant="48" id="Z6Z-2X-Lqd"/>
                                             <constraint firstItem="SfC-QM-B04" firstAttribute="top" secondItem="8gv-s6-SPa" secondAttribute="top" id="Zw8-eu-bMe"/>
                                             <constraint firstItem="PMX-F3-PeA" firstAttribute="bottom" secondItem="DL9-6j-Cm6" secondAttribute="bottomMargin" id="aVg-Qq-8gx"/>
                                             <constraint firstItem="Zfw-C3-N6l" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="22" id="bNR-zf-9BG"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="leading" secondItem="mWY-41-xZO" secondAttribute="trailing" constant="1" id="crT-Ni-GJH"/>
+                                            <constraint firstItem="0kQ-yO-7QT" firstAttribute="height" secondItem="Zfw-C3-N6l" secondAttribute="height" id="dHr-cb-3Ws"/>
                                             <constraint firstAttribute="bottom" secondItem="Zfw-C3-N6l" secondAttribute="bottom" constant="9" id="fqt-VF-aJf"/>
                                             <constraint firstItem="Zfw-C3-N6l" firstAttribute="leading" secondItem="DL9-6j-Cm6" secondAttribute="leading" constant="-1" id="frP-sX-1Qq"/>
+                                            <constraint firstItem="h4g-e3-wgO" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="15" id="gTR-2B-LF3"/>
+                                            <constraint firstItem="ksC-jO-6an" firstAttribute="height" secondItem="Zfw-C3-N6l" secondAttribute="height" id="h1n-cd-9NF"/>
                                             <constraint firstAttribute="height" constant="93" id="hyi-fO-Nfp"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="top" secondItem="TBO-lc-JOi" secondAttribute="top" id="l3i-HI-P9V"/>
+                                            <constraint firstItem="0kQ-yO-7QT" firstAttribute="width" secondItem="Zfw-C3-N6l" secondAttribute="width" id="l4x-Vc-Ral"/>
                                             <constraint firstItem="PMX-F3-PeA" firstAttribute="leading" secondItem="SfC-QM-B04" secondAttribute="trailing" constant="1" id="lqS-9m-Ezm"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="bottom" secondItem="TBO-lc-JOi" secondAttribute="bottom" id="pr8-Fp-TLM"/>
                                             <constraint firstItem="TBO-lc-JOi" firstAttribute="bottom" secondItem="0kQ-yO-7QT" secondAttribute="bottom" id="pyr-gl-WLK"/>
                                             <constraint firstItem="PMX-F3-PeA" firstAttribute="leading" secondItem="TBO-lc-JOi" secondAttribute="trailing" constant="9" id="qwc-FB-PLU"/>
+                                            <constraint firstItem="PMX-F3-PeA" firstAttribute="height" secondItem="Zfw-C3-N6l" secondAttribute="height" id="rTk-Bs-qGy"/>
+                                            <constraint firstItem="8gv-s6-SPa" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="top" constant="15" id="sQ8-ec-2YT"/>
                                             <constraint firstItem="TBO-lc-JOi" firstAttribute="leading" secondItem="aW9-5v-VTH" secondAttribute="trailing" id="tZi-8k-58I"/>
+                                            <constraint firstItem="PMX-F3-PeA" firstAttribute="width" secondItem="Zfw-C3-N6l" secondAttribute="width" id="tdf-kw-3Lw"/>
                                             <constraint firstItem="TBO-lc-JOi" firstAttribute="leading" secondItem="ksC-jO-6an" secondAttribute="trailing" constant="9" id="uj7-49-7Ib"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="baseline" secondItem="0kQ-yO-7QT" secondAttribute="baseline" id="x6O-K3-wfs"/>
                                             <constraint firstItem="Zfw-C3-N6l" firstAttribute="bottom" secondItem="ksC-jO-6an" secondAttribute="bottom" id="xwi-Y1-qox"/>
@@ -1788,7 +1835,7 @@ Step3: Adda captivating description and post it!</string>
                                                     <constraint firstAttribute="height" constant="50" id="3J6-vQ-g7O"/>
                                                     <constraint firstAttribute="width" constant="375" id="gHU-Qb-T3E"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <state key="normal" title="CATEGORY" backgroundImage="topbarimage.png">
                                                     <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -1802,7 +1849,7 @@ Step3: Adda captivating description and post it!</string>
                                                     <constraint firstAttribute="width" constant="375" id="OCs-8q-HKR"/>
                                                     <constraint firstAttribute="height" constant="50" id="jyc-3h-S7F"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <state key="normal" title="SELECT COLOR" backgroundImage="topbarimage.png">
                                                     <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -1815,7 +1862,7 @@ Step3: Adda captivating description and post it!</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="o2o-zY-JKA"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <state key="normal" title="SIZE" backgroundImage="topbarimage.png">
                                                     <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -1849,8 +1896,8 @@ Step3: Adda captivating description and post it!</string>
                                         <rect key="frame" x="0.0" y="550" width="375" height="341"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESTIMATED ORIGINAL RETAIL PRICE (¥)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUi-8w-gRh">
-                                                <rect key="frame" x="16" y="6" width="342" height="22"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                <rect key="frame" x="16" y="6" width="342" height="18"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <color key="textColor" red="0.1422139673998094" green="0.14295854314535816" blue="0.14295854314535816" alpha="0.69887126150306744" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1864,7 +1911,7 @@ Step3: Adda captivating description and post it!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-ex-srM" customClass="TextField" customModule="LismApp" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="36" width="111" height="44"/>
+                                                <rect key="frame" x="16" y="32" width="111" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="111" id="gf4-hP-etv"/>
@@ -1879,7 +1926,7 @@ Step3: Adda captivating description and post it!</string>
                                                     <constraint firstAttribute="width" constant="120" id="8S8-ni-tAv"/>
                                                     <constraint firstAttribute="height" constant="21" id="Pj2-14-ywB"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <color key="textColor" red="0.1422139674" green="0.1429585431" blue="0.1429585431" alpha="0.69887126150000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1899,7 +1946,7 @@ Step3: Adda captivating description and post it!</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ELg-rL-mzZ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <state key="normal" title="ITEM CONDITION" backgroundImage="topbarimage.png">
                                                     <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -1985,10 +2032,10 @@ Step3: Adda captivating description and post it!</string>
                                 </constraints>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5VT-a3-w4i">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1050"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ck2-TG-6g2">
-                                        <rect key="frame" x="34" y="98" width="308" height="869"/>
+                                        <rect key="frame" x="34" y="98" width="308" height="486"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcg-dM-kht">
@@ -2002,7 +2049,7 @@ Step3: Adda captivating description and post it!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="33" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QsI-qV-8eU">
-                                        <rect key="frame" x="40" y="510" width="296" height="444"/>
+                                        <rect key="frame" x="40" y="127" width="296" height="444"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="444" id="axw-zB-tt1"/>
@@ -2068,6 +2115,7 @@ Step3: Adda captivating description and post it!</string>
                                     <constraint firstItem="Tcg-dM-kht" firstAttribute="trailing" secondItem="QsI-qV-8eU" secondAttribute="trailing" id="3Og-Cd-8Wr"/>
                                     <constraint firstAttribute="bottom" secondItem="ck2-TG-6g2" secondAttribute="bottom" constant="83" id="4bx-KC-g1o"/>
                                     <constraint firstItem="ck2-TG-6g2" firstAttribute="centerX" secondItem="Tcg-dM-kht" secondAttribute="centerX" id="AP4-eV-G3R"/>
+                                    <constraint firstItem="QsI-qV-8eU" firstAttribute="top" secondItem="5VT-a3-w4i" secondAttribute="top" constant="127" id="ECQ-0i-oDN"/>
                                     <constraint firstAttribute="bottom" secondItem="QsI-qV-8eU" secondAttribute="bottom" constant="96" id="Iwy-HV-4r6"/>
                                     <constraint firstItem="ck2-TG-6g2" firstAttribute="top" secondItem="Tcg-dM-kht" secondAttribute="top" id="Pyc-uG-pRN"/>
                                     <constraint firstItem="ck2-TG-6g2" firstAttribute="top" secondItem="5VT-a3-w4i" secondAttribute="top" constant="98" id="U8K-OZ-niQ"/>
@@ -2099,7 +2147,7 @@ Step3: Adda captivating description and post it!</string>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1050"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="addCamBtn1" destination="Zfw-C3-N6l" id="yeJ-id-cIz"/>
                         <outlet property="addCamBtn2" destination="ksC-jO-6an" id="bXl-zy-4Mx"/>
@@ -2123,6 +2171,7 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="mainColorsView" destination="ck2-TG-6g2" id="L1m-wd-Q57"/>
                         <outlet property="postForSaleBtn" destination="jJj-DD-C4B" id="WnG-mY-Z6f"/>
                         <outlet property="productNameTextfield" destination="YMf-P2-DpG" id="vad-G0-ad2"/>
+                        <outlet property="scrollView" destination="AtQ-mD-4a3" id="qyV-9J-bJU"/>
                         <outlet property="selectedCategoryBtn" destination="buK-7J-VTj" id="6wp-fA-WBU"/>
                         <outlet property="sellingPriceLabel" destination="y3v-E4-7gn" id="fpA-ul-4dK"/>
                         <outlet property="sellingPriceTextField" destination="v0N-l5-XT0" id="jPi-UI-daJ"/>
@@ -2136,7 +2185,7 @@ Step3: Adda captivating description and post it!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="F330BDCB-4321-4217-8C34-8B418FD6285F" width="2081" height="292">
+        <image name="B22D71A9-C4A8-4B3E-8D73-844649418929" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -14,7 +14,8 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBOutlet weak var sizesBtn : UIButton!
     @IBOutlet weak var sizesBtnHeightConstaint : NSLayoutConstraint!
 
-    
+    @IBOutlet weak var scrollView : UIScrollView!
+
     @IBOutlet weak var addCamBtn1 : UIButton!
     @IBOutlet weak var addCamBtn2 : UIButton!
     @IBOutlet weak var addCamBtn3 : UIButton!
@@ -83,6 +84,10 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         allButtons.append(addCamBtn5)
         self.setUpDescriptionTextView()
 
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1050)
     }
     func setUpDescriptionTextView()
     {

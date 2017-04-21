@@ -456,8 +456,11 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
                 self.sizesBtn.isHidden = true
             }
             self.view.updateConstraintsIfNeeded()
+            if(value is NSArray)
+            {
             self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])
-            print(result.title!)
+            }
+                print(result.title!)
         }
         alertController.addAction(okAction)
         

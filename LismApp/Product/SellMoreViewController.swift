@@ -91,7 +91,6 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         allButtons.append(addCamBtn3)
         allButtons.append(addCamBtn4)
         allButtons.append(addCamBtn5)
-        self.setUpDescriptionTextView()
         
         // Create and add the view to the screen.
     
@@ -99,6 +98,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewHeightConstaint.constant = 115
+        self.setUpDescriptionTextView()
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -445,6 +445,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     {
         if(self.checkIfAllDataSet())
         {
+            postForSaleBtn.isUserInteractionEnabled = false
         self.itemToPostcount = arrayOFEnabledButtons.count
         let productObj = self.uploadProductWithImage()
         // All done!
@@ -485,25 +486,29 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         productBO.saveInBackground  { (objects, error) in
            if(error == nil)
            {
+            if(self.itemToPostcount == 0)
+            {
+
             AVUser.current()?.relation(forKey: Constants.SELL_PRODUCTS).add(productBO)
             
             AVUser.current()?.saveInBackground { (objects, error) in
+                self.postForSaleBtn.isUserInteractionEnabled = false
+
                 if(error == nil)
                 {
-                    if(self.itemToPostcount == 0)
-                    {
-                      self.progressBar.isHidden = true
+                                         self.progressBar.isHidden = true
                         self.showAlertView()
                     // show product has been posted and redirection
                     print("show product has been posted and redirection")
-                    }
-                }
+                                    }
                 else
                 {
                     //show error mesage
                 }
             }
             }
+            }
+
             
 
         }
@@ -527,6 +532,10 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             self.productImageUploaded(imageFile: imageFile, product: product)
             }
         //uploaded sucess fully
+        }
+        else{
+            self.postForSaleBtn.isUserInteractionEnabled = false
+
         }
     }
     

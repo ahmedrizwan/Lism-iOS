@@ -1,7 +1,12 @@
 
 import Foundation
 import AVOSCloud
-
+extension String {
+    func capitalizeFirst() -> String {
+        let firstIndex = self.index(startIndex, offsetBy: 1)
+        return self.substring(to: firstIndex).capitalized + self.substring(from: firstIndex).lowercased()
+    }
+}
 class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate
 {
     
@@ -72,6 +77,8 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         picker.delegate = self
         self.createColrosDict()
+        self.progressBar.isHidden = true
+
         // This is for rounded corners
         self.mainColorsView.layer.cornerRadius = 10
         self.mainColorsView.layer.masksToBounds = true
@@ -89,6 +96,8 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.progressBar.isHidden = true
+
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1050)
     }
     func setUpDescriptionTextView()
@@ -397,9 +406,10 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
         product.setObject(itemsConditionBtn.title(for: .normal)!, forKey: "condition")
         product.setObject(self.estimatedTextField.text!, forKey: "priceRetail")
-        product.setObject(self.sellingPriceTextField.text!, forKey: "priceSelling")
+        product.setObject(Int(self.sellingPriceTextField.text!)!, forKey: "priceSelling")
+        
         product.setObject("Posted for Sale", forKey: "status")
-        product.setValue(0, forKey: "productLikes")
+        product.setObject(0, forKey: "productLikes")
 
         //    presenter.onPostClick(v, product, imageFiles);
         return product
@@ -409,19 +419,20 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     {
         productBO.relation(forKey: "images").add(imagesObject)
         productBO.saveInBackground  { (objects, error) in
-            if(self.itemToPostcount == 0)
-            {
+           if(error == nil)
+           {
             AVUser.current()?.relation(forKey: Constants.SELL_PRODUCTS).add(productBO)
             
             AVUser.current()?.saveInBackground { (objects, error) in
                 if(error == nil)
                 {
-                    
+                    if(self.itemToPostcount == 0)
+                    {
                       self.progressBar.isHidden = true
                         self.showAlertView()
                     // show product has been posted and redirection
                     print("show product has been posted and redirection")
-                    
+                    }
                 }
                 else
                 {
@@ -429,6 +440,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
                 }
             }
             }
+            
 
         }
     }
@@ -448,7 +460,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             }
             else
             {
-            self.primaryImageUploaded(imageFile: imageFile, product: product , isPrimary:false)
+            self.productImageUploaded(imageFile: imageFile, product: product)
             }
         //uploaded sucess fully
         }
@@ -464,10 +476,28 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         if(error == nil)
         {
             //uploaded sucess fully
+            if(isPrimary)
+            {
             product.setObject(imageFile.url!, forKey: "primaryImageUrl")
+            
+            }
             self.saveProductWithImage(productBO: product , imagesObject : object)
         }
     }
+    }
+
+    
+    func productImageUploaded (imageFile : AVFile , product : Product)
+    {
+        let object = AVObject.init(className: "ProductImage")
+        object.setObject(imageFile.url, forKey: "imageUrl")
+        object.saveInBackground  {(status, error) in
+            if(error == nil)
+            {
+             
+                self.saveProductWithImage(productBO: product , imagesObject : object)
+            }
+        }
     }
 
    
@@ -620,7 +650,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         }
         for (key, value) in objectToDisplay {
             print("key: \(value)")
-            let okAction = UIAlertAction(title: "\(key)", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            let okAction = UIAlertAction(title: "\(key)".capitalizeFirst(), style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 
                 
                 

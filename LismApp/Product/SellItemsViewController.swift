@@ -29,9 +29,13 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
         self.productsTableView!.addSubview(refresher)
         
-        self.getProductList()
         //if no items posted for sale so far then we will show no items details view
     tabBar.selectedItem = selectedTabBarItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getProductList()
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

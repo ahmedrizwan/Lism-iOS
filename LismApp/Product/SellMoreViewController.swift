@@ -18,6 +18,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBOutlet weak var selectedCategoryBtn : UIButton!
     @IBOutlet weak var sizesBtn : UIButton!
     @IBOutlet weak var sizesBtnHeightConstaint : NSLayoutConstraint!
+    @IBOutlet weak var viewHeightConstaint : NSLayoutConstraint!
 
     @IBOutlet weak var scrollView : UIScrollView!
     @IBOutlet weak var progressBar : UIActivityIndicatorView!
@@ -91,15 +92,27 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         allButtons.append(addCamBtn4)
         allButtons.append(addCamBtn5)
         self.setUpDescriptionTextView()
+        
         // Create and add the view to the screen.
     
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewHeightConstaint.constant = 115
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.progressBar.isHidden = true
 
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1050)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1060)
+        
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+    }
+
     func setUpDescriptionTextView()
     {
         sizesBtnHeightConstaint.constant = 0
@@ -359,28 +372,79 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         colorsTableView.reloadData()
     }
     
+    func showAlert (error : String)
+    {
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     func checkIfAllDataSet()-> Bool
     {
         if((self.productNameTextfield.text?.characters.count)! < 2)
         {
+            self.showAlert(error: "Enter product name")
             return false
 
         }
         if((self.descTextView.text?.characters.count)! < 2)
         {
+            self.showAlert(error: "Enter product description")
+
             return false
             
         }
         if((self.brandTextfield.text?.characters.count)! < 2)
         {
+            self.showAlert(error: "Enter brand name")
+
             return false
             
         }
+        
+        if((colorsBtn.title(for: .normal)!) == "SELECT COLOR")
+        {
+            self.showAlert(error: "Please choose color")
+            
+            return false
+            
+        }
+        if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY")
+        {
+            self.showAlert(error: "Please select category")
+            
+            return false
+            
+        }
+        if((itemsConditionBtn.title(for: .normal)!) == "ITEM CONDITION")
+        {
+            self.showAlert(error: "Please choose item condition")
+            
+            return false
+            
+        }
+        
+        if((self.estimatedTextField.text?.characters.count)! <= 0 )
+        {
+            self.showAlert(error: "Enter estimated price")
+            
+            return false
+            
+        }
+        if((self.sellingPriceTextField.text?.characters.count)! <= 0 )
+        {
+            self.showAlert(error: "Enter selling price")
+            
+            return false
+            
+        }
+
     return true
     }
     
     @IBAction func  postForSaleAction(sender : AnyObject)
     {
+        if(self.checkIfAllDataSet())
+        {
         self.itemToPostcount = arrayOFEnabledButtons.count
         let productObj = self.uploadProductWithImage()
         // All done!
@@ -391,7 +455,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
         }
         
-        
+        }
 
     }
     func uploadProductWithImage() -> Product
@@ -401,7 +465,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
           product.setObject(self.descTextView.text, forKey: "description")
         product.setObject(self.brandTextfield.text!, forKey: "brand")
         product.setObject(colorsBtn.title(for: .normal)!, forKey: "color")
-        product.user = AVUser.current()
+        product.setObject(AVUser.current(), forKey: "user")
         product.setObject(self.selectedCategoryBtn.title(for: .normal)!, forKey: "category")
         product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
         product.setObject(itemsConditionBtn.title(for: .normal)!, forKey: "condition")
@@ -453,7 +517,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         if(error == nil)
         {
             self.itemToPostcount = self.itemToPostcount - 1
-            if(self.itemToPostcount + 1 == self.itemToPostcount )
+            if(self.itemToPostcount + 1 == self.arrayOFEnabledButtons.count )
             {
                 self.primaryImageUploaded(imageFile: imageFile, product: product , isPrimary: true)
              //self.uploadProductWithImage(imageObjects: imageFile)
@@ -615,12 +679,16 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             {
                 self.sizesBtnHeightConstaint.constant = self.selectedCategoryBtn.frame.size.height
                 self.sizesBtn.isHidden = false
+        
+                 self.viewHeightConstaint.constant = 162
                 
             }
             else
             {
                 self.sizesBtnHeightConstaint.constant = 0
                 self.sizesBtn.isHidden = true
+                self.viewHeightConstaint.constant = 115
+
             }
             self.view.updateConstraintsIfNeeded()
             if(value is NSArray)

@@ -40,6 +40,7 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
     static let selling_description = "Step1: Upload the item you wish to sell \nStep2: Receive confirmation within 24 hrs\nStep3: Adda captivating description and post it!"
     static let you_earn_more = "YOU EARN MORE"
     static let earn_more_description = "Receive up to 80% of the sale price for your items"
+     static let SELL_PRODUCTS = "sellProducts"
 
 
 }

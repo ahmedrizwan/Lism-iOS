@@ -15,6 +15,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBOutlet weak var sizesBtnHeightConstaint : NSLayoutConstraint!
 
     @IBOutlet weak var scrollView : UIScrollView!
+    @IBOutlet weak var progressBar : UIActivityIndicatorView!
 
     @IBOutlet weak var addCamBtn1 : UIButton!
     @IBOutlet weak var addCamBtn2 : UIButton!
@@ -63,10 +64,10 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 
     let picker = UIImagePickerController()
     var colorsDictionary  : [String: String]!
-    
+
     var arrayOFEnabledButtons = [UIButton]()
     var allButtons = [UIButton]()
-
+    var itemToPostcount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
@@ -83,7 +84,8 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         allButtons.append(addCamBtn4)
         allButtons.append(addCamBtn5)
         self.setUpDescriptionTextView()
-
+        // Create and add the view to the screen.
+    
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -233,7 +235,6 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
          self.selectedBtn.isUserInteractionEnabled = false
         arrayOFEnabledButtons.append(self.selectedBtn)
         self.crossBtnToEnable = imageToEnable
-        self.nextBtnToEnable = nextButtonToAdd
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
@@ -253,7 +254,9 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         } else {
 
         }
-        nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .normal)
+        
+        self.nextBtnToEnable = updateImageIfNotset()
+nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .normal)
          self.crossBtnToEnable.isHidden = false
         dismiss(animated:true, completion: nil) //5
     }
@@ -346,10 +349,139 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         colorsTableViewParent.isHidden = false;
         colorsTableView.reloadData()
     }
+    
+    func checkIfAllDataSet()-> Bool
+    {
+        if((self.productNameTextfield.text?.characters.count)! < 2)
+        {
+            return false
+
+        }
+        if((self.descTextView.text?.characters.count)! < 2)
+        {
+            return false
+            
+        }
+        if((self.brandTextfield.text?.characters.count)! < 2)
+        {
+            return false
+            
+        }
+    return true
+    }
+    
     @IBAction func  postForSaleAction(sender : AnyObject)
     {
+        self.itemToPostcount = arrayOFEnabledButtons.count
+        let productObj = self.uploadProductWithImage()
+        // All done!
+        progressBar.isHidden = false
+        for imageBtn in arrayOFEnabledButtons
+        {
+            
+            self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
+        }
+        
+        
+
+    }
+    func uploadProductWithImage() -> Product
+    {
+        let product = Product()
+        product.setObject(self.productNameTextfield.text, forKey: "name")
+          product.setObject(self.descTextView.text, forKey: "description")
+        product.setObject(self.brandTextfield.text!, forKey: "brand")
+        product.setObject(colorsBtn.title(for: .normal)!, forKey: "color")
+        product.user = AVUser.current()
+        product.setObject(self.selectedCategoryBtn.title(for: .normal)!, forKey: "category")
+        product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
+        product.setObject(itemsConditionBtn.title(for: .normal)!, forKey: "condition")
+        product.setObject(self.estimatedTextField.text!, forKey: "priceRetail")
+        product.setObject(self.sellingPriceTextField.text!, forKey: "priceSelling")
+        product.setObject("Posted for Sale", forKey: "status")
+        product.setValue(0, forKey: "productLikes")
+
+        //    presenter.onPostClick(v, product, imageFiles);
+        return product
+        //self.saveProductWithImage(productBO: product, imagesObject: imageObjects)
+    }
+    func saveProductWithImage(productBO : Product, imagesObject : AVObject )
+    {
+        productBO.relation(forKey: "images").add(imagesObject)
+        productBO.saveInBackground  { (objects, error) in
+            if(self.itemToPostcount == 0)
+            {
+            AVUser.current()?.relation(forKey: Constants.SELL_PRODUCTS).add(productBO)
+            
+            AVUser.current()?.saveInBackground { (objects, error) in
+                if(error == nil)
+                {
+                    
+                      self.progressBar.isHidden = true
+                        self.showAlertView()
+                    // show product has been posted and redirection
+                    print("show product has been posted and redirection")
+                    
+                }
+                else
+                {
+                    //show error mesage
+                }
+            }
+            }
+
+        }
+    }
+
+    func uploadImageViewController(scaledImage: UIImage , product : Product)
+   {
+    let imageData = UIImagePNGRepresentation(scaledImage)
+    let imageFile:AVFile = AVFile(data: imageData!)
+    imageFile.saveInBackground { (status, error) in
+        if(error == nil)
+        {
+            self.itemToPostcount = self.itemToPostcount - 1
+            if(self.itemToPostcount + 1 == self.itemToPostcount )
+            {
+                self.primaryImageUploaded(imageFile: imageFile, product: product , isPrimary: true)
+             //self.uploadProductWithImage(imageObjects: imageFile)
+            }
+            else
+            {
+            self.primaryImageUploaded(imageFile: imageFile, product: product , isPrimary:false)
+            }
+        //uploaded sucess fully
+        }
+    }
     
     }
+    
+    func primaryImageUploaded (imageFile : AVFile , product : Product , isPrimary : Bool)
+    {
+        let object = AVObject.init(className: "ProductImage")
+        object.setObject(imageFile.url, forKey: "imageUrl")
+        object.saveInBackground  {(status, error) in
+        if(error == nil)
+        {
+            //uploaded sucess fully
+            product.setObject(imageFile.url!, forKey: "primaryImageUrl")
+            self.saveProductWithImage(productBO: product , imagesObject : object)
+        }
+    }
+    }
+
+   
+
+    func showAlertView()
+    {
+        let alert = UIAlertController(title: "Success", message: "Product has been posted for sale", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                self.backbuttonAction(sender: "" as AnyObject)
+            }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
     func loadCategoriesInfo()
     {
     

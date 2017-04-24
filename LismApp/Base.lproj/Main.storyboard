@@ -639,7 +639,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4B7AB316-9883-4FDD-8274-6C7A3148FBB5" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F6287D3B-1879-4093-A8EC-0DC02A3925DA" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1899,7 +1899,7 @@ Step3: Adda captivating description and post it!</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="HrK-Lc-VSz"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                 <color key="textColor" red="0.1422139674" green="0.1429585431" blue="0.1429585431" alpha="0.69887126150000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1958,6 +1958,9 @@ Step3: Adda captivating description and post it!</string>
                                                 <state key="normal" title="POST FOR SALE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="postForSaleActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="UVj-Qe-u9j"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2118,12 +2121,23 @@ Step3: Adda captivating description and post it!</string>
                                     <constraint firstItem="Tcg-dM-kht" firstAttribute="leading" secondItem="QsI-qV-8eU" secondAttribute="leading" id="vd9-GT-1RH"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="h1M-ID-4ZG">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="2NS-i2-q6k"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="KOL-T7-y8i"/>
+                                    <constraint firstAttribute="height" constant="20" id="fhF-hm-uf1"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="lds-i4-xce"/>
+                                </constraints>
+                                <color key="color" red="0.57918035980000004" green="0.065172873440000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AtQ-mD-4a3" firstAttribute="bottom" secondItem="grD-Ct-hmH" secondAttribute="top" id="0Zm-ER-24N"/>
                             <constraint firstItem="D7t-4z-hKQ" firstAttribute="trailing" secondItem="5VT-a3-w4i" secondAttribute="trailing" id="0ki-lr-nOE"/>
                             <constraint firstItem="D7t-4z-hKQ" firstAttribute="top" secondItem="p65-Ey-8fV" secondAttribute="top" id="4DX-TN-fXj"/>
+                            <constraint firstItem="h1M-ID-4ZG" firstAttribute="centerY" secondItem="9eR-Pl-zqh" secondAttribute="centerY" id="6aa-ri-MA8"/>
                             <constraint firstItem="5VT-a3-w4i" firstAttribute="leading" secondItem="D7t-4z-hKQ" secondAttribute="leading" id="BJP-EZ-j6x"/>
                             <constraint firstItem="5VT-a3-w4i" firstAttribute="bottom" secondItem="grD-Ct-hmH" secondAttribute="top" id="Rom-aq-pny"/>
                             <constraint firstItem="D7t-4z-hKQ" firstAttribute="trailing" secondItem="p65-Ey-8fV" secondAttribute="trailing" id="SiD-Qd-uWL"/>
@@ -2134,6 +2148,7 @@ Step3: Adda captivating description and post it!</string>
                             <constraint firstItem="AtQ-mD-4a3" firstAttribute="top" secondItem="9eR-Pl-zqh" secondAttribute="top" constant="64" id="cdy-Lz-Z4j"/>
                             <constraint firstItem="D7t-4z-hKQ" firstAttribute="bottom" secondItem="grD-Ct-hmH" secondAttribute="top" id="fuw-ZP-QJM"/>
                             <constraint firstItem="D7t-4z-hKQ" firstAttribute="leading" secondItem="9eR-Pl-zqh" secondAttribute="leading" id="kOA-Oh-Cim"/>
+                            <constraint firstItem="h1M-ID-4ZG" firstAttribute="centerX" secondItem="9eR-Pl-zqh" secondAttribute="centerX" id="kkL-bY-iUV"/>
                             <constraint firstAttribute="trailing" secondItem="D7t-4z-hKQ" secondAttribute="trailing" id="mBc-oz-9De"/>
                             <constraint firstItem="5VT-a3-w4i" firstAttribute="leading" secondItem="AtQ-mD-4a3" secondAttribute="leading" id="t4i-dA-pTL"/>
                             <constraint firstItem="5VT-a3-w4i" firstAttribute="top" secondItem="9eR-Pl-zqh" secondAttribute="top" id="vBY-7G-VY3"/>
@@ -2164,6 +2179,7 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="mainColorsView" destination="ck2-TG-6g2" id="L1m-wd-Q57"/>
                         <outlet property="postForSaleBtn" destination="jJj-DD-C4B" id="WnG-mY-Z6f"/>
                         <outlet property="productNameTextfield" destination="YMf-P2-DpG" id="vad-G0-ad2"/>
+                        <outlet property="progressBar" destination="h1M-ID-4ZG" id="39E-Za-W6B"/>
                         <outlet property="scrollView" destination="AtQ-mD-4a3" id="qyV-9J-bJU"/>
                         <outlet property="selectedCategoryBtn" destination="buK-7J-VTj" id="6wp-fA-WBU"/>
                         <outlet property="sellingPriceLabel" destination="y3v-E4-7gn" id="fpA-ul-4dK"/>
@@ -2178,7 +2194,7 @@ Step3: Adda captivating description and post it!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="4B7AB316-9883-4FDD-8274-6C7A3148FBB5" width="2081" height="292">
+        <image name="F6287D3B-1879-4093-A8EC-0DC02A3925DA" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

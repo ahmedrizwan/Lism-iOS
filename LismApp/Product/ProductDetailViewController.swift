@@ -7,6 +7,15 @@ extension Date {
     func days(from date: Date) -> Int {
         return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
     }
+	func hour(from date: Date) -> Int {
+		return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
+	}
+	func minute(from date: Date) -> Int {
+		return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
+	}
+	func seconds(from date: Date) -> Int {
+		return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+	}
 }
 class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UIScrollViewDelegate
 {
@@ -189,13 +198,25 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         if  Date().days(from: self.productBO.updatedAtValue) > 0
         
         {
-            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAtValue))d ago"
+            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAtValue)) d ago"
 
         }
-        else
+        else if  Date().hour(from: self.productBO.updatedAtValue) > 0
         {
-            daysAgoLabel.isHidden = false
-        }
+           // daysAgoLabel.isHidden = false
+       daysAgoLabel.text =   "Updated \(Date().hour(from:  self.productBO.updatedAtValue)) hour ago"
+					}
+else if  Date().minute(from: self.productBO.updatedAtValue) > 0
+        {
+									// daysAgoLabel.isHidden = false
+									daysAgoLabel.text =   "Updated \(Date().minute(from:  self.productBO.updatedAtValue)) minute ago"
+					}
+					
+					else if  Date().seconds(from: self.productBO.updatedAtValue) > 0
+					{
+						// daysAgoLabel.isHidden = false
+						daysAgoLabel.text =   "Updated \(Date().seconds(from:  self.productBO.updatedAtValue)) second ago"
+					}
         slideshow.slideshowInterval = 5.0
        // slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray

@@ -26,7 +26,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pv3-ul-Rq6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wGa-mc-I2k">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wGa-mc-I2k">
                                 <rect key="frame" x="178" y="324" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5iI-fW-p6W"/>
@@ -41,16 +41,16 @@
                                     <constraint firstAttribute="height" constant="49" id="BxO-SA-yB7"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem image="minus.png" id="YSG-XC-cdh">
+                                    <tabBarItem tag="1" image="minus.png" id="YSG-XC-cdh">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
-                                    <tabBarItem image="person.png" id="9Q9-At-jw7">
+                                    <tabBarItem tag="2" image="person.png" id="9Q9-At-jw7">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
-                                    <tabBarItem image="heart.png" id="30m-HR-j4c">
+                                    <tabBarItem tag="3" image="heart.png" id="30m-HR-j4c">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
-                                    <tabBarItem image="plus.png" id="jTn-ju-gvt">
+                                    <tabBarItem tag="4" image="plus.png" id="jTn-ju-gvt">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
                                 </items>
@@ -639,7 +639,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B340FEFB-E0AD-451D-AE09-2ADBEFE5D727" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D35B1C7C-C187-4340-B28E-375D1BD4AA47" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -920,7 +920,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="1" backgroundImage="cart_button.png"/>
+                                <state key="normal" backgroundImage="cart_button.png"/>
                                 <connections>
                                     <segue destination="Un3-Hp-iKM" kind="show" identifier="ProductDetailsToProductCheckoutViewController" id="6aA-qT-FXH"/>
                                 </connections>
@@ -1369,16 +1369,16 @@ Est. Retail ¥2,00</string>
                                     <constraint firstAttribute="height" constant="49" id="8Rm-Rr-Jd5"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem image="minus.png" id="jwI-RU-eMy">
+                                    <tabBarItem tag="1" image="minus.png" id="jwI-RU-eMy">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
-                                    <tabBarItem image="person.png" id="ryY-QH-U0W">
+                                    <tabBarItem tag="2" image="person.png" id="ryY-QH-U0W">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
-                                    <tabBarItem image="heart.png" id="Trc-tw-SnW">
+                                    <tabBarItem tag="3" image="heart.png" id="Trc-tw-SnW">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
-                                    <tabBarItem image="plus.png" id="Zve-kw-pQL">
+                                    <tabBarItem tag="4" image="plus.png" id="Zve-kw-pQL">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                                     </tabBarItem>
                                 </items>
@@ -1595,7 +1595,7 @@ Step3: Adda captivating description and post it!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Less" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J61-GL-F3x">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1608,7 +1608,7 @@ Step3: Adda captivating description and post it!</string>
                                     <constraint firstItem="J61-GL-F3x" firstAttribute="top" secondItem="p65-Ey-8fV" secondAttribute="top" id="Hbp-IF-QIb"/>
                                     <constraint firstItem="Rty-QD-fYM" firstAttribute="leading" secondItem="p65-Ey-8fV" secondAttribute="leading" constant="18" id="QhG-a1-85H"/>
                                     <constraint firstItem="J61-GL-F3x" firstAttribute="top" secondItem="al6-Vu-InN" secondAttribute="top" id="S2u-cc-Usm"/>
-                                    <constraint firstItem="J61-GL-F3x" firstAttribute="bottom" secondItem="p65-Ey-8fV" secondAttribute="bottomMargin" id="Wav-Lx-dcn"/>
+                                    <constraint firstItem="J61-GL-F3x" firstAttribute="bottom" secondItem="p65-Ey-8fV" secondAttribute="bottomMargin" constant="8" id="Wav-Lx-dcn"/>
                                     <constraint firstAttribute="bottom" secondItem="al6-Vu-InN" secondAttribute="bottom" constant="-5" id="fww-r7-QwW"/>
                                     <constraint firstItem="al6-Vu-InN" firstAttribute="leading" secondItem="J61-GL-F3x" secondAttribute="leading" id="iQr-od-iXs"/>
                                     <constraint firstAttribute="bottom" secondItem="Rty-QD-fYM" secondAttribute="bottom" constant="13" id="iZx-Z2-0dJ"/>
@@ -1625,7 +1625,6 @@ Step3: Adda captivating description and post it!</string>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-C3-N6l">
                                                 <rect key="frame" x="-1" y="22" width="62" height="62"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="62" id="MS5-Pz-ymE"/>
                                                     <constraint firstAttribute="width" constant="62" id="gQe-WJ-XIO"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="addPhotoAsset 1"/>
@@ -1637,7 +1636,6 @@ Step3: Adda captivating description and post it!</string>
                                                 <rect key="frame" x="70" y="22" width="62" height="62"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="62" id="3kq-1q-vEd"/>
-                                                    <constraint firstAttribute="height" constant="62" id="8KU-ro-jMJ"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
                                                 <connections>
@@ -1647,7 +1645,6 @@ Step3: Adda captivating description and post it!</string>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBO-lc-JOi">
                                                 <rect key="frame" x="141" y="22" width="62" height="62"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="62" id="AV7-yW-KEz"/>
                                                     <constraint firstAttribute="width" constant="62" id="DJh-jt-oI8"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
@@ -1670,7 +1667,6 @@ Step3: Adda captivating description and post it!</string>
                                                 <rect key="frame" x="283" y="22" width="62" height="62"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="62" id="e4C-7K-1kK"/>
-                                                    <constraint firstAttribute="height" constant="62" id="zqw-ge-noy"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="camera"/>
                                                 <connections>
@@ -1765,7 +1761,6 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstItem="Zfw-C3-N6l" firstAttribute="leading" secondItem="DL9-6j-Cm6" secondAttribute="leading" constant="-1" id="frP-sX-1Qq"/>
                                             <constraint firstItem="aW9-5v-VTH" firstAttribute="width" secondItem="mWY-41-xZO" secondAttribute="width" id="gPc-dC-Eyc"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="height" secondItem="Zfw-C3-N6l" secondAttribute="height" id="h1n-cd-9NF"/>
-                                            <constraint firstAttribute="height" constant="85" id="hyi-fO-Nfp"/>
                                             <constraint firstItem="SfC-QM-B04" firstAttribute="top" secondItem="8gv-s6-SPa" secondAttribute="top" id="iYb-hl-jvq"/>
                                             <constraint firstItem="ksC-jO-6an" firstAttribute="leading" secondItem="mWY-41-xZO" secondAttribute="trailing" constant="1" id="ivH-hf-6PD"/>
                                             <constraint firstItem="PMX-F3-PeA" firstAttribute="leading" secondItem="SfC-QM-B04" secondAttribute="trailing" constant="1" id="jAL-8O-0Wt"/>
@@ -1802,6 +1797,7 @@ Step3: Adda captivating description and post it!</string>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BRAND NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQq-l4-4WY" customClass="TextField" customModule="LismApp" customModuleProvider="target">
                                         <rect key="frame" x="16" y="144" width="343" height="53"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="53" id="Rp8-cN-U1a"/>
                                         </constraints>
@@ -1812,6 +1808,7 @@ Step3: Adda captivating description and post it!</string>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="PRODUCT NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMf-P2-DpG" customClass="TextField" customModule="LismApp" customModuleProvider="target">
                                         <rect key="frame" x="16" y="205" width="343" height="53"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="53" id="lAF-67-bpd"/>
                                         </constraints>
@@ -1894,7 +1891,7 @@ Step3: Adda captivating description and post it!</string>
                                                 <color key="textColor" red="0.1422139673998094" green="0.14295854314535816" blue="0.14295854314535816" alpha="0.69887126150306744" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing, I agree to the ListM Seller Terms." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wd-fQ-cYn">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing, I agree to the Lism Seller Terms." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wd-fQ-cYn">
                                                 <rect key="frame" x="16" y="225" width="342" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="HrK-Lc-VSz"/>
@@ -1906,6 +1903,7 @@ Step3: Adda captivating description and post it!</string>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-ex-srM" customClass="TextField" customModule="LismApp" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="32" width="111" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="111" id="gf4-hP-etv"/>
                                                 </constraints>
@@ -1926,6 +1924,7 @@ Step3: Adda captivating description and post it!</string>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v0N-l5-XT0" customClass="TextField" customModule="LismApp" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="120" width="111" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="5TZ-AX-oW3"/>
                                                     <constraint firstAttribute="width" constant="111" id="hbg-QO-H9K"/>
@@ -1990,6 +1989,7 @@ Step3: Adda captivating description and post it!</string>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mT6-54-sE0">
                                         <rect key="frame" x="16" y="266" width="344" height="106"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="0.1646876931" green="0.1647174954" blue="0.1646811664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
@@ -2017,13 +2017,17 @@ Step3: Adda captivating description and post it!</string>
                                     <constraint firstItem="wWW-SX-hTc" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="bottom" constant="20" id="Xuv-ik-NhG"/>
                                     <constraint firstItem="uQq-l4-4WY" firstAttribute="top" secondItem="wWW-SX-hTc" secondAttribute="bottom" constant="21" id="b7e-b4-5GA"/>
                                     <constraint firstItem="uQq-l4-4WY" firstAttribute="trailing" secondItem="YMf-P2-DpG" secondAttribute="trailing" id="emt-A8-sAx"/>
+                                    <constraint firstItem="wWW-SX-hTc" firstAttribute="top" secondItem="DL9-6j-Cm6" secondAttribute="bottom" constant="20" id="gny-mX-pbW"/>
+                                    <constraint firstItem="DL9-6j-Cm6" firstAttribute="leading" secondItem="AtQ-mD-4a3" secondAttribute="leading" constant="15" id="goH-6h-DH7"/>
                                     <constraint firstAttribute="trailing" secondItem="EIP-Je-XlP" secondAttribute="trailing" id="hgk-cB-ZRw"/>
                                     <constraint firstItem="EIP-Je-XlP" firstAttribute="leading" secondItem="4fJ-mw-s6e" secondAttribute="leading" id="hhq-kF-uVv"/>
                                     <constraint firstItem="mT6-54-sE0" firstAttribute="leading" secondItem="AtQ-mD-4a3" secondAttribute="leading" constant="16" id="kWR-8d-LAB"/>
                                     <constraint firstItem="uQq-l4-4WY" firstAttribute="leading" secondItem="YMf-P2-DpG" secondAttribute="leading" id="mZr-0e-L1j"/>
                                     <constraint firstItem="4fJ-mw-s6e" firstAttribute="top" secondItem="EIP-Je-XlP" secondAttribute="bottom" constant="8" id="mlt-UH-YwG"/>
+                                    <constraint firstAttribute="trailing" secondItem="DL9-6j-Cm6" secondAttribute="trailing" constant="15" id="nkl-zo-Js2"/>
                                     <constraint firstItem="wWW-SX-hTc" firstAttribute="trailing" secondItem="uQq-l4-4WY" secondAttribute="trailing" id="nmy-rg-yNr"/>
                                     <constraint firstItem="mT6-54-sE0" firstAttribute="top" secondItem="YMf-P2-DpG" secondAttribute="bottom" constant="8" id="o0F-RY-aUo"/>
+                                    <constraint firstItem="DL9-6j-Cm6" firstAttribute="top" secondItem="AtQ-mD-4a3" secondAttribute="top" id="o2y-rp-IpX"/>
                                     <constraint firstAttribute="trailing" secondItem="mT6-54-sE0" secondAttribute="trailing" constant="15" id="xq1-PX-dEy"/>
                                 </constraints>
                             </scrollView>
@@ -2195,7 +2199,7 @@ Step3: Adda captivating description and post it!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="B340FEFB-E0AD-451D-AE09-2ADBEFE5D727" width="2081" height="292">
+        <image name="D35B1C7C-C187-4340-B28E-375D1BD4AA47" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

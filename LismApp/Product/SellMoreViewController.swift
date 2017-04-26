@@ -83,10 +83,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         // This is for rounded corners
         self.mainColorsView.layer.cornerRadius = 10
         self.mainColorsView.layer.masksToBounds = true
-        loadInfo() {
-            print("Background Fetch Complete")
-        }
-        allButtons.append(addCamBtn1)
+                allButtons.append(addCamBtn1)
         allButtons.append(addCamBtn2)
         allButtons.append(addCamBtn3)
         allButtons.append(addCamBtn4)
@@ -99,6 +96,9 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         super.viewWillAppear(animated)
         self.viewHeightConstaint.constant = 115
         self.setUpDescriptionTextView()
+        loadInfo() {
+            print("Background Fetch Complete")
+        }
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -106,7 +106,15 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         self.progressBar.isHidden = true
 
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1060)
+        addCamBtn1.frame = CGRect(x: addCamBtn1.frame.origin.x, y: addCamBtn1.frame.origin.y, width: addCamBtn1.frame.size.width, height: addCamBtn1.frame.size.width)
+        addCamBtn2.frame = CGRect(x: addCamBtn2.frame.origin.x, y: addCamBtn1.frame.origin.y, width: addCamBtn1.frame.size.width, height: addCamBtn1.frame.size.width)
+         addCamBtn3.frame = CGRect(x: addCamBtn3.frame.origin.x, y: addCamBtn1.frame.origin.y, width: addCamBtn1.frame.size.width, height: addCamBtn1.frame.size.width)
+        addCamBtn4.frame = CGRect(x: addCamBtn4.frame.origin.x, y: addCamBtn1.frame.origin.y, width: addCamBtn1.frame.size.width, height: addCamBtn1.frame.size.width)
+        addCamBtn5.frame = CGRect(x: addCamBtn5.frame.origin.x, y: addCamBtn1.frame.origin.y, width: addCamBtn1.frame.size.width, height: addCamBtn1.frame.size.width)
+
+ 
         
+ 
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {

@@ -33,7 +33,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         // Do any additional setup after loading the view, typically from a nib.
         //  self.navigationController?.isNavigationBarHidden = true
         
-        self.getProductList()
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         imageView.contentMode = .scaleAspectFit
@@ -53,7 +52,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.automaticallyAdjustsScrollViewInsets = false
         tabBar.selectedItem = selectedTabBarItem
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getProductList()
+   
+    }
     func produceAttributedText(string: String, textView : UITextView)
     {
     
@@ -75,7 +77,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        self.progressView.isHidden = true
         
     }
     override func didReceiveMemoryWarning() {
@@ -95,7 +96,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
         
-        if(item.tag == 0)
+        if(item.tag == 1)
         {
             //load new view
             self.performSegue(withIdentifier: "ProductToSellView", sender: self)
@@ -115,7 +116,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
-            self.progressView.isHidden = true
             self.refresher.endRefreshing()
             
             if(error == nil)
@@ -131,7 +131,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 
                 self.loadFavoritesList()
             }
-            
+            else
+            {
+            Constants.showAlert(message: "Unable to load products.", view: self)
+            }
             
         }
 
@@ -155,6 +158,13 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
                 self.comapreToUpdateFavoriteProductsList()
             }
+            else
+            {
+                Constants.showAlert(message: "Unable to load products.", view: self)
+
+            }
+            self.progressView.isHidden = true
+
             
         }
         

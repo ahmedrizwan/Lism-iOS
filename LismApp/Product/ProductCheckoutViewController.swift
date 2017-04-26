@@ -47,6 +47,11 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
                     self.totalLabel.text = "¥ \(self.totalPrice)"
                     self.checkOutTableView.reloadData()
             }
+            else
+            {
+                Constants.showAlert(message: "Unable to load products.", view: self)
+
+            }
             
         }
         

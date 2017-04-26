@@ -39,7 +39,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.progressView.isHidden = true
+     //   self.progressView.isHidden = true
 
     }
     
@@ -88,6 +88,11 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
                 {
                     self.updateNoItemsDetailsView()
                 }
+            }
+            else
+            {
+                Constants.showAlert(message: "Unable to load products.", view: self)
+
             }
             
             
@@ -151,7 +156,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
         
-        if(item.tag == 0)
+        if(item.tag == 4)
         {
             //load new view
             self.performSegue(withIdentifier: "SellToProductView", sender: self)

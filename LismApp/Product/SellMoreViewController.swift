@@ -7,6 +7,19 @@ extension String {
         return self.substring(to: firstIndex).capitalized + self.substring(from: firstIndex).lowercased()
     }
 }
+// Put this piece of code anywhere you like
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate
 {
     
@@ -89,8 +102,29 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         allButtons.append(addCamBtn4)
         allButtons.append(addCamBtn5)
         
+        self.hideKeyboardWhenTappedAround()
+        
+    
         // Create and add the view to the screen.
     
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -692,22 +726,22 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     
             self.btnToUpdateText.setTitle(result.title!, for: .normal)
             self.btnToUpdateText.titleLabel?.text = result.title!
-            if(self.selectedCategoryBtn.titleLabel?.text == "Shoes" || self.selectedCategoryBtn.titleLabel?.text == "Clothing" || !self.sizesBtn.isHidden)
+            if(self.selectedCategoryBtn.titleLabel?.text == "Shoes" || self.selectedCategoryBtn.titleLabel?.text == "Clothing" )//|| !self.sizesBtn.isHidden)
             {
                 self.sizesBtnHeightConstaint.constant = self.selectedCategoryBtn.frame.size.height
                 self.sizesBtn.isHidden = false
         
-                 self.viewHeightConstaint.constant = 162
+                 self.viewHeightConstaint.constant = 165
                 
             }
-            else
+            else if(self.btnToUpdateText != self.sizesBtn)
             {
                 self.sizesBtnHeightConstaint.constant = 0
                 self.sizesBtn.isHidden = true
                 self.viewHeightConstaint.constant = 115
 
             }
-            self.view.updateConstraintsIfNeeded()
+            self.scrollView.updateConstraintsIfNeeded()
             if(value is NSArray)
             {
             self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])

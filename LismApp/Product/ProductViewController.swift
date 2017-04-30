@@ -51,9 +51,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.addShadowToView()
         self.automaticallyAdjustsScrollViewInsets = false
         tabBar.selectedItem = selectedTabBarItem
+        self.getProductList()
+
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.getProductList()
    
     }
     func produceAttributedText(string: String, textView : UITextView)
@@ -117,7 +118,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.refresher.endRefreshing()
-            
             if(error == nil)
             {
                 for obj in objects!

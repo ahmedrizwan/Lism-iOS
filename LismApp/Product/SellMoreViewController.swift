@@ -344,7 +344,8 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         if aTextView == descTextView && aTextView.text == PLACEHOLDER_TEXT
         {
             // move cursor to start
-            moveCursorToStart(aTextView: aTextView)
+            //moveCursorToStart(aTextView: aTextView)
+            aTextView.text = ""
         }
         return true
     }

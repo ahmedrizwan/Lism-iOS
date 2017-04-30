@@ -81,11 +81,13 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
                 if(self.items.count>0)
                 {
                     
-                self.sellButtonReference.setTitle("Sell More", for: .application)
+                self.sellButtonReference.setTitle("SELL MORE", for: .normal)
                 self.productsTableView.reloadData()
                 }
                 else
                 {
+                    self.sellButtonReference.setTitle("START SELLING", for: .normal)
+
                     self.updateNoItemsDetailsView()
                 }
             }

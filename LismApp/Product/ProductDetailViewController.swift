@@ -162,7 +162,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func updateProductDetails()
     {
-        
+        if(self.productBO.user.value(forKey: "profileImage") != nil)
+								{
         if let profileImage = self.productBO.user.value(forKey: "profileImage")
         {
         let parseFile = profileImage as! AVFile
@@ -173,6 +174,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
             })
             print("file exists");
         }
+					}
         favoriteBtn.isSelected = productBO.favorite
         likesLabel.text = "\(productBO.productLikes)"
         productNameLabel.text = productBO.brand

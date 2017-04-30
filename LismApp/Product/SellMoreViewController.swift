@@ -13,7 +13,26 @@ extension UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+
     
     func dismissKeyboard() {
         view.endEditing(true)
@@ -105,26 +124,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         self.hideKeyboardWhenTappedAround()
         
     
-        // Create and add the view to the screen.
-    
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -510,13 +510,14 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         product.setObject(self.brandTextfield.text!, forKey: "brand")
         product.setObject(colorsBtn.title(for: .normal)!, forKey: "color")
         product.setObject(AVUser.current(), forKey: "user")
+        product.setObject("Posted for Sale", forKey: "status")
+
         product.setObject(self.selectedCategoryBtn.title(for: .normal)!, forKey: "category")
         product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
         product.setObject(itemsConditionBtn.title(for: .normal)!, forKey: "condition")
         product.setObject(self.estimatedTextField.text!, forKey: "priceRetail")
         product.setObject(Int(self.sellingPriceTextField.text!)!, forKey: "priceSelling")
         
-        product.setObject("Posted for Sale", forKey: "status")
         product.setObject(0, forKey: "productLikes")
 
         //    presenter.onPostClick(v, product, imageFiles);

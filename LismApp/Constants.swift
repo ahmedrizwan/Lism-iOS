@@ -34,6 +34,7 @@ struct DeviceType
         view.present(alert, animated: true, completion: nil)
     }
     
+     static let USER_CART = "userCart"
  static let sell_is_more = "LESS IS MORE"
 static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
     static let selling_is_fast_and_easy = "SELLING IS FAST AND EASY"

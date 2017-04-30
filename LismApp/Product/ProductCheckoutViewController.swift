@@ -162,6 +162,16 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
     @IBAction func backbuttonAction(sender : AnyObject)
     {
     
-    self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ProductListToCheckOutAddressViewController") {
+            let viewController:CheckoutViewController = segue.destination as! CheckoutViewController
+            viewController.checkoutArray = self.checkoutArray
+            
+            // pass data to next view
+        }
+    }
+    
 }

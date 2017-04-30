@@ -178,7 +178,7 @@ class LoginViewController: UIViewController {
     }
     // MARK: - Keyboard
     
-    func keyboardWillShow(notification: NSNotification) {
+    override func keyboardWillShow(notification: NSNotification) {
         if(centerYStackView.constant == 0) {
             
             if let keyboardFrame = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]! as? CGRect {
@@ -192,7 +192,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    override func keyboardWillHide(notification: NSNotification) {
         centerYStackView.constant = 0.0
         UIView.animate(withDuration: 1.0) { 
             self.view.layoutIfNeeded()

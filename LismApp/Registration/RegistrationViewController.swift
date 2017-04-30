@@ -228,7 +228,7 @@ class RegistrationViewController: UIViewController {
     
     // MARK: - Keyboard
     
-    func keyboardWillShow(notification: NSNotification) {
+    override func keyboardWillShow(notification: NSNotification) {
         if(!keyboardIsShowing) {
             keyboardIsShowing = true
             
@@ -243,7 +243,7 @@ class RegistrationViewController: UIViewController {
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    override func keyboardWillHide(notification: NSNotification) {
         keyboardIsShowing = false
         centerYStackView.constant = 0.0
         UIView.animate(withDuration: 1.0) {

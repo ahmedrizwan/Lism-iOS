@@ -18,7 +18,7 @@ class CheckoutViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         checkoutArray.removeAll()
-        textViewForAddress.becomeFirstResponder()
+//        textViewForAddress.becomeFirstResponder()
         self.hideKeyboardWhenTappedAround()
     }
 

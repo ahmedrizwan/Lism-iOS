@@ -22,6 +22,11 @@ class CheckoutViewController: UIViewController
         self.hideKeyboardWhenTappedAround()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        progressView.isHidden = true
+
+    }
     @IBAction func backbuttonAction(sender : AnyObject)
     {
         
@@ -30,6 +35,8 @@ class CheckoutViewController: UIViewController
     
     @IBAction func continueCheckOutbuttonAction(sender : AnyObject)
     {
+        progressView.isHidden = false
+
         let relation =       AVUser.current()?.relation(forKey: Constants.USER_CART)
         relation?.query().findObjectsInBackground { (objects, error) in
             
@@ -46,7 +53,8 @@ class CheckoutViewController: UIViewController
                 self.avobjectsArray.append(obj as! AVObject)
             }
                 AVObject.saveAll(inBackground: self.avobjectsArray, block: { (objects, error) in
-                    
+                    self.progressView.isHidden = true
+
                     if error == nil
                     {
                         AVUser.current()?.saveInBackground({ (objects, error) in

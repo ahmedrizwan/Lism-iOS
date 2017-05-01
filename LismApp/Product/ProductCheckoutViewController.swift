@@ -23,10 +23,13 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
         //   let backImg: UIImage = (UIImage(named: "back_btn")
         self.navigationController?.navigationBar.isHidden = true
         
-        self.loadCheckoutProducts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadCheckoutProducts()
 
+    }
     func loadCheckoutProducts()
     {
         progressView.isHidden = false
@@ -70,7 +73,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
             {
                 self.totalPrice  =  self.totalPrice - productObj.sellingPrice
                 self.totalLabel.text = "¥ \( self.totalPrice )"
-
+                
                  self.checkoutArray.remove(at: item)
                 
                 self.checkOutTableView.reloadData()

@@ -20,7 +20,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var  productsTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     var  refresher = UIRefreshControl()
-    
+    var seelctedProductObj : Product!
     var items : [Product] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             
             if(error == nil)
             {
+                self.items.removeAll()
                 for obj in objects!
                 {
                     let productObj:Product =  obj as! Product
@@ -127,12 +128,20 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
+        cell.tag = indexPath.item
         cell.productStatusLabel.text = productObj.status
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
     
         
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        seelctedProductObj = self.items[indexPath.item]
+        //get product and move for edit
+        self.performSegue(withIdentifier: "SellToEditItemVc", sender: self)
+
     }
 
 
@@ -164,6 +173,14 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegue(withIdentifier: "SellToProductView", sender: self)
         }
         //This method will be called when user changes tab.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "SellToEditItemVc") {
+            let viewController:UpdatePostedItemForSaleViewController = segue.destination as! UpdatePostedItemForSaleViewController
+            viewController.productObj = seelctedProductObj
+            // pass data to next view
+        }
     }
     
 }

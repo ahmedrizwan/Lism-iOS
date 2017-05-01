@@ -47,12 +47,13 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     @IBOutlet weak var descTextView : UITextView!
     
     let PLACEHOLDER_TEXT = "PRODUCT DESCRIPTION"
-    
+    var primarySelected = false
     var selectedBtn = UIButton()
     var btnToUpdateText = UIButton()
     var crossBtnToEnable = UIButton()
     var nextBtnToEnable = UIButton()
-    
+    var deletedImages = UIButton()
+
     var colors :[String] = []
     var categories : [String: Any]!
     var sizes : [String: Any]!
@@ -68,6 +69,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     var colorsDictionary  : [String: String]!
     
     var arrayOFEnabledButtons = [UIButton]()
+    var arrayOFImagesToUpload = [UIButton]()
+
     var allButtons = [UIButton]()
     var itemToPostcount = 0
     var  productObj  : Product!
@@ -88,16 +91,16 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         
         self.hideKeyboardWhenTappedAround()
         
-        
+        self.setUpDescriptionTextView()
+        loadInfo() {
+            print("Background Fetch Complete")
+        }
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewHeightConstaint.constant = 115
-        self.setUpDescriptionTextView()
-        loadInfo() {
-            print("Background Fetch Complete")
-        }
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -127,19 +130,78 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         brandTextfield.layer.borderWidth = 1.0
         sellingPriceTextField.layer.borderWidth = 1.0
         estimatedTextField.layer.borderWidth = 1.0
-        
         descTextView.layer.borderColor = UIColor.gray.cgColor
         productNameTextfield.layer.borderColor = UIColor.gray.cgColor
         brandTextfield.layer.borderColor = UIColor.gray.cgColor
         sellingPriceTextField.layer.borderColor = UIColor.gray.cgColor
         estimatedTextField.layer.borderColor = UIColor.gray.cgColor
         
+        self.productNameTextfield.text = self.productObj.name
+        self.brandTextfield.text = self.productObj.brand
+        self.descTextView.text = self.productObj.prodcut_description
+
+
+        self.sellingPriceTextField.text = "\(self.productObj.sellingPrice)"
+        self.estimatedTextField.text = "\(self.productObj.priceRetail)"
+        self.selectedCategoryBtn.setTitle(self.productObj.category, for: .normal)
+        self.selectedCategoryBtn.titleLabel?.text = self.productObj.category
+
+        self.sizesBtn.setTitle(self.productObj.size, for: .normal)
+        self.sizesBtn.titleLabel?.text = self.productObj.size
+
+        
+        self.itemsConditionBtn.setTitle(self.productObj.condition, for: .normal)
+        self.itemsConditionBtn.titleLabel?.text = self.productObj.condition
+
+        
+        self.colorsBtn.setTitle(self.productObj.color, for: .normal)
+        self.colorsBtn.titleLabel?.text = self.productObj.color
+
+        if(productObj.productImageUrl != nil)
+        {
+            primarySelected = true
+            
+            self.updateImageViewStatus(buttonTOSet: addCamBtn1,crossButtonToEnable : crossBtn1,imageURL: self.productObj.productImageUrl)
+        }
+        
+        var index =  1
+        
+        for imageUrl in self.productObj.productImagesArray
+        {
+            if(index == 1)
+            {
+                self.updateImageViewStatus(buttonTOSet: addCamBtn2,crossButtonToEnable : crossBtn2 ,imageURL: imageUrl)
+            }
+            else if(index == 2)
+            {
+                self.updateImageViewStatus(buttonTOSet: addCamBtn3,crossButtonToEnable : crossBtn3,imageURL: imageUrl)
+            }
+            else if(index == 3)
+            {
+                self.updateImageViewStatus(buttonTOSet: addCamBtn4,crossButtonToEnable : crossBtn4 ,imageURL: imageUrl)
+            }
+            
+            else if(index == 4)
+            {
+                self.updateImageViewStatus(buttonTOSet: addCamBtn5,crossButtonToEnable : crossBtn5 ,imageURL: imageUrl)
+            }
+            
+            index = index + 1
+
+        }
         
         descTextView.layer.borderWidth = 1.0
         descTextView.delegate = self
-        applyPlaceholderStyle(aTextview: descTextView, placeholderText: PLACEHOLDER_TEXT)
+      
         
     }
+    func updateImageViewStatus(buttonTOSet : UIButton, crossButtonToEnable :UIButton, imageURL : URL )
+        {
+            buttonTOSet.sd_setBackgroundImage(with: imageURL, for: .normal)
+            self.crossBtnToEnable = crossButtonToEnable
+            arrayOFEnabledButtons.append(buttonTOSet)
+            self.enableNextButton()
+        }
     func loadInfo(completionHandler: (() -> Void)!) {
         self.loadBrandsInfo()
         self.loadColorsInfo()
@@ -170,6 +232,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     }
     @IBAction func crossButton1Action(sender : AnyObject)
     {
+        self.primarySelected = false
         self.clearImage(imageToClear: addCamBtn1, imageToDisable : crossBtn1)
     }
     @IBAction func crossButton2Action(sender : AnyObject)
@@ -196,11 +259,18 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     {
         imageToDisable.isHidden = true
         imageToClear.isUserInteractionEnabled = true
-        let indexOfButton = arrayOFEnabledButtons.index(of: imageToClear)
+        var indexOfButton = arrayOFEnabledButtons.index(of: imageToClear)
         if(indexOfButton != nil)
         {
             arrayOFEnabledButtons.remove(at: indexOfButton!)
         }
+        
+        indexOfButton = arrayOFImagesToUpload.index(of: imageToClear)
+        if(indexOfButton != nil)
+        {
+            arrayOFImagesToUpload.remove(at: indexOfButton!)
+        }
+
         let buttonToAdd = updateImageIfNotset()
         buttonToAdd.setBackgroundImage(UIImage(named :"addPhotoAsset 1"), for: .normal)
         //set all others as cam
@@ -262,7 +332,9 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     {
         self.selectedBtn = selectedBtn
         self.selectedBtn.isUserInteractionEnabled = false
+        
         arrayOFEnabledButtons.append(self.selectedBtn)
+        arrayOFImagesToUpload.append(self.selectedBtn)
         self.crossBtnToEnable = imageToEnable
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
@@ -276,6 +348,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         
+        
         if let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             selectedBtn.setBackgroundImage(chosenImage, for: .normal)
         } else if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -283,13 +356,17 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         } else {
             
         }
-        
+            self.enableNextButton()
+             dismiss(animated:true, completion: nil) //5
+    }
+    
+    func enableNextButton()
+    {
         self.nextBtnToEnable = updateImageIfNotset()
         nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .normal)
         self.crossBtnToEnable.isHidden = false
-        dismiss(animated:true, completion: nil) //5
+
     }
-    
     func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String)
     {
         // make it look (initially) like a placeholder
@@ -454,22 +531,19 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         if(self.checkIfAllDataSet())
         {
             postForSaleBtn.isUserInteractionEnabled = false
-            self.itemToPostcount = arrayOFEnabledButtons.count
-            productObj = self.uploadProductWithImage()
+            self.itemToPostcount = arrayOFImagesToUpload.count
             // All done!
             progressBar.isHidden = false
-            for imageBtn in arrayOFEnabledButtons
+            for imageBtn in arrayOFImagesToUpload
             {
-                
                 self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
             }
             
         }
         
     }
-    func uploadProductWithImage() -> Product
+    func uploadProductWithImage(product:AVObject) -> Product
     {
-        let product = Product()
         product.setObject(self.productNameTextfield.text, forKey: "name")
         product.setObject(self.descTextView.text, forKey: "description")
         product.setObject(self.brandTextfield.text!, forKey: "brand")
@@ -486,13 +560,19 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         product.setObject(0, forKey: "productLikes")
         
         //    presenter.onPostClick(v, product, imageFiles);
-        return product
+        return product as! Product
         //self.saveProductWithImage(productBO: product, imagesObject: imageObjects)
     }
     func saveProductWithImage(productBO : Product, imagesObject : AVObject )
     {
         productBO.relation(forKey: "images").add(imagesObject)
-        productBO.saveInBackground  { (objects, error) in
+        let query: AVQuery = AVQuery(className: "Product")
+        query.whereKey("objectId", equalTo: self.productObj.objectId!)
+        query.getFirstObjectInBackground { (object, error) in
+            
+            var productInfo = object
+            productInfo = self.uploadProductWithImage(product : self.productObj)
+        productInfo?.saveInBackground  { (objects, error) in
             if(error == nil)
             {
                 if(self.itemToPostcount == 0)
@@ -519,7 +599,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             }
             
             
-            
+            }
         }
     }
     
@@ -531,8 +611,9 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             if(error == nil)
             {
                 self.itemToPostcount = self.itemToPostcount - 1
-                if(self.itemToPostcount + 1 == self.arrayOFEnabledButtons.count )
+                if( !self.primarySelected )
                 {
+                    self.primarySelected = true
                     self.primaryImageUploaded(imageFile: imageFile, product: product , isPrimary: true)
                     //self.uploadProductWithImage(imageObjects: imageFile)
                 }

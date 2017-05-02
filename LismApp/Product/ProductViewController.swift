@@ -28,6 +28,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var productsCollectionView : UICollectionView!
     var lastScrollPos : CGPoint!
     var  refresher = UIRefreshControl()
+    var isLoaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -77,7 +78,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        if( self.isLoaded)
+        {
+        self.progressView.isHidden = true
+        }
         
     }
     override func didReceiveMemoryWarning() {
@@ -150,6 +154,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
+                self.isLoaded = true
                 for obj in objects!
                 {
                     let productObj:Product =  obj as! Product

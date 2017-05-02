@@ -7,10 +7,22 @@
 //
 import AVOSCloud
 import Foundation
+extension UINavigationController {
+    
+    func backToViewController(viewController: Swift.AnyClass) {
+        
+        for element in viewControllers as Array {
+            if element.isKind(of: viewController) {
+                self.popToViewController(element, animated: true)
+                break
+            }
+        }
+    }
+}
 class CheckoutViewController: UIViewController
 {
     @IBOutlet weak var progressView : UIActivityIndicatorView!
-
+    @IBOutlet var addressButton : UIButton!
     @IBOutlet var textViewForAddress : UITextView!
     var checkoutArray : [Product] = []
     var avobjectsArray : [AVObject] = []
@@ -24,6 +36,11 @@ class CheckoutViewController: UIViewController
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        progressView.isHidden = true
+        addressButton.isSelected = true
+    }
+    override func  viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         progressView.isHidden = true
 
     }
@@ -61,7 +78,16 @@ class CheckoutViewController: UIViewController
 
                             if error == nil
                             {
-                            Constants.showAlert(message: "Order placed (without payment)!", view: self)
+                            
+                                let alert = UIAlertController(title: "",message:"Order placed (without payment)!",
+                                                              preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK",
+                                                            style: UIAlertActionStyle.default,
+                                                            handler: {(alert: UIAlertAction!) in self.navigationController?.backToViewController(viewController: ProductViewController.self)}))
+                                self.present(alert, animated: true, completion: nil)
+                                ///redirect to main view
+                                
+
                             }
                         })
                     

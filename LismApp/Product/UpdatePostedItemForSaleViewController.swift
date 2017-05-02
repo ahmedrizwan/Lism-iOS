@@ -70,6 +70,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     
     var arrayOFEnabledButtons = [UIButton]()
     var arrayOFImagesToUpload = [UIButton]()
+    var arrayOFImagesToRemove = [UIButton]()
 
     var allButtons = [UIButton]()
     var itemToPostcount = 0
@@ -161,7 +162,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         {
             primarySelected = true
             
-            self.updateImageViewStatus(buttonTOSet: addCamBtn1,crossButtonToEnable : crossBtn1,imageURL: self.productObj.productImageUrl)
+           // self.updateImageViewStatus(buttonTOSet: addCamBtn1,crossButtonToEnable : crossBtn1,imageURL: self.productObj.productImageUrl)
         }
         
         var index =  1
@@ -170,18 +171,23 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         {
             if(index == 1)
             {
-                self.updateImageViewStatus(buttonTOSet: addCamBtn2,crossButtonToEnable : crossBtn2 ,imageURL: imageUrl)
+                self.updateImageViewStatus(buttonTOSet: addCamBtn1,crossButtonToEnable : crossBtn1 ,imageURL: imageUrl)
             }
             else if(index == 2)
             {
-                self.updateImageViewStatus(buttonTOSet: addCamBtn3,crossButtonToEnable : crossBtn3,imageURL: imageUrl)
+                self.updateImageViewStatus(buttonTOSet: addCamBtn2,crossButtonToEnable : crossBtn2,imageURL: imageUrl)
             }
             else if(index == 3)
+            {
+                self.updateImageViewStatus(buttonTOSet: addCamBtn3,crossButtonToEnable : crossBtn3 ,imageURL: imageUrl)
+            }
+            
+            else if(index == 4)
             {
                 self.updateImageViewStatus(buttonTOSet: addCamBtn4,crossButtonToEnable : crossBtn4 ,imageURL: imageUrl)
             }
             
-            else if(index == 4)
+            else if(index == 5)
             {
                 self.updateImageViewStatus(buttonTOSet: addCamBtn5,crossButtonToEnable : crossBtn5 ,imageURL: imageUrl)
             }
@@ -263,6 +269,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         if(indexOfButton != nil)
         {
             arrayOFEnabledButtons.remove(at: indexOfButton!)
+            arrayOFImagesToRemove.append(imageToClear)
         }
         
         indexOfButton = arrayOFImagesToUpload.index(of: imageToClear)
@@ -485,6 +492,13 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             return false
             
         }
+        if(primarySelected == false)
+        {
+            self.showAlert(error: "Please select primary image")
+            
+            return false
+            
+        }
         
         if((colorsBtn.title(for: .normal)!) == "SELECT COLOR")
         {
@@ -534,6 +548,10 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             self.itemToPostcount = arrayOFImagesToUpload.count
             // All done!
             progressBar.isHidden = false
+            for imageBtn in arrayOFImagesToRemove
+            {
+                self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
+            }
             for imageBtn in arrayOFImagesToUpload
             {
                 self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
@@ -605,6 +623,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     
     func uploadImageViewController(scaledImage: UIImage , product : Product)
     {
+        
         let imageData = UIImagePNGRepresentation(scaledImage)
         let imageFile:AVFile = AVFile(data: imageData!)
         imageFile.saveInBackground { (status, error) in

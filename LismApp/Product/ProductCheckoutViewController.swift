@@ -39,6 +39,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
             self.progressView.isHidden = true
             if(error == nil)
             {
+                self.checkoutArray.removeAll()
                 for obj in objects!
                 {
                     let productObj:Product =  obj as! Product

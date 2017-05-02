@@ -81,7 +81,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 
     @IBOutlet weak var postForSaleBtn : UIButton!
      @IBOutlet weak var descTextView : UITextView!
-
+    var isPrimary = false
     let PLACEHOLDER_TEXT = "PRODUCT DESCRIPTION"
 
     var selectedBtn = UIButton()
@@ -444,6 +444,13 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             return false
             
         }
+        if(isPrimary == false)
+        {
+            self.showAlert(error: "Please select primary image")
+            
+            return false
+            
+        }
         
         if((colorsBtn.title(for: .normal)!) == "SELECT COLOR")
         {
@@ -593,6 +600,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         object.saveInBackground  {(status, error) in
         if(error == nil)
         {
+            self.isPrimary = true
             //uploaded sucess fully
             if(isPrimary)
             {

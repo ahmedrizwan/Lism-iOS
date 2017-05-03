@@ -2,7 +2,6 @@
 import Foundation
 import AVOSCloud
 
-
 class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate , UIGestureRecognizerDelegate
 {
     
@@ -751,16 +750,23 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             {
                 self.categories = self.convertToDictionary(text:(objects?[0] as! AVObject).value(forKey: "value") as! String)!
                 for (_, value) in self.categories {
+                 
                     print("key: \(value)")
+                    if (value is NSArray )
+                    {
+                
+                  //  self.sizes = (value as! NSArray )["sizes"]  as! [String: Any]
+                    
+                    }
                 }
             }
+        }
             
             self.loadItemsConditionInfo(completionHandler: completionHandler)
 
             
-        }
-        
     }
+    
     func convertToDictionary(text: String) ->[String: Any]? {
         if let data = text.data(using: .utf8) {
             do {

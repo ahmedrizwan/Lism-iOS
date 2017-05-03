@@ -31,6 +31,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //if no items posted for sale so far then we will show no items details view
     tabBar.selectedItem = selectedTabBarItem
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -139,9 +140,17 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         seelctedProductObj = self.items[indexPath.item]
+        if(seelctedProductObj.status == "Posted for Sale")
+        {
         //get product and move for edit
         self.performSegue(withIdentifier: "SellToEditItemVc", sender: self)
-
+        }
+        else
+        {
+        Constants.showAlert(message: "You cannot edit sold product", view: self)
+        }
+        
+        
     }
 
 

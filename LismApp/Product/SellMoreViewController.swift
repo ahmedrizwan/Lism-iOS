@@ -39,7 +39,7 @@ extension UIViewController {
     }
 }
 
-class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate
+class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIGestureRecognizerDelegate
 {
     
     @IBOutlet weak var colorsTableView : UITableView!
@@ -90,8 +90,9 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     var nextBtnToEnable = UIButton()
 
     var colors :[String] = []
-    var categories : [String: Any]!
-    var sizes : [String: Any]!
+    var categories : [String: Any] = ["" : ""]
+    var sizes : [String: Any] = ["" : ""]
+    
 
      var isShoesOrClothing = false
     
@@ -124,8 +125,13 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         
         self.hideKeyboardWhenTappedAround()
         
+     
+    }
     
-
+    @IBAction func closeTableView(sender : AnyObject)
+    {
+        colorsTableViewParent.isHidden = true;
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -521,7 +527,10 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         product.setObject("Posted for Sale", forKey: "status")
 
         product.setObject(self.selectedCategoryBtn.title(for: .normal)!, forKey: "category")
-        product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
+        if(self.sizesBtn.title(for: .normal) == "SIZE")
+        {
+            product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
+        }
         product.setObject(itemsConditionBtn.title(for: .normal)!, forKey: "condition")
         product.setObject(self.estimatedTextField.text!, forKey: "priceRetail")
         product.setObject(Int(self.sellingPriceTextField.text!)!, forKey: "priceSelling")

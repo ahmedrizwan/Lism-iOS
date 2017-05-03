@@ -3,7 +3,7 @@ import Foundation
 import AVOSCloud
 
 
-class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate
+class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate , UIGestureRecognizerDelegate
 {
     
     @IBOutlet weak var colorsTableView : UITableView!
@@ -55,8 +55,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     var deletedImages = UIButton()
 
     var colors :[String] = []
-    var categories : [String: Any]!
-    var sizes : [String: Any]!
+    var categories : [String: Any] = ["" : ""]
+    var sizes : [String: Any] = ["" : ""]
     
     var isShoesOrClothing = false
     
@@ -75,6 +75,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     var allButtons = [UIButton]()
     var itemToPostcount = 0
     var  productObj  : Product!
+    var firstTime = true
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
@@ -92,17 +93,24 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         
         self.hideKeyboardWhenTappedAround()
         
-        loadInfo() {
-            print("Background Fetch Complete")
         }
-        self.setUpDescriptionTextView()
 
-        
+    @IBAction func closeTableView(sender : AnyObject)
+    {
+        colorsTableViewParent.isHidden = true;
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if(firstTime)
+        {
         self.viewHeightConstaint.constant = 115
-
+        loadInfo() {
+            print("Background Fetch Complete")
+            self.firstTime = false
+        }
+        self.setUpDescriptionTextView()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -147,10 +155,25 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         self.selectedCategoryBtn.setTitle(self.productObj.category, for: .normal)
         self.selectedCategoryBtn.titleLabel?.text = self.productObj.category
 
-        self.sizesBtn.setTitle(self.productObj.size, for: .normal)
-        self.sizesBtn.titleLabel?.text = self.productObj.size
+       
 
         
+        if(self.productObj.size != "")//|| !self.sizesBtn.isHidden)
+        {
+            self.sizesBtnHeightConstaint.constant = self.selectedCategoryBtn.frame.size.height
+            self.sizesBtn.isHidden = false
+            
+            self.viewHeightConstaint.constant = 165
+            self.sizesBtn.setTitle(self.productObj.size, for: .normal)
+            self.sizesBtn.titleLabel?.text = self.productObj.size
+        }
+        else
+        {
+            self.sizesBtnHeightConstaint.constant = 0
+            self.sizesBtn.isHidden = true
+            self.viewHeightConstaint.constant = 115
+            
+        }
         self.itemsConditionBtn.setTitle(self.productObj.condition, for: .normal)
         self.itemsConditionBtn.titleLabel?.text = self.productObj.condition
 
@@ -209,11 +232,9 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             self.enableNextButton()
         }
     func loadInfo(completionHandler: (() -> Void)!) {
-        self.loadBrandsInfo()
-        self.loadColorsInfo()
-        self.loadCategoriesInfo()
-        self.loadItemsConditionInfo()
-        completionHandler()
+        self.loadBrandsInfo(completionHandler: completionHandler)
+       
+//
     }
     func createColrosDict()
     {
@@ -593,7 +614,10 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         product.setObject("Posted for Sale", forKey: "status")
         
         product.setObject(self.selectedCategoryBtn.title(for: .normal)!, forKey: "category")
+        if(self.sizesBtn.title(for: .normal) == "SIZE")
+        {
         product.setObject(self.sizesBtn.title(for: .normal)!, forKey: "size")
+        }
         product.setObject(itemsConditionBtn.title(for: .normal)!, forKey: "condition")
         product.setObject(self.estimatedTextField.text!, forKey: "priceRetail")
         product.setObject(Int(self.sellingPriceTextField.text!)!, forKey: "priceSelling")
@@ -718,7 +742,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     }
     
     
-    func loadCategoriesInfo()
+    func loadCategoriesInfo(completionHandler: (() -> Void)!)
     {
         
         let query: AVQuery = AVQuery(className: "Category")
@@ -731,6 +755,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                 }
             }
             
+            self.loadItemsConditionInfo(completionHandler: completionHandler)
+
             
         }
         
@@ -747,7 +773,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     }
     
     
-    func loadBrandsInfo()
+    func loadBrandsInfo(completionHandler: (() -> Void)!)
     {
         
         let query: AVQuery = AVQuery(className: "Brand")
@@ -757,11 +783,11 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                 self.brands = objects as! [AVObject]
             }
             
-            
-        }
+            self.loadColorsInfo(completionHandler: completionHandler)
+                   }
         
     }
-    func loadColorsInfo()
+    func loadColorsInfo(completionHandler: (() -> Void)!)
     {
         
         
@@ -776,12 +802,14 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                     self.colors.append(objectColor.value(forKey: "value") as! String)
                 }
             }
+            self.loadCategoriesInfo(completionHandler : completionHandler)
+           
             
             
         }
         
     }
-    func loadItemsConditionInfo()
+    func loadItemsConditionInfo(completionHandler: (() -> Void)!)
     {
         
         let query: AVQuery = AVQuery(className: "ItemConditions")
@@ -794,7 +822,7 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                 
             }
             
-            
+             completionHandler()
             
         }
     }

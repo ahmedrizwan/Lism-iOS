@@ -44,7 +44,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
                 {
                     let productObj:Product =  obj as! Product
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.relation.add(productObj)
+                   // self.relation.add(productObj)
                     self.totalPrice =  self.totalPrice + productObj.sellingPrice
                     self.checkoutArray.append(productObj)
                 }

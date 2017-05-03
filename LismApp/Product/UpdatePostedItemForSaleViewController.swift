@@ -92,17 +92,17 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         
         self.hideKeyboardWhenTappedAround()
         
-        self.setUpDescriptionTextView()
         loadInfo() {
             print("Background Fetch Complete")
         }
+        self.setUpDescriptionTextView()
 
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewHeightConstaint.constant = 115
-        
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -363,6 +363,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         } else {
             
         }
+        self.primarySelected = true
+
             self.enableNextButton()
              dismiss(animated:true, completion: nil) //5
     }
@@ -492,9 +494,9 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             return false
             
         }
-        if(primarySelected == false)
+        if(arrayOFEnabledButtons.count == 0 && arrayOFImagesToUpload.count == 0)
         {
-            self.showAlert(error: "Please select primary image")
+            self.showAlert(error: "Please upload atleast one image")
             
             return false
             
@@ -550,11 +552,32 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
             progressBar.isHidden = false
             for imageBtn in arrayOFImagesToRemove
             {
-                self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
+           let btnUrl =  imageBtn.sd_imageURL(for: .normal)
+                for avImageObject in  self.productObj.productImagesObjects
+                {
+                    if let productImageUrl = avImageObject.object(forKey: "imageUrl")
+                       
+                        {
+                            if(URL(string: productImageUrl as! String) ==  btnUrl)
+                            {
+                                self.productObj.relation(forKey: "images").remove(avImageObject)
+
+                            }
+                        }
+
+                }
             }
+            if(arrayOFImagesToUpload.count>0)
+            {
             for imageBtn in arrayOFImagesToUpload
             {
                 self.uploadImageViewController(scaledImage: imageBtn.backgroundImage(for: .normal)!,product: productObj )
+            }
+            }
+            else
+            {
+                self.saveProductWithImage(productBO: self.productObj , imagesObject : AVObject())
+
             }
             
         }
@@ -583,7 +606,6 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     }
     func saveProductWithImage(productBO : Product, imagesObject : AVObject )
     {
-        productBO.relation(forKey: "images").add(imagesObject)
         let query: AVQuery = AVQuery(className: "Product")
         query.whereKey("objectId", equalTo: self.productObj.objectId!)
         query.getFirstObjectInBackground { (object, error) in
@@ -632,12 +654,12 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                 self.itemToPostcount = self.itemToPostcount - 1
                 if( !self.primarySelected )
                 {
-                    self.primarySelected = true
                     self.primaryImageUploaded(imageFile: imageFile, product: product , isPrimary: true)
                     //self.uploadProductWithImage(imageObjects: imageFile)
                 }
                 else
                 {
+
                     self.productImageUploaded(imageFile: imageFile, product: product)
                 }
                 //uploaded sucess fully
@@ -661,7 +683,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                 if(isPrimary)
                 {
                     product.setObject(imageFile.url!, forKey: "primaryImageUrl")
-                    
+                    product.relation(forKey: "images").add(object)
+   
                 }
                 self.saveProductWithImage(productBO: product , imagesObject : object)
             }
@@ -676,7 +699,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         object.saveInBackground  {(status, error) in
             if(error == nil)
             {
-                
+                product.relation(forKey: "images").add(object)
+
                 self.saveProductWithImage(productBO: product , imagesObject : object)
             }
         }

@@ -60,14 +60,14 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     {
         
         
-        
+        self.view.isUserInteractionEnabled = false
         let query: AVQuery = (AVUser.current()?.relation(forKey: "sellProducts").query())!
         query.includeKey("user")
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
             self.refresher.endRefreshing()
-            
+            self.view.isUserInteractionEnabled = true
             if(error == nil)
             {
                 self.items.removeAll()

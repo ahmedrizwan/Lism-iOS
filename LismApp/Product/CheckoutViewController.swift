@@ -24,8 +24,9 @@ class CheckoutViewController: UIViewController
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet var addressButton : UIButton!
     @IBOutlet var textViewForAddress : UITextView!
-    var checkoutArray : [Product] = []
+    var checkoutArray : [AVObject] = []
     var avobjectsArray : [AVObject] = []
+    let relation = (AVUser.current()?.relation(forKey: "userCart"))! as AVRelation
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,29 +54,35 @@ class CheckoutViewController: UIViewController
     @IBAction func continueCheckOutbuttonAction(sender : AnyObject)
     {
         progressView.isHidden = false
-
-        let relation =       AVUser.current()?.relation(forKey: Constants.USER_CART)
-        relation?.query().findObjectsInBackground { (objects, error) in
+      
+        
+        let query: AVQuery = relation.query()
+        query.includeKey("user")
+        query.findObjectsInBackground { (objects, error) in
             
             if error == nil
             {
+              
             for obj in objects!
             {
-                relation?.remove(obj as! AVObject)
+
+                self.relation.remove(obj as! AVObject)
+
+                self.checkoutArray.append(obj as! AVObject)
                 let productObj:Product =  obj as! Product
-                productObj.setObject(AVUser.current(), forKey: "user")
+                productObj.setObject(AVUser.current(), forKey: "buyingUser")
+
                 productObj.setObject("Waiting to be Sent", forKey: "status")
                 productObj.setObject(self.textViewForAddress.text, forKey: "address")
-                self.checkoutArray.append(productObj)
-                self.avobjectsArray.append(obj as! AVObject)
+                self.avobjectsArray.append(productObj)
             }
-                AVObject.saveAll(inBackground: self.avobjectsArray, block: { (objects, error) in
-                    self.progressView.isHidden = true
+                
+                AVObject.saveAll(inBackground:  self.avobjectsArray, block: { (objects, error) in
 
                     if error == nil
                     {
-                        AVUser.current()?.saveInBackground({ (objects, error) in
-
+                       (AVUser.current())?.saveInBackground{ (objects, error) in
+                            
                             if error == nil
                             {
                             
@@ -89,7 +96,9 @@ class CheckoutViewController: UIViewController
                                 
 
                             }
-                        })
+                            self.progressView.isHidden = true
+
+                        }
                     
                     }
                 })

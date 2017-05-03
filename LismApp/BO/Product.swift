@@ -25,6 +25,8 @@ class Product: AVObject, AVSubclassing {
     var isAddedToCheckOut: Bool = true
 
     var user : AVUser!
+    var productImagesObjects : [AVObject] = []
+
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
     var queryObj: AVQuery!
@@ -51,6 +53,7 @@ class Product: AVObject, AVSubclassing {
                 if let productImageUrl = avImageObject.object(forKey: "imageUrl") {
                      self.productImageUrl =   URL(string: productImageUrl as! String)
                     self.productImagesArray.append( self.productImageUrl)
+                    self.productImagesObjects.append(avImageObject)
                 }
                 
             }
@@ -86,8 +89,8 @@ class Product: AVObject, AVSubclassing {
             self.updatedAtValue = updatedAtValue as! Date
         }
         
-        if let prod_desc = dict.value(forKey: "description") {
-            self.prodcut_description = "This small and cute handbag is perfect for going shopping with all your besties!"//prod_desc as! String
+        if let prod_desc = dict["description"] {
+            self.prodcut_description = prod_desc as! String
         }
 
         if let priceRetail = dict.value(forKey: "priceRetail") {

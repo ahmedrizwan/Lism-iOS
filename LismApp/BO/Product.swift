@@ -25,6 +25,8 @@ class Product: AVObject, AVSubclassing {
     var isAddedToCheckOut: Bool = true
 
     var user : AVUser!
+    var buyingUser : AVUser!
+
     var productImagesObjects : [AVObject] = []
 
     var productImageUrl: URL!
@@ -127,6 +129,11 @@ class Product: AVObject, AVSubclassing {
         if let user = dict.value(forKey: "user") {
             self.user = user as! AVUser
            
+        }
+        
+        if let user = dict.value(forKey: "buyingUser") {
+            self.buyingUser = user as! AVUser
+            
         }
         if let condition = dict.value(forKey: "condition") {
             self.condition = condition as! String

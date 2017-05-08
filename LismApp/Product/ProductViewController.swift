@@ -118,6 +118,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("images")
         query.includeKey("user")
         query.includeKey("userLikes")
+        query.includeKey("buyingUser")
+
         query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in

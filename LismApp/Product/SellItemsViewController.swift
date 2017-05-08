@@ -147,7 +147,8 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else
         {
-        Constants.showAlert(message: "You cannot edit sold product", view: self)
+             self.performSegue(withIdentifier: "WaitingToSentToUpdateViewController", sender: self)
+       // Constants.showAlert(message: "You cannot edit sold product", view: self)
         }
         
         
@@ -190,6 +191,12 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             viewController.productObj = seelctedProductObj
             // pass data to next view
         }
+        else if (segue.identifier == "WaitingToSentToUpdateViewController") {
+            let viewController:UpdateWaitingtoBeSentStatus = segue.destination as! UpdateWaitingtoBeSentStatus
+            viewController.productObj = seelctedProductObj
+            // pass data to next view
+        }
+        
     }
     
 }

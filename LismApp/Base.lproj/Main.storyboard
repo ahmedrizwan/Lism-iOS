@@ -639,7 +639,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="90568B99-2681-4256-B513-5EE4FA64E399" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="397A6A27-3984-48F8-9A40-520DFA05E90C" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1514,9 +1514,6 @@ Step3: Adda captivating description and post it!</string>
                                 <state key="normal" title="START SELLING">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="9QG-5S-z0u" kind="show" identifier="WaitingToSentToUpdateViewController" id="Hyn-4J-IQH"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1558,16 +1555,18 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="tabBar" destination="JyC-8w-Uma" id="cen-Fa-CXC"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="SellToProductView" id="L3M-j5-nQY"/>
                         <segue destination="get-zm-3Aq" kind="show" identifier="SellToEditItemVc" id="dsA-C6-Za7"/>
-                        <segue destination="Vxl-Pt-udi" kind="show" id="4A3-eO-F6e"/>
+                        <segue destination="Vxl-Pt-udi" kind="show" identifier="WaitingToSentToUpdateViewController" id="4A3-eO-F6e"/>
+                        <segue destination="9QG-5S-z0u" kind="show" id="uie-eP-1Q9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swZ-0h-k7n" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="378"/>
+            <point key="canvasLocation" x="1772" y="412"/>
         </scene>
         <!--Sell More View Controller-->
         <scene sceneID="nEh-FD-2pD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2kM-Bs-xBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SellMoreViewController" id="9QG-5S-z0u" customClass="SellMoreViewController" customModule="LismApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4k2-p0-QsT"/>
@@ -2214,9 +2213,8 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="viewHeightConstaint" destination="uK3-dY-2Gp" id="hK2-Ot-fco"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2kM-Bs-xBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="1007.9460269865068"/>
+            <point key="canvasLocation" x="-274" y="1278"/>
         </scene>
         <!--CheckoutViewController-->
         <scene sceneID="cnj-t8-E1k">
@@ -3100,10 +3098,10 @@ Step3: Adda captivating description and post it!</string>
             </objects>
             <point key="canvasLocation" x="-122.40000000000001" y="440.32983508245883"/>
         </scene>
-        <!--Update Waitingto Be Sent Status-->
+        <!--UpdateWaitingtoBeSentStatus-->
         <scene sceneID="k0U-rb-TOc">
             <objects>
-                <viewController storyboardIdentifier="UpdateWaitingtoBeSentStatus" id="Vxl-Pt-udi" customClass="UpdateWaitingtoBeSentStatus" customModule="LismApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateWaitingtoBeSentStatus" id="Vxl-Pt-udi" userLabel="UpdateWaitingtoBeSentStatus" customClass="UpdateWaitingtoBeSentStatus" customModule="LismApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iAl-0n-xJK"/>
                         <viewControllerLayoutGuide type="bottom" id="ct1-VZ-iBR"/>
@@ -3147,23 +3145,7 @@ Step3: Adda captivating description and post it!</string>
                                     <outlet property="delegate" destination="Vxl-Pt-udi" id="vir-F7-EMI"/>
                                 </connections>
                             </tabBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-8b-DP4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topbarimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="DtB-Ck-V2c">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="DtB-Ck-V2c" firstAttribute="leading" secondItem="aNw-8b-DP4" secondAttribute="leading" id="Y3f-49-fED"/>
-                                    <constraint firstAttribute="trailing" secondItem="DtB-Ck-V2c" secondAttribute="trailing" id="e4f-qN-fyF"/>
-                                    <constraint firstAttribute="height" constant="64" id="mUX-Xd-OJa"/>
-                                    <constraint firstAttribute="bottom" secondItem="DtB-Ck-V2c" secondAttribute="bottom" constant="-5" id="rtG-6u-ld0"/>
-                                    <constraint firstItem="DtB-Ck-V2c" firstAttribute="top" secondItem="aNw-8b-DP4" secondAttribute="top" id="uFb-wF-Qc5"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I30-fY-TRm">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I30-fY-TRm">
                                 <rect key="frame" x="0.0" y="66" width="375" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMU-cL-sKb">
@@ -3279,29 +3261,77 @@ Step3: Adda captivating description and post it!</string>
                                     <action selector="confirmDilveryActionWithSender:" destination="Vxl-Pt-udi" eventType="touchUpInside" id="0fK-iP-ZUT"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruS-hu-1m2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topbarimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="PXe-Ok-ORV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="MrC-XT-o4B"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="full_logo_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="tgG-pR-aaa">
+                                        <rect key="frame" x="168" y="18" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Orf-us-2yB"/>
+                                            <constraint firstAttribute="height" constant="40" id="RX6-gY-F7K"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="fpo-gK-wNJ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="tuv-lR-1kH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCe-MM-A6E">
+                                        <rect key="frame" x="18" y="34" width="23" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="3Pd-Y3-VAd"/>
+                                            <constraint firstAttribute="height" constant="16" id="8kL-sg-bdG"/>
+                                            <constraint firstAttribute="width" constant="23" id="iTk-uw-wYY"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="vkC-8B-5nM"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="back_btn.png"/>
+                                        <connections>
+                                            <action selector="gobackActionWithSender:" destination="Vxl-Pt-udi" eventType="touchUpInside" id="5Yd-Kf-ih5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="PXe-Ok-ORV" firstAttribute="leading" secondItem="ruS-hu-1m2" secondAttribute="leading" id="8Uq-Y2-nCM"/>
+                                    <constraint firstAttribute="bottom" secondItem="PXe-Ok-ORV" secondAttribute="bottom" id="K8Z-73-NQk"/>
+                                    <constraint firstAttribute="height" constant="64" id="R9v-ck-p3E"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="XB1-UE-LMX"/>
+                                    <constraint firstItem="YCe-MM-A6E" firstAttribute="leading" secondItem="ruS-hu-1m2" secondAttribute="leading" constant="18" id="XFl-hC-IaE"/>
+                                    <constraint firstItem="tgG-pR-aaa" firstAttribute="centerX" secondItem="ruS-hu-1m2" secondAttribute="centerX" id="dkF-vY-bJG"/>
+                                    <constraint firstItem="PXe-Ok-ORV" firstAttribute="top" secondItem="ruS-hu-1m2" secondAttribute="top" id="fiK-xg-bga"/>
+                                    <constraint firstAttribute="bottom" secondItem="tgG-pR-aaa" secondAttribute="bottom" constant="6" id="k3d-NW-uJH"/>
+                                    <constraint firstAttribute="bottom" secondItem="YCe-MM-A6E" secondAttribute="bottom" constant="14" id="kqO-tt-1QC"/>
+                                    <constraint firstAttribute="trailing" secondItem="PXe-Ok-ORV" secondAttribute="trailing" id="uvM-Da-rfS"/>
+                                    <constraint firstItem="tgG-pR-aaa" firstAttribute="top" secondItem="ruS-hu-1m2" secondAttribute="top" constant="18" id="xAO-dX-8mT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Dav-fG-1ZS" firstAttribute="centerY" secondItem="rJN-Bm-EBe" secondAttribute="centerY" id="0Vg-C1-9AP"/>
+                            <constraint firstItem="ruS-hu-1m2" firstAttribute="top" secondItem="rJN-Bm-EBe" secondAttribute="top" id="1cs-Q1-hbH"/>
+                            <constraint firstItem="I30-fY-TRm" firstAttribute="top" secondItem="ruS-hu-1m2" secondAttribute="bottom" constant="2" id="2VA-Os-0dM"/>
                             <constraint firstItem="gEq-E9-UOE" firstAttribute="leading" secondItem="rJN-Bm-EBe" secondAttribute="leading" id="3HO-Dr-EDs"/>
                             <constraint firstItem="TxL-hY-ZnF" firstAttribute="leading" secondItem="rJN-Bm-EBe" secondAttribute="leading" id="98B-pm-sIh"/>
                             <constraint firstItem="TxL-hY-ZnF" firstAttribute="top" secondItem="I30-fY-TRm" secondAttribute="bottom" constant="-1" id="A3i-EO-v7s"/>
+                            <constraint firstItem="ruS-hu-1m2" firstAttribute="leading" secondItem="rJN-Bm-EBe" secondAttribute="leading" id="BjU-tm-cxI"/>
                             <constraint firstItem="Dav-fG-1ZS" firstAttribute="centerX" secondItem="rJN-Bm-EBe" secondAttribute="centerX" id="KGh-hd-lc9"/>
                             <constraint firstAttribute="trailing" secondItem="ck7-gL-Oga" secondAttribute="trailing" id="MLB-mf-0d7"/>
                             <constraint firstItem="ct1-VZ-iBR" firstAttribute="top" secondItem="gEq-E9-UOE" secondAttribute="bottom" id="Nsw-PZ-U7D"/>
                             <constraint firstAttribute="bottom" secondItem="ck7-gL-Oga" secondAttribute="bottom" id="V7w-Rf-Kbb"/>
                             <constraint firstItem="gEq-E9-UOE" firstAttribute="top" secondItem="rJN-Bm-EBe" secondAttribute="top" id="YGm-2f-egs"/>
                             <constraint firstItem="ck7-gL-Oga" firstAttribute="top" secondItem="TxL-hY-ZnF" secondAttribute="bottom" id="b88-zA-goh"/>
-                            <constraint firstAttribute="trailing" secondItem="aNw-8b-DP4" secondAttribute="trailing" id="fGK-hq-bIH"/>
                             <constraint firstAttribute="trailing" secondItem="I30-fY-TRm" secondAttribute="trailing" id="guR-Un-uCd"/>
                             <constraint firstAttribute="trailing" secondItem="TxL-hY-ZnF" secondAttribute="trailing" id="kDP-aR-KVU"/>
                             <constraint firstItem="I30-fY-TRm" firstAttribute="top" secondItem="rJN-Bm-EBe" secondAttribute="top" constant="66" id="l8X-g4-QWl"/>
-                            <constraint firstItem="aNw-8b-DP4" firstAttribute="top" secondItem="rJN-Bm-EBe" secondAttribute="top" id="mHH-bZ-JlM"/>
                             <constraint firstAttribute="trailing" secondItem="gEq-E9-UOE" secondAttribute="trailing" id="nFa-c6-Bwk"/>
                             <constraint firstItem="I30-fY-TRm" firstAttribute="leading" secondItem="rJN-Bm-EBe" secondAttribute="leading" id="rGc-VI-4ze"/>
                             <constraint firstItem="ck7-gL-Oga" firstAttribute="leading" secondItem="rJN-Bm-EBe" secondAttribute="leading" id="sFp-09-qYE"/>
-                            <constraint firstItem="aNw-8b-DP4" firstAttribute="leading" secondItem="rJN-Bm-EBe" secondAttribute="leading" id="yrg-HD-NHE"/>
+                            <constraint firstAttribute="trailing" secondItem="ruS-hu-1m2" secondAttribute="trailing" id="vL1-3Z-Rvs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3309,10 +3339,8 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="buyerInfoLabel" destination="g4w-vc-bUY" id="tNh-Qg-H6y"/>
                         <outlet property="courierBtn" destination="6rj-sh-UcZ" id="M6b-1R-4qr"/>
                         <outlet property="imageView" destination="lOm-Rh-wBh" id="yoK-96-gCK"/>
-                        <outlet property="noItemForSalesView" destination="I30-fY-TRm" id="GBx-2J-PiV"/>
                         <outlet property="orderNumLabel" destination="pMU-cL-sKb" id="eW0-76-AKn"/>
                         <outlet property="priceLabel" destination="syh-uQ-X0J" id="QvC-KB-Ati"/>
-                        <outlet property="progressView" destination="Dav-fG-1ZS" id="g8i-31-Qsl"/>
                         <outlet property="selectedTabBarItem" destination="2ua-bj-iIo" id="pxY-Zo-bA3"/>
                         <outlet property="sizeLabel" destination="DTK-EF-N8G" id="DKy-0E-qmg"/>
                         <outlet property="tabBar" destination="ck7-gL-Oga" id="5Cr-CH-4zo"/>
@@ -3325,7 +3353,7 @@ Step3: Adda captivating description and post it!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="90568B99-2681-4256-B513-5EE4FA64E399" width="2081" height="292">
+        <image name="397A6A27-3984-48F8-9A40-520DFA05E90C" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

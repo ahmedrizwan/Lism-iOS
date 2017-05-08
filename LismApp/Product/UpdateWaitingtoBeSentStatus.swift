@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class UpdateWaitingtoBeSentStatus: UIViewController
+class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
 {
     var  productObj  : Product!
 
@@ -17,22 +17,41 @@ class UpdateWaitingtoBeSentStatus: UIViewController
     @IBOutlet var buyerDetailTextView : UITextView!
     @IBOutlet var sizeLabel : UILabel!
     @IBOutlet var priceLabel : UILabel!
-
+    @IBOutlet weak var progressBar : UIActivityIndicatorView!
+    
+    @IBOutlet weak var tabBar : UITabBar!
+    @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     @IBOutlet var courierBtn : UIButton!
     @IBOutlet var trackingField : UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         priceLabel.text = "¥ \(self.productObj.sellingPrice)"
-        sizeLabel.text = self.productObj.size
-        
+        orderNumLabel.text = "Order #: \(self.productObj.objectId)"
+        sizeLabel.text = "Size \(self.productObj.size)"
+        tabBar.selectedItem = selectedTabBarItem
+
         productObj.buyingUser.fetchIfNeededInBackground { (object, error) in
             if(error == nil)
             {
-            
-            
+                self.buyerDetailTextView.text =   "\(object?.object(forKey: "fullName")!) \n \n\(self.productObj.address) \n \n\(object?.object(forKey: "mobilePhoneNumber")!)"
+                if(self.productObj.productImageUrl != nil)
+                {
+                    self.imageView.sd_setImage(with: self.productObj.productImageUrl, placeholderImage: nil)
+                }
+
             }
         }
+    }
+
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Selected item",item.tag)
+        
+        if(item.tag == 4)
+        {
+            //load new view
+            }
+        //This method will be called when user changes tab.
     }
 
     @IBAction func confirmDilveryAction (sender  : AnyObject)
@@ -45,5 +64,9 @@ class UpdateWaitingtoBeSentStatus: UIViewController
     {
         
         
+    }
+    
+    @IBAction func gobackAction (sender  : AnyObject)
+    {
     }
 }

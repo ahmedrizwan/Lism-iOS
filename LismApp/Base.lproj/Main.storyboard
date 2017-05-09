@@ -639,7 +639,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="397A6A27-3984-48F8-9A40-520DFA05E90C" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8F6713AB-24C8-49F2-8A73-30D53D1759DE" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1299,7 +1299,7 @@ Est. Retail ¥2,00</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z0c-xk-WF6" id="bC6-M8-OgS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nx8-cj-mgN">
@@ -1566,7 +1566,6 @@ Step3: Adda captivating description and post it!</string>
         <!--Sell More View Controller-->
         <scene sceneID="nEh-FD-2pD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2kM-Bs-xBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SellMoreViewController" id="9QG-5S-z0u" customClass="SellMoreViewController" customModule="LismApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4k2-p0-QsT"/>
@@ -2213,6 +2212,7 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="viewHeightConstaint" destination="uK3-dY-2Gp" id="hK2-Ot-fco"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2kM-Bs-xBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-274" y="1278"/>
         </scene>
@@ -2443,7 +2443,7 @@ Step3: Adda captivating description and post it!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kby-Za-aip" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314.4000000000001" y="377.36131934032989"/>
+            <point key="canvasLocation" x="-639" y="323"/>
         </scene>
         <!--Update Posted Item For Sale View Controller-->
         <scene sceneID="cSv-G7-9Rx">
@@ -3198,7 +3198,7 @@ Step3: Adda captivating description and post it!</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="RDh-CJ-Bte"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <state key="normal" title="Courier 1">
                                             <color key="titleColor" red="0.1422139674" green="0.1429585431" blue="0.1429585431" alpha="0.69887126150000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -3206,7 +3206,7 @@ Step3: Adda captivating description and post it!</string>
                                             <action selector="courierBtnActionWithSender:" destination="Vxl-Pt-udi" eventType="touchUpInside" id="Zfk-va-MJK"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="TRACKING NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxS-Fp-ngA">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TRACKING NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxS-Fp-ngA">
                                         <rect key="frame" x="22" y="451" width="332" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
@@ -3337,10 +3337,12 @@ Step3: Adda captivating description and post it!</string>
                     <connections>
                         <outlet property="buyerDetailTextView" destination="Fcp-PW-qSe" id="ZCK-Nm-RbF"/>
                         <outlet property="buyerInfoLabel" destination="g4w-vc-bUY" id="tNh-Qg-H6y"/>
+                        <outlet property="confirmDeliveryBtn" destination="TxL-hY-ZnF" id="iGX-48-bag"/>
                         <outlet property="courierBtn" destination="6rj-sh-UcZ" id="M6b-1R-4qr"/>
                         <outlet property="imageView" destination="lOm-Rh-wBh" id="yoK-96-gCK"/>
                         <outlet property="orderNumLabel" destination="pMU-cL-sKb" id="eW0-76-AKn"/>
                         <outlet property="priceLabel" destination="syh-uQ-X0J" id="QvC-KB-Ati"/>
+                        <outlet property="progressBar" destination="Dav-fG-1ZS" id="INi-Zh-aMm"/>
                         <outlet property="selectedTabBarItem" destination="2ua-bj-iIo" id="pxY-Zo-bA3"/>
                         <outlet property="sizeLabel" destination="DTK-EF-N8G" id="DKy-0E-qmg"/>
                         <outlet property="tabBar" destination="ck7-gL-Oga" id="5Cr-CH-4zo"/>
@@ -3353,7 +3355,7 @@ Step3: Adda captivating description and post it!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="397A6A27-3984-48F8-9A40-520DFA05E90C" width="2081" height="292">
+        <image name="8F6713AB-24C8-49F2-8A73-30D53D1759DE" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

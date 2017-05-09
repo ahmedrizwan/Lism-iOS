@@ -99,6 +99,11 @@ class Product: AVObject, AVSubclassing {
             self.priceRetail = priceRetail as! String
         }
     
+        if let trackingNumber = dict.value(forKey: "trackingNumber") {
+            self.trackingNumber = trackingNumber as! String
+        }
+        
+        
         if let priceSelling = dict.value(forKey: "priceSelling") {
           
             self.sellingPrice = priceSelling as! Int

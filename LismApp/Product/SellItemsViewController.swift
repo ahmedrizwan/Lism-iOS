@@ -146,6 +146,8 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         self.performSegue(withIdentifier: "SellToEditItemVc", sender: self)
         }
         else
+     
+        
         {
              self.performSegue(withIdentifier: "WaitingToSentToUpdateViewController", sender: self)
        // Constants.showAlert(message: "You cannot edit sold product", view: self)

@@ -106,6 +106,14 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             //load new view
             self.performSegue(withIdentifier: "ProductToSellView", sender: self)
         }
+        
+      else  if(item.tag == 2)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "ProductToProfileView", sender: self)
+        }
+        
+        
         //This method will be called when user changes tab.
     }
     

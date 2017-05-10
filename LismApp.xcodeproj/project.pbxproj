@@ -97,6 +97,7 @@
 		39A854461EA7E7FC00B32B3C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A854451EA7E7FC00B32B3C /* TextField.swift */; };
 		39B76E161EA521C900528824 /* SellItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B76E151EA521C900528824 /* SellItemsViewController.swift */; };
 		39B76E181EA527B700528824 /* SellItemsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B76E171EA527B700528824 /* SellItemsCustomCell.swift */; };
+		39B9E4CA1EC3891A005187BA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9E4C91EC3891A005187BA /* ProfileViewController.swift */; };
 		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
 		39DCCB131EAE6274005F9436 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DCCB121EAE6274005F9436 /* ProgressHUD.swift */; };
 		39E32E771EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E32E761EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift */; };
@@ -230,6 +231,7 @@
 		39A854451EA7E7FC00B32B3C /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		39B76E151EA521C900528824 /* SellItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellItemsViewController.swift; sourceTree = "<group>"; };
 		39B76E171EA527B700528824 /* SellItemsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellItemsCustomCell.swift; sourceTree = "<group>"; };
+		39B9E4C91EC3891A005187BA /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
 		39DCCB121EAE6274005F9436 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		39E32E761EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePostedItemForSaleViewController.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				39159CB91EB64F990083EF80 /* CheckoutViewController.swift */,
 				39E32E761EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift */,
 				397572771EC0E3BF00ED4E8A /* UpdateWaitingtoBeSentStatus.swift */,
+				39B9E4C91EC3891A005187BA /* ProfileViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -860,6 +863,7 @@
 				393C10A71E8978B1007E3755 /* Comments.swift in Sources */,
 				397572781EC0E3BF00ED4E8A /* UpdateWaitingtoBeSentStatus.swift in Sources */,
 				398F9B631E8D81FC00845946 /* FullScreenSlideshowViewController.swift in Sources */,
+				39B9E4CA1EC3891A005187BA /* ProfileViewController.swift in Sources */,
 				391D8FD91E8ABEE000B962F5 /* FFAPSegmentedControl.m in Sources */,
 				39A854441EA7D4EE00B32B3C /* ColorsCustomCell.swift in Sources */,
 			);

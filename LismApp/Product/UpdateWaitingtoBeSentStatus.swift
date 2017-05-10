@@ -19,9 +19,9 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
     @IBOutlet var sizeLabel : UILabel!
     @IBOutlet var priceLabel : UILabel!
     @IBOutlet weak var progressBar : UIActivityIndicatorView!
-    
-    @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
+
+    @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet var courierBtn : UIButton!
     @IBOutlet var confirmDeliveryBtn : UIButton!
 
@@ -32,7 +32,6 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         priceLabel.text = "¥ \(self.productObj.sellingPrice)"
         orderNumLabel.text = "Order #: \(self.productObj.objectId!)"
         sizeLabel.text = "Size \(self.productObj.size)"
-        tabBar.selectedItem = selectedTabBarItem
         trackingField.layer.borderWidth = 1.0
         self.courierBtn.setTitle("Courier 1", for: .normal)
 
@@ -59,17 +58,20 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
                            }
         }
         
+        tabBar.selectedItem = selectedTabBarItem
+
         
     }
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
         
+        
         if(item.tag == 4)
         {
             //load new view
-            }
-        //This method will be called when user changes tab.
+            self.performSegue(withIdentifier: "SellToProductView", sender: self)
+        }
     }
 
     @IBAction func confirmDilveryAction (sender  : AnyObject)
@@ -130,6 +132,7 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         
     }
     
+  
     @IBAction func gobackAction (sender  : AnyObject)
     {
         self.navigationController?.popViewController(animated: true)

@@ -36,6 +36,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getProductList()
+        
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -124,7 +125,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "SellItemsCustomCell", for: indexPath ) as! SellItemsCustomCell
         let productObj = self.items[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        self.produceAttributedText(string: "\(productObj.name)\n\(productObj.brand)\nSize \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\nSize \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
@@ -157,25 +158,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
 
-    func produceAttributedText(string: String, textView : UITextView)
-    {
-        
-        let attributedString = NSMutableAttributedString(string:string)
-        attributedString.addAttribute(NSFontAttributeName , value: UIFont(name: "Avenir", size: CGFloat(14))!,range: NSMakeRange(0, attributedString.length))
-        
-        
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 1.0
-        paragraphStyle.maximumLineHeight = 15 // change line spacing between each line like 30 or 40
-        
-        paragraphStyle.alignment = NSTextAlignment.left
-        
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(colorLiteralRed: 182.0/255.0, green: 182.0/255.0, blue: 182.0/255.0, alpha: 1.0), range: NSMakeRange(0, attributedString.length))
-        
-        attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        textView.attributedText=attributedString
-        
-    }
+   
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
         

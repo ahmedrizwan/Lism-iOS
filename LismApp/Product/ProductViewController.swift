@@ -58,25 +58,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     override func viewWillAppear(_ animated: Bool) {
    
     }
-    func produceAttributedText(string: String, textView : UITextView)
-    {
     
-        let attributedString = NSMutableAttributedString(string:string)
-        attributedString.addAttribute(NSFontAttributeName , value: UIFont(name: "Avenir", size: CGFloat(8))!,range: NSMakeRange(0, attributedString.length))
-
-        
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 0.45
-        paragraphStyle.maximumLineHeight = 8 // change line spacing between each line like 30 or 40
-        
-        paragraphStyle.alignment = NSTextAlignment.center
-        
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(colorLiteralRed: 182.0/255.0, green: 182.0/255.0, blue: 182.0/255.0, alpha: 1.0), range: NSMakeRange(0, attributedString.length))
-
-        attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        textView.attributedText=attributedString
-    
-    }
     override func viewDidAppear(_ animated: Bool) {
         if( self.isLoaded)
         {
@@ -255,7 +237,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
-        self.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+        Constants.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)

@@ -9,18 +9,27 @@
 import Foundation
 import AVOSCloud
 
-class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout{
+class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     var items : [Product] = []
+    var boughtItems : [Product] = []
+
     @IBOutlet weak var likesCountLabel : UILabel!
     @IBOutlet weak var followingCountLabel : UILabel!
     @IBOutlet weak var follwerCountLabel : UILabel!
     @IBOutlet weak var userImageview : UIImageView!
     @IBOutlet weak var descriptionTextView : UITextView!
     @IBOutlet weak var emailLabel : UILabel!
+    @IBOutlet weak var noProductBoughtSoFar : UILabel!
+
+    var userFollowersArray : NSArray = NSArray()
+    var userFollowingsArray : NSArray = NSArray()
+    var favoritesList : [Product] = []
+    @IBOutlet weak var  productsTableView : UITableView!
+    var seelctedProductObj : Product!
 
     @IBOutlet weak var userLabel : UILabel!
 
@@ -61,10 +70,23 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
                 
                 if let prod_desc = object?["description"] {
-                    self.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
+                    Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
+                    self.descriptionTextView.textAlignment = NSTextAlignment.left
                 }
             }
         })
+        
+     AVUser.current()?.getFollowersAndFollowees({ (object, error)
+        in
+        print((object?["followees"] as! NSArray).count)
+        self.followingCountLabel.text = "\((object?["followees"] as! NSArray).count)"
+        self.follwerCountLabel.text = "\((object?["followers"] as! NSArray).count)"
+        self.userFollowersArray = (object?["followers"] as! NSArray)
+        self.userFollowingsArray = (object?["followees"] as! NSArray)
+
+     })
+        self.getBoughtProductList()
+        self.minusButtonAction(sender: "" as! AnyObject)
     }
 
 
@@ -92,51 +114,84 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
-        self.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
-        if (indexPath.row + 1 == self.items.count )
-        {
-            self.getMoreProductList(size: self.items.count)
-        }
+        Constants.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+       
         cell.likeButton.isSelected = productObj.favorite
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2)
+        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2 + 40)
         
     }
-
-    func produceAttributedText(string: String, textView : UITextView)
-    {
-        
-        let attributedString = NSMutableAttributedString(string:string)
-        attributedString.addAttribute(NSFontAttributeName , value: UIFont(name: "Avenir", size: CGFloat(8))!,range: NSMakeRange(0, attributedString.length))
-        
-        
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 0.45
-        paragraphStyle.maximumLineHeight = 8 // change line spacing between each line like 30 or 40
-        
-        paragraphStyle.alignment = NSTextAlignment.center
-        
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(colorLiteralRed: 182.0/255.0, green: 182.0/255.0, blue: 182.0/255.0, alpha: 1.0), range: NSMakeRange(0, attributedString.length))
-        
-        attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        textView.attributedText=attributedString
+//
+  
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+        seelctedProductObj = items[indexPath.item]
+        self.performSegue(withIdentifier: "ProfileViewToProductDetailsVC", sender: self)
         
     }
-    
     func getProductList()
     {
         
         
         
-        let query: AVQuery = AVQuery(className: "Product")
-        query.includeKey("images")
+        self.view.isUserInteractionEnabled = false
+        let query: AVQuery = (AVUser.current()?.relation(forKey: "sellProducts").query())!
         query.includeKey("user")
-        query.includeKey("userLikes")
-        query.includeKey("buyingUser")
+        self.progressView.isHidden = false
+        query.findObjectsInBackground { (objects, error) in
+            self.progressView.isHidden = true
+            self.view.isUserInteractionEnabled = true
+            if(error == nil)
+            {
+                self.items.removeAll()
+                for obj in objects!
+                {
+                    let productObj:Product =  obj as! Product
+                    
+                    
+                    productObj.ProductInintWithDic(dict: obj as! AVObject)
+                    self.items.append(productObj)
+                }
+                self.loadFavoritesList()
+
+            }
+            else
+            {
+                Constants.showAlert(message: "Unable to load products.", view: self)
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    @IBAction func minusButtonAction (sender : AnyObject)
+    {
+        self.productsTableView.isHidden = true
+        self.productsCollectionView.isHidden = false
+    }
+    
+    @IBAction func plusButtonAction (sender : AnyObject)
+    {
+        self.productsTableView.isHidden = false
+        self.productsCollectionView.isHidden = true
+    }
+    
+    func getBoughtProductList()
+    {
+        
+        
+        
+        let query: AVQuery = AVQuery(className: "Product")
+       query.whereKey("buyingUser", equalTo: AVUser.current() as Any)
+
         
         query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
@@ -149,10 +204,13 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     
                     
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.items.append(productObj)
+                    self.boughtItems.append(productObj)
                 }
-                self.productsCollectionView.reloadData()
-                self.progressView.isHidden = true
+                if(self.boughtItems.count <= 0 )
+                {
+                self.noProductBoughtSoFar.isHidden = false
+                }
+                self.productsTableView.reloadData()
             }
             else
             {
@@ -162,17 +220,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         
     }
-    func getMoreProductList(size: Int)
+    
+    func loadFavoritesList()
     {
         
         
         
-        let query: AVQuery = AVQuery(className: "Product")
-        query.includeKey("images")
+        let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
         query.includeKey("user")
-        query.includeKey("userLikes")
-        query.limit = ProductViewController.ITEM_LIMIT
-        query.skip = size
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
@@ -180,13 +235,110 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 {
                     let productObj:Product =  obj as! Product
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.items.append(productObj)
+                    self.favoritesList.append(productObj)
                 }
+                self.comapreToUpdateFavoriteProductsList()
             }
+            else
+            {
+                Constants.showAlert(message: "Unable to load products.", view: self)
+                
+            }
+            self.progressView.isHidden = true
+            
             
         }
         
         
     }
+    func comapreToUpdateFavoriteProductsList()
+    {
+        for productObj in self.items
+        {
+            for objFavorite in self.favoritesList
+            {
+                if(productObj.objectId == objFavorite.objectId)
+                {
+                    productObj.favorite = true
+                }
+            }
+            
+        }
+        self.productsCollectionView.reloadData()
+    }
+    
 
+    // MARK: UITableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return boughtItems.count
+    }
+    
+    // cell height
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SellItemsCustomCell", for: indexPath ) as! SellItemsCustomCell
+        let productObj = self.boughtItems[indexPath.item]
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\nSize \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        if(productObj.productImageUrl != nil)
+        {
+            cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
+        }
+        cell.tag = indexPath.item
+        cell.productStatusLabel.text = productObj.status
+        cell.selectionStyle = UITableViewCellSelectionStyle.none;
+        
+        
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        seelctedProductObj = self.boughtItems[indexPath.item]
+        if(seelctedProductObj.status == "Posted for Sale")
+        {
+            //selltoedictvc
+            self.performSegue(withIdentifier: "ProfileViewControllerToUpdatePostedItemForSaleVC", sender: self)
+        }
+        else
+            
+            
+        {
+            self.performSegue(withIdentifier: "ProfileViewToWaitingToBeSentVC", sender: self)
+            // Constants.showAlert(message: "You cannot edit sold product", view: self)
+        }
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ProfileViewControllerToUpdatePostedItemForSaleVC") {
+            let viewController:UpdatePostedItemForSaleViewController = segue.destination as! UpdatePostedItemForSaleViewController
+            viewController.productObj = seelctedProductObj
+            // pass data to next view
+        }
+        else if (segue.identifier == "ProfileViewToWaitingToBeSentVC") {
+            let viewController:UpdateWaitingtoBeSentStatus = segue.destination as! UpdateWaitingtoBeSentStatus
+            viewController.productObj = seelctedProductObj
+            // pass data to next view
+        }
+      else  if (segue.identifier == "ProfileViewToProductDetailsVC") {
+            let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
+            viewController.productBO = seelctedProductObj            
+            // pass data to next view
+        }
+        
+    }
+
+
+    
+    
 }

@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var tabBar : UITabBar!
+    @IBOutlet weak var followBtn : UIButton!
+
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     var items : [Product] = []
     var boughtItems : [Product] = []
@@ -30,15 +32,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     var favoritesList : [Product] = []
     @IBOutlet weak var  productsTableView : UITableView!
     var seelctedProductObj : Product!
-
+    var userObj : AVUser  = AVUser.current()!
     @IBOutlet weak var userLabel : UILabel!
 
+    @IBOutlet weak var favoritesCollectionView : UICollectionView!
 
     @IBOutlet weak var productsCollectionView : UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userObj = AVUser.current()
-        userLabel.text = "@\(userObj!.username!)"
+        userLabel.text = "@\(userObj.username!)"
     
               self.getUserInfo()
         
@@ -46,13 +48,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     func getUserInfo()
     {
         let query = AVUser.query()
-        query.whereKey("objectId", equalTo: AVUser.current()?.objectId! as Any)
+        query.whereKey("objectId", equalTo: userObj.objectId! as Any)
         query.includeKey("likes")
 
         query.getFirstObjectInBackground({ (object, error) in
             if object !== nil {
                 self.progressView.isHidden = true
-                
+                if(error == nil)
+                {
                 self.getProductList()
                 let parseFile = object?.value(forKey: "profileImage") as! AVFile
                 parseFile.getDataInBackground({ (data, error) in
@@ -68,25 +71,32 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 {
                     self.likesCountLabel.text =  (likes as! AVObject).value(forKey: "likes") as? String
                 }
-                
+                else
+                {
+                  self.likesCountLabel.text = "0"
+                }
                 if let prod_desc = object?["description"] {
                     Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
                     self.descriptionTextView.textAlignment = NSTextAlignment.left
                 }
+                }
             }
         })
         
-     AVUser.current()?.getFollowersAndFollowees({ (object, error)
+     userObj.getFollowersAndFollowees({ (object, error)
         in
+        if(error == nil)
+        {
         print((object?["followees"] as! NSArray).count)
         self.followingCountLabel.text = "\((object?["followees"] as! NSArray).count)"
         self.follwerCountLabel.text = "\((object?["followers"] as! NSArray).count)"
         self.userFollowersArray = (object?["followers"] as! NSArray)
         self.userFollowingsArray = (object?["followees"] as! NSArray)
-
+        }
+        
      })
         self.getBoughtProductList()
-        self.minusButtonAction(sender: "" as! AnyObject)
+        self.minusButtonAction(sender: "" as AnyObject)
     }
 
 
@@ -94,12 +104,18 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       if(collectionView == productsCollectionView)
+       {
         return self.items.count
+        }
+        return self.boughtItems.count
     }
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        if(collectionView == productsCollectionView)
+        {
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "prodcutsCustomCell", for: indexPath as IndexPath) as! ProductCollectionViewCell
         let productObj = self.items[indexPath.item]
@@ -119,10 +135,26 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.likeButton.isSelected = productObj.favorite
         
         return cell
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoritesCustomCell", for: indexPath as IndexPath) as! ProductCollectionViewCell
+        let productObj = self.boughtItems[indexPath.item]
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        if(productObj.productImageUrl != nil)
+        {
+            cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
+        }
+
+        return cell
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        if(collectionView == productsCollectionView)
+        {
         return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2 + 40)
+        
+        }
+          return CGSize(width: collectionView.bounds.width/3, height: collectionView.bounds.height/3)
         
     }
 //
@@ -130,7 +162,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
-        seelctedProductObj = items[indexPath.item]
+       if(collectionView == productsCollectionView)
+       {
+         seelctedProductObj = items[indexPath.item]
+        }
+        else
+       {
+         seelctedProductObj = boughtItems[indexPath.item]
+        }
         self.performSegue(withIdentifier: "ProfileViewToProductDetailsVC", sender: self)
         
     }
@@ -140,7 +179,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
         self.view.isUserInteractionEnabled = false
-        let query: AVQuery = (AVUser.current()?.relation(forKey: "sellProducts").query())!
+        let query: AVQuery = (userObj.relation(forKey: "sellProducts").query())
         query.includeKey("user")
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
@@ -174,14 +213,42 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     @IBAction func minusButtonAction (sender : AnyObject)
     {
+        self.noProductBoughtSoFar.isHidden = true
+
         self.productsTableView.isHidden = true
         self.productsCollectionView.isHidden = false
+        self.favoritesCollectionView.isHidden = true
+
     }
+    @IBAction func followUnfollowBtnAction()
+    {
     
+    
+    }
     @IBAction func plusButtonAction (sender : AnyObject)
     {
+    
+        if(self.boughtItems.count <= 0 )
+        {
+            if(!self.userObj.isEqual(AVUser.current()))
+            {
+                self.noProductBoughtSoFar.text = "You have not added any product to your favorite list."
+            }
+            self.noProductBoughtSoFar.isHidden = false
+        }
+        else
+        {
+          if(userObj == AVUser.current())
+          {
         self.productsTableView.isHidden = false
+            }
+            else
+            {
+                self.favoritesCollectionView.isHidden = false
+            }
+        }
         self.productsCollectionView.isHidden = true
+       
     }
     
     func getBoughtProductList()
@@ -190,7 +257,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
         let query: AVQuery = AVQuery(className: "Product")
-       query.whereKey("buyingUser", equalTo: AVUser.current() as Any)
+       query.whereKey("buyingUser", equalTo: userObj as Any)
 
         
         query.limit = ProductViewController.ITEM_LIMIT
@@ -206,10 +273,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
                     self.boughtItems.append(productObj)
                 }
-                if(self.boughtItems.count <= 0 )
-                {
-                self.noProductBoughtSoFar.isHidden = false
-                }
                 self.productsTableView.reloadData()
             }
             else
@@ -221,12 +284,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
     }
     
+    
+
+    
     func loadFavoritesList()
     {
         
         
         
-        let query: AVQuery = (AVUser.current()?.relation(forKey: "favorites").query())!
+        let query: AVQuery = (userObj.relation(forKey: "favorites").query())
         query.includeKey("user")
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
@@ -237,7 +303,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
                     self.favoritesList.append(productObj)
                 }
+               
                 self.comapreToUpdateFavoriteProductsList()
+                if(!self.userObj.isEqual(AVUser.current()))
+                {
+                self.boughtItems = self.favoritesList
+                    self.favoritesCollectionView.reloadData()
+                
+                }
             }
             else
             {
@@ -337,7 +410,23 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         
     }
-
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Selected item",item.tag)
+        
+        if(item.tag == 1)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "ProfileToSellView", sender: self)
+        }
+            
+       else if(item.tag == 4)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "ProfileToProductView", sender: self)
+        }
+        
+        //This method will be called when user changes tab.
+    }
 
     
     

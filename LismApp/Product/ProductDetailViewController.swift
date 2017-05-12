@@ -552,5 +552,19 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
              return cell
         }
     }
+	
+	//
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if (segue.identifier == "ProductUserToProfileViewController") {
+			let viewController:ProfileViewController = segue.destination as! ProfileViewController
+			viewController.userObj = self.productBO.user
+			// pass data to next view
+		}
+	}
+	
+
+
 }
+
+
 

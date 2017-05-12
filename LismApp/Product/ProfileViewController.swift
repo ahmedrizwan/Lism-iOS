@@ -38,12 +38,31 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var favoritesCollectionView : UICollectionView!
 
     @IBOutlet weak var productsCollectionView : UICollectionView!
+    
+    
+    @IBOutlet weak var minusBtn : UIButton!
+    @IBOutlet weak var plusBtn : UIButton!
+    @IBOutlet weak var minusBtnForClick : UIButton!
+    @IBOutlet weak var plusBtnForClick : UIButton!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userLabel.text = "@\(userObj.username!)"
     
               self.getUserInfo()
         
+        Constants.addShadow(button: minusBtn)
+        Constants.addShadow(button: plusBtn)
+
+
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBar.selectedItem = selectedTabBarItem
+
     }
     func getUserInfo()
     {
@@ -65,16 +84,24 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 })
                 if let website = object!.value(forKey: "website")
                 {
-                    self.emailLabel.text =  website as? String
+               self.emailLabel.text =  website as? String
+                    if(website as? String == "")
+                    {
+                        self.emailLabel.text  = "No website"
+                    }
+
                 }
                 if let likes = object!.value(forKey: "likes")
                 {
-                    self.likesCountLabel.text =  (likes as! AVObject).value(forKey: "likes") as? String
+                    var likesCount = (likes as! AVObject).value(forKey: "likes")!
+                    self.likesCountLabel.text = "\(likesCount)"
+                    if(likesCount as! Int == 0 )
+                    {
+                        self.likesCountLabel.text = "-"
+
+                    }
                 }
-                else
-                {
-                  self.likesCountLabel.text = "0"
-                }
+               
                 if let prod_desc = object?["description"] {
                     Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
                     self.descriptionTextView.textAlignment = NSTextAlignment.left
@@ -88,8 +115,22 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         if(error == nil)
         {
         print((object?["followees"] as! NSArray).count)
-        self.followingCountLabel.text = "\((object?["followees"] as! NSArray).count)"
-        self.follwerCountLabel.text = "\((object?["followers"] as! NSArray).count)"
+            let followersCount = (object?["followers"] as! NSArray).count
+            let followingsCount = (object?["followees"] as! NSArray).count
+        self.followingCountLabel.text = "\(followingsCount)"
+      
+        self.follwerCountLabel.text = "\(followersCount)"
+            
+            
+            if(followersCount == 0 )
+            {
+              self.follwerCountLabel.text = "-"
+            }
+            
+            if(followingsCount == 0 )
+            {
+                self.followingCountLabel.text = "-"
+            }
         self.userFollowersArray = (object?["followers"] as! NSArray)
         self.userFollowingsArray = (object?["followees"] as! NSArray)
         }
@@ -214,7 +255,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func minusButtonAction (sender : AnyObject)
     {
         self.noProductBoughtSoFar.isHidden = true
-
+        minusBtn.isHidden = false
+        plusBtn.isHidden = true
         self.productsTableView.isHidden = true
         self.productsCollectionView.isHidden = false
         self.favoritesCollectionView.isHidden = true
@@ -227,7 +269,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     @IBAction func plusButtonAction (sender : AnyObject)
     {
-    
+        minusBtn.isHidden = true
+        plusBtn.isHidden = false
         if(self.boughtItems.count <= 0 )
         {
             if(!self.userObj.isEqual(AVUser.current()))

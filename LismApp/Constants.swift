@@ -82,4 +82,20 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
         textView.attributedText=attributedString
         
     }
+    static  func addShadow(button : UIButton)
+    {
+        
+        
+        // let shadowPath = UIBezierPath(rect: button.bounds).cgPath
+        
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset =  CGSize(width: 0, height: 4)
+        
+        button.layer.shadowOpacity = 0.2
+        //button.layer.masksToBounds = false
+        // button.layer.shadowPath = shadowPath
+        button.layer.cornerRadius = 0.5
+        
+    }
+
 }

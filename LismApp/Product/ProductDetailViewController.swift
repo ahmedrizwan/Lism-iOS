@@ -77,9 +77,9 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.cartBtn.isHidden = true
 
         scrollView.delegate = self
-        self.addShadow(button: productDescriptionBtn)
-        self.addShadow(button: thirdViewBtn)
-        self.addShadow(button: commentsBtn)
+        Constants.addShadow(button: productDescriptionBtn)
+        Constants.addShadow(button: thirdViewBtn)
+        Constants.addShadow(button: commentsBtn)
         self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
         self.commentsTableView.allowsSelection = true
         
@@ -259,22 +259,7 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
     
     
     
-    func addShadow(button : UIButton)
-    {
-              
-        
-       // let shadowPath = UIBezierPath(rect: button.bounds).cgPath
-        
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset =  CGSize(width: 0, height: 4)
-
-        button.layer.shadowOpacity = 0.2
-        //button.layer.masksToBounds = false
-       // button.layer.shadowPath = shadowPath
-        button.layer.cornerRadius = 0.5
-        
-    }
-   
+      
     
     func loadComments()
     {

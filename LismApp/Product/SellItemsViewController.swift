@@ -161,12 +161,18 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
-        
-        if(item.tag == 4)
+        if(item.tag == 2)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "SellToProfileViewcontroller", sender: self)
+
+        }
+        else if(item.tag == 4)
         {
             //load new view
             self.performSegue(withIdentifier: "SellToProductView", sender: self)
         }
+        //SellToProfileViewcontroller
         //This method will be called when user changes tab.
     }
     

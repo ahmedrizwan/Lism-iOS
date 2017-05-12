@@ -926,6 +926,6 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     @IBAction func backbuttonAction(sender : AnyObject)
     {
         
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 }

@@ -66,8 +66,16 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
         
-        
-        if(item.tag == 4)
+     
+            if(item.tag == 2)
+            {
+                //load new view
+                self.performSegue(withIdentifier: "SellUpdateToProfileViewcontroller", sender: self)
+                
+            }
+           
+
+      else  if(item.tag == 4)
         {
             //load new view
             self.performSegue(withIdentifier: "SellToProductView", sender: self)
@@ -98,6 +106,7 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
                             {
                                 self.progressBar.isHidden = true
                                 Constants.showAlert(message: "\(productBO.name)  has been shipped!", view: self)                                // show product has been posted and redirection
+                                self.confirmDeliveryBtn.isHidden = true
                                 print("show product has been posted and redirection")
                             }
                             else

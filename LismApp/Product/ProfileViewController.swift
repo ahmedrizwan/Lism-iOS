@@ -93,7 +93,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
                 if let likes = object!.value(forKey: "likes")
                 {
-                    var likesCount = (likes as! AVObject).value(forKey: "likes")!
+                    let likesCount = (likes as! AVObject).value(forKey: "likes")!
                     self.likesCountLabel.text = "\(likesCount)"
                     if(likesCount as! Int == 0 )
                     {

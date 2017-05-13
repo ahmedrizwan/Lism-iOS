@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var followBtn : UIButton!
+    @IBOutlet weak var notifcationsBtn : UIButton!
 
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     var items : [Product] = []
@@ -62,6 +63,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBar.selectedItem = selectedTabBarItem
+        self.productsTableView.reloadData()
 
     }
     func getUserInfo()
@@ -117,6 +119,10 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         if(!userObj.isEqual(AVUser.current()))
         {
             self.getFollowerAndFolloweeOfCurrentUser()
+        }
+        else
+        {
+        notifcationsBtn.isHidden = false
         }
     }
     func updateFollowersAndFollowingInfo()
@@ -185,7 +191,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
     }
 
-
+    @IBAction func notificationsBtnAction (sender : AnyObject)
+    {
+    
+    
+    }
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
@@ -237,7 +247,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == productsCollectionView)
         {
-        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2 + 40)
+        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2 + 70)
         
         }
           return CGSize(width: collectionView.bounds.width/3, height: collectionView.bounds.height/3)

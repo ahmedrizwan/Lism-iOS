@@ -19,7 +19,7 @@ extension UIViewController {
     
     func keyboardWillShow(notification: NSNotification) {
             if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y = -50
+                self.view.frame.origin.y = -65
             }
         
     }

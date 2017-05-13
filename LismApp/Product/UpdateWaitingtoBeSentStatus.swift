@@ -33,6 +33,9 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         orderNumLabel.text = "Order #: \(self.productObj.objectId!)"
         sizeLabel.text = "Size \(self.productObj.size)"
         trackingField.layer.borderWidth = 1.0
+        trackingField.layer.borderColor = UIColor.gray.cgColor
+
+        buyerDetailTextView.isUserInteractionEnabled = false
         self.courierBtn.setTitle("Courier 1", for: .normal)
 
         if(self.productObj.status == "Sent")
@@ -59,10 +62,26 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         }
         
         tabBar.selectedItem = selectedTabBarItem
-
+        self.hideKeyboardWhenTappedAround()
         
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        progressBar.isHidden = true
+        progressBar.stopAnimating()
+    }
+    
+    override func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0{
+            self.view.frame.origin.y = -155
+        }
+        
+    }
+    
+  
+    
+    
+   
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)
         
@@ -89,6 +108,13 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
     }
     func updateProductInfo(productBO : Product)
     {
+        if(self.trackingField.text == "")
+        {
+        Constants.showAlert(message: "Please enter valid tracking number.", view: self)
+            return 
+        }
+        progressBar.isHidden = false
+        progressBar.startAnimating()
         let query: AVQuery = AVQuery(className: "Product")
         query.whereKey("objectId", equalTo: self.productObj.objectId!)
         query.getFirstObjectInBackground { (object, error) in
@@ -101,11 +127,24 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
                     AVUser.current()?.relation(forKey: Constants.SELL_PRODUCTS).add(productBO)
                         
                         AVUser.current()?.saveInBackground { (objects, error) in
-                            
+                            self.progressBar.isHidden = true
+                            self.progressBar.stopAnimating()
                             if(error == nil)
                             {
                                 self.progressBar.isHidden = true
-                                Constants.showAlert(message: "\(productBO.name)  has been shipped!", view: self)                                // show product has been posted and redirection
+                                
+                                let alert = UIAlertController(title: "",message:"\(productBO.name)  has been shipped!",
+                                                              preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK",
+                                                              style: UIAlertActionStyle.default,
+                                                              handler: {(alert: UIAlertAction!) in
+                                self.navigationController?.popViewController(animated: true)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+
+                                
+                                
+                                // show product has been posted and redirection
                                 self.confirmDeliveryBtn.isHidden = true
                                 print("show product has been posted and redirection")
                             }

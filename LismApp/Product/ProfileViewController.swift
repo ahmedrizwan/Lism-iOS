@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     var items : [Product] = []
     var boughtItems : [Product] = []
-
+    var isFollowingUser = false
     @IBOutlet weak var likesCountLabel : UILabel!
     @IBOutlet weak var followingCountLabel : UILabel!
     @IBOutlet weak var follwerCountLabel : UILabel!
@@ -27,8 +27,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var emailLabel : UILabel!
     @IBOutlet weak var noProductBoughtSoFar : UILabel!
 
-    var userFollowersArray : NSArray = NSArray()
-    var userFollowingsArray : NSArray = NSArray()
+    var userFollowersArray : [AVUser] = [AVUser]()
+    var userFollowingsArray : [AVUser] = [AVUser]()
     var favoritesList : [Product] = []
     @IBOutlet weak var  productsTableView : UITableView!
     var seelctedProductObj : Product!
@@ -110,34 +110,79 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
         })
         
-     userObj.getFollowersAndFollowees({ (object, error)
-        in
-        if(error == nil)
-        {
-        print((object?["followees"] as! NSArray).count)
-            let followersCount = (object?["followers"] as! NSArray).count
-            let followingsCount = (object?["followees"] as! NSArray).count
-        self.followingCountLabel.text = "\(followingsCount)"
-      
-        self.follwerCountLabel.text = "\(followersCount)"
-            
-            
-            if(followersCount == 0 )
-            {
-              self.follwerCountLabel.text = "-"
-            }
-            
-            if(followingsCount == 0 )
-            {
-                self.followingCountLabel.text = "-"
-            }
-        self.userFollowersArray = (object?["followers"] as! NSArray)
-        self.userFollowingsArray = (object?["followees"] as! NSArray)
-        }
-        
-     })
+        self.updateFollowersAndFollowingInfo()
         self.getBoughtProductList()
         self.minusButtonAction(sender: "" as AnyObject)
+        
+        if(!userObj.isEqual(AVUser.current()))
+        {
+            self.getFollowerAndFolloweeOfCurrentUser()
+        }
+    }
+    func updateFollowersAndFollowingInfo()
+    {
+    userObj.getFollowersAndFollowees({ (object, error)
+    in
+        self.progressView.isHidden = true
+        self.progressView.stopAnimating()
+    if(error == nil)
+    {
+    print((object?["followees"] as! NSArray).count)
+    let followersCount = (object?["followers"] as! NSArray).count
+    let followingsCount = (object?["followees"] as! NSArray).count
+    self.followingCountLabel.text = "\(followingsCount)"
+    
+    self.follwerCountLabel.text = "\(followersCount)"
+    
+    
+    if(followersCount == 0 )
+    {
+    self.follwerCountLabel.text = "-"
+    }
+    
+    if(followingsCount == 0 )
+    {
+    self.followingCountLabel.text = "-"
+    }
+    
+    }
+    
+    })
+    }
+    func getFollowerAndFolloweeOfCurrentUser()
+    {
+    
+       
+        
+        AVUser.current()?.getFollowersAndFollowees({ (object, error)
+            in
+            if(error == nil)
+            {
+                print((object?["followees"] as! NSArray).count)
+          
+                self.userFollowersArray = (object?["followers"] as! [AVUser])
+                
+                self.userFollowingsArray = (object?["followees"] as! [AVUser])
+                
+               
+                if self.userFollowingsArray .contains(where: { $0.objectId ==  self.userObj.objectId }) {
+                    // found
+                    self.isFollowingUser = true
+                    self.followBtn.isHidden = false
+                    self.followBtn.setTitle("Unfollow -", for: .normal)
+                    print("I m following this use")
+                }
+                if(!self.isFollowingUser)
+                {
+                     self.followBtn.isHidden = false
+                    self.followBtn.setTitle("Follow + ", for: .normal)
+
+                }
+                
+            }
+            
+        })
+        
     }
 
 
@@ -264,6 +309,29 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     @IBAction func followUnfollowBtnAction()
     {
+        progressView.isHidden = false
+        progressView.startAnimating()
+        if(isFollowingUser)
+        {
+            AVUser.current()?.unfollow(userObj.objectId!, andCallback: { (status, error) in
+                
+                self.isFollowingUser = false
+                self.followBtn.setTitle("Follow +", for: .normal)
+                self.updateFollowersAndFollowingInfo()
+            })
+        // will unfollow user
+        }
+        else
+        {
+            AVUser.current()?.follow(userObj.objectId!, andCallback: { (status, error) in
+                
+                self.isFollowingUser = true
+                self.followBtn.setTitle("Unfollow -", for: .normal)
+                self.updateFollowersAndFollowingInfo()
+            })
+        //will follow user
+        
+        }
     
     
     }

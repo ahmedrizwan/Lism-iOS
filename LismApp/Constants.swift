@@ -11,6 +11,20 @@ import AVFoundation
 import  UIKit
 class Constants {
 
+    
+    struct NotificationType
+    {
+        static let TYPE_FOLLOW         = "follow"
+        static let TYPE_SELL_BOUGHT         = "bought"
+        static let TYPE_SELL_SENT         = "sent"
+        static let TYPE_SELL_CONFIRMED         = "confirmed"
+        static let TYPE_COMMENT         = "commented"
+        static let TYPE_LIKE         = "liked"
+
+
+    
+    }
+    
 struct ScreenSize
 {
     static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width

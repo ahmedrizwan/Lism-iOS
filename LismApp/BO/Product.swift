@@ -91,6 +91,9 @@ class Product: AVObject, AVSubclassing {
             self.updatedAtValue = updatedAtValue as! Date
         }
         
+       
+        
+        
         if let prod_desc = dict["description"] {
             self.prodcut_description = prod_desc as! String
         }

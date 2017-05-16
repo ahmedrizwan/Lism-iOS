@@ -19,6 +19,10 @@ class User: AVUser {
             self.userName = userName as! String
         }
         
+        if let userName = dict.value(forKey: "username") {
+            self.userName = userName as! String
+        }
+        
         if let profileImage = dict.value(forKey: "profileImage") {
             self.profileImage = profileImage as! AVFile
         }

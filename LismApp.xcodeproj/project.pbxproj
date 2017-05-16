@@ -38,6 +38,9 @@
 		39638B711E7991F0003B54EE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B6C1E7991F0003B54EE /* LoginViewController.swift */; };
 		39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B6E1E7991F0003B54EE /* RegistrationViewController.swift */; };
 		39638B731E7991F0003B54EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B701E7991F0003B54EE /* MainViewController.swift */; };
+		3965701A1ECB434200188EA7 /* NotificationsViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396570191ECB434200188EA7 /* NotificationsViewcontroller.swift */; };
+		3965701C1ECB468800188EA7 /* NotificationCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3965701B1ECB468800188EA7 /* NotificationCustomCell.swift */; };
+		3965701E1ECB479100188EA7 /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3965701D1ECB479100188EA7 /* NotificationLog.swift */; };
 		396A87A21EA7C33300128CCB /* close_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 396A87A11EA7C33300128CCB /* close_btn.png */; };
 		3970198B1E880806002F0A9B /* back_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 397019891E880806002F0A9B /* back_btn.png */; };
 		3970198C1E880806002F0A9B /* cart_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3970198A1E880806002F0A9B /* cart_btn.png */; };
@@ -171,6 +174,9 @@
 		39638B6C1E7991F0003B54EE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		39638B6E1E7991F0003B54EE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		39638B701E7991F0003B54EE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		396570191ECB434200188EA7 /* NotificationsViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewcontroller.swift; sourceTree = "<group>"; };
+		3965701B1ECB468800188EA7 /* NotificationCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCustomCell.swift; sourceTree = "<group>"; };
+		3965701D1ECB479100188EA7 /* NotificationLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
 		396A87A11EA7C33300128CCB /* close_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_btn.png; sourceTree = "<group>"; };
 		397019891E880806002F0A9B /* back_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_btn.png; sourceTree = "<group>"; };
 		3970198A1E880806002F0A9B /* cart_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_btn.png; sourceTree = "<group>"; };
@@ -454,6 +460,8 @@
 				39E32E761EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift */,
 				397572771EC0E3BF00ED4E8A /* UpdateWaitingtoBeSentStatus.swift */,
 				39B9E4C91EC3891A005187BA /* ProfileViewController.swift */,
+				396570191ECB434200188EA7 /* NotificationsViewcontroller.swift */,
+				3965701B1ECB468800188EA7 /* NotificationCustomCell.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -475,6 +483,7 @@
 				3970198F1E882035002F0A9B /* User.swift */,
 				3985356C1E7DBD5A00406BBB /* Product.swift */,
 				393C10A61E8978B1007E3755 /* Comments.swift */,
+				3965701D1ECB479100188EA7 /* NotificationLog.swift */,
 			);
 			path = BO;
 			sourceTree = "<group>";
@@ -850,12 +859,15 @@
 				39F93D971E89486B0008B276 /* iCarousel.m in Sources */,
 				39E6DB871EA6765500B3E91B /* SellMoreViewController.swift in Sources */,
 				398F9B671E8D81FC00845946 /* UIImage+AspectFit.swift in Sources */,
+				3965701C1ECB468800188EA7 /* NotificationCustomCell.swift in Sources */,
+				3965701A1ECB434200188EA7 /* NotificationsViewcontroller.swift in Sources */,
 				398F9B661E8D81FC00845946 /* InputSource.swift in Sources */,
 				39B76E181EA527B700528824 /* SellItemsCustomCell.swift in Sources */,
 				39638B2B1E79900A003B54EE /* AppDelegate.swift in Sources */,
 				398535681E7DBAAA00406BBB /* ProductCollectionViewCell.swift in Sources */,
 				39638B731E7991F0003B54EE /* MainViewController.swift in Sources */,
 				3985356D1E7DBD5A00406BBB /* Product.swift in Sources */,
+				3965701E1ECB479100188EA7 /* NotificationLog.swift in Sources */,
 				397019901E882035002F0A9B /* User.swift in Sources */,
 				390C18A01E8C1D9E00C7E6B9 /* CommentsCustomCell.swift in Sources */,
 				39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */,

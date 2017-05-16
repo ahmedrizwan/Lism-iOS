@@ -50,9 +50,10 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         userLabel.text = "@\(userObj.username!)"
     
-              self.getUserInfo()
+        self.getUserInfo()
         
         Constants.addShadow(button: minusBtn)
         Constants.addShadow(button: plusBtn)
@@ -78,12 +79,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 if(error == nil)
                 {
                 self.getProductList()
-                let parseFile = object?.value(forKey: "profileImage") as! AVFile
-                parseFile.getDataInBackground({ (data, error) in
+                if let parseFile = object?.value(forKey: "profileImage")
+                {
+                (parseFile as! AVFile).getDataInBackground({ (data, error) in
                     self.userImageview.image = UIImage.init(data: data!)
                     self.userImageview.layer.cornerRadius =  self.userImageview.frame.size.width/2
                     self.userImageview.clipsToBounds = true
+                    
                 })
+                }
                 if let website = object!.value(forKey: "website")
                 {
                self.emailLabel.text =  website as? String

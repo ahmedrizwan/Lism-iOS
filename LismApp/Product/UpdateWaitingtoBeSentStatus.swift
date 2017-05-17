@@ -115,13 +115,16 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         }
         progressBar.isHidden = false
         progressBar.startAnimating()
+        var objectsToUpdate = [AVObject]()
         let query: AVQuery = AVQuery(className: "Product")
         query.whereKey("objectId", equalTo: self.productObj.objectId!)
         query.getFirstObjectInBackground { (object, error) in
             productBO.setObject("Sent", forKey: "status")
             productBO.setObject(self.trackingField.text, forKey: "trackingNumber")
-
-            productBO.saveInBackground  { (objects, error) in
+            objectsToUpdate.append(productBO)
+            objectsToUpdate.append(Constants.getProductNotification(product: productBO
+                , type: Constants.NotificationType.TYPE_SELL_SENT))
+            AVObject.saveAll(inBackground: objectsToUpdate, block: {(objectsToUpdate, error) in
                 if(error == nil)
                 {
                     AVUser.current()?.relation(forKey: Constants.SELL_PRODUCTS).add(productBO)
@@ -138,7 +141,7 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
                                 alert.addAction(UIAlertAction(title: "OK",
                                                               style: UIAlertActionStyle.default,
                                                               handler: {(alert: UIAlertAction!) in
-                                self.navigationController?.popViewController(animated: true)
+                                                                _ = self.navigationController?.popViewController(animated: true)
                                 }))
                                 self.present(alert, animated: true, completion: nil)
 
@@ -157,7 +160,7 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
                 }
                 
                 
-            }
+            })
         }
     }
     
@@ -183,6 +186,6 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
   
     @IBAction func gobackAction (sender  : AnyObject)
     {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 }

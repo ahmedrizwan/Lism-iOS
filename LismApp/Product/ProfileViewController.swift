@@ -50,9 +50,10 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userLabel.text = "@\(userObj.username!)"
-    
+        if(userObj.username != nil)
+        {
+        self.userLabel.text = "@\(userObj.username!)"
+        }
         self.getUserInfo()
         
         Constants.addShadow(button: minusBtn)

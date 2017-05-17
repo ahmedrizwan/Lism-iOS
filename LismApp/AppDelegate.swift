@@ -10,9 +10,9 @@ import UIKit
 import AVOSCloud
 import Fabric
 import DigitsKit
-
+import UserNotifications
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setUpAVCloud()
         Product.registerSubclass()
         Comments.registerSubclass()
-
+        User.registerSubclass()
+        NotificationLog.registerSubclass()
         // Override point for customization after application launch.
         
         let navigationController = UINavigationController()
@@ -54,11 +55,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
 
         Fabric.with([Digits.self])
-        
-        
+        if (launchOptions != nil) {
+            // do something else
+            AVAnalytics.trackAppOpened(launchOptions: launchOptions)
+        }
+        // iOS 10 support
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+            application.registerForRemoteNotifications()
+        }
+            // iOS 9 support
+        else if #available(iOS 9, *) {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+            // iOS 8 support
+      
+        application.registerForRemoteNotifications()
         return true
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print(deviceTokenString)
+        let currentInstallation = AVInstallation.current()
+        currentInstallation.setDeviceTokenFrom(deviceToken)
+        currentInstallation.saveInBackground()
+
+        
+        
+    }
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print("i am not available in simulator \(error)")
+        
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        if application.applicationState == .active {
+        
+        print ("userInfo",userInfo)
+        }
+            else {
+            AVAnalytics.trackAppOpened(withRemoteNotificationPayload: userInfo)
+        }
+    }
+
     func setUpAVCloud() {
         let applicationID = "Cn9eVkpohxi0u2ki6qXNwujn-gzGzoHsz"
         let clientKey = "8BB9DoKO0GVCdUq4O8FCxX0j"

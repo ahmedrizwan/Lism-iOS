@@ -1033,6 +1033,6 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     @IBAction func backbuttonAction(sender : AnyObject)
     {
         
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 }

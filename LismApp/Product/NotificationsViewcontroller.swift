@@ -40,7 +40,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
             {
                 for obj in objects!
                 {
-                    let notifObj:NotificationLog =  NotificationLog()
+                    let notifObj:NotificationLog =  obj as! NotificationLog
                     
                     
                     notifObj.NotificationInintWithDic(dict: obj as! AVObject)

@@ -1038,6 +1038,7 @@
 				DEVELOPMENT_TEAM = 47AKDA7LPX;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = LismApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3.5;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twinbinary.LismApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1060,6 +1061,7 @@
 				DEVELOPMENT_TEAM = 47AKDA7LPX;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = LismApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3.5;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twinbinary.LismApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

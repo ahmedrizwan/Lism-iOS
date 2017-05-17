@@ -62,7 +62,6 @@ class CheckoutViewController: UIViewController
             
             if error == nil
             {
-              
             for obj in objects!
             {
 
@@ -74,9 +73,11 @@ class CheckoutViewController: UIViewController
 
                 productObj.setObject("Waiting to be Sent", forKey: "status")
                 productObj.setObject(self.textViewForAddress.text, forKey: "address")
+
                 self.avobjectsArray.append(productObj)
+                self.avobjectsArray.append(Constants.getProductNotification(product: productObj, type: Constants.NotificationType.TYPE_SELL_BOUGHT))
+
             }
-                
                 AVObject.saveAll(inBackground:  self.avobjectsArray, block: { (objects, error) in
 
                     if error == nil

@@ -153,7 +153,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 750)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 850)
         horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height + 60)
         
         
@@ -168,10 +168,13 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         {
         let parseFile = profileImage as! AVFile
             parseFile.getDataInBackground({ (data, error) in
+													if(data != nil)
+													{
                 self.userImage.image = UIImage.init(data: data!)
                  self.userImage.layer.cornerRadius =  self.userImage.frame.size.width/2
                  self.userImage.clipsToBounds = true
-            })
+													}
+													})
             print("file exists");
         }
 					}
@@ -294,15 +297,18 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
 
         let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
-
+					var objectstoPost = [AVObject]()
         let comment = Comments()
         comment.setObject(AVUser.current()!, forKey: "user")
         comment.setObject(cell.inputTextField.text, forKey: "comment")
         comment.saveInBackground  { (objects, error) in
             let commentRelation =  self.productBO.relation(forKey: "comments")
             commentRelation.add(comment)
-            
-            self.productBO.saveInBackground { (objects, error) in
+									let notificationLog = 							Constants.getProductNotification(product: self.productBO, type: Constants.NotificationType.TYPE_COMMENT)
+									objectstoPost.append(comment)
+									objectstoPost.append(notificationLog)
+
+            AVObject.saveAll(inBackground: objectstoPost, block: { (objects, error) in
                 
                 if(error == nil)
                 {
@@ -313,12 +319,10 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
                 {
                     //show error mesage
                 }
-            }
-            
-
-        }
-        
-        }
+									})
+					}
+					
+}
  
     @IBAction func addToCart(sender : AnyObject)
     {
@@ -385,7 +389,7 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
     
     @IBAction func backBtnAction(sender : AnyObject)
     {
-    self.navigationController!.popViewController(animated: true)
+					_ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func showDescriptionView(sender : AnyObject)

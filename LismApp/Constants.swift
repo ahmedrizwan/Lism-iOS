@@ -9,6 +9,8 @@
 import Foundation
 import AVFoundation
 import  UIKit
+import AVOSCloud
+
 class Constants {
 
     
@@ -111,5 +113,17 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
         button.layer.cornerRadius = 0.5
         
     }
+    static func getProductNotification ( product : Product , type : String)-> NotificationLog
+    {
+        let notifLog = NotificationLog()
+        notifLog.setObject(product, forKey: "product")
+        notifLog.setObject(product.user.objectId, forKey: "userId")
+        notifLog.setObject(AVUser.current(), forKey: "otherUser")
+        notifLog.setObject(type, forKey: "type")
+        return notifLog
+    }
+    
+    
+   
 
 }

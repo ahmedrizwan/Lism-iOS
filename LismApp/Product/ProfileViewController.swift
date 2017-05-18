@@ -332,6 +332,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 
                 self.isFollowingUser = false
                 self.followBtn.setTitle("Follow +", for: .normal)
+                
                 self.updateFollowersAndFollowingInfo()
             })
         // will unfollow user
@@ -342,6 +343,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 
                 self.isFollowingUser = true
                 self.followBtn.setTitle("Unfollow -", for: .normal)
+                Constants.sendPushToChannel(vc: self, channelInfo: self.userObj.objectId!, message: "\(AVUser.current()?.username) started following you!", content: "")
+
                 self.updateFollowersAndFollowingInfo()
             })
         //will follow user

@@ -183,6 +183,7 @@
 		3970198D1E880C37002F0A9B /* scroll_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll_btn.png; sourceTree = "<group>"; };
 		3970198F1E882035002F0A9B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		397572771EC0E3BF00ED4E8A /* UpdateWaitingtoBeSentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateWaitingtoBeSentStatus.swift; sourceTree = "<group>"; };
+		3985109E1ECDF7BA001723C5 /* LismApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LismApp.entitlements; sourceTree = "<group>"; };
 		398535351E7DA69D00406BBB /* add_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_photo.png; sourceTree = "<group>"; };
 		398535361E7DA69D00406BBB /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		398535371E7DA69D00406BBB /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 		39638B291E79900A003B54EE /* LismApp */ = {
 			isa = PBXGroup;
 			children = (
+				3985109E1ECDF7BA001723C5 /* LismApp.entitlements */,
 				39B76E141EA520D100528824 /* Constants */,
 				39F93D921E8948580008B276 /* Libraries */,
 				3985356B1E7DBD5A00406BBB /* BO */,
@@ -669,6 +671,11 @@
 						DevelopmentTeam = 47AKDA7LPX;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					39638B3A1E79900A003B54EE = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1033,6 +1040,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LismApp/LismApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ahmed Fayyaz (VWZVNE9V77)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ahmed Fayyaz (VWZVNE9V77)";
 				DEVELOPMENT_TEAM = 47AKDA7LPX;
@@ -1056,6 +1064,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LismApp/LismApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ahmed Fayyaz (47AKDA7LPX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ahmed Fayyaz (47AKDA7LPX)";
 				DEVELOPMENT_TEAM = 47AKDA7LPX;

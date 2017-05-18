@@ -196,6 +196,9 @@ class RegistrationViewController: UIViewController {
                 alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: .none))
                 self.present(alertController, animated: true, completion: .none)
                 avUser?.setObject(phoneNumber, forKey: "mobilePhoneNumber")
+                
+               // AVInstallation.current().addUniqueObject(AVUser.current()?.objectId! as Any, forKey: "channels")
+
                 avUser?.saveEventually()
             } else {
                 avUser?.deleteEventually()

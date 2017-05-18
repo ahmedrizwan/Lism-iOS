@@ -135,7 +135,9 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
                             if(error == nil)
                             {
                                 self.progressBar.isHidden = true
+                                Constants.sendPushToChannel(vc: self, channelInfo: productBO.buyingUser.objectId!, message: "\(productBO.name) has been shipped!", content: "")
                                 
+                            
                                 let alert = UIAlertController(title: "",message:"\(productBO.name)  has been shipped!",
                                                               preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK",

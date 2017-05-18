@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
                     AVUser.logInWithUsername(inBackground: avUsername, password: self.passwordTextField.text!, block: { (user, error) in
                         if error == nil {
                             
-
+                            //AVInstallation.current().addUniqueObject(AVUser.current()?.objectId! as Any, forKey: "channels")
                             UserDefaults.standard.set(true, forKey: "isLoggedIn") //Bool
                              UserDefaults.standard.set(username, forKey: "username")
                            // self.showAlert(message: "Login Successful")

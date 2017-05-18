@@ -24,7 +24,7 @@ class CheckoutViewController: UIViewController
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet var addressButton : UIButton!
     @IBOutlet var textViewForAddress : UITextView!
-    var checkoutArray : [AVObject] = []
+    var checkoutArray : [Product] = []
     var avobjectsArray : [AVObject] = []
     let relation = (AVUser.current()?.relation(forKey: "userCart"))! as AVRelation
 
@@ -67,8 +67,9 @@ class CheckoutViewController: UIViewController
 
                 self.relation.remove(obj as! AVObject)
 
-                self.checkoutArray.append(obj as! AVObject)
+               
                 let productObj:Product =  obj as! Product
+                 self.checkoutArray.append(productObj)
                 productObj.setObject(AVUser.current(), forKey: "buyingUser")
 
                 productObj.setObject("Waiting to be Sent", forKey: "status")
@@ -87,6 +88,11 @@ class CheckoutViewController: UIViewController
                             if error == nil
                             {
                             
+                                for product:Product in self.checkoutArray
+                                {
+                                Constants.sendPushToChannel(vc: self, channelInfo: product.user.objectId!, message: "Your product \(product.name) has been sold!", content: "")
+                                }
+                                
                                 let alert = UIAlertController(title: "",message:"Order placed (without payment)!",
                                                               preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK",

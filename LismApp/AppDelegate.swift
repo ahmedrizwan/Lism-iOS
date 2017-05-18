@@ -82,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let currentInstallation = AVInstallation.current()
         currentInstallation.setDeviceTokenFrom(deviceToken)
         currentInstallation.saveInBackground()
+        AVOSCloud.handleRemoteNotifications(withDeviceToken: deviceToken)
 
         
         

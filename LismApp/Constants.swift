@@ -123,7 +123,29 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
         return notifLog
     }
     
+    static func sendPushToChannel(vc : UIViewController, channelInfo: String , message : String , content : String )
+    {
+    let pushQuery = AVInstallation.query()
+    pushQuery.whereKey("channels", equalTo: channelInfo)
+        let push = AVPush()
+
+        let jsonObject: [String: AnyObject] = [
+            "message": message as AnyObject,
+            "content":content as AnyObject,
+            "alert": "\(message) \(content)" as AnyObject
+        ]
+        push.setQuery(pushQuery)
+        push.setPushToIOS(true)
+        push.setData(jsonObject)
+        
+        
+        push.sendInBackground { (status, error) in
+            print(status)
+        }
+
+
+    }
     
-   
+
 
 }

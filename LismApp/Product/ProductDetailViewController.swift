@@ -268,7 +268,7 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
     {
         
         self.productBO.queryObj.includeKey("user")
-
+					self.commentsArray.removeAll()
        self.productBO.queryObj.findObjectsInBackground { (objects, error) in
             
             if(error == nil)
@@ -298,7 +298,7 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
         let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
 					var objectstoPost = [AVObject]()
-        let comment = Comments()
+        let comment = AVObject()
         comment.setObject(AVUser.current()!, forKey: "user")
         comment.setObject(cell.inputTextField.text, forKey: "comment")
         comment.saveInBackground  { (objects, error) in

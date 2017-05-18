@@ -298,7 +298,7 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
         let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
 					var objectstoPost = [AVObject]()
-        let comment = AVObject()
+        let comment = Comments()
         comment.setObject(AVUser.current()!, forKey: "user")
         comment.setObject(cell.inputTextField.text, forKey: "comment")
         comment.saveInBackground  { (objects, error) in
@@ -312,6 +312,8 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
                 
                 if(error == nil)
                 {
+																	Constants.sendPushToChannel(vc: self, channelInfo: self.productBO.objectId!, message: "\(AVUser.current()?.username!) commented on \(self.productBO.name)", content: "")
+
                     cell.inputTextField.text  = ""
                     self.loadComments()
                 }

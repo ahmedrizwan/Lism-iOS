@@ -94,7 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                                          willPresent notification: UNNotification,
                                          withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
-    
+        completionHandler(UNNotificationPresentationOptions.alert)
+
     print("recieved notification")
     }
     @available(iOS 10.0, *)

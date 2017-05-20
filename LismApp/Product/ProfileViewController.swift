@@ -208,7 +208,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("product")
         query.includeKey("images")
         query.includeKey("user")
-        
+        progressView.isHidden = false
+        progressView.startAnimating()
         query.whereKey("userId", equalTo: AVUser.current()!.objectId! as Any)
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
@@ -233,8 +234,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     self.notificationItems.append(notifObj)
                     
                 }
+                 self.notificationItems =  self.notificationItems.reversed()
                 print ("notifCount\(notifCount)")
             }
+            self.progressView.isHidden = true
+            self.progressView.stopAnimating()
         }
     }
     
@@ -430,8 +434,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         let query: AVQuery = AVQuery(className: "Product")
        query.whereKey("buyingUser", equalTo: userObj as Any)
 
-        
-        query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)

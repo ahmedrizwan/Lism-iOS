@@ -19,7 +19,7 @@ class NotificationLog: AVObject, AVSubclassing {
     var type: String = String()
     var createdAtValue: Date = Date()
 
-    var isRead: Bool = Bool()
+    var read: Bool = Bool()
 
     static func parseClassName() -> String {
         return "NotificationLog"
@@ -53,9 +53,9 @@ class NotificationLog: AVObject, AVSubclassing {
         }
         
         
-        if let isRead = dict.value(forKey: "isRead") {
-            self.isRead = isRead as! Bool
-        }
+//        if let isRead = dict.value(forKey: "read") {
+//            self.isRead = isRead as! Bool
+//        }
         
         
     }

@@ -209,7 +209,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("images")
         query.includeKey("user")
         
-        query.whereKey("userId", equalTo: AVUser.current()?.objectId as Any)
+        query.whereKey("userId", equalTo: AVUser.current()!.objectId! as Any)
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
@@ -220,7 +220,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     
                     
                     notifObj.NotificationInintWithDic(dict: obj as! AVObject)
-                    if(!notifObj.isRead)
+                    notifObj.read = (obj as! AVObject).value(forKey: "read") as! Bool 
+                    if((obj as! AVObject).value(forKey: "read") as! Bool == false)
                     {
                         self.selectedTabBarItem.selectedImage = UIImage(named : "person_notif")
                        // self.redDotView?.isHidden = false
@@ -232,7 +233,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     self.notificationItems.append(notifObj)
                     
                 }
-                print (objects as Any)
+                print ("notifCount\(notifCount)")
             }
         }
     }

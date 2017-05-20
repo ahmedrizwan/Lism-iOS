@@ -37,11 +37,13 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
         for obj in items
         {
             let notifObj:NotificationLog =  obj 
-            
+            if(!notifObj.read)
+            {
             notifObj.setObject(true, forKey: "read")
-            notifObj.saveInBackground({ (status, errpr) in
+            notifObj.saveInBackground({ (status, error) in
                 print("Status : \(status), error : \(error)")
-            })()
+            })
+            }
         }
 //        let query: AVQuery = AVQuery(className: "NotificationLog")
 //        query.includeKey("otherUser")

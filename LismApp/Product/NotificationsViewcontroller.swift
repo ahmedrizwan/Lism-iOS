@@ -22,36 +22,54 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadNotifications()
+        
+        self.tableView.reloadData()
+
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBar.selectedItem = selectedTabBarItem
+
+    }
     func loadNotifications()
     {
         
-        let query: AVQuery = AVQuery(className: "NotificationLog")
-        query.includeKey("otherUser")
-        query.includeKey("product")
-        query.includeKey("images")
-        query.includeKey("user")
-
-        query.whereKey("userId", equalTo: AVUser.current()?.objectId as Any)
-        self.progressView.isHidden = false
-        query.findObjectsInBackground { (objects, error) in
-            if(error == nil)
-            {
-                for obj in objects!
-                {
-                    let notifObj:NotificationLog =  obj as! NotificationLog
-                    
-                    
-                    notifObj.NotificationInintWithDic(dict: obj as! AVObject)
-                    self.items.append(notifObj)
-                
-                }
-                self.items = self.items.reversed() // so that we can show latest one on top
-                self.tableView.reloadData()
-                print (objects as Any)
-            }
+        for obj in items
+        {
+            let notifObj:NotificationLog =  obj 
+            
+            notifObj.setObject(true, forKey: "read")
+            notifObj.saveInBackground({ (status, errpr) in
+                print("Status : \(status), error : \(error)")
+            })()
         }
+//        let query: AVQuery = AVQuery(className: "NotificationLog")
+//        query.includeKey("otherUser")
+//        query.includeKey("product")
+//        query.includeKey("images")
+//        query.includeKey("user")
+//
+//        query.whereKey("userId", equalTo: AVUser.current()?.objectId as Any)
+//        self.progressView.isHidden = false
+//        query.findObjectsInBackground { (objects, error) in
+//            if(error == nil)
+//            {
+//                for obj in objects!
+//                {
+//                    let notifObj:NotificationLog =  obj as! NotificationLog
+//                    
+//                    
+//                    notifObj.NotificationInintWithDic(dict: obj as! AVObject)
+//                    notifObj.setObject(true, forKey: "read")
+//                    self.items.append(notifObj)
+//                notifObj.saveInBackground()
+//                }
+//                self.items = self.items.reversed() // so that we can show latest one on top
+//            
+//                self.tableView.reloadData()
+//                print (objects as Any)
+//            }
+//        }
     }
     // MARK: UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -264,7 +282,7 @@ func loadUserImage(parseFile : AVFile ,  customCellForNotification :Notification
         if(item.tag == 2)
         {
             //load new view
-            self.performSegue(withIdentifier: "SellToProfileViewcontroller", sender: self)
+           // self.performSegue(withIdentifier: "SellToProfileViewcontroller", sender: self)
             
         }
         else if(item.tag == 4)

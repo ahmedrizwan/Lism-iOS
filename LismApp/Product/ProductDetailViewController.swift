@@ -181,8 +181,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         favoriteBtn.isSelected = productBO.favorite
         likesLabel.text = "\(productBO.productLikes)"
         productNameLabel.text = productBO.brand
-        userNameLabel.text = "@" + (AVUser.current()?.username!)!
-
+					if(productBO.user.username != nil)
+					{
+        userNameLabel.text = "@" + (productBO.user.username!)
+					}
 
 									self.produceAttributedText(string: "\(productBO.name) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)", textView:  priceSizeNameTextView)
 
@@ -312,7 +314,7 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
                 
                 if(error == nil)
                 {
-																	Constants.sendPushToChannel(vc: self, channelInfo: self.productBO.objectId!, message: "\(AVUser.current()?.username!) commented on \(self.productBO.name)", content: "")
+																	Constants.sendPushToChannel(vc: self, channelInfo: self.productBO.objectId!, message: "\(AVUser.current()!.username!) commented on \(self.productBO.name)", content: "")
 
                     cell.inputTextField.text  = ""
                     self.loadComments()

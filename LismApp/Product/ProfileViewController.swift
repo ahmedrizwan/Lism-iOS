@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var followBtn : UIButton!
     @IBOutlet weak var notifcationsBtn : UIButton!
-
+    @IBOutlet weak var redDotView : UIView? = UIView()
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     var items : [Product] = []
     var boughtItems : [Product] = []
@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var descriptionTextView : UITextView!
     @IBOutlet weak var emailLabel : UILabel!
     @IBOutlet weak var noProductBoughtSoFar : UILabel!
+    var notificationItems : [NotificationLog] = []
 
     var userFollowersArray : [AVUser] = [AVUser]()
     var userFollowingsArray : [AVUser] = [AVUser]()
@@ -45,11 +46,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var plusBtn : UIButton!
     @IBOutlet weak var minusBtnForClick : UIButton!
     @IBOutlet weak var plusBtnForClick : UIButton!
+    @IBOutlet weak var notificationLabel : UILabel!
 
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        notificationLabel.isHidden = true
         if(userObj.username != nil)
         {
         self.userLabel.text = "@\(userObj.username!)"
@@ -127,6 +131,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         else
         {
+            self.loadNotifications() //if any notification is here
         notifcationsBtn.isHidden = false
         }
     }
@@ -195,10 +200,46 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         })
         
     }
-
+    func loadNotifications()
+    {
+        var notifCount = 0
+        let query: AVQuery = AVQuery(className: "NotificationLog")
+        query.includeKey("otherUser")
+        query.includeKey("product")
+        query.includeKey("images")
+        query.includeKey("user")
+        
+        query.whereKey("userId", equalTo: AVUser.current()?.objectId as Any)
+        self.progressView.isHidden = false
+        query.findObjectsInBackground { (objects, error) in
+            if(error == nil)
+            {
+                for obj in objects!
+                {
+                    let notifObj:NotificationLog =  obj as! NotificationLog
+                    
+                    
+                    notifObj.NotificationInintWithDic(dict: obj as! AVObject)
+                    if(!notifObj.isRead)
+                    {
+                        self.selectedTabBarItem.selectedImage = UIImage(named : "person_notif")
+                       // self.redDotView?.isHidden = false
+                        notifCount = notifCount + 1
+                         self.notificationLabel.isHidden = false
+                         self.notificationLabel.layer.cornerRadius = self.notificationLabel.frame.size.height/2
+                     //   self.notificationLabel.text = "\(notifCount)"
+                    }
+                    self.notificationItems.append(notifObj)
+                    
+                }
+                print (objects as Any)
+            }
+        }
+    }
+    
     @IBAction func notificationsBtnAction (sender : AnyObject)
     {
-    
+
     
     }
     // MARK: - UICollectionViewDataSource protocol
@@ -536,6 +577,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
             viewController.productBO = seelctedProductObj            
             // pass data to next view
+        }
+        else if (segue.identifier == "ProfileToNotificationViewcontroller") { //gooing tp notiication
+            let viewController:NotificationsViewcontroller = segue.destination as! NotificationsViewcontroller
+            viewController.items = self.notificationItems
+            self.notificationLabel.isHidden  = true
+            self.selectedTabBarItem.selectedImage  = UIImage(named : "person")
+
+        
         }
         
     }

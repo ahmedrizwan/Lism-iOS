@@ -640,7 +640,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="45B2783C-2FBB-4C4C-BE7E-17EFA179BC19" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EA3D7953-B8F9-46E5-B9EA-E889400346B3" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -3730,15 +3730,28 @@ Est. Retail ¥2,00</string>
                                         <state key="normal" backgroundImage="notifications.png"/>
                                         <connections>
                                             <action selector="notificationsBtnActionWithSender:" destination="ZRI-5b-FhM" eventType="touchUpInside" id="s2b-pS-TvX"/>
-                                            <segue destination="CW0-mW-PMe" kind="show" id="LE2-v8-1Me"/>
+                                            <segue destination="CW0-mW-PMe" kind="show" identifier="ProfileToNotificationViewcontroller" id="LE2-v8-1Me"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeB-Yd-FqH">
+                                        <rect key="frame" x="28" y="20" width="7" height="7"/>
+                                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="7" id="mq5-nw-1zG"/>
+                                            <constraint firstAttribute="height" constant="7" id="uK3-os-v5A"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="4gI-2V-c5q"/>
+                                    <constraint firstItem="OeB-Yd-FqH" firstAttribute="leading" secondItem="hbK-vg-sj9" secondAttribute="leading" constant="28" id="7cL-yT-QXf"/>
                                     <constraint firstItem="Bp7-a0-o9O" firstAttribute="leading" secondItem="hbK-vg-sj9" secondAttribute="leading" constant="16" id="81f-mc-hn5"/>
                                     <constraint firstItem="Bp7-a0-o9O" firstAttribute="top" secondItem="hbK-vg-sj9" secondAttribute="top" constant="21" id="HF4-Al-HVa"/>
+                                    <constraint firstItem="OeB-Yd-FqH" firstAttribute="top" secondItem="hbK-vg-sj9" secondAttribute="top" constant="20" id="Jxf-Qc-apM"/>
                                     <constraint firstItem="lMF-gz-uws" firstAttribute="centerX" secondItem="hbK-vg-sj9" secondAttribute="centerX" id="ThV-gH-Wen"/>
                                     <constraint firstItem="uQv-sQ-EyG" firstAttribute="leading" secondItem="hbK-vg-sj9" secondAttribute="leading" id="UUQ-H1-X9X"/>
                                     <constraint firstAttribute="trailing" secondItem="B70-l5-YvG" secondAttribute="trailing" id="XhG-Bg-tlr"/>
@@ -4055,6 +4068,7 @@ Est. Retail ¥2,00</string>
                         <outlet property="minusBtn" destination="2Vq-Of-vCV" id="DgC-fb-qDF"/>
                         <outlet property="noProductBoughtSoFar" destination="ot6-Sx-GUL" id="0jE-cW-kgt"/>
                         <outlet property="notifcationsBtn" destination="Bp7-a0-o9O" id="Zm8-gp-uAe"/>
+                        <outlet property="notificationLabel" destination="OeB-Yd-FqH" id="zAD-Pv-4Ig"/>
                         <outlet property="plusBtn" destination="2NZ-5b-B4r" id="zvs-EW-QUr"/>
                         <outlet property="productsCollectionView" destination="yUa-vK-kRq" id="dba-yx-f0A"/>
                         <outlet property="productsTableView" destination="e5Z-xf-YCp" id="CCg-B5-OfY"/>
@@ -4264,11 +4278,11 @@ Est. Retail ¥2,00</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIm-B4-z8N" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="411.544227886057"/>
+            <point key="canvasLocation" x="1185" y="692"/>
         </scene>
     </scenes>
     <resources>
-        <image name="45B2783C-2FBB-4C4C-BE7E-17EFA179BC19" width="2081" height="292">
+        <image name="EA3D7953-B8F9-46E5-B9EA-E889400346B3" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -44865,12 +44879,12 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
         <image name="wechat" width="87" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9Bk-jH-cnv"/>
+        <segue reference="lXO-Mw-BCE"/>
+        <segue reference="oeG-YO-Czw"/>
         <segue reference="Pef-BG-f2j"/>
-        <segue reference="JwF-La-XTU"/>
-        <segue reference="bVG-bH-5WT"/>
-        <segue reference="L3M-j5-nQY"/>
-        <segue reference="dsA-C6-Za7"/>
-        <segue reference="4A3-eO-F6e"/>
+        <segue reference="4Vk-bV-igI"/>
+        <segue reference="cbm-TA-IBD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

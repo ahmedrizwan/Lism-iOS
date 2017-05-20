@@ -120,6 +120,7 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
         notifLog.setObject(product.user.objectId, forKey: "userId")
         notifLog.setObject(AVUser.current(), forKey: "otherUser")
         notifLog.setObject(type, forKey: "type")
+        
         return notifLog
     }
     
@@ -128,16 +129,20 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
     let pushQuery = AVInstallation.query()
     pushQuery.whereKey("channels", equalTo: channelInfo)
         let push = AVPush()
-
+        AVPush.setProductionMode(false)
         let jsonObject: [String: AnyObject] = [
+          //  "content-available": "1" as AnyObject,
             "message": message as AnyObject,
             "content":content as AnyObject,
             "alert": "\(message) \(content)" as AnyObject
+            
         ]
         push.setQuery(pushQuery)
         push.setPushToIOS(true)
+        push.setPushToAndroid(true)
+
         push.setData(jsonObject)
-        
+
         
         push.sendInBackground { (status, error) in
             print(status)

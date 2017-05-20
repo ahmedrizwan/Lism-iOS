@@ -11,6 +11,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     static let ITEM_LIMIT = 10
     
     var items : [Product] = []
+
     var favoritesList : [Product] = []
     var selectedIndex : Int!
     var isShowing = false
@@ -99,6 +100,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         //This method will be called when user changes tab.
     }
     
+  
     func getProductList()
     {
         

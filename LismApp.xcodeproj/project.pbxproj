@@ -27,8 +27,6 @@
 		39638B301E79900A003B54EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39638B2E1E79900A003B54EE /* Main.storyboard */; };
 		39638B321E79900A003B54EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39638B311E79900A003B54EE /* Assets.xcassets */; };
 		39638B351E79900A003B54EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39638B331E79900A003B54EE /* LaunchScreen.storyboard */; };
-		39638B401E79900A003B54EE /* LismAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B3F1E79900A003B54EE /* LismAppTests.swift */; };
-		39638B4B1E79900A003B54EE /* LismAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B4A1E79900A003B54EE /* LismAppUITests.swift */; };
 		39638B5C1E799145003B54EE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 39638B5B1E799145003B54EE /* libz.tbd */; };
 		39638B5E1E799150003B54EE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 39638B5D1E799150003B54EE /* libc++.tbd */; };
 		39638B601E799158003B54EE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 39638B5F1E799158003B54EE /* libicucore.tbd */; };
@@ -121,23 +119,6 @@
 		AE552491F6D2F6FD2F5777BB /* Pods_LismApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687FCEFCAB6035A537DF1DD3 /* Pods_LismApp.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		39638B3C1E79900A003B54EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 39638B1F1E79900A003B54EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39638B261E79900A003B54EE;
-			remoteInfo = LismApp;
-		};
-		39638B471E79900A003B54EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 39638B1F1E79900A003B54EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39638B261E79900A003B54EE;
-			remoteInfo = LismApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		39098D3E1E9E94C100BF87A4 /* full_logo_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_logo_new.png; sourceTree = "<group>"; };
 		390C189F1E8C1D9E00C7E6B9 /* CommentsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCustomCell.swift; sourceTree = "<group>"; };
@@ -162,10 +143,8 @@
 		39638B311E79900A003B54EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39638B341E79900A003B54EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39638B361E79900A003B54EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39638B3B1E79900A003B54EE /* LismAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LismAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39638B3F1E79900A003B54EE /* LismAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LismAppTests.swift; sourceTree = "<group>"; };
 		39638B411E79900A003B54EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39638B461E79900A003B54EE /* LismAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LismAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39638B4A1E79900A003B54EE /* LismAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LismAppUITests.swift; sourceTree = "<group>"; };
 		39638B4C1E79900A003B54EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39638B5B1E799145003B54EE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -285,20 +264,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39638B381E79900A003B54EE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39638B431E79900A003B54EE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -328,8 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				39638B271E79900A003B54EE /* LismApp.app */,
-				39638B3B1E79900A003B54EE /* LismAppTests.xctest */,
-				39638B461E79900A003B54EE /* LismAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -631,42 +594,6 @@
 			productReference = 39638B271E79900A003B54EE /* LismApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		39638B3A1E79900A003B54EE /* LismAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39638B521E79900B003B54EE /* Build configuration list for PBXNativeTarget "LismAppTests" */;
-			buildPhases = (
-				39638B371E79900A003B54EE /* Sources */,
-				39638B381E79900A003B54EE /* Frameworks */,
-				39638B391E79900A003B54EE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				39638B3D1E79900A003B54EE /* PBXTargetDependency */,
-			);
-			name = LismAppTests;
-			productName = LismAppTests;
-			productReference = 39638B3B1E79900A003B54EE /* LismAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		39638B451E79900A003B54EE /* LismAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39638B551E79900B003B54EE /* Build configuration list for PBXNativeTarget "LismAppUITests" */;
-			buildPhases = (
-				39638B421E79900A003B54EE /* Sources */,
-				39638B431E79900A003B54EE /* Frameworks */,
-				39638B441E79900A003B54EE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				39638B481E79900A003B54EE /* PBXTargetDependency */,
-			);
-			name = LismAppUITests;
-			productName = LismAppUITests;
-			productReference = 39638B461E79900A003B54EE /* LismAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -691,18 +618,6 @@
 							};
 						};
 					};
-					39638B3A1E79900A003B54EE = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = AR93S3V49U;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 39638B261E79900A003B54EE;
-					};
-					39638B451E79900A003B54EE = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = AR93S3V49U;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 39638B261E79900A003B54EE;
-					};
 				};
 			};
 			buildConfigurationList = 39638B221E79900A003B54EE /* Build configuration list for PBXProject "LismApp" */;
@@ -719,8 +634,6 @@
 			projectRoot = "";
 			targets = (
 				39638B261E79900A003B54EE /* LismApp */,
-				39638B3A1E79900A003B54EE /* LismAppTests */,
-				39638B451E79900A003B54EE /* LismAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -790,20 +703,6 @@
 				39FA9C211E8ACA6300C617D8 /* icon1.png in Resources */,
 				399111A71E953B49005A047F /* checkbox_checked.png in Resources */,
 				398535511E7DA69D00406BBB /* cart_button.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39638B391E79900A003B54EE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39638B441E79900A003B54EE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,36 +802,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39638B371E79900A003B54EE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39638B401E79900A003B54EE /* LismAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39638B421E79900A003B54EE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39638B4B1E79900A003B54EE /* LismAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		39638B3D1E79900A003B54EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39638B261E79900A003B54EE /* LismApp */;
-			targetProxy = 39638B3C1E79900A003B54EE /* PBXContainerItemProxy */;
-		};
-		39638B481E79900A003B54EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39638B261E79900A003B54EE /* LismApp */;
-			targetProxy = 39638B471E79900A003B54EE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		39638B2E1E79900A003B54EE /* Main.storyboard */ = {
@@ -1089,68 +959,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twinbinary.LismApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c45919f0-263f-466f-a498-495c76e3ead0";
+				PROVISIONING_PROFILE = "3eddf963-ba41-497e-b088-4f8dcc457f19";
 				PROVISIONING_PROFILE_SPECIFIER = dist;
 				SWIFT_OBJC_BRIDGING_HEADER = "LismApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		39638B531E79900B003B54EE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = AR93S3V49U;
-				INFOPLIST_FILE = LismAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arkhitech.mobileTest.LismAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LismApp.app/LismApp";
-			};
-			name = Debug;
-		};
-		39638B541E79900B003B54EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = AR93S3V49U;
-				INFOPLIST_FILE = LismAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arkhitech.mobileTest.LismAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LismApp.app/LismApp";
-			};
-			name = Release;
-		};
-		39638B561E79900B003B54EE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = AR93S3V49U;
-				INFOPLIST_FILE = LismAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arkhitech.mobileTest.LismAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = LismApp;
-			};
-			name = Debug;
-		};
-		39638B571E79900B003B54EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = AR93S3V49U;
-				INFOPLIST_FILE = LismAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arkhitech.mobileTest.LismAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = LismApp;
 			};
 			name = Release;
 		};
@@ -1171,24 +983,6 @@
 			buildConfigurations = (
 				39638B501E79900A003B54EE /* Debug */,
 				39638B511E79900B003B54EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		39638B521E79900B003B54EE /* Build configuration list for PBXNativeTarget "LismAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39638B531E79900B003B54EE /* Debug */,
-				39638B541E79900B003B54EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		39638B551E79900B003B54EE /* Build configuration list for PBXNativeTarget "LismAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39638B561E79900B003B54EE /* Debug */,
-				39638B571E79900B003B54EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

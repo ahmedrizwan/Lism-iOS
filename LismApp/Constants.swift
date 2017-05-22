@@ -129,7 +129,6 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
     let pushQuery = AVInstallation.query()
     pushQuery.whereKey("channels", equalTo: channelInfo)
         let push = AVPush()
-        AVPush.setProductionMode(false)
         let jsonObject: [String: AnyObject] = [
           //  "content-available": "1" as AnyObject,
             "message": message as AnyObject,

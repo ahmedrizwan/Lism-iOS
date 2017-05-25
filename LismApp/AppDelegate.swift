@@ -148,6 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
 
     func setUpAVCloud() {
+       // AVUser.logOut()
         let applicationID = "Cn9eVkpohxi0u2ki6qXNwujn-gzGzoHsz"
         let clientKey = "8BB9DoKO0GVCdUq4O8FCxX0j"
         

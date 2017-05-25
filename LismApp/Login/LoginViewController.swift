@@ -110,6 +110,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        AVUser.logOut()
 
         view.backgroundColor = UIColor.white
 
@@ -141,6 +142,7 @@ class LoginViewController: UIViewController {
                 if object !== nil {
                     let avUser = object as! AVUser
                     let avUsername = avUser.username!
+                    
                     AVUser.logInWithUsername(inBackground: avUsername, password: self.passwordTextField.text!, block: { (user, error) in
                         if error == nil {
                             

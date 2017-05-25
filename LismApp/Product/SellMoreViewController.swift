@@ -323,7 +323,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         } else {
 
         }
-        
+        self.isPrimary = true
         self.nextBtnToEnable = updateImageIfNotset()
 nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .normal)
          self.crossBtnToEnable.isHidden = false

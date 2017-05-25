@@ -202,28 +202,28 @@ func loadUserImage(parseFile : AVFile ,  customCellForNotification :Notification
 }
     func updateDaysInfo(notifcationObject : NotificationLog,  customCellForNotification :NotificationCustomCell )
     {
-        let dateValue  = notifcationObject.createdAtValue
-        if  Date().days(from: dateValue) > 0
+        let dateValue  = notifcationObject.createdAt
+        if  Date().days(from: dateValue!) > 0
             
         {
-            customCellForNotification.productTimeLabel.text =   "Updated \(Date().days(from:  dateValue)) d ago"
+            customCellForNotification.productTimeLabel.text =   "Updated \(Date().days(from:  dateValue!)) d ago"
             
         }
-        else if  Date().hour(from: dateValue) > 0
+        else if  Date().hour(from: dateValue!) > 0
         {
             // daysAgoLabel.isHidden = false
-           customCellForNotification.productTimeLabel.text  =   "Updated \(Date().hour(from: dateValue)) hour ago"
+           customCellForNotification.productTimeLabel.text  =   "Updated \(Date().hour(from: dateValue!)) hour ago"
         }
-        else if  Date().minute(from: dateValue) > 0
+        else if  Date().minute(from: dateValue!) > 0
         {
             // daysAgoLabel.isHidden = false
-            customCellForNotification.productTimeLabel.text  =   "Updated \(Date().minute(from: dateValue)) minute ago"
+            customCellForNotification.productTimeLabel.text  =   "Updated \(Date().minute(from: dateValue!)) minute ago"
         }
             
-        else if  Date().seconds(from:dateValue) > 0
+        else if  Date().seconds(from:dateValue!) > 0
         {
             // daysAgoLabel.isHidden = false
-            customCellForNotification.productTimeLabel.text  =   "Updated \(Date().seconds(from:  dateValue)) second ago"
+            customCellForNotification.productTimeLabel.text  =   "Updated \(Date().seconds(from:  dateValue!)) second ago"
         }
     }
     

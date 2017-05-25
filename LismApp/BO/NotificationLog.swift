@@ -17,7 +17,6 @@ class NotificationLog: AVObject, AVSubclassing {
     var otherUser : AVUser = AVUser()
     var product : Product = Product()
     var type: String = String()
-    var createdAtValue: Date = Date()
 
     var read: Bool = Bool()
 
@@ -48,10 +47,7 @@ class NotificationLog: AVObject, AVSubclassing {
             self.type = type as! String
         }
         
-        if let createdAtValue = dict.value(forKey: "createdAt") {
-            self.createdAtValue = createdAtValue as! Date
-        }
-        
+      
         
 //        if let isRead = dict.value(forKey: "read") {
 //            self.isRead = isRead as! Bool

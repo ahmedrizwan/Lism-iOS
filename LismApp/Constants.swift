@@ -120,7 +120,8 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
         notifLog.setObject(product.user.objectId, forKey: "userId")
         notifLog.setObject(AVUser.current(), forKey: "otherUser")
         notifLog.setObject(type, forKey: "type")
-        
+        notifLog.setObject(false, forKey: "read")
+
         return notifLog
     }
     

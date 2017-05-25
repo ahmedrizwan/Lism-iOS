@@ -640,7 +640,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EA3D7953-B8F9-46E5-B9EA-E889400346B3" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CED6BDD2-AA88-4EC3-83FA-4DFF5928C039" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -874,7 +874,7 @@ Est. Retail ¥2,00</string>
                                         </constraints>
                                         <state key="normal" backgroundImage="cart_btn.png"/>
                                         <connections>
-                                            <action selector="addToCartWithSender:" destination="5QB-nd-WMw" eventType="touchUpInside" id="Rqh-zW-6bG"/>
+                                            <action selector="addToCartWithSender:" destination="5QB-nd-WMw" eventType="touchUpInside" id="EOW-UT-fgT"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjS-Mi-kzo">
@@ -4278,11 +4278,11 @@ Est. Retail ¥2,00</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIm-B4-z8N" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1185" y="692"/>
+            <point key="canvasLocation" x="1907" y="643"/>
         </scene>
     </scenes>
     <resources>
-        <image name="EA3D7953-B8F9-46E5-B9EA-E889400346B3" width="2081" height="292">
+        <image name="CED6BDD2-AA88-4EC3-83FA-4DFF5928C039" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -44879,12 +44879,12 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
         <image name="wechat" width="87" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Bk-jH-cnv"/>
-        <segue reference="lXO-Mw-BCE"/>
+        <segue reference="cbm-TA-IBD"/>
+        <segue reference="JwF-La-XTU"/>
+        <segue reference="bVG-bH-5WT"/>
         <segue reference="oeG-YO-Czw"/>
         <segue reference="Pef-BG-f2j"/>
         <segue reference="4Vk-bV-igI"/>
-        <segue reference="cbm-TA-IBD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

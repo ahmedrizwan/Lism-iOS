@@ -7,7 +7,6 @@ import AVOSCloud
 class Product: AVObject, AVSubclassing {
   
     
-    var objectIdForProduct: String = String()
     var prodcut_description: String = String()
     var category: String = String()
     var address: String = String()
@@ -24,15 +23,13 @@ class Product: AVObject, AVSubclassing {
     var favorite: Bool = false
     var isAddedToCheckOut: Bool = true
 
-    var user : AVUser!
-    var buyingUser : AVUser!
+    var user : User!
+    var buyingUser : User!
 
     var productImagesObjects : [AVObject] = []
-
     var productImageUrl: URL!
     var productImagesArray: [URL] = []
     var queryObj: AVQuery!
-    var updatedAtValue: Date = Date()
 
 //   override  class  func initialize() {
   //      Product.registerSubclass()
@@ -66,10 +63,7 @@ class Product: AVObject, AVSubclassing {
         if let primaryImageUrl = dict.object(forKey: "primaryImageUrl") {
             self.productImageUrl =   URL(string: primaryImageUrl as! String)
         }
-        
-        if let objectIdForProduct = dict.object(forKey: "objectId") {
-            self.objectIdForProduct = objectIdForProduct as! String
-        }
+      
         
         if let size = dict.value(forKey: "size") {
             self.size = size as! String
@@ -87,10 +81,7 @@ class Product: AVObject, AVSubclassing {
         if let status = dict.value(forKey: "status") {
             self.status = status as! String
         }
-        if let updatedAtValue = dict.value(forKey: "updatedAt") {
-            self.updatedAtValue = updatedAtValue as! Date
-        }
-        
+       
        
         
         
@@ -135,13 +126,14 @@ class Product: AVObject, AVSubclassing {
         }
         
         if let user = dict.value(forKey: "user") {
-            self.user = user as! AVUser
+            let userDict = user as! User
+            self.user = userDict
            
         }
         
         if let user = dict.value(forKey: "buyingUser") {
-            self.buyingUser = user as! AVUser
-            
+            let userDict = user as! User
+            self.buyingUser = userDict
         }
         if let condition = dict.value(forKey: "condition") {
             self.condition = condition as! String

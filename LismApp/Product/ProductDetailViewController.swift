@@ -80,7 +80,6 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         Constants.addShadow(button: productDescriptionBtn)
         Constants.addShadow(button: thirdViewBtn)
         Constants.addShadow(button: commentsBtn)
-        self.relation =  (AVUser.current()?.relation(forKey: "userCart"))!
         self.commentsTableView.allowsSelection = true
         
         self.commentsTableView.estimatedRowHeight = 70
@@ -91,16 +90,18 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     
     
     override func viewWillAppear(_ animated: Bool) {
+					self.relation =  (AVUser.current()!.relation(forKey: "userCart"))
+
         self.updateCount(relation: self.relation)
 
     }
 
-    
+	
     func checkIfItemIsInCart()
     {
     
         
-        let query: AVQuery = self.relation.query()
+        let query: AVQuery = (AVUser.current()!.relation(forKey: "userCart")).query()
         query.whereKey("objectId", equalTo: self.productBO.objectId!)
         query.getFirstObjectInBackground { (object, error) in
             self.progressBar.isHidden = true
@@ -141,14 +142,18 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     {
         messageForCart = " removed from cart."
     
-       relation.remove(self.productBO as AVObject)
+       (AVUser.current()!.relation(forKey: "userCart")).remove(self.productBO!)
+					self.addToCartAction(message: messageForCart)
+
     }
-    
+	
     func addToCartAction()
     {
         messageForCart = " added to cart."
 
-       relation.add(self.productBO as AVObject)
+       (AVUser.current()!.relation(forKey: "userCart")).add(self.productBO! )
+					self.addToCartAction(message: messageForCart)
+
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -202,27 +207,27 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         sdWebImageSource.append(SDWebImageSource(urlString: url.absoluteString)!)
         }
     
-        if  Date().days(from: self.productBO.updatedAtValue) > 0
+        if  Date().days(from: self.productBO.updatedAt!) > 0
         
         {
-            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAtValue)) d ago"
+            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAt!)) d ago"
 
         }
-        else if  Date().hour(from: self.productBO.updatedAtValue) > 0
+        else if  Date().hour(from: self.productBO.updatedAt!) > 0
         {
            // daysAgoLabel.isHidden = false
-       daysAgoLabel.text =   "Updated \(Date().hour(from:  self.productBO.updatedAtValue)) hour ago"
+       daysAgoLabel.text =   "Updated \(Date().hour(from:  self.productBO.updatedAt!)) hour ago"
 					}
-else if  Date().minute(from: self.productBO.updatedAtValue) > 0
+else if  Date().minute(from: self.productBO.updatedAt!) > 0
         {
 									// daysAgoLabel.isHidden = false
-									daysAgoLabel.text =   "Updated \(Date().minute(from:  self.productBO.updatedAtValue)) minute ago"
+									daysAgoLabel.text =   "Updated \(Date().minute(from:  self.productBO.updatedAt!)) minute ago"
 					}
 					
-					else if  Date().seconds(from: self.productBO.updatedAtValue) > 0
+					else if  Date().seconds(from: self.productBO.updatedAt!) > 0
 					{
 						// daysAgoLabel.isHidden = false
-						daysAgoLabel.text =   "Updated \(Date().seconds(from:  self.productBO.updatedAtValue)) second ago"
+						daysAgoLabel.text =   "Updated \(Date().seconds(from:  self.productBO.updatedAt!)) second ago"
 					}
         slideshow.slideshowInterval = 5.0
        // slideshow.pageControlPosition = PageControlPosition.underScrollView
@@ -299,32 +304,40 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
 
         let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
-					var objectstoPost = [AVObject]()
+					var avobjectsArray : [AVObject] = []
         let comment = Comments()
         comment.setObject(AVUser.current()!, forKey: "user")
         comment.setObject(cell.inputTextField.text, forKey: "comment")
-        comment.saveInBackground  { (objects, error) in
-            let commentRelation =  self.productBO.relation(forKey: "comments")
-            commentRelation.add(comment)
+					
 									let notificationLog = 							Constants.getProductNotification(product: self.productBO, type: Constants.NotificationType.TYPE_COMMENT)
-									objectstoPost.append(comment)
-									objectstoPost.append(notificationLog)
+					
+										avobjectsArray.append(comment)
+									avobjectsArray.append(notificationLog)
 
-            AVObject.saveAll(inBackground: objectstoPost, block: { (objects, error) in
+            AVObject.saveAll(inBackground: avobjectsArray, block: { (objects, error) in
                 
                 if(error == nil)
                 {
+																	let commentRelation =  self.productBO.relation(forKey: "comments")
+																	commentRelation.add(comment)
+																	self.productBO.saveInBackground({ (status, error) in
+																		if(error == nil)
+																		{
 																	Constants.sendPushToChannel(vc: self, channelInfo: self.productBO.objectId!, message: "\(AVUser.current()!.username!) commented on \(self.productBO.name)", content: "")
-
+																	
                     cell.inputTextField.text  = ""
                     self.loadComments()
+																		}
+																		})
+																		
                 }
                 else
                 {
                     //show error mesage
                 }
+													
 									})
-					}
+			
 					
 }
  
@@ -338,13 +351,12 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
         {
             self.addToCartAction()
         }
-        self.addToCartAction(message: messageForCart)
     }
     
     func updateCount(relation : AVRelation)
     {
         progressBar.isHidden = false
-        relation.query().countObjectsInBackground{(objects, error) in
+        (AVUser.current()!.relation(forKey: "userCart")).query().countObjectsInBackground{(objects, error) in
             
             if(error == nil)
             {
@@ -453,13 +465,12 @@ else if  Date().minute(from: self.productBO.updatedAtValue) > 0
     }
     func addToCartAction(message: String)
     {
-       
-        
-        AVUser.current()?.saveInBackground { (objects, error) in
+					
+        AVUser.current()!.saveInBackground { (objects, error) in
             
             if(error == nil)
             {
-                self.updateCount(relation: self.relation)
+                self.updateCount(relation: (AVUser.current()!.relation(forKey: "userCart")))
                 Constants.showAlert(message: self.productBO.name + message,view: self)
             }
             else

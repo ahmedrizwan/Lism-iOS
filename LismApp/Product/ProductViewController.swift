@@ -82,7 +82,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         topView.layer.cornerRadius = 4.0
     }
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("Selected item",item.tag)
+       // print("Selected item",item.tag)
         
         if(item.tag == 1)
         {
@@ -283,8 +283,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 60, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             }, completion: { _ in
                 self.isHiding = false
-                print("hiding collection")
-                print(self.productsCollectionView.frame.origin.y )
+              //  print("hiding collection")
+                //print(self.productsCollectionView.frame.origin.y )
 
                 // completion
                 })
@@ -295,7 +295,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             
             if(!self.isShowing)
             {
-                print("showing collection")
+              //  print("showing collection")
 
                 self.isShowing = true
             UIView.animate(withDuration: 0.35, animations: {
@@ -333,7 +333,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             //Slide it up incrementally, etc.
             if(!self.isShowingTopbar)
             {
-                print("showding toolbar")
+               // print("showding toolbar")
 
                 self.isShowingTopbar = true
 
@@ -350,7 +350,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
+        //print("You selected cell #\(indexPath.item)!")
         selectedIndex = indexPath.item
         self.performSegue(withIdentifier: "ProductViewToProductDetailsVC", sender: self)
         

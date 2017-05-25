@@ -641,7 +641,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2CF34FBC-160F-45CD-AF4A-F2DB6FBF751C" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="44EADD39-A1DF-4CCC-8FD4-2750820649EB" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -934,7 +934,7 @@ Est. Retail ¥2,00</string>
                                     <action selector="moveToScrollBottom" destination="5QB-nd-WMw" eventType="touchUpInside" id="JjL-CH-T8U"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkN-XJ-V3t">
+                            <button hidden="YES" opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkN-XJ-V3t">
                                 <rect key="frame" x="314" y="700" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LUQ-a7-jmc"/>
@@ -4294,7 +4294,7 @@ Est. Retail ¥2,00</string>
         </scene>
     </scenes>
     <resources>
-        <image name="2CF34FBC-160F-45CD-AF4A-F2DB6FBF751C" width="2081" height="292">
+        <image name="44EADD39-A1DF-4CCC-8FD4-2750820649EB" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -44892,11 +44892,11 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Pef-BG-f2j"/>
-        <segue reference="viE-un-nvt"/>
+        <segue reference="JwF-La-XTU"/>
+        <segue reference="9Bk-jH-cnv"/>
         <segue reference="cbm-TA-IBD"/>
         <segue reference="oeG-YO-Czw"/>
         <segue reference="4Vk-bV-igI"/>
-        <segue reference="9Bk-jH-cnv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         setUpAVCloud()
         Product.registerSubclass()
         Comments.registerSubclass()
-        User.registerSubclass()
+
         NotificationLog.registerSubclass()
         // Override point for customization after application launch.
         

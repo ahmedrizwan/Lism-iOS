@@ -23,6 +23,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     var productBO : Product!
     var commentsArray : [Comments] = []
     @IBOutlet weak var progressBar : UIActivityIndicatorView!
+	   @IBOutlet weak var heightConstraint : NSLayoutConstraint!
+	@IBOutlet weak var heightConstraintForInnerView : NSLayoutConstraint!
 
     @IBOutlet weak var userImage : UIImageView!
     @IBOutlet weak var favoriteBtn : UIButton!
@@ -93,7 +95,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					self.relation =  (AVUser.current()!.relation(forKey: "userCart"))
 
         self.updateCount(relation: self.relation)
-
+					heightConstraint.constant = 350
+					heightConstraintForInnerView.constant  = 350
     }
 
 	
@@ -160,7 +163,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 850)
         horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height + 60)
-        
+					
         
             self.showDescriptionView(sender: "" as AnyObject)
         
@@ -383,15 +386,16 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        self.descriptonView.frame = CGRect(x: 0, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: self.descriptonView.frame.height )
+					
+        self.descriptonView.frame = CGRect(x: 0, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: heightConstraintForInnerView.constant )
         
-        self.commentsView.frame = CGRect(x: UIScreen.main.bounds.width, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height )
+        self.commentsView.frame = CGRect(x: UIScreen.main.bounds.width, y: self.descriptonView.frame.origin.y, width:UIScreen.main.bounds.width    , height: heightConstraintForInnerView.constant )
         
-        self.commentsTableView.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height - 60 )
+        self.commentsTableView.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width    , height: self.commentsView.frame.height)
         
       
 
-        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.policyView.frame.origin.y, width:UIScreen.main.bounds.width  , height: self.policyView.frame.height + 60 )
+        self.policyView.frame = CGRect(x: UIScreen.main.bounds.width * 2, y: self.policyView.frame.origin.y, width:UIScreen.main.bounds.width  , height: heightConstraintForInnerView.constant  )
         
           self.policyTextView.frame = CGRect(x: 20, y: 0, width:UIScreen.main.bounds.width - 40    , height: self.policyView.frame.height)
         
@@ -489,15 +493,15 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         {
         if(scrollView.contentOffset.x == 0)
         {
-            self.showDescriptionView(sender: UIButton())
+          //  self.showDescriptionView(sender: UIButton())
         }
         else if (scrollView.contentOffset.x ==  UIScreen.main.bounds.width)
         {
-            self.showCommentsView(sender: UIButton())
+        //    self.showCommentsView(sender: UIButton())
         }
         else if (scrollView.contentOffset.x ==  UIScreen.main.bounds.width*2)
         {
-            self.showPolicyView(sender: UIButton())
+          //ƒself.showPolicyView(sender: UIButton())
         }
         }
         else if(scrollView.contentOffset.y < (self.scrollView.contentSize.height - self.scrollView.bounds.size.height)/2)

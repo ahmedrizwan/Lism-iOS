@@ -95,8 +95,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					self.relation =  (AVUser.current()!.relation(forKey: "userCart"))
 
         self.updateCount(relation: self.relation)
-					heightConstraint.constant = 350
-					heightConstraintForInnerView.constant  = 350
+					heightConstraint.constant = 300
+					heightConstraintForInnerView.constant  = 300
     }
 
 	

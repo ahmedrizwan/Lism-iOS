@@ -127,10 +127,13 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         if(!userObj.isEqual(AVUser.current()))
         {
+            plusBtn.setImage(UIImage(named : "heart"), for: .normal)
+            plusBtnForClick.setImage(UIImage(named : "heart"), for: .normal)
             self.getFollowerAndFolloweeOfCurrentUser()
         }
-        else
+        else//its me profile
         {
+
             self.loadNotifications() //if any notification is here
         notifcationsBtn.isHidden = false
         }

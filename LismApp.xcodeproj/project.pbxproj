@@ -13,6 +13,7 @@
 		391D8FD91E8ABEE000B962F5 /* FFAPSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */; };
 		391E633F1E96AE3200343C71 /* PostCommentsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E633E1E96AE3200343C71 /* PostCommentsCustomCell.swift */; };
 		39219B211E92BB7E00231916 /* imageOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 39219B201E92BB7E00231916 /* imageOverlay.png */; };
+		39254BE81EDA1AC900BDFF3B /* ProductStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39254BE71EDA1AC900BDFF3B /* ProductStatusViewController.swift */; };
 		392ED3E61ECF7A40002233E1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E41ECF7A40002233E1 /* UserNotifications.framework */; };
 		392ED3E71ECF7A40002233E1 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E51ECF7A40002233E1 /* UserNotificationsUI.framework */; };
 		393C10A71E8978B1007E3755 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C10A61E8978B1007E3755 /* Comments.swift */; };
@@ -127,6 +128,7 @@
 		391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFAPSegmentedControl.m; sourceTree = "<group>"; };
 		391E633E1E96AE3200343C71 /* PostCommentsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentsCustomCell.swift; sourceTree = "<group>"; };
 		39219B201E92BB7E00231916 /* imageOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageOverlay.png; sourceTree = "<group>"; };
+		39254BE71EDA1AC900BDFF3B /* ProductStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductStatusViewController.swift; sourceTree = "<group>"; };
 		392ED3E41ECF7A40002233E1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		392ED3E51ECF7A40002233E1 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		393C10A61E8978B1007E3755 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				39B9E4C91EC3891A005187BA /* ProfileViewController.swift */,
 				396570191ECB434200188EA7 /* NotificationsViewcontroller.swift */,
 				3965701B1ECB468800188EA7 /* NotificationCustomCell.swift */,
+				39254BE71EDA1AC900BDFF3B /* ProductStatusViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39254BE81EDA1AC900BDFF3B /* ProductStatusViewController.swift in Sources */,
 				39638B711E7991F0003B54EE /* LoginViewController.swift in Sources */,
 				39638B721E7991F0003B54EE /* RegistrationViewController.swift in Sources */,
 				398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */,

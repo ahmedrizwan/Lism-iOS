@@ -552,20 +552,21 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         seelctedProductObj = self.boughtItems[indexPath.item]
-        if(seelctedProductObj.status == "Posted for Sale")
-        {
-            //selltoedictvc
-            self.performSegue(withIdentifier: "ProfileViewControllerToUpdatePostedItemForSaleVC", sender: self)
-        }
-        else
-            
-            
-        {
-            self.performSegue(withIdentifier: "ProfileViewToWaitingToBeSentVC", sender: self)
-            // Constants.showAlert(message: "You cannot edit sold product", view: self)
-        }
+//        if(seelctedProductObj.status == "Posted for Sale")
+//        {
+//            //selltoedictvc
+//            self.performSegue(withIdentifier: "ProfileViewControllerToUpdatePostedItemForSaleVC", sender: self)
+//        }
+//        else
+//            
+//            
+//        {
+//            self.performSegue(withIdentifier: "ProfileViewToWaitingToBeSentVC", sender: self)
+//            // Constants.showAlert(message: "You cannot edit sold product", view: self)
+//        }
         
-        
+        self.performSegue(withIdentifier: "ProfileToProductStatusView", sender: self)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -579,6 +580,13 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             viewController.productObj = seelctedProductObj
             // pass data to next view
         }
+        else if (segue.identifier == "ProfileToProductStatusView") {
+            let viewController:ProductStatusViewController = segue.destination as! ProductStatusViewController
+            viewController.productBO = seelctedProductObj
+         //   viewController.userImageView.image = self.userImageview.image
+            // pass data to next view
+        }
+
       else  if (segue.identifier == "ProfileViewToProductDetailsVC") {
             let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
             viewController.productBO = seelctedProductObj            

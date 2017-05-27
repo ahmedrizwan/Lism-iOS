@@ -58,7 +58,8 @@ static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"
     static let you_earn_more = "YOU EARN MORE"
     static let earn_more_description = "Receive up to 80% of the sale price for your items"
      static let SELL_PRODUCTS = "sellProducts"
-
+static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
+    static let waiting_to_be_sent_status_text = "Waiting to be Sent"
   static  func produceAttributedTextForItems(string: String, textView : UITextView)
     {
         

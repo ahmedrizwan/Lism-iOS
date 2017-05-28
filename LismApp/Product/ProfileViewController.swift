@@ -10,6 +10,9 @@ import Foundation
 import AVOSCloud
 
 class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource{
+    @IBOutlet weak var followersBtn : UIButton!
+    @IBOutlet weak var followingsBtn : UIButton!
+
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var tabBar : UITabBar!
@@ -126,16 +129,18 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.updateFollowersAndFollowingInfo()
         self.getBoughtProductList()
         self.minusButtonAction(sender: "" as AnyObject)
-        
+      //  self.getFollowerAndFolloweeOfCurrentUser()
+
         if(!userObj.isEqual(AVUser.current()))
         {
             plusBtn.setImage(UIImage(named : "heart"), for: .normal)
             plusBtnForClick.setImage(UIImage(named : "heart"), for: .normal)
-            self.getFollowerAndFolloweeOfCurrentUser()
+            
         }
         else//its me profile
         {
-
+            followersBtn.isHidden = false
+            followingsBtn.isHidden = false
             self.loadNotifications() //if any notification is here
         notifcationsBtn.isHidden = false
         }
@@ -148,9 +153,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.progressView.stopAnimating()
     if(error == nil)
     {
+        
     print((object?["followees"] as! NSArray).count)
-    let followersCount = (object?["followers"] as! NSArray).count
-    let followingsCount = (object?["followees"] as! NSArray).count
+        self.userFollowersArray = (object?["followers"] as! [AVUser])
+        
+        self.userFollowingsArray = (object?["followees"] as! [AVUser])
+        
+
+    let followersCount =  self.userFollowersArray.count
+    let followingsCount = self.userFollowingsArray.count
     self.followingCountLabel.text = "\(followingsCount)"
     
     self.follwerCountLabel.text = "\(followersCount)"
@@ -165,7 +176,24 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
     self.followingCountLabel.text = "-"
     }
+         self.followBtn.isHidden  = true
+        if(self.userObj.objectId != AVUser.current()!.objectId)
+        {
     
+        if self.userFollowingsArray .contains(where: { $0.objectId ==  self.userObj.objectId }) {
+            // found
+            self.isFollowingUser = true
+            self.followBtn.isHidden = false
+            self.followBtn.setTitle("Unfollow -", for: .normal)
+            print("I m following this use")
+        }
+        if(!self.isFollowingUser)
+        {
+            self.followBtn.isHidden = false
+            self.followBtn.setTitle("Follow + ", for: .normal)
+            
+        }
+        }
     }
     
     })
@@ -251,6 +279,19 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
 
     
+    }
+    
+    @IBAction func followersBtnAction (sender : AnyObject)
+    {
+        self.performSegue(withIdentifier: "ProfileToUserFollowersVC", sender: self)
+        
+    }
+    @IBAction func followingsBtnAction (sender : AnyObject)
+    {
+        //
+        self.performSegue(withIdentifier: "ProfileToUserFollowingViewController", sender: self)
+
+        
     }
     // MARK: - UICollectionViewDataSource protocol
     
@@ -595,6 +636,19 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             viewController.productBO = seelctedProductObj
             
             // pass data to next view
+        }
+            //
+        else if (segue.identifier == "ProfileToUserFollowersVC") { //gooing tp notiication
+            let viewController:FollowersViewControllers = segue.destination as! FollowersViewControllers
+            viewController.userFollowersArray = self.userFollowersArray
+          
+            
+        }//
+        else if (segue.identifier == "ProfileToUserFollowingViewController") { //gooing tp notiication
+            let viewController:FollowingsViewController = segue.destination as! FollowingsViewController
+            viewController.userFolloweringsArray = self.userFollowingsArray
+            
+            
         }
         else if (segue.identifier == "ProfileToNotificationViewcontroller") { //gooing tp notiication
             let viewController:NotificationsViewcontroller = segue.destination as! NotificationsViewcontroller

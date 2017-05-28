@@ -74,6 +74,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         super.viewWillAppear(animated)
         tabBar.selectedItem = selectedTabBarItem
         self.productsTableView.reloadData()
+        self.updateFollowersAndFollowingInfo()
+
 
     }
     func getUserInfo()
@@ -126,9 +128,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
         })
         
-        self.updateFollowersAndFollowingInfo()
         self.getBoughtProductList()
-        self.minusButtonAction(sender: "" as AnyObject)
       //  self.getFollowerAndFolloweeOfCurrentUser()
 
         if(!userObj.isEqual(AVUser.current()))
@@ -139,8 +139,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         else//its me profile
         {
-            followersBtn.isHidden = false
-            followingsBtn.isHidden = false
             self.loadNotifications() //if any notification is here
         notifcationsBtn.isHidden = false
         }
@@ -166,16 +164,22 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     self.follwerCountLabel.text = "\(followersCount)"
     
+        
+        self.followersBtn.isHidden = false
+         self.followingsBtn.isHidden = false
+        if(followersCount == 0 )
+        {
+            self.follwerCountLabel.text = "-"
+        
+            self.followersBtn.isHidden = true
+        }
     
-    if(followersCount == 0 )
-    {
-    self.follwerCountLabel.text = "-"
-    }
-    
-    if(followingsCount == 0 )
-    {
-    self.followingCountLabel.text = "-"
-    }
+        if(followingsCount == 0 )
+        {
+            self.followingCountLabel.text = "-"
+            self.followingsBtn.isHidden = true
+
+        }
          self.followBtn.isHidden  = true
         if(self.userObj.objectId != AVUser.current()!.objectId)
         {
@@ -498,6 +502,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             {
                 Constants.showAlert(message: "Unable to load products.", view: self)
             }
+            self.minusButtonAction(sender: "" as AnyObject)
+
             
         }
         
@@ -641,13 +647,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         else if (segue.identifier == "ProfileToUserFollowersVC") { //gooing tp notiication
             let viewController:FollowersViewControllers = segue.destination as! FollowersViewControllers
             viewController.userFollowersArray = self.userFollowersArray
+            viewController.userObjInfo = self.userObj
           
             
         }//
         else if (segue.identifier == "ProfileToUserFollowingViewController") { //gooing tp notiication
             let viewController:FollowingsViewController = segue.destination as! FollowingsViewController
             viewController.userFolloweringsArray = self.userFollowingsArray
-            
+            viewController.userObjInfo = self.userObj
+
             
         }
         else if (segue.identifier == "ProfileToNotificationViewcontroller") { //gooing tp notiication

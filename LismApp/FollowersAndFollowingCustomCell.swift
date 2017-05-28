@@ -16,10 +16,23 @@ class FollowersAndFollowingCustomCell: UITableViewCell {
     @IBOutlet weak var userFollowersOrFollowingButton: UIButton!
     
     @IBOutlet weak var delegate  : FollowersViewControllers!
-    @IBAction func userFollowersOrFollowingButtonAction(sender : AnyObject)
+    @IBOutlet weak var delegateforFollowing  : FollowingsViewController!
+
+    @IBAction func userFollowersButtonAction(sender : AnyObject)
     {
     
+        
+        let btn = sender as! UIButton
+        delegate.followThisUser(index: btn.tag)
+
+    }
     
+    
+    @IBAction func userFollowingButtonAction(sender : AnyObject)
+    {
+        
+        let btn = sender as! UIButton
+        delegateforFollowing.unfollowThisUser(index: btn.tag)
     }
     
 }

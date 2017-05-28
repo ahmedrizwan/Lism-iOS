@@ -18,8 +18,11 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var  followersTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     var userFollowersArray : [AVUser] = [AVUser]()
+    var userObjInfo : AVUser!
+    var userFollowingsArray: [AVUser] = [AVUser]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateFollowingsList()
         
         //if no items posted for sale so far then we will show no items details view
         
@@ -64,7 +67,22 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
                 
             })
         }
+        if(self.checkIfUserFollowingThisUser(userObj: userObj))
+        {
+        //following
+            cell.userFollowersOrFollowingButton.backgroundColor =  UIColor(colorLiteralRed: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 1.0)
+            cell.userFollowersOrFollowingButton.setTitle("FOLLOWING", for: .normal)
+        }
+        else //not following
+        {
+            
+            cell.userFollowersOrFollowingButton.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+            cell.userFollowersOrFollowingButton.setTitle("FOLLOW +", for: .normal)
+        //show follo
+            
+        }
         cell.tag = indexPath.item
+        cell.delegate = self
         cell.userFollowersOrFollowingButton.tag = indexPath.item
         cell.userNameLabel.text =  "@\(userObj.username!)"
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
@@ -102,6 +120,58 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
        
         
     }
+    func followThisUser(index : Int)
+    {
+        self.progressView.isHidden = false
+        self.progressView.startAnimating()
+        let userObj  = self.userFollowersArray[index]
+        if(self.checkIfUserFollowingThisUser(userObj: userObj))
+        {
+        AVUser.current()?.unfollow(userObj.objectId!, andCallback: { (status, error) in
+           self.updateFollowingsList()
+        })
+        }
+        else
+        {
+           AVUser.current()?.follow(userObj.objectId!, andCallback: { (status, error) in
+            self.updateFollowingsList()
+        })
+        
+        }
+        
+        
+    }
+    
+    func checkIfUserFollowingThisUser (userObj : AVUser) ->Bool
+    {
+            var isFound = false
+                if self.userFollowingsArray.contains(where: { $0.objectId ==  userObj.objectId }) {
+                    //found here
+                    isFound = true
+                }
+            return isFound
+    }
+
+    
+    func updateFollowingsList ()
+    {
+        self.progressView.isHidden = false
+        self.progressView.startAnimating()
+        AVUser.current()?.getFollowees { (objects, error) in
+        
+            if(error == nil)
+            {
+                self.progressView.isHidden = true
+                self.progressView.stopAnimating()
+                self.userFollowingsArray = (objects as! [AVUser])
+               
+                self.followersTableView.reloadData()
+
+            }
+
+        }
+    }
+    
     @IBAction func backbuttonAction(sender : AnyObject)
     {
         

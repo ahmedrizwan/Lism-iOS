@@ -18,6 +18,8 @@ class FollowingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var  followersTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
+    var userObjInfo : AVUser!
+
     var userFolloweringsArray : [AVUser] = [AVUser]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +70,7 @@ class FollowingsViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.userFollowersOrFollowingButton.tag = indexPath.item
         cell.userNameLabel.text =  "@\(userObj.username!)"
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
-        
+        cell.delegateforFollowing = self
         
         
         return cell
@@ -84,6 +86,17 @@ class FollowingsViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
+    }
+    func unfollowThisUser(index: Int)
+    {
+    let userObj = self.userFolloweringsArray[index]
+        AVUser.current()?.unfollow(userObj.objectId!, andCallback: { (status, error) in
+        
+            
+           self.userFolloweringsArray.remove(at: index)
+            self.followersTableView.reloadData()
+        })
+
     }
     @IBAction func backbuttonAction(sender : AnyObject)
     {

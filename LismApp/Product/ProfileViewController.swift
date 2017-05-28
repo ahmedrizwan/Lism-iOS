@@ -35,6 +35,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var  productsTableView : UITableView!
     var seelctedProductObj : Product!
     var userObj : AVUser  = AVUser.current()!
+    var userImageFile : AVFile!
     @IBOutlet weak var userLabel : UILabel!
 
     @IBOutlet weak var favoritesCollectionView : UICollectionView!
@@ -86,7 +87,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 self.getProductList()
                 if let parseFile = object?.value(forKey: "profileImage")
                 {
-                (parseFile as! AVFile).getDataInBackground({ (data, error) in
+                     self.userImageFile = parseFile as! AVFile
+                self.userImageFile.getDataInBackground({ (data, error) in
                     self.userImageview.image = UIImage.init(data: data!)
                     self.userImageview.layer.cornerRadius =  self.userImageview.frame.size.width/2
                     self.userImageview.clipsToBounds = true
@@ -583,13 +585,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         else if (segue.identifier == "ProfileToProductStatusView") {
             let viewController:ProductStatusViewController = segue.destination as! ProductStatusViewController
             viewController.productBO = seelctedProductObj
+            viewController.userImageFile = self.userImageFile
          //   viewController.userImageView.image = self.userImageview.image
             // pass data to next view
         }
 
       else  if (segue.identifier == "ProfileViewToProductDetailsVC") {
             let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
-            viewController.productBO = seelctedProductObj            
+            viewController.productBO = seelctedProductObj
+            
             // pass data to next view
         }
         else if (segue.identifier == "ProfileToNotificationViewcontroller") { //gooing tp notiication

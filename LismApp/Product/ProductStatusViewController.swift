@@ -29,20 +29,32 @@ class ProductStatusViewController : UIViewController
     @IBOutlet var dateTimeTextview: UITextView!
     
     @IBOutlet var itemhasBeenConfirmedLabel: UILabel!
-
+    @IBOutlet weak var progressView : UIActivityIndicatorView!
+    var userImageFile : AVFile!
     override func viewDidLoad()
     {
-        self.userImageView.layer.cornerRadius =  self.userImageView.frame.size.width/2
-        self.userImageView.clipsToBounds = true
+
         
         self.productImageView.sd_setImage(with: productBO.productImageUrl, placeholderImage: nil)
         secon_Btn.isSelected = true
         self.userNameLabel.text = AVUser.current()?.username
         namePhoneAddressTextView.text = "Name : \(AVUser.current()?.username)\nPhone : +9238768768376 \nAddress : this is dummy address value I am placing this text here for testing purpose,we will update it later."
         dateTimeTextview.text = "Date Recieved : 24-may - 2017\nTime Recieved : 11:00am"
-
+        if userImageFile != nil
+        {
+            self.userImageFile.getDataInBackground({ (data, error) in
+                self.userImageView.image = UIImage.init(data: data!)
+                self.userImageView.layer.cornerRadius =  self.userImageView.frame.size.width/2
+                self.userImageView.clipsToBounds = true
+                
+            })
+        }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.progressView.isHidden = true
+    }
     @IBAction func confirmOrder(sender:AnyObject)
 
     {

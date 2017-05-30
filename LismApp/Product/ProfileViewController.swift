@@ -34,6 +34,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
 
     var userFollowersArray : [AVUser] = [AVUser]()
     var userFollowingsArray : [AVUser] = [AVUser]()
+    var userMeFollowingsArray : [AVUser] = [AVUser]()
+
     var favoritesList : [Product] = []
     @IBOutlet weak var  productsTableView : UITableView!
     var seelctedProductObj : Product!
@@ -75,6 +77,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         tabBar.selectedItem = selectedTabBarItem
         self.productsTableView.reloadData()
         self.updateFollowersAndFollowingInfo()
+        self.getFollowerAndFolloweeOfCurrentUser()
 
 
     }
@@ -129,7 +132,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         })
         
         self.getBoughtProductList()
-      //  self.getFollowerAndFolloweeOfCurrentUser()
 
         if(!userObj.isEqual(AVUser.current()))
         {
@@ -180,25 +182,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             self.followingsBtn.isHidden = true
 
         }
-         self.followBtn.isHidden  = true
-        if(self.userObj.objectId != AVUser.current()!.objectId)
-        {
-    
-        if self.userFollowingsArray .contains(where: { $0.objectId ==  self.userObj.objectId }) {
-            // found
-            self.isFollowingUser = true
-            self.followBtn.isHidden = false
-            self.followBtn.setTitle("Unfollow -", for: .normal)
-            print("I m following this use")
         }
-        if(!self.isFollowingUser)
-        {
-            self.followBtn.isHidden = false
-            self.followBtn.setTitle("Follow + ", for: .normal)
-            
-        }
-        }
-    }
     
     })
     }
@@ -213,12 +197,12 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             {
                 print((object?["followees"] as! NSArray).count)
           
-                self.userFollowersArray = (object?["followers"] as! [AVUser])
+                let userMeFollowersArray = (object?["followers"] as! [AVUser])
                 
-                self.userFollowingsArray = (object?["followees"] as! [AVUser])
+                let userMeFollowingsArray = (object?["followees"] as! [AVUser])
                 
                
-                if self.userFollowingsArray .contains(where: { $0.objectId ==  self.userObj.objectId }) {
+                if userMeFollowingsArray.contains(where: { $0.objectId ==  self.userObj.objectId }) {
                     // found
                     self.isFollowingUser = true
                     self.followBtn.isHidden = false

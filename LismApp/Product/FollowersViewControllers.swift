@@ -67,6 +67,10 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
                 
             })
         }
+        
+        if(userObj.objectId != AVUser.current()?.objectId)
+        {
+            cell.userFollowersOrFollowingButton.isHidden = false
         if(self.checkIfUserFollowingThisUser(userObj: userObj))
         {
         //following
@@ -81,6 +85,13 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
         //show follo
             
         }
+        }
+        else
+        {
+            cell.userFollowersOrFollowingButton.isHidden = true
+
+        }
+
         cell.tag = indexPath.item
         cell.delegate = self
         cell.userFollowersOrFollowingButton.tag = indexPath.item
@@ -145,6 +156,7 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
     func checkIfUserFollowingThisUser (userObj : AVUser) ->Bool
     {
             var isFound = false
+        
                 if self.userFollowingsArray.contains(where: { $0.objectId ==  userObj.objectId }) {
                     //found here
                     isFound = true

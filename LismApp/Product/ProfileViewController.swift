@@ -209,7 +209,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     self.followBtn.setTitle("Unfollow -", for: .normal)
                     print("I m following this use")
                 }
-                if(!self.isFollowingUser)
+                if(!self.isFollowingUser && AVUser.current()?.objectId != self.userObj.objectId)
                 {
                      self.followBtn.isHidden = false
                     self.followBtn.setTitle("Follow + ", for: .normal)

@@ -141,7 +141,6 @@ static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
         push.setQuery(pushQuery)
         push.setPushToIOS(true)
         push.setPushToAndroid(true)
-
         push.setData(jsonObject)
 
         

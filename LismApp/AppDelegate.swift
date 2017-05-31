@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
         
         print("didReceive")
-        completionHandler()
+
     }
     
     // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from applicationDidFinishLaunching:.
@@ -125,8 +125,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         currentInstallation.saveInBackground()
         //  Converted with Swiftify v1.0.6341 - https://objectivec2swift.com/
         AVOSCloud.handleRemoteNotifications(withDeviceToken: deviceToken) { (currentInstallation) in
-         print( "")
+         print( "done here pushing")
         }
+        AVOSCloud.handleRemoteNotifications(withDeviceToken: deviceToken)
         
         
     }

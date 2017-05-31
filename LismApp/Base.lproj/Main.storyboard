@@ -641,7 +641,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F48D6C34-C4DA-4E76-90EB-EB600972834F" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="34F55979-C691-47ED-9656-F100C2E79928" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -4164,7 +4164,7 @@ Est. Retail ¥2,00</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cOw-oy-hxb" id="2eJ-BH-COi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-km-sU1">
@@ -4732,7 +4732,6 @@ Est. Retail ¥2,00</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@fayyaz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o87-TO-zZB">
                                                     <rect key="frame" x="72" y="7" width="157" height="53"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="157" id="ZJD-5A-VLt"/>
                                                         <constraint firstAttribute="height" constant="53" id="r0r-dE-hvc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -4744,8 +4743,9 @@ Est. Retail ¥2,00</string>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="YJI-7n-tsK"/>
+                                                        <constraint firstAttribute="width" constant="135" id="ctg-35-6gp"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <state key="normal" title="FOLLOW + ">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -4897,7 +4897,6 @@ Est. Retail ¥2,00</string>
                                                     <rect key="frame" x="72" y="7" width="157" height="53"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="53" id="XkM-Rm-7iC"/>
-                                                        <constraint firstAttribute="width" constant="157" id="yTO-Ih-8a6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.1422139674" green="0.1429585431" blue="0.1429585431" alpha="0.69887126150000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4905,9 +4904,10 @@ Est. Retail ¥2,00</string>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVO-LB-BiF">
                                                     <rect key="frame" x="232" y="19" width="135" height="30"/>
-                                                    <color key="backgroundColor" red="0.31415782493368705" green="0.31415782493368705" blue="0.31415782493368705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="esb-BC-gc4"/>
+                                                        <constraint firstAttribute="width" constant="135" id="fAP-9o-AAu"/>
                                                     </constraints>
                                                     <state key="normal" title="FOLLOWING">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4982,11 +4982,7 @@ Est. Retail ¥2,00</string>
         <image name="1_number" width="88" height="92"/>
         <image name="2_disabled" width="89" height="92"/>
         <image name="2_number" width="88" height="92"/>
-        <image name="3_disabled" width="89" height="91"/>
-        <image name="3_number" width="88" height="92"/>
-        <image name="4_disabled" width="89" height="92"/>
-        <image name="4_number" width="88" height="92"/>
-        <image name="F48D6C34-C4DA-4E76-90EB-EB600972834F" width="2081" height="292">
+        <image name="34F55979-C691-47ED-9656-F100C2E79928" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -45552,6 +45548,10 @@ DQAlIRwAJSEgACUhJwAlIS8AJSE8ACUhQQAlIUMAJSFFACUhSgAlIVIAJSFVACUhWgAlIWIAJSFlACUh
 dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
 </mutableData>
         </image>
+        <image name="3_disabled" width="89" height="91"/>
+        <image name="3_number" width="88" height="92"/>
+        <image name="4_disabled" width="89" height="92"/>
+        <image name="4_number" width="88" height="92"/>
         <image name="addPhotoAsset 1" width="120" height="125"/>
         <image name="back_btn.png" width="34" height="28"/>
         <image name="background.png" width="600" height="1072"/>

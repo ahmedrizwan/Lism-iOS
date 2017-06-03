@@ -22,6 +22,8 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
     var userFollowingsArray: [AVUser] = [AVUser]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        followersTableView.delegate = self
+        followersTableView.dataSource = self
         self.updateFollowingsList()
         
         //if no items posted for sale so far then we will show no items details view
@@ -29,8 +31,8 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+   
         
-        self.followersTableView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -177,9 +179,9 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
                 self.progressView.stopAnimating()
                 self.userFollowingsArray = (objects as! [AVUser])
                
-                self.followersTableView.reloadData()
 
             }
+            self.followersTableView.reloadData()
 
         }
     }

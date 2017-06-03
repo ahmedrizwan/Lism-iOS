@@ -129,7 +129,7 @@ static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
     static func sendPushToChannel(vc : UIViewController, channelInfo: String , message : String , content : String )
     {
     let pushQuery = AVInstallation.query()
-    pushQuery.whereKey("channels", equalTo: channelInfo)
+    pushQuery.whereKey("channels", contains: channelInfo)
         let push = AVPush()
         let jsonObject: [String: AnyObject] = [
           //  "content-available": "1" as AnyObject,
@@ -138,11 +138,12 @@ static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
             "alert": "\(message) \(content)" as AnyObject
             
         ]
-        push.setQuery(pushQuery)
+        //push.setQuery(pushQuery)
         push.setPushToIOS(true)
         push.setPushToAndroid(true)
         push.setData(jsonObject)
-
+        push.setChannel(channelInfo)
+        AVPush.setProductionMode(false)
         
         push.sendInBackground { (status, error) in
             print(status)

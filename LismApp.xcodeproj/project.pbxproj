@@ -15,7 +15,7 @@
 		39219B211E92BB7E00231916 /* imageOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 39219B201E92BB7E00231916 /* imageOverlay.png */; };
 		39254BE81EDA1AC900BDFF3B /* ProductStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39254BE71EDA1AC900BDFF3B /* ProductStatusViewController.swift */; };
 		392ED3E61ECF7A40002233E1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E41ECF7A40002233E1 /* UserNotifications.framework */; };
-		392ED3E71ECF7A40002233E1 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E51ECF7A40002233E1 /* UserNotificationsUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		392ED3E71ECF7A40002233E1 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E51ECF7A40002233E1 /* UserNotificationsUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		393C10A71E8978B1007E3755 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C10A61E8978B1007E3755 /* Comments.swift */; };
 		39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39414B7C1E8622BF004A39A4 /* Constants.swift */; };
 		3945611B1E982B5B00BECA81 /* overlay_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3945611A1E982B5B00BECA81 /* overlay_bg.png */; };
@@ -851,6 +851,7 @@
 		39638B4D1E79900A003B54EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -902,6 +903,7 @@
 		39638B4E1E79900A003B54EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -947,6 +949,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA3080B3E5460F503EA91638 /* Pods-LismApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LismApp/LismApp.entitlements;
@@ -971,6 +974,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F39D81121F237E40CFFAE5DB /* Pods-LismApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LismApp/LismApp.entitlements;

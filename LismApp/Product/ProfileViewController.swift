@@ -36,6 +36,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     var userFollowingsArray : [AVUser] = [AVUser]()
     var userMeFollowingsArray : [AVUser] = [AVUser]()
 
+    var userMeFollowersArray : [AVUser] = [AVUser]()
+    
     var favoritesList : [Product] = []
     @IBOutlet weak var  productsTableView : UITableView!
     var seelctedProductObj : Product!
@@ -197,12 +199,13 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             {
                 print((object?["followees"] as! NSArray).count)
           
-                let userMeFollowersArray = (object?["followers"] as! [AVUser])
                 
-                let userMeFollowingsArray = (object?["followees"] as! [AVUser])
+                self.userMeFollowersArray = (object?["followers"] as! [AVUser])
+                
+                self.userMeFollowingsArray = (object?["followees"] as! [AVUser])
                 
                
-                if userMeFollowingsArray.contains(where: { $0.objectId ==  self.userObj.objectId }) {
+                if self.userMeFollowingsArray.contains(where: { $0.objectId ==  self.userObj.objectId }) {
                     // found
                     self.isFollowingUser = true
                     self.followBtn.isHidden = false
@@ -423,7 +426,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 
                 self.isFollowingUser = true
                 self.followBtn.setTitle("Unfollow -", for: .normal)
-                Constants.sendPushToChannel(vc: self, channelInfo: self.userObj.objectId!, message: "\(AVUser.current()?.username) started following you!", content: "")
+                Constants.sendPushToChannel(vc: self, channelInfo: self.userObj.objectId!, message: "\(AVUser.current()!.username) started following you!", content: "")
 
                 self.updateFollowersAndFollowingInfo()
             })
@@ -632,6 +635,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             let viewController:FollowersViewControllers = segue.destination as! FollowersViewControllers
             viewController.userFollowersArray = self.userFollowersArray
             viewController.userObjInfo = self.userObj
+            viewController.userFollowingsArray = self.userMeFollowingsArray
           
             
         }//
@@ -639,6 +643,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             let viewController:FollowingsViewController = segue.destination as! FollowingsViewController
             viewController.userFolloweringsArray = self.userFollowingsArray
             viewController.userObjInfo = self.userObj
+            viewController.userFolloweringsArray = self.userMeFollowingsArray
 
             
         }

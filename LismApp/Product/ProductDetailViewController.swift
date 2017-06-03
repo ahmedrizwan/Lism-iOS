@@ -326,8 +326,21 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 																	self.productBO.saveInBackground({ (status, error) in
 																		if(error == nil)
 																		{
-																	Constants.sendPushToChannel(vc: self, channelInfo: self.productBO.objectId!, message: "\(AVUser.current()!.username!) commented on \(self.productBO.name)", content: "")
-																	
+
+																			AVPush.unsubscribeFromChannel(inBackground: self.productBO.objectId!, block: { (status, error) in
+																				if(error == nil)
+																				{
+																					
+																					Constants.sendPushToChannel(vc: self, channelInfo: self.productBO.objectId!, message: "\(AVUser.current()!.username!) commented on \(self.productBO.name)", content: "")
+																				}
+																			})
+																			let delayInSeconds = 3.0
+																			DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
+																				AVPush.subscribeToChannel(inBackground: self.productBO.objectId!)
+																				// here code perfomed with delay
+																				
+																			}
+
                     cell.inputTextField.text  = ""
                     self.loadComments()
 																		}

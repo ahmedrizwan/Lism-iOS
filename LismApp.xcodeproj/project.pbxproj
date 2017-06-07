@@ -17,6 +17,14 @@
 		392ED3E61ECF7A40002233E1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E41ECF7A40002233E1 /* UserNotifications.framework */; };
 		392ED3E71ECF7A40002233E1 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392ED3E51ECF7A40002233E1 /* UserNotificationsUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		393C10A71E8978B1007E3755 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C10A61E8978B1007E3755 /* Comments.swift */; };
+		3940E5141EE88F1500AD1649 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E50C1EE88F1500AD1649 /* Duration.swift */; };
+		3940E5151EE88F1500AD1649 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E50D1EE88F1500AD1649 /* Int+Timepiece.swift */; };
+		3940E5161EE88F1500AD1649 /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E50E1EE88F1500AD1649 /* NSCalendar+Timepiece.swift */; };
+		3940E5171EE88F1500AD1649 /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E50F1EE88F1500AD1649 /* NSDate+Timepiece.swift */; };
+		3940E5181EE88F1500AD1649 /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E5101EE88F1500AD1649 /* NSDateComponents+Timepiece.swift */; };
+		3940E5191EE88F1500AD1649 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E5111EE88F1500AD1649 /* String+Timepiece.swift */; };
+		3940E51A1EE88F1500AD1649 /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3940E5121EE88F1500AD1649 /* WWCalendarTimeSelector.storyboard */; };
+		3940E51B1EE88F1500AD1649 /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940E5131EE88F1500AD1649 /* WWCalendarTimeSelector.swift */; };
 		39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39414B7C1E8622BF004A39A4 /* Constants.swift */; };
 		3945611B1E982B5B00BECA81 /* overlay_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3945611A1E982B5B00BECA81 /* overlay_bg.png */; };
 		3945611D1E98451B00BECA81 /* person_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3945611C1E98451B00BECA81 /* person_bg.png */; };
@@ -24,6 +32,7 @@
 		394DBF7D1E818EDB005E7D92 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 394DBF7B1E818EDB005E7D92 /* list.png */; };
 		39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */; };
 		39556CDD1E87E16900113C99 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 39556CDC1E87E16900113C99 /* logo.png */; };
+		3962685C1EE8838300C141C0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3962685B1EE8838300C141C0 /* EditProfileViewController.swift */; };
 		39638B2B1E79900A003B54EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39638B2A1E79900A003B54EE /* AppDelegate.swift */; };
 		39638B301E79900A003B54EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39638B2E1E79900A003B54EE /* Main.storyboard */; };
 		39638B321E79900A003B54EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39638B311E79900A003B54EE /* Assets.xcassets */; };
@@ -137,6 +146,14 @@
 		392ED3E41ECF7A40002233E1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		392ED3E51ECF7A40002233E1 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		393C10A61E8978B1007E3755 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		3940E50C1EE88F1500AD1649 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		3940E50D1EE88F1500AD1649 /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
+		3940E50E1EE88F1500AD1649 /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
+		3940E50F1EE88F1500AD1649 /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		3940E5101EE88F1500AD1649 /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		3940E5111EE88F1500AD1649 /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		3940E5121EE88F1500AD1649 /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
+		3940E5131EE88F1500AD1649 /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
 		39414B7C1E8622BF004A39A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3945611A1E982B5B00BECA81 /* overlay_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay_bg.png; sourceTree = "<group>"; };
 		3945611C1E98451B00BECA81 /* person_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_bg.png; sourceTree = "<group>"; };
@@ -144,6 +161,7 @@
 		394DBF7B1E818EDB005E7D92 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		39556CDA1E87E03B00113C99 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 0; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; tabWidth = 1; usesTabs = 1; };
 		39556CDC1E87E16900113C99 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../Graphics/logo.png; sourceTree = "<group>"; };
+		3962685B1EE8838300C141C0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		39638B271E79900A003B54EE /* LismApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LismApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39638B2A1E79900A003B54EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39638B2F1E79900A003B54EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -286,6 +304,21 @@
 				391D8FD81E8ABEE000B962F5 /* FFAPSegmentedControl.m */,
 			);
 			path = APSegmentControl;
+			sourceTree = "<group>";
+		};
+		3940E50B1EE88F1500AD1649 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3940E50C1EE88F1500AD1649 /* Duration.swift */,
+				3940E50D1EE88F1500AD1649 /* Int+Timepiece.swift */,
+				3940E50E1EE88F1500AD1649 /* NSCalendar+Timepiece.swift */,
+				3940E50F1EE88F1500AD1649 /* NSDate+Timepiece.swift */,
+				3940E5101EE88F1500AD1649 /* NSDateComponents+Timepiece.swift */,
+				3940E5111EE88F1500AD1649 /* String+Timepiece.swift */,
+				3940E5121EE88F1500AD1649 /* WWCalendarTimeSelector.storyboard */,
+				3940E5131EE88F1500AD1649 /* WWCalendarTimeSelector.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		39638B1E1E79900A003B54EE = {
@@ -453,6 +486,7 @@
 				39E015FD1EDAC65D00B9EFBE /* FollowingsViewController.swift */,
 				39CCB90E1EE86FCB0059C3CE /* SettingsViewController.swift */,
 				39CCB9101EE872EB0059C3CE /* SettingsCustomCell.swift */,
+				3962685B1EE8838300C141C0 /* EditProfileViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -550,6 +584,7 @@
 		39F93D921E8948580008B276 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3940E50B1EE88F1500AD1649 /* Sources */,
 				398F9B4A1E8D81FC00845946 /* ImageSlideshow */,
 				391D8FD61E8ABEE000B962F5 /* APSegmentControl */,
 				39F93D931E89486B0008B276 /* iCarousel */,
@@ -681,6 +716,7 @@
 				39FA9C1E1E8ACA6300C617D8 /* selected.png in Resources */,
 				398535621E7DA69D00406BBB /* wechat.png in Resources */,
 				39638B351E79900A003B54EE /* LaunchScreen.storyboard in Resources */,
+				3940E51A1EE88F1500AD1649 /* WWCalendarTimeSelector.storyboard in Resources */,
 				399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */,
 				398535571E7DA69D00406BBB /* image_add.png in Resources */,
 				3985355D1E7DA69D00406BBB /* person.png in Resources */,
@@ -777,7 +813,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -793,11 +829,14 @@
 				398F9B681E8D81FC00845946 /* UIImageView+Tools.swift in Sources */,
 				39A854461EA7E7FC00B32B3C /* TextField.swift in Sources */,
 				39DCCB131EAE6274005F9436 /* ProgressHUD.swift in Sources */,
+				3940E5181EE88F1500AD1649 /* NSDateComponents+Timepiece.swift in Sources */,
 				39B76E161EA521C900528824 /* SellItemsViewController.swift in Sources */,
 				39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */,
+				3962685C1EE8838300C141C0 /* EditProfileViewController.swift in Sources */,
 				39E015F91EDABA7100B9EFBE /* FollowersViewControllers.swift in Sources */,
 				39E32E771EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift in Sources */,
 				391E633F1E96AE3200343C71 /* PostCommentsCustomCell.swift in Sources */,
+				3940E5151EE88F1500AD1649 /* Int+Timepiece.swift in Sources */,
 				39CCB9111EE872EB0059C3CE /* SettingsCustomCell.swift in Sources */,
 				399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */,
 				398F9B651E8D81FC00845946 /* ImageSlideshowItem.swift in Sources */,
@@ -805,6 +844,7 @@
 				39556CDB1E87E03B00113C99 /* ProductDetailViewController.swift in Sources */,
 				39159CBA1EB64F990083EF80 /* CheckoutViewController.swift in Sources */,
 				398535691E7DBAAA00406BBB /* ProductViewController.swift in Sources */,
+				3940E5191EE88F1500AD1649 /* String+Timepiece.swift in Sources */,
 				398F9B641E8D81FC00845946 /* ImageSlideshow.swift in Sources */,
 				39F93D971E89486B0008B276 /* iCarousel.m in Sources */,
 				39E6DB871EA6765500B3E91B /* SellMoreViewController.swift in Sources */,
@@ -817,8 +857,10 @@
 				39638B2B1E79900A003B54EE /* AppDelegate.swift in Sources */,
 				398535681E7DBAAA00406BBB /* ProductCollectionViewCell.swift in Sources */,
 				39638B731E7991F0003B54EE /* MainViewController.swift in Sources */,
+				3940E5161EE88F1500AD1649 /* NSCalendar+Timepiece.swift in Sources */,
 				3985356D1E7DBD5A00406BBB /* Product.swift in Sources */,
 				39E015FC1EDABB0800B9EFBE /* FollowersAndFollowingCustomCell.swift in Sources */,
+				3940E5141EE88F1500AD1649 /* Duration.swift in Sources */,
 				3965701E1ECB479100188EA7 /* NotificationLog.swift in Sources */,
 				397019901E882035002F0A9B /* User.swift in Sources */,
 				39CCB90F1EE86FCB0059C3CE /* SettingsViewController.swift in Sources */,
@@ -830,7 +872,9 @@
 				398F9B631E8D81FC00845946 /* FullScreenSlideshowViewController.swift in Sources */,
 				39B9E4CA1EC3891A005187BA /* ProfileViewController.swift in Sources */,
 				391D8FD91E8ABEE000B962F5 /* FFAPSegmentedControl.m in Sources */,
+				3940E5171EE88F1500AD1649 /* NSDate+Timepiece.swift in Sources */,
 				39A854441EA7D4EE00B32B3C /* ColorsCustomCell.swift in Sources */,
+				3940E51B1EE88F1500AD1649 /* WWCalendarTimeSelector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

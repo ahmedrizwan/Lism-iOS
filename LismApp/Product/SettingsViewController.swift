@@ -10,9 +10,10 @@ import Foundation
 
 import AVOSCloud
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class SettingsViewController: UIViewController, UITabBarDelegate,UITableViewDelegate, UITableViewDataSource
 {
     var userImageFile : AVFile!
+    @IBOutlet weak var selectedTabBarItem : UITabBarItem!
 
     
     @IBOutlet weak var imageView : UIImageView!
@@ -24,7 +25,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + CONDITIONS", "PRIVACY POLICY", "RETURN POLICY", "LOGOUT"]]
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileTitleLabel.text = "@\(AVUser.current()?.username)"
+        profileTitleLabel.text = "@\(AVUser.current()!.username!)"
        
         //if no items posted for sale so far then we will show no items details view
         
@@ -97,8 +98,13 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
+    {        self.performSegue(withIdentifier: "SettingsToEditProfileVC", sender: self)
+
         
+        if(indexPath.section == 0 && indexPath.row == 0)
+        {
+        self.performSegue(withIdentifier: "SettingsToEditProfileVC", sender: self)
+        }
         
     }
     

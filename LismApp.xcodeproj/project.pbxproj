@@ -104,6 +104,8 @@
 		39B9E4CA1EC3891A005187BA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9E4C91EC3891A005187BA /* ProfileViewController.swift */; };
 		39C1C57D1ED045B0006B3B28 /* person_notif.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C1C57C1ED045B0006B3B28 /* person_notif.png */; };
 		39C8BBB71E94A522008F75FE /* ProductCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */; };
+		39CCB90F1EE86FCB0059C3CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCB90E1EE86FCB0059C3CE /* SettingsViewController.swift */; };
+		39CCB9111EE872EB0059C3CE /* SettingsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCB9101EE872EB0059C3CE /* SettingsCustomCell.swift */; };
 		39DCCB131EAE6274005F9436 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DCCB121EAE6274005F9436 /* ProgressHUD.swift */; };
 		39E015F91EDABA7100B9EFBE /* FollowersViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E015F81EDABA7100B9EFBE /* FollowersViewControllers.swift */; };
 		39E015FC1EDABB0800B9EFBE /* FollowersAndFollowingCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E015FB1EDABB0800B9EFBE /* FollowersAndFollowingCustomCell.swift */; };
@@ -230,6 +232,8 @@
 		39B9E4C91EC3891A005187BA /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		39C1C57C1ED045B0006B3B28 /* person_notif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_notif.png; sourceTree = "<group>"; };
 		39C8BBB61E94A522008F75FE /* ProductCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCheckoutViewController.swift; sourceTree = "<group>"; };
+		39CCB90E1EE86FCB0059C3CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		39CCB9101EE872EB0059C3CE /* SettingsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCustomCell.swift; sourceTree = "<group>"; };
 		39DCCB121EAE6274005F9436 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		39E015F81EDABA7100B9EFBE /* FollowersViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersViewControllers.swift; sourceTree = "<group>"; };
 		39E015FB1EDABB0800B9EFBE /* FollowersAndFollowingCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersAndFollowingCustomCell.swift; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 				39254BE71EDA1AC900BDFF3B /* ProductStatusViewController.swift */,
 				39E015F81EDABA7100B9EFBE /* FollowersViewControllers.swift */,
 				39E015FD1EDAC65D00B9EFBE /* FollowingsViewController.swift */,
+				39CCB90E1EE86FCB0059C3CE /* SettingsViewController.swift */,
+				39CCB9101EE872EB0059C3CE /* SettingsCustomCell.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -792,6 +798,7 @@
 				39E015F91EDABA7100B9EFBE /* FollowersViewControllers.swift in Sources */,
 				39E32E771EB787C400D9639D /* UpdatePostedItemForSaleViewController.swift in Sources */,
 				391E633F1E96AE3200343C71 /* PostCommentsCustomCell.swift in Sources */,
+				39CCB9111EE872EB0059C3CE /* SettingsCustomCell.swift in Sources */,
 				399111AA1E953D83005A047F /* CheckoutCustomCell.swift in Sources */,
 				398F9B651E8D81FC00845946 /* ImageSlideshowItem.swift in Sources */,
 				398F9B6E1E8D81FC00845946 /* SDWebImageSource.swift in Sources */,
@@ -814,6 +821,7 @@
 				39E015FC1EDABB0800B9EFBE /* FollowersAndFollowingCustomCell.swift in Sources */,
 				3965701E1ECB479100188EA7 /* NotificationLog.swift in Sources */,
 				397019901E882035002F0A9B /* User.swift in Sources */,
+				39CCB90F1EE86FCB0059C3CE /* SettingsViewController.swift in Sources */,
 				390C18A01E8C1D9E00C7E6B9 /* CommentsCustomCell.swift in Sources */,
 				39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */,
 				398F9B691E8D81FC00845946 /* ZoomAnimatedTransitioning.swift in Sources */,

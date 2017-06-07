@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var followBtn : UIButton!
+    @IBOutlet weak var settingsBtn : UIButton!
+
     @IBOutlet weak var notifcationsBtn : UIButton!
     @IBOutlet weak var redDotView : UIView? = UIView()
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
@@ -143,6 +145,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         else//its me profile
         {
+            settingsBtn.isHidden = false
             self.loadNotifications() //if any notification is here
         notifcationsBtn.isHidden = false
         }
@@ -656,6 +659,14 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         }
         
+        else if (segue.identifier == "ProfileToSettingsVC") { //gooing tp notiication
+            let viewController:SettingsViewController = segue.destination as! SettingsViewController
+            viewController.userImageFile = self.userImageFile
+
+            
+            
+        }
+        //ProfileToSettingsVC
     }
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item",item.tag)

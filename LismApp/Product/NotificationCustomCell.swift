@@ -6,7 +6,6 @@
 //  Copyright © 2017 Arkhitech. All rights reserved.
 //
 
-import Foundation
 
 import Foundation
 import UIKit

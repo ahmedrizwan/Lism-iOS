@@ -8,7 +8,7 @@
 
 import Foundation
 import AVOSCloud
-class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTimeSelectorProtocol,UITextViewDelegate
+class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTimeSelectorProtocol,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate
 {
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
@@ -17,8 +17,11 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     @IBOutlet weak var descriptionTextview  : UITextView!
     @IBOutlet weak var maleBtn : UIButton!
     @IBOutlet weak var femaleBtn : UIButton!
+    let picker = UIImagePickerController()
+    var isImageSelected = false
+    @IBOutlet weak var dobBtn : UIButton!
+    var user : User = User()
 
-    
     let PLACEHOLDER_TEXT = "Write your introduction here for others to see"
 
     override func viewDidLoad() {
@@ -29,12 +32,65 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
 
         descriptionTextview.layer.borderColor = UIColor.gray.cgColor
         applyPlaceholderStyle(aTextview: descriptionTextview, placeholderText: PLACEHOLDER_TEXT)
+        femaleBtn.isSelected = true
+        picker.delegate = self
+        self.getUserInfo()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileImageBtn.layer.cornerRadius = profileImageBtn.frame.size.height/2
         profileImageBtn.layer.masksToBounds = true
+    }
+    func getUserInfo()
+    {
+        let query = AVUser.query()
+        query.whereKey("objectId", equalTo: AVUser.current()!.objectId! as Any)
+        query.getFirstObjectInBackground({ (object, error) in
+            if object !== nil {
+                self.progressView.isHidden = true
+                if(error == nil)
+                {
+                    self.user =  object as! User
+                    
+                    
+                     self.user.UserInintWithDic(dict:  object!)
+                    if let parseFile = object?.value(forKey: "profileImage")
+                    {
+                         let userImageFile = parseFile as! AVFile
+                        userImageFile.getDataInBackground({ (data, error) in
+                            self.profileImageBtn.setBackgroundImage( UIImage.init(data: data!), for: .normal)
+                            
+                            
+                        })
+                    }
+                    if let website:String = object!.value(forKey: "website") as! String?
+                    {
+                        if(website != "")
+                        {
+                        self.websiteTextField.text = website
+                        }
+                    }
+                    if let dob:String = object!.value(forKey: "dob") as! String?
+                    {
+                        if(dob != "")
+                        {
+                        self.dobBtn.setTitle(dob, for: .normal)
+                        }
+                    }
+                    if let gender:String = object!.value(forKey: "gender") as! String?
+                    {
+                        if(gender == "m")
+                        {
+                            self.maleBtn.isSelected = true
+                            self.femaleBtn.isSelected = false
+                        }
+                    }
 
+                    
+                }
+            }
+        })
     }
     @IBAction func backbuttonAction(sender : AnyObject)
     {
@@ -54,17 +110,83 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
    
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         print(date)
+      
+        
+        let dateFormatter = DateFormatter()
+      
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let availabletoDateTime = dateFormatter.string(from: date)
+        let convertedDate = dateFormatter.date(from: availabletoDateTime)
+
+        dateFormatter.dateFormat  = "yyyy/MM/dd"
+        let dateValue =  dateFormatter.string(from: convertedDate!)
+        self.dobBtn.setTitle(dateValue, for: .normal)
     }
     
     @IBAction func saveBtnAction(sender : AnyObject)
     {
-    
-    
+       
+        let userObj = AVUser.current()!
+        if(self.dobBtn.title(for: .normal) != "SELECT DOB")
+        {
+            userObj.setObject(self.dobBtn.title(for: .normal), forKey: "dob")
+        }
+        userObj.setObject(self.websiteTextField.text, forKey: "website")
+       userObj.setObject(self.descriptionTextview.text, forKey: "description")
+        if(femaleBtn.isSelected)
+        {
+            userObj.setObject("f", forKey: "gender")
+
+        }
+        else
+        {
+            userObj.setObject("m", forKey: "gender")
+
+        }
+        
+        if(isImageSelected)
+        {
+        let imageData = UIImagePNGRepresentation((self.profileImageBtn.backgroundImage(for: .normal))!)
+        let imageFile:AVFile = AVFile(data: imageData!)
+        imageFile.saveInBackground { (status, error) in
+            if(error == nil)
+            {
+                
+               userObj.setObject(imageFile, forKey: "profileImage")
+                self.updateUserData(userInfo: userObj)
+
+                //uploaded sucess fully
+            }
+            else{
+                
+            }
+        }
+        }
+        else
+        {
+            self.updateUserData(userInfo: userObj)
+        }
     }
+    
+    
+    func updateUserData (userInfo : AVUser)
+    {
+        userInfo.saveInBackground { (status, error) in
+            if(error == nil)
+            {
+                //go back
+                self.backbuttonAction(sender: 0 as AnyObject)
+            }
+        }
+    }
+    
+    
     @IBAction func skipBtnAction(sender : AnyObject)
     {
         
-        
+        _ = navigationController?.popViewController(animated: true)
+
     }
     @IBAction func linkWithWeChatBtnAction(sender : AnyObject)
     {
@@ -74,22 +196,46 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     @IBAction func maleBtnAction(sender : AnyObject)
     {
         maleBtn.isSelected = !maleBtn.isSelected
-        femaleBtn.isSelected = !femaleBtn.isSelected
+        femaleBtn.isSelected = !maleBtn.isSelected
 
     }
     @IBAction func femaleBtnAction(sender : AnyObject)
     {
-        maleBtn.isSelected = !maleBtn.isSelected
         femaleBtn.isSelected = !femaleBtn.isSelected
+        maleBtn.isSelected = !femaleBtn.isSelected
+
         
     }
 
     @IBAction func addProfilePictureBtnAction(sender : AnyObject)
     {
         
-        
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+ 
     }
     
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        
+        if let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            profileImageBtn.setBackgroundImage(chosenImage, for: .normal)
+        } else if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profileImageBtn.setBackgroundImage(chosenImage, for: .normal)
+        } else {
+            
+        }
+        self.isImageSelected = true
+     
+        dismiss(animated:true, completion: nil) //5
+    }
+
     
     
     func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String)

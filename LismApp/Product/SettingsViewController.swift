@@ -93,7 +93,7 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCustomCell", for: indexPath ) as! SettingsCustomCell
         cell.tag = indexPath.item
         cell.settingBtn.setTitle(self.items[indexPath.section][indexPath.row], for: .normal)
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
     }

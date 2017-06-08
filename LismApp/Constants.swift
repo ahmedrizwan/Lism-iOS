@@ -13,6 +13,7 @@ import AVOSCloud
 
 class Constants {
 
+   static var currentUser: User = User()
     
     struct NotificationType
     {

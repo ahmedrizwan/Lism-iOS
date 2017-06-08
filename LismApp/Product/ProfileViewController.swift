@@ -67,6 +67,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         if(userObj.username != nil)
         {
         self.userLabel.text = "@\(userObj.username!)"
+            
         }
         self.getUserInfo()
         
@@ -114,7 +115,10 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     {
                         self.emailLabel.text  = "No website"
                     }
-
+                    else
+                    {
+                        Constants.currentUser.website = website as! String
+                    }
                 }
                 if let likes = object!.value(forKey: "likes")
                 {
@@ -145,6 +149,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         else//its me profile
         {
+            Constants.currentUser.userName = (AVUser.current()?.username)!
             settingsBtn.isHidden = false
             self.loadNotifications() //if any notification is here
         notifcationsBtn.isHidden = false

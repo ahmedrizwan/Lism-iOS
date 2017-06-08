@@ -29,7 +29,7 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
         websiteTextField.layer.borderWidth = 1.0
         websiteTextField.layer.borderColor = UIColor.gray.cgColor
         descriptionTextview.layer.borderWidth = 1.0
-
+        descriptionTextview.delegate = self
         descriptionTextview.layer.borderColor = UIColor.gray.cgColor
         applyPlaceholderStyle(aTextview: descriptionTextview, placeholderText: PLACEHOLDER_TEXT)
         femaleBtn.isSelected = true
@@ -46,6 +46,8 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     {
         let query = AVUser.query()
         query.whereKey("objectId", equalTo: AVUser.current()!.objectId! as Any)
+        progressView.isHidden = false
+        progressView.startAnimating()
         query.getFirstObjectInBackground({ (object, error) in
             if object !== nil {
                 self.progressView.isHidden = true
@@ -89,6 +91,8 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
 
                     
                 }
+                self.progressView.isHidden = true
+                self.progressView.stopAnimating()
             }
         })
     }
@@ -127,6 +131,8 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     @IBAction func saveBtnAction(sender : AnyObject)
     {
        
+        progressView.isHidden = false
+        progressView.startAnimating()
         let userObj = AVUser.current()!
         if(self.dobBtn.title(for: .normal) != "SELECT DOB")
         {

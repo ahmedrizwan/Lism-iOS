@@ -116,6 +116,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
+        DispatchQueue.global(qos: .background).async {
+
         query.findObjectsInBackground { (objects, error) in
             self.refresher.endRefreshing()
             if(error == nil)
@@ -137,7 +139,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             
         }
-
+        }
+            
     }
     
     func loadFavoritesList()
@@ -184,7 +187,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             
         }
+        DispatchQueue.main.async {
+
         self.productsCollectionView.reloadData()
+        }
     }
     func getMoreProductList(size: Int)
     {

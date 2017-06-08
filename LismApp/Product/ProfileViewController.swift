@@ -139,7 +139,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
         })
         
-        self.getBoughtProductList()
+        self.getBoughtProductList(size: 0)
 
         if(!userObj.isEqual(AVUser.current()))
         {
@@ -323,7 +323,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
         Constants.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
-       
+            
+            if (indexPath.row + 1 == self.items.count )
+            {
+                self.getMoreProductList(size: self.items.count)
+            }
         cell.likeButton.isSelected = productObj.favorite
         
         return cell
@@ -373,6 +377,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.view.isUserInteractionEnabled = false
         let query: AVQuery = (userObj.relation(forKey: "sellProducts").query())
         query.includeKey("user")
+        query.limit = 6
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
@@ -388,6 +393,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
                     self.items.append(productObj)
                 }
+                self.productsTableView.reloadData()
                 self.loadFavoritesList()
 
             }
@@ -402,6 +408,39 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
     }
+    
+    func getMoreProductList(size: Int)
+    {
+        
+        
+        
+        let query: AVQuery = AVQuery(className: "Product")
+        query.includeKey("images")
+        query.includeKey("user")
+        query.includeKey("userLikes")
+        query.limit = 6
+        query.skip = size
+        query.findObjectsInBackground { (objects, error) in
+            if(error == nil)
+            {
+                for obj in objects!
+                {
+                    let productObj:Product =  obj as! Product
+                    productObj.ProductInintWithDic(dict: obj as! AVObject)
+                    self.items.append(productObj)
+                }
+                DispatchQueue.main.async(execute: {
+                    self.comapreToUpdateFavoriteProductsList()
+                    
+                })
+            }
+            
+        }
+        
+        
+    }
+    
+
     
     @IBAction func minusButtonAction (sender : AnyObject)
     {
@@ -471,36 +510,47 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
        
     }
     
-    func getBoughtProductList()
+    func getBoughtProductList(size : Int)
     {
         
         
         
         let query: AVQuery = AVQuery(className: "Product")
        query.whereKey("buyingUser", equalTo: userObj as Any)
-
+        query.limit = 6
+        query.skip = size
         self.progressView.isHidden = false
-        query.findObjectsInBackground { (objects, error) in
-            if(error == nil)
-            {
-                for obj in objects!
+        self.progressView.startAnimating()
+        DispatchQueue.global(qos: .background).async {
+            query.findObjectsInBackground { (objects, error) in
+                if(error == nil)
                 {
-                    let productObj:Product =  obj as! Product
-                    
-                    
-                    productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.boughtItems.append(productObj)
+                    for obj in objects!
+                    {
+                        let productObj:Product =  obj as! Product
+                        
+                        
+                        productObj.ProductInintWithDic(dict: obj as! AVObject)
+                        self.boughtItems.append(productObj)
+                    }
                 }
-                self.productsTableView.reloadData()
-            }
-            else
-            {
-                Constants.showAlert(message: "Unable to load products.", view: self)
-            }
-            self.minusButtonAction(sender: "" as AnyObject)
+                else
+                {
+                    Constants.showAlert(message: "Unable to load products.", view: self)
+                }
+                DispatchQueue.main.async {
+                    print("This is run on the main queue, after the previous code in outer block")
+                    self.progressView.isHidden = true
+                    self.progressView.stopAnimating()
+                    self.productsTableView.reloadData()
 
-            
-        }
+                }
+
+              
+                
+            }
+            }
+    
         
     }
     
@@ -588,8 +638,10 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.tag = indexPath.item
         cell.productStatusLabel.text = productObj.status
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
-        
-        
+        if (indexPath.row + 1 == self.boughtItems.count )
+        {
+            self.getBoughtProductList(size: self.boughtItems.count)
+        }
         
         return cell
     }

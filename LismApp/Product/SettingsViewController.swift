@@ -81,7 +81,7 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
        // cell height
     // cell height
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68
+        return 50
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -98,7 +98,7 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {        self.performSegue(withIdentifier: "SettingsToEditProfileVC", sender: self)
+    {        
 
         
         if(indexPath.section == 0 && indexPath.row == 0)

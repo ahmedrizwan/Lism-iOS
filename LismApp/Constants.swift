@@ -14,7 +14,7 @@ import AVOSCloud
 class Constants {
 
    static var currentUser: User = User()
-    
+    static var favoritesList : [Product] = [Product]()
     struct NotificationType
     {
         static let TYPE_FOLLOW         = "follow"

@@ -121,6 +121,9 @@ Est. Retail ¥2,00</string>
                                                 </button>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold_banner" translatesAutoresizingMaskIntoConstraints="NO" id="fBe-DG-Aik">
                                                     <rect key="frame" x="21" y="49" width="107" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="53" id="5UB-u3-TQ3"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -149,7 +152,6 @@ Est. Retail ¥2,00</string>
                                             <constraint firstItem="JqY-iK-jvc" firstAttribute="top" secondItem="fKm-t7-I7s" secondAttribute="topMargin" constant="62" id="ozw-DW-6hK"/>
                                             <constraint firstItem="WQy-zm-Zhk" firstAttribute="leading" secondItem="fKm-t7-I7s" secondAttribute="leadingMargin" constant="-8" id="vZp-IG-86w"/>
                                             <constraint firstAttribute="bottom" secondItem="8T5-Hk-4qR" secondAttribute="bottom" constant="19" id="wj3-sp-TxE"/>
-                                            <constraint firstItem="WQy-zm-Zhk" firstAttribute="top" secondItem="fBe-DG-Aik" secondAttribute="bottom" constant="56" id="wug-ed-Rmh"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="243"/>
                                         <connections>
@@ -650,7 +652,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="50DFC077-1655-4CC1-9A1E-C7E11AC9193A" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AF23BB68-9996-4E9C-A11E-B299C27E16BC" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -3538,7 +3540,7 @@ Est. Retail ¥2,00</string>
                                                     <state key="selected" image="heart_red.png"/>
                                                 </button>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold_banner" translatesAutoresizingMaskIntoConstraints="NO" id="JlG-5L-4bs">
-                                                    <rect key="frame" x="21" y="73" width="107" height="53"/>
+                                                    <rect key="frame" x="21" y="58" width="107" height="53"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="53" id="WHI-NK-c8N"/>
                                                         <constraint firstAttribute="width" constant="107" id="rPI-9h-JMI"/>
@@ -3556,7 +3558,7 @@ Est. Retail ¥2,00</string>
                                             <constraint firstItem="lUm-jM-9Db" firstAttribute="trailing" secondItem="jMu-1q-FWQ" secondAttribute="trailingMargin" constant="8" id="DJj-4P-vIZ"/>
                                             <constraint firstItem="lUm-jM-9Db" firstAttribute="leading" secondItem="H4W-uV-D01" secondAttribute="trailing" constant="-17" id="FzT-pW-VIz"/>
                                             <constraint firstItem="ogr-1u-9ZR" firstAttribute="top" secondItem="jMu-1q-FWQ" secondAttribute="topMargin" constant="62" id="Isg-5B-kk5"/>
-                                            <constraint firstItem="JlG-5L-4bs" firstAttribute="top" secondItem="ogr-1u-9ZR" secondAttribute="bottom" constant="-17" id="MKU-TY-dDw"/>
+                                            <constraint firstItem="JlG-5L-4bs" firstAttribute="top" secondItem="ogr-1u-9ZR" secondAttribute="bottom" constant="-32" id="MKU-TY-dDw"/>
                                             <constraint firstItem="Sbe-kg-u92" firstAttribute="top" secondItem="lae-Fl-TDe" secondAttribute="bottom" constant="1" id="MVU-c8-WZu"/>
                                             <constraint firstItem="lae-Fl-TDe" firstAttribute="leading" secondItem="jMu-1q-FWQ" secondAttribute="leading" id="P9p-tc-NVH"/>
                                             <constraint firstItem="rjU-EM-4dP" firstAttribute="leading" secondItem="jMu-1q-FWQ" secondAttribute="leading" id="TV9-r8-7eq"/>
@@ -5293,7 +5295,7 @@ Est. Retail ¥2,00</string>
                                 <rect key="frame" x="0.0" y="61" width="375" height="491"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUs-uw-uVq">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="108"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="94"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE PHOTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu9-mh-kBq">
                                                 <rect key="frame" x="16" y="8" width="142" height="21"/>
@@ -5336,15 +5338,15 @@ Est. Retail ¥2,00</string>
                                             <constraint firstItem="yNq-mL-fsn" firstAttribute="leading" secondItem="NUs-uw-uVq" secondAttribute="leading" constant="17" id="AYF-AY-rEj"/>
                                             <constraint firstItem="Sa2-AW-nwu" firstAttribute="top" secondItem="Cu9-mh-kBq" secondAttribute="bottom" constant="10" id="NuK-Ls-828"/>
                                             <constraint firstItem="Sa2-AW-nwu" firstAttribute="leading" secondItem="yNq-mL-fsn" secondAttribute="trailing" constant="13" id="Pod-zO-DuB"/>
-                                            <constraint firstAttribute="height" constant="108" id="UNo-hU-OFg"/>
-                                            <constraint firstAttribute="bottom" secondItem="Sa2-AW-nwu" secondAttribute="bottom" constant="20" id="XLd-5g-4xX"/>
-                                            <constraint firstAttribute="bottom" secondItem="yNq-mL-fsn" secondAttribute="bottom" constant="20" id="eVx-bn-zYm"/>
+                                            <constraint firstAttribute="height" constant="94" id="UNo-hU-OFg"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sa2-AW-nwu" secondAttribute="bottom" constant="6" id="XLd-5g-4xX"/>
+                                            <constraint firstAttribute="bottom" secondItem="yNq-mL-fsn" secondAttribute="bottom" constant="6" id="eVx-bn-zYm"/>
                                             <constraint firstItem="Sa2-AW-nwu" firstAttribute="leading" secondItem="yNq-mL-fsn" secondAttribute="trailing" constant="13" id="ghW-r5-IGC"/>
                                             <constraint firstItem="Cu9-mh-kBq" firstAttribute="top" secondItem="NUs-uw-uVq" secondAttribute="top" constant="8" id="xVy-vr-DhU"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-xo-jFQ">
-                                        <rect key="frame" x="0.0" y="130" width="375" height="190"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="211"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B6-uk-wGZ">
                                                 <rect key="frame" x="16" y="5" width="142" height="21"/>
@@ -5357,7 +5359,7 @@ Est. Retail ¥2,00</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D5g-WB-8GS">
-                                                <rect key="frame" x="14" y="34" width="344" height="142"/>
+                                                <rect key="frame" x="14" y="34" width="344" height="173"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.1646876931" green="0.1647174954" blue="0.1646811664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5375,7 +5377,7 @@ Est. Retail ¥2,00</string>
                                             <constraint firstItem="2B6-uk-wGZ" firstAttribute="top" secondItem="TSh-xo-jFQ" secondAttribute="top" constant="5" id="LK7-wO-eJe"/>
                                             <constraint firstItem="D5g-WB-8GS" firstAttribute="top" secondItem="2B6-uk-wGZ" secondAttribute="bottom" constant="8" id="sKm-96-Cac"/>
                                             <constraint firstItem="2B6-uk-wGZ" firstAttribute="leading" secondItem="TSh-xo-jFQ" secondAttribute="leading" constant="16" id="sOQ-T2-jy3"/>
-                                            <constraint firstAttribute="bottom" secondItem="D5g-WB-8GS" secondAttribute="bottom" constant="14" id="xEk-hI-hbO"/>
+                                            <constraint firstAttribute="bottom" secondItem="D5g-WB-8GS" secondAttribute="bottom" constant="4" id="xEk-hI-hbO"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cD8-xj-r5c">
@@ -5497,9 +5499,9 @@ Est. Retail ¥2,00</string>
                                     <constraint firstItem="NUs-uw-uVq" firstAttribute="top" secondItem="prm-9L-s3t" secondAttribute="top" constant="20" id="KXg-VO-Ulj"/>
                                     <constraint firstItem="cD8-xj-r5c" firstAttribute="leading" secondItem="prm-9L-s3t" secondAttribute="leading" id="URG-Yp-pxJ"/>
                                     <constraint firstItem="nFQ-tP-WeM" firstAttribute="top" secondItem="cD8-xj-r5c" secondAttribute="bottom" constant="10" id="UxE-Lv-f8S"/>
-                                    <constraint firstItem="TSh-xo-jFQ" firstAttribute="top" secondItem="NUs-uw-uVq" secondAttribute="bottom" constant="2" id="X9S-tB-FBJ"/>
-                                    <constraint firstItem="cD8-xj-r5c" firstAttribute="top" secondItem="TSh-xo-jFQ" secondAttribute="bottom" constant="8" id="aeZ-ca-lci"/>
-                                    <constraint firstItem="cD8-xj-r5c" firstAttribute="top" secondItem="TSh-xo-jFQ" secondAttribute="bottom" constant="8" id="gPL-Gm-mj8"/>
+                                    <constraint firstItem="TSh-xo-jFQ" firstAttribute="top" secondItem="NUs-uw-uVq" secondAttribute="bottom" constant="1" id="X9S-tB-FBJ"/>
+                                    <constraint firstItem="cD8-xj-r5c" firstAttribute="top" secondItem="TSh-xo-jFQ" secondAttribute="bottom" constant="2" id="aeZ-ca-lci"/>
+                                    <constraint firstItem="cD8-xj-r5c" firstAttribute="top" secondItem="TSh-xo-jFQ" secondAttribute="bottom" constant="2" id="gPL-Gm-mj8"/>
                                     <constraint firstAttribute="trailing" secondItem="NUs-uw-uVq" secondAttribute="trailing" id="iVX-Fr-5db"/>
                                     <constraint firstItem="TSh-xo-jFQ" firstAttribute="leading" secondItem="prm-9L-s3t" secondAttribute="leading" id="qTa-yk-9iV"/>
                                     <constraint firstItem="nFQ-tP-WeM" firstAttribute="leading" secondItem="prm-9L-s3t" secondAttribute="leading" id="qb2-OY-pnB"/>
@@ -5573,10 +5575,10 @@ Est. Retail ¥2,00</string>
                                 <color key="color" red="0.57918035980000004" green="0.065172873440000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="7MG-3C-TkQ">
-                                <rect key="frame" x="55" y="566" width="44" height="37"/>
+                                <rect key="frame" x="31" y="566" width="44" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="5J1-Jw-0gY"/>
-                                    <constraint firstAttribute="height" constant="37" id="cEO-up-D61"/>
+                                    <constraint firstAttribute="width" constant="44" id="4QJ-eQ-Aas"/>
+                                    <constraint firstAttribute="height" constant="37" id="gE2-T7-J85"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -5591,8 +5593,8 @@ Est. Retail ¥2,00</string>
                             <constraint firstItem="0fl-O3-yBg" firstAttribute="top" secondItem="3vg-H3-Iiz" secondAttribute="bottom" constant="13" id="GS4-Al-S5R"/>
                             <constraint firstAttribute="trailing" secondItem="0fl-O3-yBg" secondAttribute="trailing" id="IU4-Ce-LsN"/>
                             <constraint firstItem="3vg-H3-Iiz" firstAttribute="trailing" secondItem="cm7-Co-VM3" secondAttribute="trailingMargin" id="Kmh-Nz-gAO"/>
-                            <constraint firstItem="7MG-3C-TkQ" firstAttribute="top" secondItem="prm-9L-s3t" secondAttribute="bottom" constant="14" id="P9H-R1-KzA"/>
                             <constraint firstAttribute="trailing" secondItem="W4X-Um-iH4" secondAttribute="trailing" id="UGh-ER-lEJ"/>
+                            <constraint firstItem="7MG-3C-TkQ" firstAttribute="top" secondItem="prm-9L-s3t" secondAttribute="bottom" constant="14" id="Xsc-uf-UG5"/>
                             <constraint firstItem="McJ-hW-eQ1" firstAttribute="top" secondItem="cm7-Co-VM3" secondAttribute="top" id="ZJE-Lp-Kbv"/>
                             <constraint firstItem="W4X-Um-iH4" firstAttribute="top" secondItem="cm7-Co-VM3" secondAttribute="top" id="aun-xw-zCH"/>
                             <constraint firstItem="prm-9L-s3t" firstAttribute="leading" secondItem="cm7-Co-VM3" secondAttribute="leading" id="g9y-kg-T97"/>
@@ -5602,9 +5604,8 @@ Est. Retail ¥2,00</string>
                             <constraint firstItem="3vg-H3-Iiz" firstAttribute="top" secondItem="prm-9L-s3t" secondAttribute="bottom" constant="8" id="jJG-Th-GEp"/>
                             <constraint firstAttribute="trailing" secondItem="prm-9L-s3t" secondAttribute="trailing" id="kOH-P8-xSv"/>
                             <constraint firstItem="EgE-cR-fc3" firstAttribute="top" secondItem="McJ-hW-eQ1" secondAttribute="bottom" id="ndn-v7-B0H"/>
-                            <constraint firstItem="7MG-3C-TkQ" firstAttribute="leading" secondItem="cm7-Co-VM3" secondAttribute="leadingMargin" constant="39" id="sW1-an-pUp"/>
+                            <constraint firstItem="7MG-3C-TkQ" firstAttribute="leading" secondItem="cm7-Co-VM3" secondAttribute="leadingMargin" constant="15" id="uEV-Bv-Az4"/>
                             <constraint firstItem="McJ-hW-eQ1" firstAttribute="leading" secondItem="cm7-Co-VM3" secondAttribute="leading" id="ugc-Xw-Q1h"/>
-                            <constraint firstItem="0fl-O3-yBg" firstAttribute="top" secondItem="7MG-3C-TkQ" secondAttribute="bottom" constant="19" id="w7i-J1-xat"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5631,7 +5632,7 @@ Est. Retail ¥2,00</string>
         <image name="3_number" width="88" height="92"/>
         <image name="4_disabled" width="89" height="92"/>
         <image name="4_number" width="88" height="92"/>
-        <image name="50DFC077-1655-4CC1-9A1E-C7E11AC9193A" width="2081" height="292">
+        <image name="AF23BB68-9996-4E9C-A11E-B299C27E16BC" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

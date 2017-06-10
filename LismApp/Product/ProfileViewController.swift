@@ -164,7 +164,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     if(error == nil)
     {
         
-    print((object?["followees"] as! NSArray).count)
         self.userFollowersArray = (object?["followers"] as! [AVUser])
         
         self.userFollowingsArray = (object?["followees"] as! [AVUser])
@@ -205,7 +204,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             in
             if(error == nil)
             {
-                print((object?["followees"] as! NSArray).count)
           
                 
                 self.userMeFollowersArray = (object?["followers"] as! [AVUser])
@@ -218,7 +216,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     self.isFollowingUser = true
                     self.followBtn.isHidden = false
                     self.followBtn.setTitle("Unfollow -", for: .normal)
-                    print("I m following this use")
                 }
                 if(!self.isFollowingUser && AVUser.current()?.objectId != self.userObj.objectId)
                 {
@@ -267,7 +264,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     
                 }
                  self.notificationItems =  self.notificationItems.reversed()
-                print ("notifCount\(notifCount)")
             }
             self.progressView.isHidden = true
             self.progressView.stopAnimating()
@@ -567,40 +563,46 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     func loadFavoritesList()
     {
-        
-        
-        
-        let query: AVQuery = (userObj.relation(forKey: "favorites").query())
-        query.includeKey("user")
-        query.findObjectsInBackground { (objects, error) in
-            if(error == nil)
-            {
-                for obj in objects!
-                {
-                    let productObj:Product =  obj as! Product
-                    productObj.ProductInintWithDic(dict: obj as! AVObject)
-                    self.favoritesList.append(productObj)
-                }
-               
-                self.comapreToUpdateFavoriteProductsList()
-                if(!self.userObj.isEqual(AVUser.current()))
-                {
-                self.boughtItems = self.favoritesList
-                    self.favoritesCollectionView.reloadData()
-                
-                }
-            }
-            else
-            {
-                Constants.showAlert(message: "Unable to load products.", view: self)
-                
-            }
-            self.progressView.isHidden = true
-            
+            self.favoritesList =   Constants.favoritesList
+        self.comapreToUpdateFavoriteProductsList()
+        if(!self.userObj.isEqual(AVUser.current()))
+        {
+            self.boughtItems = self.favoritesList
+            self.favoritesCollectionView.reloadData()
             
         }
         
-        
+//        let query: AVQuery = (userObj.relation(forKey: "favorites").query())
+//        query.includeKey("user")
+//        query.findObjectsInBackground { (objects, error) in
+//            if(error == nil)
+//            {
+//                for obj in objects!
+//                {
+//                    let productObj:Product =  obj as! Product
+//                    productObj.ProductInintWithDic(dict: obj as! AVObject)
+//                    self.favoritesList.append(productObj)
+//                }
+//               
+//                self.comapreToUpdateFavoriteProductsList()
+//                if(!self.userObj.isEqual(AVUser.current()))
+//                {
+//                self.boughtItems = self.favoritesList
+//                    self.favoritesCollectionView.reloadData()
+//                
+//                }
+//            }
+//            else
+//            {
+//                Constants.showAlert(message: "Unable to load products.", view: self)
+//                
+//            }
+//            self.progressView.isHidden = true
+//            
+//            
+//        }
+//        
+//        
     }
     func comapreToUpdateFavoriteProductsList()
     {
@@ -727,7 +729,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         else if (segue.identifier == "ProfileToSettingsVC") { //gooing tp notiication
             let viewController:SettingsViewController = segue.destination as! SettingsViewController
             viewController.userImageFile = self.userImageFile
-
+            
             
             
         }

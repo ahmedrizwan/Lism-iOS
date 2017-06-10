@@ -160,6 +160,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
                     self.favoritesList.append(productObj)
                 }
+                Constants.favoritesList = self.favoritesList
                 self.comapreToUpdateFavoriteProductsList()
             }
             else

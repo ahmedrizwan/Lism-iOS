@@ -27,10 +27,10 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     override func viewDidLoad() {
         super.viewDidLoad()
         websiteTextField.layer.borderWidth = 1.0
-        websiteTextField.layer.borderColor = UIColor.gray.cgColor
+        websiteTextField.layer.borderColor = UIColor.lightGray.cgColor
         descriptionTextview.layer.borderWidth = 1.0
         descriptionTextview.delegate = self
-        descriptionTextview.layer.borderColor = UIColor.gray.cgColor
+        descriptionTextview.layer.borderColor = UIColor.lightGray.cgColor
         applyPlaceholderStyle(aTextview: descriptionTextview, placeholderText: PLACEHOLDER_TEXT)
         femaleBtn.isSelected = true
         picker.delegate = self
@@ -39,8 +39,6 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        profileImageBtn.layer.cornerRadius = profileImageBtn.frame.size.height/2
-        profileImageBtn.layer.masksToBounds = true
     }
     func getUserInfo()
     {
@@ -62,7 +60,9 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
                          let userImageFile = parseFile as! AVFile
                         userImageFile.getDataInBackground({ (data, error) in
                             self.profileImageBtn.setBackgroundImage( UIImage.init(data: data!), for: .normal)
-                            
+                            self.profileImageBtn.layer.cornerRadius =   self.profileImageBtn.frame.size.height/2
+                              self.profileImageBtn.layer.masksToBounds = true
+
                             
                         })
                     }

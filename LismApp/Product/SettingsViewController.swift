@@ -15,7 +15,8 @@ class SettingsViewController: UIViewController, UITabBarDelegate,UITableViewDele
     var userImageFile : AVFile!
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
 
-    
+    @IBOutlet weak var tabBar : UITabBar!
+
     @IBOutlet weak var imageView : UIImageView!
     @IBOutlet weak var profileTitleLabel : UILabel!
     @IBOutlet weak var  settingTableView : UITableView!
@@ -32,6 +33,8 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBar.selectedItem = selectedTabBarItem
+
         if(userImageFile != nil)
         {
             userImageFile.getDataInBackground({ (data, error) in

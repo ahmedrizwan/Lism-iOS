@@ -73,6 +73,17 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
                         self.websiteTextField.text = website
                         }
                     }
+                    
+                  
+                    
+                    if let userDescription:String = object?["description"] as! String?
+                    {
+                        if(userDescription != "")
+                        {
+                            self.descriptionTextview.text = userDescription
+                            self.applyNonPlaceholderStyle(aTextview: self.descriptionTextview)
+                        }
+                    }
                     if let dob:String = object!.value(forKey: "dob") as! String?
                     {
                         if(dob != "")
@@ -139,7 +150,10 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
             userObj.setObject(self.dobBtn.title(for: .normal), forKey: "dob")
         }
         userObj.setObject(self.websiteTextField.text, forKey: "website")
+        if(self.descriptionTextview.text != PLACEHOLDER_TEXT)
+        {
        userObj.setObject(self.descriptionTextview.text, forKey: "description")
+        }
         if(femaleBtn.isSelected)
         {
             userObj.setObject("f", forKey: "gender")

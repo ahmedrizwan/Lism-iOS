@@ -141,7 +141,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         seelctedProductObj = self.items[indexPath.item]
-        if(seelctedProductObj.status == "Posted for Sale")
+        if(seelctedProductObj.status == Constants.posted_for_sale)
         {
         //get product and move for edit
         self.performSegue(withIdentifier: "SellToEditItemVc", sender: self)

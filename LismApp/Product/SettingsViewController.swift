@@ -111,7 +111,24 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
         
     }
     
-    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Selected item",item.tag)
+        
+        if(item.tag == 1)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "SettingsToSellView", sender: self)
+        }
+            
+        else if(item.tag == 4)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "SettingsToProductView", sender: self)
+        }
+        
+        //This method will be called when user changes tab.
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

@@ -119,6 +119,9 @@ Est. Retail ¥2,00</string>
                                                     <state key="normal" image="heart.png"/>
                                                     <state key="selected" image="heart_red.png"/>
                                                 </button>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold_banner" translatesAutoresizingMaskIntoConstraints="NO" id="fBe-DG-Aik">
+                                                    <rect key="frame" x="21" y="49" width="107" height="53"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -132,16 +135,21 @@ Est. Retail ¥2,00</string>
                                             <constraint firstItem="Gsv-OO-p7k" firstAttribute="top" secondItem="WQy-zm-Zhk" secondAttribute="bottom" constant="-2" id="QI9-wT-Wsn"/>
                                             <constraint firstItem="WQy-zm-Zhk" firstAttribute="top" secondItem="1U4-jv-UHH" secondAttribute="top" id="Uen-9X-QFS"/>
                                             <constraint firstItem="1U4-jv-UHH" firstAttribute="leading" secondItem="WQy-zm-Zhk" secondAttribute="trailing" constant="-17" id="V8z-LB-EXb"/>
+                                            <constraint firstItem="fBe-DG-Aik" firstAttribute="top" secondItem="fKm-t7-I7s" secondAttribute="topMargin" constant="41" id="VJd-J4-P4i"/>
                                             <constraint firstItem="9xK-jg-C92" firstAttribute="top" secondItem="fKm-t7-I7s" secondAttribute="top" id="ZCc-tg-BTL"/>
                                             <constraint firstItem="8T5-Hk-4qR" firstAttribute="top" secondItem="Gsv-OO-p7k" secondAttribute="bottom" constant="1" id="aCq-sV-xWh"/>
+                                            <constraint firstItem="fBe-DG-Aik" firstAttribute="centerX" secondItem="fKm-t7-I7s" secondAttribute="centerX" id="agV-ur-Db4"/>
                                             <constraint firstItem="8T5-Hk-4qR" firstAttribute="top" secondItem="WQy-zm-Zhk" secondAttribute="bottom" constant="30" id="b2m-MM-UG7"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fBe-DG-Aik" secondAttribute="trailing" constant="14" id="dzZ-oA-qn5"/>
                                             <constraint firstItem="1U4-jv-UHH" firstAttribute="top" secondItem="9xK-jg-C92" secondAttribute="bottom" constant="8" id="eXj-0n-VXu"/>
                                             <constraint firstAttribute="trailing" secondItem="8T5-Hk-4qR" secondAttribute="trailing" id="lFV-ie-naz"/>
                                             <constraint firstItem="9xK-jg-C92" firstAttribute="leading" secondItem="fKm-t7-I7s" secondAttribute="leading" id="lzn-Kw-a4w"/>
                                             <constraint firstItem="JqY-iK-jvc" firstAttribute="centerX" secondItem="fKm-t7-I7s" secondAttribute="centerX" id="ngE-Yn-Dhe"/>
+                                            <constraint firstItem="fBe-DG-Aik" firstAttribute="leading" secondItem="fKm-t7-I7s" secondAttribute="leadingMargin" constant="13" id="oEg-li-c65"/>
                                             <constraint firstItem="JqY-iK-jvc" firstAttribute="top" secondItem="fKm-t7-I7s" secondAttribute="topMargin" constant="62" id="ozw-DW-6hK"/>
                                             <constraint firstItem="WQy-zm-Zhk" firstAttribute="leading" secondItem="fKm-t7-I7s" secondAttribute="leadingMargin" constant="-8" id="vZp-IG-86w"/>
                                             <constraint firstAttribute="bottom" secondItem="8T5-Hk-4qR" secondAttribute="bottom" constant="19" id="wj3-sp-TxE"/>
+                                            <constraint firstItem="WQy-zm-Zhk" firstAttribute="top" secondItem="fBe-DG-Aik" secondAttribute="bottom" constant="56" id="wug-ed-Rmh"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="243"/>
                                         <connections>
@@ -150,6 +158,7 @@ Est. Retail ¥2,00</string>
                                             <outlet property="priceLabel" destination="8T5-Hk-4qR" id="Ume-lC-8QA"/>
                                             <outlet property="productImageView" destination="9xK-jg-C92" id="33r-Bn-iPl"/>
                                             <outlet property="retailPriceTextView" destination="Gsv-OO-p7k" id="xMo-l1-bdV"/>
+                                            <outlet property="soldBannerImageView" destination="fBe-DG-Aik" id="nXR-Fn-QCP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -641,7 +650,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="71A52E86-1F9F-4E77-87C8-2766DA0CAE15" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="50DFC077-1655-4CC1-9A1E-C7E11AC9193A" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -3528,6 +3537,13 @@ Est. Retail ¥2,00</string>
                                                     <state key="normal" image="heart.png"/>
                                                     <state key="selected" image="heart_red.png"/>
                                                 </button>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold_banner" translatesAutoresizingMaskIntoConstraints="NO" id="JlG-5L-4bs">
+                                                    <rect key="frame" x="21" y="73" width="107" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="53" id="WHI-NK-c8N"/>
+                                                        <constraint firstAttribute="width" constant="107" id="rPI-9h-JMI"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3536,20 +3552,24 @@ Est. Retail ¥2,00</string>
                                             <constraint firstAttribute="trailing" secondItem="lae-Fl-TDe" secondAttribute="trailing" id="4Ho-ee-gSS"/>
                                             <constraint firstItem="Sbe-kg-u92" firstAttribute="leading" secondItem="jMu-1q-FWQ" secondAttribute="leading" id="7Sv-fl-dOM"/>
                                             <constraint firstItem="lae-Fl-TDe" firstAttribute="top" secondItem="H4W-uV-D01" secondAttribute="bottom" constant="-2" id="Be7-Gp-W0q"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="JlG-5L-4bs" secondAttribute="trailing" constant="14" id="D3K-Fa-kAi"/>
                                             <constraint firstItem="lUm-jM-9Db" firstAttribute="trailing" secondItem="jMu-1q-FWQ" secondAttribute="trailingMargin" constant="8" id="DJj-4P-vIZ"/>
                                             <constraint firstItem="lUm-jM-9Db" firstAttribute="leading" secondItem="H4W-uV-D01" secondAttribute="trailing" constant="-17" id="FzT-pW-VIz"/>
                                             <constraint firstItem="ogr-1u-9ZR" firstAttribute="top" secondItem="jMu-1q-FWQ" secondAttribute="topMargin" constant="62" id="Isg-5B-kk5"/>
+                                            <constraint firstItem="JlG-5L-4bs" firstAttribute="top" secondItem="ogr-1u-9ZR" secondAttribute="bottom" constant="-17" id="MKU-TY-dDw"/>
                                             <constraint firstItem="Sbe-kg-u92" firstAttribute="top" secondItem="lae-Fl-TDe" secondAttribute="bottom" constant="1" id="MVU-c8-WZu"/>
                                             <constraint firstItem="lae-Fl-TDe" firstAttribute="leading" secondItem="jMu-1q-FWQ" secondAttribute="leading" id="P9p-tc-NVH"/>
                                             <constraint firstItem="rjU-EM-4dP" firstAttribute="leading" secondItem="jMu-1q-FWQ" secondAttribute="leading" id="TV9-r8-7eq"/>
                                             <constraint firstItem="rjU-EM-4dP" firstAttribute="top" secondItem="jMu-1q-FWQ" secondAttribute="top" id="TXM-0o-fto"/>
                                             <constraint firstItem="H4W-uV-D01" firstAttribute="top" secondItem="lUm-jM-9Db" secondAttribute="top" id="Tve-5m-UGh"/>
                                             <constraint firstAttribute="bottom" secondItem="Sbe-kg-u92" secondAttribute="bottom" constant="19" id="UZL-MC-LGT"/>
+                                            <constraint firstItem="JlG-5L-4bs" firstAttribute="leading" secondItem="jMu-1q-FWQ" secondAttribute="leadingMargin" constant="13" id="XoR-BV-h69"/>
                                             <constraint firstItem="ogr-1u-9ZR" firstAttribute="centerX" secondItem="jMu-1q-FWQ" secondAttribute="centerX" id="cni-wd-4w4"/>
                                             <constraint firstItem="Sbe-kg-u92" firstAttribute="top" secondItem="H4W-uV-D01" secondAttribute="bottom" constant="30" id="dSf-1C-Gzr"/>
                                             <constraint firstItem="lae-Fl-TDe" firstAttribute="top" secondItem="lUm-jM-9Db" secondAttribute="bottom" constant="-1" id="gRe-OA-9Sq"/>
                                             <constraint firstAttribute="trailing" secondItem="rjU-EM-4dP" secondAttribute="trailing" id="mii-qg-9LM"/>
                                             <constraint firstAttribute="trailing" secondItem="Sbe-kg-u92" secondAttribute="trailing" id="rxl-4h-llG"/>
+                                            <constraint firstItem="JlG-5L-4bs" firstAttribute="centerX" secondItem="jMu-1q-FWQ" secondAttribute="centerX" id="xgh-Qr-Sas"/>
                                             <constraint firstItem="lUm-jM-9Db" firstAttribute="top" secondItem="rjU-EM-4dP" secondAttribute="bottom" constant="8" id="zyu-YI-t4a"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="243"/>
@@ -3559,6 +3579,7 @@ Est. Retail ¥2,00</string>
                                             <outlet property="priceLabel" destination="Sbe-kg-u92" id="8Dl-Qd-2KJ"/>
                                             <outlet property="productImageView" destination="rjU-EM-4dP" id="F6f-eP-Yj4"/>
                                             <outlet property="retailPriceTextView" destination="lae-Fl-TDe" id="Q3b-Pw-Vl5"/>
+                                            <outlet property="soldBannerImageView" destination="JlG-5L-4bs" id="etg-Dh-0oJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -3761,7 +3782,7 @@ Est. Retail ¥2,00</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeB-Yd-FqH">
-                                        <rect key="frame" x="28" y="20" width="7" height="7"/>
+                                        <rect key="frame" x="23" y="20" width="7" height="7"/>
                                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="mq5-nw-1zG"/>
@@ -3775,7 +3796,7 @@ Est. Retail ¥2,00</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="4gI-2V-c5q"/>
-                                    <constraint firstItem="OeB-Yd-FqH" firstAttribute="leading" secondItem="hbK-vg-sj9" secondAttribute="leading" constant="28" id="7cL-yT-QXf"/>
+                                    <constraint firstItem="OeB-Yd-FqH" firstAttribute="leading" secondItem="hbK-vg-sj9" secondAttribute="leading" constant="23" id="7cL-yT-QXf"/>
                                     <constraint firstItem="Bp7-a0-o9O" firstAttribute="leading" secondItem="hbK-vg-sj9" secondAttribute="leading" constant="3" id="81f-mc-hn5"/>
                                     <constraint firstItem="Bp7-a0-o9O" firstAttribute="top" secondItem="hbK-vg-sj9" secondAttribute="top" constant="20" id="HF4-Al-HVa"/>
                                     <constraint firstItem="OeB-Yd-FqH" firstAttribute="top" secondItem="hbK-vg-sj9" secondAttribute="top" constant="20" id="Jxf-Qc-apM"/>
@@ -5200,6 +5221,8 @@ Est. Retail ¥2,00</string>
                         <outlet property="settingTableView" destination="k6B-7s-y9U" id="14G-2U-cYF"/>
                         <outlet property="tabBar" destination="Fyz-TP-lLQ" id="zCl-Nj-lxo"/>
                         <segue destination="ebs-Di-VTv" kind="show" identifier="SettingsToEditProfileVC" id="IUF-cH-GKI"/>
+                        <segue destination="XnV-fp-5WA" kind="show" identifier="SettingsToSellView" id="kKP-eT-nxr"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="SettingsToProductView" id="TDR-ha-byU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2J-VS-lqk" sceneMemberID="firstResponder"/>
@@ -5608,7 +5631,7 @@ Est. Retail ¥2,00</string>
         <image name="3_number" width="88" height="92"/>
         <image name="4_disabled" width="89" height="92"/>
         <image name="4_number" width="88" height="92"/>
-        <image name="71A52E86-1F9F-4E77-87C8-2766DA0CAE15" width="2081" height="292">
+        <image name="50DFC077-1655-4CC1-9A1E-C7E11AC9193A" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -46207,6 +46230,7 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
         <image name="policy.png" width="136" height="182"/>
         <image name="scroll_btn.png" width="134" height="134"/>
         <image name="setting" width="44" height="43"/>
+        <image name="sold_banner" width="210" height="99"/>
         <image name="tag.png" width="188" height="187"/>
         <image name="topbarimage.png" width="3125" height="621"/>
         <image name="wechat" width="87" height="75"/>
@@ -46215,10 +46239,10 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9Bk-jH-cnv"/>
-        <segue reference="lXO-Mw-BCE"/>
+        <segue reference="Mrg-S8-EKf"/>
+        <segue reference="oeG-YO-Czw"/>
         <segue reference="cbm-TA-IBD"/>
         <segue reference="Pef-BG-f2j"/>
-        <segue reference="oeG-YO-Czw"/>
         <segue reference="4Vk-bV-igI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

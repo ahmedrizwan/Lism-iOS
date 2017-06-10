@@ -522,7 +522,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         product.setObject(self.brandTextfield.text!, forKey: "brand")
         product.setObject(colorsBtn.title(for: .normal)!, forKey: "color")
         product.setObject(AVUser.current(), forKey: "user")
-        product.setObject("Posted for Sale", forKey: "status")
+        product.setObject(Constants.posted_for_sale, forKey: "status")
 
         product.setObject(self.selectedCategoryBtn.title(for: .normal)!, forKey: "category")
         if(self.sizesBtn.title(for: .normal) == "SIZE")

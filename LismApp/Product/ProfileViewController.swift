@@ -319,7 +319,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
         
-        
+            if(productObj.status == Constants.sent || productObj.status == Constants.waiting_to_be_sent)
+            {
+                cell.soldBannerImageView.isHidden = false
+            }
+            else
+            {
+                cell.soldBannerImageView.isHidden = true
+                
+            }
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
         Constants.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)

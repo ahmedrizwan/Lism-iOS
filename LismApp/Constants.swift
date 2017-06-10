@@ -50,7 +50,10 @@ struct DeviceType
         alert.addAction(UIAlertAction(title: "OK",style:UIAlertActionStyle.default,handler: nil))
         view.present(alert, animated: true, completion: nil)
     }
-    
+    static let waiting_to_be_sent = "Waiting to be Sent"
+    static let sent = "Sent"
+
+    static let posted_for_sale = "Posted for Sale"
      static let USER_CART = "userCart"
  static let sell_is_more = "LESS IS MORE"
 static let sell_with_us_it_s_easy = "SELL WITH US IT\'S EASY"

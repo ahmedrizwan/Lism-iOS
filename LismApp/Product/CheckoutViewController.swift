@@ -72,7 +72,7 @@ class CheckoutViewController: UIViewController
                  self.checkoutArray.append(productObj)
                 productObj.setObject(AVUser.current(), forKey: "buyingUser")
 
-                productObj.setObject("Waiting to be Sent", forKey: "status")
+                productObj.setObject(Constants.waiting_to_be_sent, forKey: "status")
                 productObj.setObject(self.textViewForAddress.text, forKey: "address")
 
                 self.avobjectsArray.append(productObj)

@@ -135,7 +135,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             else
             {
-            Constants.showAlert(message: "Unable to load products.", view: self)
+            Constants.showAlert(message: ("Unable to load products.").localized(using: "Main"), view: self)
             }
             
         }
@@ -165,7 +165,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             else
             {
-                Constants.showAlert(message: "Unable to load products.", view: self)
+                Constants.showAlert(message: ("Unable to load products.").localized(using: "Main"), view: self)
 
             }
             self.progressView.isHidden = true
@@ -257,7 +257,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
-        Constants.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+        Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
         if (indexPath.row + 1 == self.items.count )
         {
             self.getMoreProductList(size: self.items.count)

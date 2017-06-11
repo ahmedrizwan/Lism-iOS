@@ -91,14 +91,14 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 else
                 {
-                    self.sellButtonReference.setTitle("START SELLING", for: .normal)
+                    self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for: .normal)
 
                     self.updateNoItemsDetailsView()
                 }
             }
             else
             {
-                Constants.showAlert(message: "Unable to load products.", view: self)
+                Constants.showAlert(message: "Unable to load products.".localized(using: "Main"), view: self)
 
             }
             
@@ -127,7 +127,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "SellItemsCustomCell", for: indexPath ) as! SellItemsCustomCell
         let productObj = self.items[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\nSize \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)

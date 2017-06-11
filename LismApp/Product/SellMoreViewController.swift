@@ -80,7 +80,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     @IBOutlet weak var postForSaleBtn : UIButton!
      @IBOutlet weak var descTextView : UITextView!
     var isPrimary = false
-    let PLACEHOLDER_TEXT = "PRODUCT DESCRIPTION"
+    let PLACEHOLDER_TEXT = "PRODUCT DESCRIPTION".localized(using: "Main")
 
     var selectedBtn = UIButton()
      var btnToUpdateText = UIButton()
@@ -406,12 +406,12 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     @IBAction func categoryButtonAction(sender : AnyObject)
     {
         btnToUpdateText = sender as! UIButton
-        self.showAlertcontroller(title: "Categories" , objectToDisplay : self.categories)
+        self.showAlertcontroller(title: "Categories".localized(using: "Main") , objectToDisplay : self.categories)
     }
     @IBAction func sizeButtonAction(sender : AnyObject)
     {
         btnToUpdateText = sender as! UIButton
-        self.showAlertcontroller(title: "Size" , objectToDisplay : self.sizes)
+        self.showAlertcontroller(title: "Size".localized(using: "Main") , objectToDisplay : self.sizes)
     }
     
     @IBAction func selectColorButtonAction(sender : AnyObject)
@@ -422,35 +422,35 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     
     func showAlert (error : String)
     {
-        let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "Error".localized(using: "Main"), message: error, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok".localized(using: "Main"), style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     func checkIfAllDataSet()-> Bool
     {
         if((self.productNameTextfield.text?.characters.count)! < 2)
         {
-            self.showAlert(error: "Enter product name")
+            self.showAlert(error: "Enter product name".localized(using: "Main"))
             return false
 
         }
         if((self.descTextView.text?.characters.count)! < 2)
         {
-            self.showAlert(error: "Enter product description")
+            self.showAlert(error: "Enter product description".localized(using: "Main"))
 
             return false
             
         }
         if((self.brandTextfield.text?.characters.count)! < 2)
         {
-            self.showAlert(error: "Enter brand name")
+            self.showAlert(error: "Enter brand name".localized(using: "Main"))
 
             return false
             
         }
         if(isPrimary == false)
         {
-            self.showAlert(error: "Please select primary image")
+            self.showAlert(error: "Please select primary image".localized(using: "Main"))
             
             return false
             
@@ -458,21 +458,21 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         
         if((colorsBtn.title(for: .normal)!) == "SELECT COLOR")
         {
-            self.showAlert(error: "Please choose color")
+            self.showAlert(error: "Please choose color".localized(using: "Main"))
             
             return false
             
         }
         if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY")
         {
-            self.showAlert(error: "Please select category")
+            self.showAlert(error: "Please select category".localized(using: "Main"))
             
             return false
             
         }
         if((itemsConditionBtn.title(for: .normal)!) == "ITEM CONDITION")
         {
-            self.showAlert(error: "Please choose item condition")
+            self.showAlert(error: "Please choose item condition".localized(using: "Main"))
             
             return false
             
@@ -480,14 +480,14 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         
         if((self.estimatedTextField.text?.characters.count)! <= 0 )
         {
-            self.showAlert(error: "Enter estimated price")
+            self.showAlert(error: "Enter estimated price".localized(using: "Main"))
             
             return false
             
         }
         if((self.sellingPriceTextField.text?.characters.count)! <= 0 )
         {
-            self.showAlert(error: "Enter selling price")
+            self.showAlert(error: "Enter selling price".localized(using: "Main"))
             
             return false
             
@@ -637,8 +637,8 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
 
     func showAlertView()
     {
-        let alert = UIAlertController(title: "Success", message: "Product has been posted for sale", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+        let alert = UIAlertController(title: "Success".localized(using: "Main"), message: "Product has been posted for sale".localized(using: "Main"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok".localized(using: "Main"), style: UIAlertActionStyle.default, handler: { action in
                 self.backbuttonAction(sender: "" as AnyObject)
             }))
         self.present(alert, animated: true, completion: nil)
@@ -734,7 +734,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
     alertController.view.tintColor = UIColor.darkGray
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+    let cancelAction = UIAlertAction(title: "Cancel".localized(using: "Main"), style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
     }
     for (key, value) in objectToDisplay {
         print("key: \(value)")
@@ -783,7 +783,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
         alertController.view.tintColor = UIColor.darkGray
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "Main"), style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
         }
         for (key, value) in objectToDisplay {
             print("key: \(value)")
@@ -814,7 +814,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         let alertController = UIAlertController(title: title, message:"", preferredStyle: UIAlertControllerStyle.alert)
         alertController.view.tintColor = UIColor.darkGray
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "Main"), style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
         }
         var title = ""
     

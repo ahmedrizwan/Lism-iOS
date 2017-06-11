@@ -4,6 +4,41 @@
 
 "SELL MORE" = "SELL MORE";
 
+"Size" = "Size";
+"Est. Retail ¥" = "Est. Retail ¥";
+"d ago" = "d ago" ;
+"hour ago"  = "hour ago";
+"minute ago"  = "minute ago";
+"second ago" = "second ago";
+"Color:" = "Color:";
+"Material:" = "Material:";
+"Condition:" = "Condition:";
+
+"Unable to load products." = "Unable to load products.";
+" removed from cart." = " removed from cart.";
+" added to cart." = " added to cart.";
+
+"START SELLING" = "START SELLING";
+"PRODUCT DESCRIPTION" = "PRODUCT DESCRIPTION";
+"Categories" = "Categories";
+"Error" = "Error";
+"Ok" = "Ok";
+"Enter product name" = "Enter product name";
+"Enter product description" = "Enter product description";
+"Enter brand name" = "Enter brand name";
+"Please select primary image" = "Please select primary image";
+"Please choose color" = "Please choose color";
+"Please select category" = "Please select category";
+"Please choose item condition" = "Please choose item condition";
+ "Enter estimated price" =  "Enter estimated price";
+"Enter selling price" =  "Enter selling price";
+"Success" = "Success";
+"Product has been posted for sale" = "Product has been posted for sale";
+"Cancel" = "Cancel";
+"Your product" = "Your product";
+"has been sold!" = "has been sold!";
+"Order placed (without payment)!" = "Order placed (without payment)!";
+
 
 
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */

@@ -53,7 +53,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
             }
             else
             {
-                Constants.showAlert(message: "Unable to load products.", view: self)
+                Constants.showAlert(message: ("Unable to load products.").localized(using: "Main"), view: self)
 
             }
             
@@ -127,7 +127,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "CheckoutCustomCell", for: indexPath ) as! CheckoutCustomCell
         let productObj = self.checkoutArray[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.sizeAndPriceTextView.text = "Size \(productObj.size) \n ¥ \(productObj.sellingPrice)"
+        cell.sizeAndPriceTextView.text = "\("Size".localized(using: "Main")) \(productObj.size) \n ¥ \(productObj.sellingPrice)"
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)

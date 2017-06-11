@@ -90,12 +90,12 @@ class CheckoutViewController: UIViewController
                             
                                 for product:Product in self.checkoutArray
                                 {
-                                Constants.sendPushToChannel(vc: self, channelInfo: product.user.objectId!, message: "Your product \(product.name) has been sold!", content: "")
+                                Constants.sendPushToChannel(vc: self, channelInfo: product.user.objectId!, message: "\("Your product".localized(using: "Main")) \(product.name) \("has been sold!".localized(using: "Main"))", content: "")
                                 }
                                 
-                                let alert = UIAlertController(title: "",message:"Order placed (without payment)!",
+                                let alert = UIAlertController(title: "",message:"Order placed (without payment)!".localized(using: "Main"),
                                                               preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK",
+                                alert.addAction(UIAlertAction(title: "OK".localized(using: "Main"),
                                                             style: UIAlertActionStyle.default,
                                                             handler: {(alert: UIAlertAction!) in self.navigationController?.backToViewController(viewController: ProductViewController.self)}))
                                 self.present(alert, animated: true, completion: nil)

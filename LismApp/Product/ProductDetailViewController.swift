@@ -143,7 +143,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func removeFromCartAction()
     {
-        messageForCart = " removed from cart."
+        messageForCart = (" removed from cart.").localized(using: "Main")
     
        (AVUser.current()!.relation(forKey: "userCart")).remove(self.productBO!)
 					self.addToCartAction(message: messageForCart)
@@ -152,7 +152,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 	
     func addToCartAction()
     {
-        messageForCart = " added to cart."
+					messageForCart = (" added to cart.").localized(using: "Main")
 
        (AVUser.current()!.relation(forKey: "userCart")).add(self.productBO! )
 					self.addToCartAction(message: messageForCart)
@@ -194,7 +194,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         userNameLabel.text = "@" + (productBO.user.username!)
 					}
 
-									self.produceAttributedText(string: "\(productBO.name) \nSize \(productBO.size) \nEst. Retail ¥ \(productBO.priceRetail)", textView:  priceSizeNameTextView)
+									self.produceAttributedText(string: "\(productBO.name) \n\("Size".localized(using: "Main")) \(productBO.size) \n\("Est. Retail ¥".localized(using: "Main")) \(productBO.priceRetail)", textView:  priceSizeNameTextView)
 
 		
 					
@@ -213,24 +213,26 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         if  Date().days(from: self.productBO.updatedAt!) > 0
         
         {
-            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAt!)) d ago"
+            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAt!)) \("d ago".localized(using: "Main"))"
 
         }
         else if  Date().hour(from: self.productBO.updatedAt!) > 0
         {
            // daysAgoLabel.isHidden = false
-       daysAgoLabel.text =   "Updated \(Date().hour(from:  self.productBO.updatedAt!)) hour ago"
+									
+									
+       daysAgoLabel.text =   "Updated \(Date().hour(from:  self.productBO.updatedAt!)) \("hour ago".localized(using: "Main"))"
 					}
 else if  Date().minute(from: self.productBO.updatedAt!) > 0
         {
 									// daysAgoLabel.isHidden = false
-									daysAgoLabel.text =   "Updated \(Date().minute(from:  self.productBO.updatedAt!)) minute ago"
+									daysAgoLabel.text =   "Updated \(Date().minute(from:  self.productBO.updatedAt!)) \("minute ago".localized(using: "Main"))"
 					}
 					
 					else if  Date().seconds(from: self.productBO.updatedAt!) > 0
 					{
 						// daysAgoLabel.isHidden = false
-						daysAgoLabel.text =   "Updated \(Date().seconds(from:  self.productBO.updatedAt!)) second ago"
+						daysAgoLabel.text =   "Updated \(Date().seconds(from:  self.productBO.updatedAt!)) \("second ago".localized(using: "Main"))"
 					}
         slideshow.slideshowInterval = 5.0
        // slideshow.pageControlPosition = PageControlPosition.underScrollView
@@ -439,7 +441,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
     self.view.bringSubview(toFront: productDescriptionBtnView)
         descriptonTextView.text = self.productBO.prodcut_description
 					
-					self.produceAttributedText(string: "Color: \(productBO.color) \nMaterial: \(productBO.size) \nCondition: \(productBO.condition)", textView: colorMaterialTextView)
+					self.produceAttributedText(string: "\("Color:".localized(using: "Main")) \(productBO.color) \n\("Material:".localized(using: "Main")) \(productBO.size) \n\("Condition:".localized(using: "Main")) \(productBO.condition)", textView: colorMaterialTextView)
 
     }
     

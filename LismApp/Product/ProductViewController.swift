@@ -34,7 +34,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //  self.navigationController?.isNavigationBarHidden = true
-    
+        
         AVPush.subscribeToChannel(inBackground: AVUser.current()!.objectId!)
        // AVInstallation.current().setValue(AVUser.current()?.objectId, forKey: "channels")
 

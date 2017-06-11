@@ -27,7 +27,21 @@ class Constants {
 
     
     }
+    static let faq1_how_to_sell_an_item = "How do I sell an Item?"
+    static let faq2_how_do_recv_payment = "How do I receive payment?"
+    static let faq3_how_to_pay = "How do I pay for an Item?"
+    static let faq4_price_items = "How should I price Items?"
+    static let faq5_item_condition  = "What condition is my Item in?"
+    static let faq6_how_shopping_words = "How does shipping work?"
+    static let faq7_why_item_removed = "Why has my Item been removed?"
+    static let faq8_what_can_i_sell = "What can I sell?"
+    static let faq9_how_to_buy_safely = "How can I buy safely?"
+    static let faq10_sell_safely = "How can I sell safely?"
+    static let faq11_not_recvd_item = "I haven't received my Item"
     
+    static let SETTINGS = "SETTINGS"
+    static let SUPPORT = "SUPPORT"
+    static let LEGAL = "LEGAL"
 struct ScreenSize
 {
     static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width

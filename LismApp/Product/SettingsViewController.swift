@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController, UITabBarDelegate,UITableViewDele
     @IBOutlet weak var profileTitleLabel : UILabel!
     @IBOutlet weak var  settingTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
-    let section = ["SETTINGS", "SUPPORT", "LEGAL"]
+    let section = [Constants.SETTINGS, Constants.SUPPORT, Constants.LEGAL]
 
 let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + CONDITIONS", "PRIVACY POLICY", "RETURN POLICY", "LOGOUT"]]
     override func viewDidLoad() {
@@ -108,6 +108,25 @@ let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + COND
         {
         self.performSegue(withIdentifier: "SettingsToEditProfileVC", sender: self)
         }
+            else if(indexPath.section == 0 && indexPath.row == 1)
+            {
+                self.performSegue(withIdentifier: "SettingsToUpdateLanguage", sender: self)
+            }
+
+            
+        //
+       else  if(indexPath.section == 1 && indexPath.row == 0)
+        {
+            self.performSegue(withIdentifier: "SettingsToFAQVC", sender: self)
+        }
+        
+       else  if(indexPath.section == 2 && indexPath.row == 1)
+        {
+            self.performSegue(withIdentifier: "SettingsToLegalVC", sender: self)
+        }
+        
+        
+        
         
     }
     

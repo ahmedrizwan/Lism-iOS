@@ -14,6 +14,8 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
 {
     
     
+   
+
 
     @IBOutlet weak var  followersTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
@@ -77,13 +79,13 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
         {
         //following
             cell.userFollowersOrFollowingButton.backgroundColor =  UIColor(colorLiteralRed: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 1.0)
-            cell.userFollowersOrFollowingButton.setTitle("FOLLOWING", for: .normal)
+            cell.userFollowersOrFollowingButton.setTitle("FOLLOWING".localized(using: "Main"), for: .normal)
         }
         else //not following
         {
             
             cell.userFollowersOrFollowingButton.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
-            cell.userFollowersOrFollowingButton.setTitle("FOLLOW +", for: .normal)
+            cell.userFollowersOrFollowingButton.setTitle("FOLLOW +".localized(using: "Main"), for: .normal)
         //show follo
             
         }

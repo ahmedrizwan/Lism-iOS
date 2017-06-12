@@ -1,31 +1,78 @@
 
-
-
-
-
-
-
 "SELL MORE" = "卖更多";
 "Size" = "尺寸";
-"Est. Retail ¥" = "美东时间。零售¥";
+"Est. Retail ¥" = "预计零售¥";
 
 "d ago" = "d前" ;
 "hour ago"  = "一个小时前";
-"minute ago"  = "minute ago";
-"second ago" = "second ago";
-"Color:" = "Color:";
-"Material:" = "Material:";
-"Condition:" = "Condition:";
+"minute ago"  = "分钟前";
+"second ago" = "第二天前";
+"Color:" = "颜色:";
+"Material:" = "材料:";
+"Condition:" = "项目情况:";
 
-"Unable to load products." = "Unable to load products.";
-" removed from cart." = " removed from cart.";
-" added to cart." = " added to cart.";
+"Unable to load products." = "无法加载产品.";
+" removed from cart." = " 从购物车中删除.";
+" added to cart." = " 加入购物车.";
 
-"START SELLING" = "START SELLING";
+"START SELLING" = "开始卖";
+"SETTINGS" = "设置";
+"SUPPORT" = "支持";
+"LEGAL" = "法律";
 
 
+"PRODUCT DESCRIPTION" = "产品描述";
+"Categories" = "分类";
+"Error" = "错误";
+"Ok" = "好";
+"Enter product name" = "输入产品名称";
+"Enter product description" = "输入产品说明";
+"Enter brand name" = "输入品牌名称";
+"Please select primary image" = "请选择主图像";
+"Please choose color" = "请选择颜色";
+"Please select category" = "请选择类别";
+"Please choose item condition" = "请选择项目条件";
+"Enter estimated price" =  "输入估计价格";
+"Enter selling price" =  "输入售价";
+"Success" = "成功";
+"Product has been posted for sale" = "产品已发布出售";
+"Cancel" = "取消";
+"Your product" = "您的产品";
+"has been sold!" = "已经卖了！";
+"Order placed (without payment)!" = "订单放置（不付款）！";
 
 
+"How do I sell an Item?" = "如何出售物品?";
+"How do I receive payment?" = "如何收到付款?";
+"How do I pay for an Item?" = "如何支付物品?";
+"How should I price Items?" = "我应该如何价格物品?";
+"What condition is my Item in?" = "我的物品有什么条件?";
+"How does shipping work?" = "运输如何运作?";
+"Why has my Item been removed?" = "为什么我的项目已被删除?";
+"What can I sell?" = "我能卖什么?";
+"How can I buy safely?" = "如何安全购买?";
+"How can I sell safely?" = "如何安全销售?";
+"I haven't received my Item" = "我没有收到我的项目";
+
+
+"EDIT PROFILE" = "编辑个人资料";
+ "LANGUAGE" =  "语言";
+"FAQ" = "常问问题";
+"CONTACT US" = "联系我们";
+"TERMS + CONDITIONS" = "条款+条件";
+ "PRIVACY POLICY" =  "隐私政策";
+"RETURN POLICY" = "退货政策";
+"LOGOUT" = "登出";
+
+"FOLLOWING" = "以下";
+"FOLLOW +" = "按照+";
+"No website" = "No website";
+
+"Total Likes"  = "总喜欢";
+"Followers" = "关注";
+"Following" = "以下";
+ "Follow + " = "按照+";
+"Unfollow -" = "取消关注-";
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";
 

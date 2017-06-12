@@ -58,7 +58,9 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var plusBtnForClick : UIButton!
     @IBOutlet weak var notificationLabel : UILabel!
 
-    
+    @IBOutlet weak var followersLabel : UILabel!
+    @IBOutlet weak var totalLikesLabel : UILabel!
+    @IBOutlet weak var followingsLabel : UILabel!
     
     override func viewDidLoad() {
         
@@ -69,6 +71,9 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.userLabel.text = "@\(userObj.username!)"
             
         }
+        totalLikesLabel.text = "Total Likes".localized(using: "Main")
+        followersLabel.text = "Followers".localized(using: "Main")
+        followingsLabel.text = "Following".localized(using: "Main")
         self.getUserInfo()
         
         Constants.addShadow(button: minusBtn)
@@ -113,7 +118,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                self.emailLabel.text =  website as? String
                     if(website as? String == "")
                     {
-                        self.emailLabel.text  = "No website"
+                        self.emailLabel.text  = "No website".localized(using: "Main")
                     }
                     else
                     {
@@ -215,12 +220,12 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     // found
                     self.isFollowingUser = true
                     self.followBtn.isHidden = false
-                    self.followBtn.setTitle("Unfollow -", for: .normal)
+                    self.followBtn.setTitle("Unfollow -".localized(using: "Main"), for: .normal)
                 }
                 if(!self.isFollowingUser && AVUser.current()?.objectId != self.userObj.objectId)
                 {
                      self.followBtn.isHidden = false
-                    self.followBtn.setTitle("Follow + ", for: .normal)
+                    self.followBtn.setTitle("Follow + ".localized(using: "Main"), for: .normal)
 
                 }
                 
@@ -326,7 +331,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
-        Constants.produceAttributedText(string: "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+            Constants.produceAttributedText(string: "\("Size".localized(using: "Main"))\(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
             
             if (indexPath.row + 1 == self.items.count )
             {

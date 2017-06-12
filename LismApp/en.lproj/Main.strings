@@ -19,6 +19,11 @@
 " added to cart." = " added to cart.";
 
 "START SELLING" = "START SELLING";
+
+"SETTINGS" = "SETTINGS";
+"SUPPORT" = "SUPPORT";
+"LEGAL" = "LEGAL";
+
 "PRODUCT DESCRIPTION" = "PRODUCT DESCRIPTION";
 "Categories" = "Categories";
 "Error" = "Error";
@@ -38,6 +43,39 @@
 "Your product" = "Your product";
 "has been sold!" = "has been sold!";
 "Order placed (without payment)!" = "Order placed (without payment)!";
+
+
+"How do I sell an Item?" = "How do I sell an Item?";
+"How do I receive payment?" = "How do I receive payment?";
+"How do I pay for an Item?" = "How do I pay for an Item?";
+"How should I price Items?" = "How should I price Items?";
+"What condition is my Item in?" = "What condition is my Item in?";
+"How does shipping work?" = "How does shipping work?";
+"Why has my Item been removed?" = "Why has my Item been removed?";
+"What can I sell?" = "What can I sell?";
+"How can I buy safely?" = "How can I buy safely?";
+"How can I sell safely?" = "How can I sell safely?";
+"I haven't received my Item" = "I haven't received my Item";
+
+
+"EDIT PROFILE" = "EDIT PROFILE";
+"LANGUAGE" =  "LANGUAGE";
+"FAQ" = "FAQ";
+"CONTACT US" = "CONTACT US";
+"TERMS + CONDITIONS" = "TERMS + CONDITIONS";
+"PRIVACY POLICY" =  "PRIVACY POLICY";
+"RETURN POLICY" = "RETURN POLICY";
+"LOGOUT" = "LOGOUT";
+
+"FOLLOWING" = "FOLLOWING";
+"FOLLOW +" = "FOLLOW +";
+"No website" = "No website";
+
+"Total Likes"  = "Total Likes";
+"Followers" = "Followers";
+"Following" = "Following";
+"Follow + " = "Follow + ";
+"Unfollow -" = "Unfollow -";
 
 
 

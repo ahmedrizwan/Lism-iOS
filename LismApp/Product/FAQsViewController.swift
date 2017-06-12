@@ -18,7 +18,7 @@ class FAQsViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var  settingTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     
-    let items = [Constants.faq1_how_to_sell_an_item,Constants.faq2_how_do_recv_payment,Constants.faq3_how_to_pay, Constants.faq4_price_items, Constants.faq5_item_condition, Constants.faq6_how_shopping_words, Constants.faq7_why_item_removed, Constants.faq8_what_can_i_sell,Constants.faq9_how_to_buy_safely, Constants.faq10_sell_safely, Constants.faq11_not_recvd_item ]
+    let items = [Constants.faq1_how_to_sell_an_item.localized(using: "Main"),Constants.faq2_how_do_recv_payment.localized(using: "Main"),Constants.faq3_how_to_pay.localized(using: "Main"), Constants.faq4_price_items.localized(using: "Main"), Constants.faq5_item_condition.localized(using: "Main"), Constants.faq6_how_shopping_words.localized(using: "Main"), Constants.faq7_why_item_removed.localized(using: "Main"), Constants.faq8_what_can_i_sell.localized(using: "Main"),Constants.faq9_how_to_buy_safely.localized(using: "Main"), Constants.faq10_sell_safely.localized(using: "Main"), Constants.faq11_not_recvd_item.localized(using: "Main")]
     override func viewDidLoad() {
         super.viewDidLoad()
         

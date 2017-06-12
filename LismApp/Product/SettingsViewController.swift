@@ -21,9 +21,9 @@ class SettingsViewController: UIViewController, UITabBarDelegate,UITableViewDele
     @IBOutlet weak var profileTitleLabel : UILabel!
     @IBOutlet weak var  settingTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
-    let section = [Constants.SETTINGS, Constants.SUPPORT, Constants.LEGAL]
+    let section = [Constants.SETTINGS.localized(using: "Main"), Constants.SUPPORT.localized(using: "Main"), Constants.LEGAL.localized(using: "Main")]
 
-let items = [["EDIT PROFILE", "LANGUAGE"], ["FAQ", "CONTACT US"], ["TERMS + CONDITIONS", "PRIVACY POLICY", "RETURN POLICY", "LOGOUT"]]
+let items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(using: "Main")], ["FAQ".localized(using: "Main"), "CONTACT US".localized(using: "Main")], ["TERMS + CONDITIONS".localized(using: "Main"), "PRIVACY POLICY".localized(using: "Main"), "RETURN POLICY".localized(using: "Main"), "LOGOUT".localized(using: "Main")]]
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTitleLabel.text = "@\(AVUser.current()!.username!)"

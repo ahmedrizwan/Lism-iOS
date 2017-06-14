@@ -10,6 +10,12 @@ import Foundation
 class ProductStatusViewController : UIViewController
 {
     @IBOutlet var productImageView: UIImageView!
+    
+    @IBOutlet var orderDetails: UILabel!
+
+    
+    
+    
     @IBOutlet var productBO: Product!
     @IBOutlet var first_Btn : UIButton!
     @IBOutlet var secon_Btn : UIButton!
@@ -21,7 +27,8 @@ class ProductStatusViewController : UIViewController
     @IBOutlet var orderNumber: UILabel!
     @IBOutlet var waitingToSentLabel: UILabel!
     @IBOutlet var timeRemainingToSendLabel: UILabel!
-    
+    @IBOutlet var confirmOrderBtn : UIButton!
+
     @IBOutlet var itemHasBeenSentLabel: UILabel!
     @IBOutlet var namePhoneAddressTextView: UITextView!
 
@@ -54,6 +61,15 @@ class ProductStatusViewController : UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.progressView.isHidden = true
+        orderDetails.text = "ORDER DETAILS".localized(using: "Main")
+        orderNumber.text  = "\("Order #:".localized(using: "Main")) testing"
+        waitingToSentLabel.text = "Waiting to be Sent".localized(using: "Main")
+        itemHasBeenSentLabel.text =  "Item has been Sent".localized(using: "Main")
+        itemhasBeenReceivedLabel.text =  "Item has been Received".localized(using: "Main")
+        itemhasBeenConfirmedLabel.text  =  "Item has been Confirmed".localized(using: "Main")
+        confirmOrderBtn.setTitle("CONFIRM ORDER".localized(using: "Main"), for: .normal)
+        
+    
     }
     @IBAction func confirmOrder(sender:AnyObject)
 

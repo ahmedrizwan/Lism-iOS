@@ -16,6 +16,9 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
     var checkoutArray : [Product] = []
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet weak var totalLabel : UILabel!
+    @IBOutlet weak var totalTextLabel : UILabel!
+    @IBOutlet weak var continueBtn : UIButton!
+
     let relation = (AVUser.current()?.relation(forKey: "userCart"))! as AVRelation
 
     var totalPrice = 0
@@ -28,7 +31,8 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadCheckoutProducts()
-
+totalTextLabel.text = "TOTAL".localized(using: "Main")
+        continueBtn.setTitle("CONTINUE".localized(using: "Main"), for: .normal)
     }
     func loadCheckoutProducts()
     {
@@ -137,7 +141,7 @@ class ProductCheckoutViewController: UIViewController,UITableViewDataSource,UITa
         
         cell.checkBtn.tag = indexPath.row
         cell.removeBtn.tag  = indexPath.row
-
+        cell.removeBtn.setTitle("Remove".localized(using: "Main"), for: .normal)
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
 
         DispatchQueue.global().async {

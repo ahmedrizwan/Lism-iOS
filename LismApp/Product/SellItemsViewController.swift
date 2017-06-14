@@ -133,7 +133,7 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
         cell.tag = indexPath.item
-        cell.productStatusLabel.text = productObj.status
+        cell.productStatusLabel.text = productObj.status.localized(using: "Main")
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
     
         

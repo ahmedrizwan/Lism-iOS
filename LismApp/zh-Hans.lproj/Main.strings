@@ -73,6 +73,45 @@
 "Following" = "以下";
  "Follow + " = "按照+";
 "Unfollow -" = "取消关注-";
+
+"Waiting to be Sent" = "等待被发送";
+"Sent" = "发送";
+"Posted for Sale" = "发表于出售";
+"Order #:" = "订购 #:";
+"Buyer Information:" = "买家信息:";
+"TRACKING NUMBER" = "追踪号码";
+"CONFIRM DELIVERY" = "确认交货";
+"Updated" = "更新";
+"Description" = "描述";
+
+"write comment to post" = "写评论…";
+
+"Post" = "发表评论";
+"Remove" = "去掉";
+"TOTAL" = "总";
+"CONTINUE" = "继续";
+"PAYMENT METHOD" = "付款方法";
+"DELIVERY ADDRESS" = "邮寄地址";
+"Default address" = "默认地址";
+"Add New Address" = "添加新地址";
+"CHECKOUT"  = "查看";
+
+"ORDER DETAILS" = "订单详细信息";
+"Item has been Sent" = "物品已发送";
+"Item has been Received" = "物品已收到";
+"Item has been Confirmed" = "项目已确认";
+"CONFIRM ORDER" = "确认订单";
+
+"English" = "英语";
+"SAVE" = "保存";
+"Add Profile Details" = "添加个人资料详情";
+"PROFILE PHOTO" = "头像照片";
+"DESCRIPTION" = "描述";
+"DATE OF BIRTH" = "出生日期";
+"SELECT GENDER" = "选择性别";
+"SKIP" = "跳跃";
+"LINK WITH WE CHAT" = "与WECHAT联系";
+
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";
 

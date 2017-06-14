@@ -78,6 +78,41 @@
 "Unfollow -" = "Unfollow -";
 
 
+"Waiting to be Sent" = "Waiting to be Sent";
+"Sent" = "Sent";
+"Posted for Sale" = "Posted for Sale";
+"Order #:" = "Order #:";
+"Buyer Information:" = "Buyer Information:";
+"TRACKING NUMBER" = "TRACKING NUMBER";
+"CONFIRM DELIVERY" = "CONFIRM DELIVERY";
+"Updated" = "Updated";
+"Description" = "Description";
+"write comment to post" = "write comment to post";
+"Post" = "Post";
+"Remove" = "Remove";
+"TOTAL" = "TOTAL";
+"CONTINUE" = "CONTINUE";
+"PAYMENT METHOD" = "PAYMENT METHOD";
+"DELIVERY ADDRESS" = "DELIVERY ADDRESS";
+"Default address" = "Default address";
+"Add New Address" = "Add New Address";
+"CHECKOUT"  = "CHECKOUT";
+
+"ORDER DETAILS" = "ORDER DETAILS";
+"Item has been Sent" = "Item has been Sent";
+"Item has been Received" = "Item has been Received";
+"Item has been Confirmed" = "Item has been Confirmed";
+"CONFIRM ORDER" = "CONFIRM ORDER";
+
+"English" = "English";
+"SAVE" = "SAVE";
+"Add Profile Details" = "Add Profile Details";
+"PROFILE PHOTO" = "PROFILE PHOTO";
+"DESCRIPTION" = "DESCRIPTION";
+"DATE OF BIRTH" = "DATE OF BIRTH";
+"SELECT GENDER" = "SELECT GENDER";
+"SKIP" = "SKIP";
+"LINK WITH WE CHAT" = "LINK WITH WE CHAT";
 
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";

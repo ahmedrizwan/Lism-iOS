@@ -17,6 +17,19 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     @IBOutlet weak var descriptionTextview  : UITextView!
     @IBOutlet weak var maleBtn : UIButton!
     @IBOutlet weak var femaleBtn : UIButton!
+    @IBOutlet weak var addProfileDetailsLabel : UILabel!
+    @IBOutlet weak var profilePhotoLabel : UILabel!
+    @IBOutlet weak var dateOfBithLabel : UILabel!
+    @IBOutlet weak var selectGenderLabel : UILabel!
+    @IBOutlet weak var descriptionLabel : UILabel!
+
+    @IBOutlet weak var linkWithWeChatBtn : UIButton!
+    @IBOutlet weak var saveBtn : UIButton!
+    @IBOutlet weak var skipBtn : UIButton!
+
+
+    
+    
     let picker = UIImagePickerController()
     var isImageSelected = false
     @IBOutlet weak var dobBtn : UIButton!
@@ -39,6 +52,16 @@ class EditProfileViewController: UIViewController,UITabBarDelegate,WWCalendarTim
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        addProfileDetailsLabel.text = "Add Profile Details".localized(using: "Main")
+        profilePhotoLabel.text = "PROFILE PHOTO".localized(using: "Main")
+        descriptionLabel.text = "DESCRIPTION".localized(using: "Main")
+        dateOfBithLabel.text = "DATE OF BIRTH".localized(using: "Main")
+        selectGenderLabel.text = "SELECT GENDER".localized(using: "Main")
+        linkWithWeChatBtn.setTitle("LINK WITH WE CHAT".localized(using: "Main"), for: .normal)
+            saveBtn.setTitle("SAVE".localized(using: "Main"), for: .normal)
+        skipBtn.setTitle("SKIP".localized(using: "Main"), for: .normal)
+
+        
     }
     func getUserInfo()
     {

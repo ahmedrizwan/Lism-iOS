@@ -645,13 +645,13 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         let cell = tableView.dequeueReusableCell(withIdentifier: "SellItemsCustomCell", for: indexPath ) as! SellItemsCustomCell
         let productObj = self.boughtItems[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\nSize \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
         cell.tag = indexPath.item
-        cell.productStatusLabel.text = productObj.status
+        cell.productStatusLabel.text = productObj.status.localized(using: "Main")
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
         if (indexPath.row + 1 == self.boughtItems.count )
         {

@@ -73,6 +73,7 @@ class FollowingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if(self.checkIfUserFollowingThisUser(userObj: userObj))
         {
             //following
+            
             cell.userFollowersOrFollowingButton.backgroundColor =  UIColor(colorLiteralRed: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 1.0)
             cell.userFollowersOrFollowingButton.setTitle("FOLLOWING", for: .normal)
         }

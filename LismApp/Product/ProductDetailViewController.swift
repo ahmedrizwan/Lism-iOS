@@ -41,7 +41,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 
     @IBOutlet weak var descriptonView : UIView!
     @IBOutlet weak var scrollBtn : UIButton!
-    
+	@IBOutlet weak var descriptionLabel : UILabel!
+
     @IBOutlet weak var commentsBtn : UIButton!
     @IBOutlet weak var productDescriptionBtn : UIButton!
     @IBOutlet weak var thirdViewBtn : UIButton!
@@ -87,6 +88,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.commentsTableView.estimatedRowHeight = 70
         self.commentsTableView.rowHeight = UITableViewAutomaticDimension
         self.progressBar.isHidden = true
+					descriptionLabel.text = "Description".localized(using: "Main")
+					
 
     }
     
@@ -204,6 +207,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					
 					sellingPriceLabel.attributedText = attributedString
 
+					let updatedValue = "Updated".localized(using: "Main")
           var sdWebImageSource = [InputSource]()
         for url in self.productBO.productImagesArray
         {
@@ -213,7 +217,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         if  Date().days(from: self.productBO.updatedAt!) > 0
         
         {
-            daysAgoLabel.text =   "Updated \(Date().days(from:  self.productBO.updatedAt!)) \("d ago".localized(using: "Main"))"
+            daysAgoLabel.text =   "\(updatedValue) \(Date().days(from:  self.productBO.updatedAt!)) \("d ago".localized(using: "Main"))"
 
         }
         else if  Date().hour(from: self.productBO.updatedAt!) > 0
@@ -221,18 +225,18 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
            // daysAgoLabel.isHidden = false
 									
 									
-       daysAgoLabel.text =   "Updated \(Date().hour(from:  self.productBO.updatedAt!)) \("hour ago".localized(using: "Main"))"
+       daysAgoLabel.text =   "\(updatedValue) \(Date().hour(from:  self.productBO.updatedAt!)) \("hour ago".localized(using: "Main"))"
 					}
 else if  Date().minute(from: self.productBO.updatedAt!) > 0
         {
 									// daysAgoLabel.isHidden = false
-									daysAgoLabel.text =   "Updated \(Date().minute(from:  self.productBO.updatedAt!)) \("minute ago".localized(using: "Main"))"
+									daysAgoLabel.text =   "\(updatedValue) \(Date().minute(from:  self.productBO.updatedAt!)) \("minute ago".localized(using: "Main"))"
 					}
 					
 					else if  Date().seconds(from: self.productBO.updatedAt!) > 0
 					{
 						// daysAgoLabel.isHidden = false
-						daysAgoLabel.text =   "Updated \(Date().seconds(from:  self.productBO.updatedAt!)) \("second ago".localized(using: "Main"))"
+						daysAgoLabel.text =   "\(updatedValue) \(Date().seconds(from:  self.productBO.updatedAt!)) \("second ago".localized(using: "Main"))"
 					}
         slideshow.slideshowInterval = 5.0
        // slideshow.pageControlPosition = PageControlPosition.underScrollView
@@ -559,7 +563,9 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCommentsCustomCell", for: indexPath ) as! PostCommentsCustomCell
 
             cell.delegate = self;
+									cell.inputTextField.placeholder = "write comment to post".localized(using: "Main")
             cell.postBtn.tag  = indexPath.row
+									 cell.postBtn.setTitle("Post".localized(using: "Main"), for: .normal)
         return cell
         }
         else

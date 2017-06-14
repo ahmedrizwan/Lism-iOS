@@ -24,6 +24,14 @@ class CheckoutViewController: UIViewController
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet var addressButton : UIButton!
     @IBOutlet var textViewForAddress : UITextView!
+    @IBOutlet var paymentMethodLabel : UILabel!
+    @IBOutlet var deliveryAddressLabel : UILabel!
+    @IBOutlet var defaultAddressLabel : UILabel!
+
+    @IBOutlet var addNewAddressBtn : UIButton!
+
+    @IBOutlet var checkOutBtn : UIButton!
+
     var checkoutArray : [Product] = []
     var avobjectsArray : [AVObject] = []
     let relation = (AVUser.current()?.relation(forKey: "userCart"))! as AVRelation
@@ -39,6 +47,11 @@ class CheckoutViewController: UIViewController
         super.viewWillAppear(animated)
         progressView.isHidden = true
         addressButton.isSelected = true
+        paymentMethodLabel.text = "PAYMENT METHOD".localized(using: "Main")
+        deliveryAddressLabel.text = "DELIVERY ADDRESS".localized(using: "Main")
+        defaultAddressLabel.text = "Default address".localized(using: "Main")
+        addressButton.setTitle("Add New Address".localized(using: "Main"), for: .normal)
+        checkOutBtn.setTitle("CHECKOUT".localized(using: "Main"), for: .normal)
     }
     override func  viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

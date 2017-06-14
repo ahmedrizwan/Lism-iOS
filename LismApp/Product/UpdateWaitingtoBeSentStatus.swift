@@ -30,14 +30,16 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         priceLabel.text = "¥ \(self.productObj.sellingPrice)"
-        orderNumLabel.text = "Order #: \(self.productObj.objectId!)"
-        sizeLabel.text = "Size \(self.productObj.size)"
+        orderNumLabel.text = "\("Order #:".localized(using: "Main")) \(self.productObj.objectId!)"
+        sizeLabel.text = "\("Size".localized(using: "Main")) \(self.productObj.size)"
         trackingField.layer.borderWidth = 1.0
         trackingField.layer.borderColor = UIColor.gray.cgColor
 
         buyerDetailTextView.isUserInteractionEnabled = false
         self.courierBtn.setTitle("Courier 1", for: .normal)
-
+        buyerInfoLabel.text = "\("Buyer Information:".localized(using: "Main")) this is dummy info)"
+        trackingField.placeholder = "TRACKING NUMBER".localized(using: "Main")
+        confirmDeliveryBtn.setTitle("CONFIRM DELIVERY".localized(using: "Main"), for: .normal)
         if(self.productObj.status == "Sent")
         {
             trackingField.isUserInteractionEnabled = false;

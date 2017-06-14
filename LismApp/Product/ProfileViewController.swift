@@ -408,7 +408,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             else
             {
-                Constants.showAlert(message: "Unable to load products.", view: self)
+                Constants.showAlert(message: "Unable to load products.".localized(using: "Main"), view: self)
                 
             }
             
@@ -545,7 +545,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
                 else
                 {
-                    Constants.showAlert(message: "Unable to load products.", view: self)
+                    Constants.showAlert(message: "Unable to load products.".localized(using: "Main"), view: self)
                 }
                 DispatchQueue.main.async {
                     print("This is run on the main queue, after the previous code in outer block")

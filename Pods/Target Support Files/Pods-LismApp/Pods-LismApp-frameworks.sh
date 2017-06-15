@@ -97,7 +97,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RestKit/RestKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SOCKit/SOCKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/TKSwarmAlert/TKSwarmAlert.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TransitionKit/TransitionKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -109,7 +108,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RestKit/RestKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SOCKit/SOCKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/TKSwarmAlert/TKSwarmAlert.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TransitionKit/TransitionKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

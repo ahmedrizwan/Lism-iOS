@@ -11,7 +11,7 @@ pod 'Fabric'
 pod 'Digits'
 pod'RestKit','~>0.27.0'
 pod 'SDWebImage'
-pod 'TKSwarmAlert'
+#pod 'TKSwarmAlert'
 
 #pod 'WWCalendarTimeSelector'
 

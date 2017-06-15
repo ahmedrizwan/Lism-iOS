@@ -35,6 +35,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var productsCollectionView : UICollectionView!
     var lastScrollPos : CGPoint!
     var  refresher = UIRefreshControl()
+    var selectedIndexForSorting = 0
     var isLoaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.addShadowToView()
         self.automaticallyAdjustsScrollViewInsets = false
         tabBar.selectedItem = selectedTabBarItem
-        self.getProductList()
+        self.getProductList(indexToSort: selectedIndexForSorting)
         colors = ["Newest First", "Most <3", "Price: Low - High", "Price: High -Low"]
         self.mainSortingView.layer.cornerRadius = 10
         self.mainSortingView.layer.masksToBounds = true
@@ -116,7 +117,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     
   
-    func getProductList()
+    func getProductList(indexToSort : Int )
     {
         
         
@@ -126,12 +127,34 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("user")
         query.includeKey("userLikes")
         query.includeKey("buyingUser")
+        switch indexToSort
+        {
+        case 1:
+            query.order(byDescending: "productLikes")
+            break;
+        case 2:
+            query.order(byAscending: "priceSelling")
+
+            break;
+
+        case 3:
+            query.order(byDescending: "priceSelling")
+
+            break;
+
+        default: //newest first
+            query.order(byDescending: "createdAt")
+
+            break;
+  
+        }
 
         query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
         DispatchQueue.global(qos: .background).async {
 
         query.findObjectsInBackground { (objects, error) in
+             self.items.removeAll()
             self.refresher.endRefreshing()
             if(error == nil)
             {
@@ -206,7 +229,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.productsCollectionView.reloadData()
         }
     }
-    func getMoreProductList(size: Int)
+    func getMoreProductList(size: Int,indexToSort : Int)
     {
         
        
@@ -217,7 +240,30 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 query.includeKey("userLikes")
                 query.limit = ProductViewController.ITEM_LIMIT
                 query.skip = size
-                query.findObjectsInBackground { (objects, error) in
+        switch indexToSort
+        {
+        case 1:
+            query.order(byDescending: "productLikes")
+            break;
+        case 2:
+            query.order(byAscending: "priceSelling")
+            
+            break;
+            
+        case 3:
+            query.order(byDescending: "priceSelling")
+            
+            break;
+            
+        default: //newest first
+            query.order(byDescending: "createdAt")
+            
+            break;
+            
+        }
+
+        
+        query.findObjectsInBackground { (objects, error) in
                     if(error == nil)
                     {
                         for obj in objects!
@@ -273,7 +319,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
         if (indexPath.row + 1 == self.items.count )
         {
-            self.getMoreProductList(size: self.items.count)
+            self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
         }
         cell.likeButton.isSelected = productObj.favorite
         
@@ -288,9 +334,58 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func filterBtnAction(sender: AnyObject)
     {
         
-        sortingView.isHidden = false
-        sortingTableView.reloadData()
         
+        let alert = UIAlertController(title: "Sort Items",
+                                     message: "",
+                                     preferredStyle: UIAlertControllerStyle.alert)
+        
+       // let image = UIImage(named: "cart_remove")
+        var action = UIAlertAction(title: colors[0], style: .default, handler: perfomrFiltering)
+       // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+         action = UIAlertAction(title:  colors[1], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+         action = UIAlertAction(title:  colors[2], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+         action = UIAlertAction(title:  colors[3], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+        //vc will be the view controller on which you will present your alert as you cannot use self because this method is static.
+        alert.view.tintColor = UIColor.gray
+        self.present(alert, animated: true, completion: nil)
+       // sortingView.isHidden = false
+        //sortingTableView.reloadData()
+        
+    }
+    
+    func perfomrFiltering(action: UIAlertAction) {
+        if(action.title == colors[0])
+        {
+        selectedIndexForSorting = 0
+        }
+        else if(action.title == colors[1])
+        {
+            selectedIndexForSorting = 1
+
+        }
+        else if(action.title == colors[2])
+        {
+            selectedIndexForSorting = 2
+            
+        }
+        else if(action.title == colors[3])
+        {
+            selectedIndexForSorting = 3
+            
+        }
+        self.getProductList(indexToSort: selectedIndexForSorting)
+        //Use action.title
     }
     @IBAction func listBtnAction(sender: AnyObject)
     {

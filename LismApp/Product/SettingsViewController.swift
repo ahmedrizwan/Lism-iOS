@@ -45,6 +45,7 @@ let items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
             })
             
         }
+        self.settingTableView.reloadData()
             }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

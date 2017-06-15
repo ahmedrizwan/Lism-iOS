@@ -19,13 +19,14 @@ class UpdateLanguageViewController: UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
      selectedLocale = Localize.currentLanguage()
-        englishBtn.setTitle("English".localized(using: "Main"), for: .normal)
-        saveBtn.setTitle("SAVE".localized(using: "Main"), for: .normal)
-        self.updateBtnStatus()
+               self.updateBtnStatus()
     }
     
     func updateBtnStatus()
     {
+        englishBtn.setTitle("English".localized(using: "Main"), for: .normal)
+        saveBtn.setTitle("SAVE".localized(using: "Main"), for: .normal)
+
         if(selectedLocale == "en")
         {
             englishBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)

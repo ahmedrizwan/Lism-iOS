@@ -84,7 +84,7 @@
 "Updated" = "更新";
 "Description" = "描述";
 
-"write comment to post" = "写评论…";
+"write comment to post" = "写评论";
 
 "Post" = "发表评论";
 "Remove" = "去掉";
@@ -144,7 +144,6 @@
 "2B6-uk-wGZ.text" = "DESCRIPTION";
 
 /* Class = "UILabel"; text = "My Less"; ObjectID = "2KD-Eg-Cct"; */
-"My Less" = "OtsMYLSds";
 
 
 
@@ -326,8 +325,6 @@
 /* Class = "UITextField"; placeholder = "PRODUCT NAME"; ObjectID = "YMf-P2-DpG"; */
 "YMf-P2-DpG.placeholder" = "PRODUCT NAME";
 
-/* Class = "UIButton"; normalTitle = "Add New Address"; ObjectID = "YTA-Cd-fzX"; */
-"YTA-Cd-fzX.normalTitle" = "Add New Address";
 
 /* Class = "UITextField"; placeholder = "TRACKING NUMBER"; ObjectID = "YxS-Fp-ngA"; */
 "YxS-Fp-ngA.placeholder" = "TRACKING NUMBER";

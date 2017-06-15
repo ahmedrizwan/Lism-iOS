@@ -763,7 +763,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CF255C59-D4A2-4604-8933-7ACD6E19E8B2" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7D03563A-4B97-4030-BD60-9185153BD607" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -2517,7 +2517,7 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstAttribute="height" constant="26" id="rkS-4f-Zur"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                        <state key="normal" title="Add New Address">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.1646876931" green="0.1647174954" blue="0.1646811664" alpha="0.50612298700000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
@@ -6175,6 +6175,7 @@ Est. Retail ¥2,00</string>
                     <connections>
                         <outlet property="chineseBtn" destination="VfT-I4-HPW" id="IQu-yA-gXo"/>
                         <outlet property="englishBtn" destination="F48-Yg-U6i" id="ijI-Bc-LRe"/>
+                        <outlet property="saveBtn" destination="NF3-GD-Rd8" id="6QD-0z-NYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZ7-Sb-2EP" sceneMemberID="firstResponder"/>
@@ -6191,7 +6192,7 @@ Est. Retail ¥2,00</string>
         <image name="3_number" width="88" height="92"/>
         <image name="4_disabled" width="89" height="92"/>
         <image name="4_number" width="88" height="92"/>
-        <image name="CF255C59-D4A2-4604-8933-7ACD6E19E8B2" width="2081" height="292">
+        <image name="7D03563A-4B97-4030-BD60-9185153BD607" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

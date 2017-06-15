@@ -46,6 +46,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SOCKit (1.1)
+  - TKSwarmAlert (0.0.4)
   - TransitionKit (2.2.1)
   - TwitterCore (2.8.0):
     - Fabric
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Fabric
   - RestKit (~> 0.27.0)
   - SDWebImage
+  - TKSwarmAlert
 
 SPEC CHECKSUMS:
   AVOSCloud: 5446ad0320f4942cce1a036d131992cd1115db99
@@ -70,9 +72,10 @@ SPEC CHECKSUMS:
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  TKSwarmAlert: 8fe22e7b9beec7e1e5d9506483e8f7c0272767eb
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
 
-PODFILE CHECKSUM: fa3f9ca8df6e9b534523aecc6677a1f8b402ef3d
+PODFILE CHECKSUM: c0dbce747531142c413714b7b4f5525c66c752c1
 
 COCOAPODS: 1.2.1

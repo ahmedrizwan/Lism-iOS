@@ -50,7 +50,7 @@ class CheckoutViewController: UIViewController
         paymentMethodLabel.text = "PAYMENT METHOD".localized(using: "Main")
         deliveryAddressLabel.text = "DELIVERY ADDRESS".localized(using: "Main")
         defaultAddressLabel.text = "Default address".localized(using: "Main")
-        addressButton.setTitle("Add New Address".localized(using: "Main"), for: .normal)
+        addNewAddressBtn.setTitle("Add New Address".localized(using: "Main"), for: .normal)
         checkOutBtn.setTitle("CHECKOUT".localized(using: "Main"), for: .normal)
     }
     override func  viewDidAppear(_ animated: Bool) {

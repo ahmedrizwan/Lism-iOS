@@ -565,7 +565,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
             cell.delegate = self;
 									cell.inputTextField.placeholder = "write comment to post".localized(using: "Main")
             cell.postBtn.tag  = indexPath.row
-									 cell.postBtn.setTitle("Post".localized(using: "Main"), for: .normal)
+									 cell.postBtn.setTitle("Post".localized(using: "Main"), for: .application)
         return cell
         }
         else

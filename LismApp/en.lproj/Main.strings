@@ -13,7 +13,7 @@
 "Color:" = "Color:";
 "Material:" = "Material:";
 "Condition:" = "Condition:";
-
+"My Less" = "My Less";
 "Unable to load products." = "Unable to load products.";
 " removed from cart." = " removed from cart.";
 " added to cart." = " added to cart.";
@@ -113,6 +113,25 @@
 "SELECT GENDER" = "SELECT GENDER";
 "SKIP" = "SKIP";
 "LINK WITH WE CHAT" = "LINK WITH WE CHAT";
+
+"See our photo tips to sell better!" = "See our photo tips to sell better!";
+ "Select Color" =  "Select Color";
+"ESTIMATED ORIGINAL RETAIL PRICE (¥)" = "ESTIMATED ORIGINAL RETAIL PRICE (¥)";
+"By continuing, I agree to the Lism Seller Terms." = "By continuing, I agree to the Lism Seller Terms.";
+"SELLING PRICE" = "SELLING PRICE";
+"ITEM CONDITION" = "ITEM CONDITION";
+"POST FOR SALE" = "POST FOR SALE";
+"BRAND NAME" = "BRAND NAME";
+"PRODUCT NAME" = "PRODUCT NAME";
+
+
+"LESS IS MORE" = "LESS IS MORE";
+ "SELL WITH US IT\'S EASY"  = "SELL WITH US IT\'S EASY";
+ "SELLING IS FAST AND EASY" = "SELLING IS FAST AND EASY";
+"Step1: Upload the item you wish to sell \nStep2: Receive confirmation within 24 hrs\nStep3: Adda captivating description and post it!" = "Step1: Upload the item you wish to sell \nStep2: Receive confirmation within 24 hrs\nStep3: Adda captivating description and post it!";
+"YOU EARN MORE" = "YOU EARN MORE";
+"Receive up to 80% of the sale price for your items" = "Receive up to 80% of the sale price for your items";
+"Time remaining for Seller to send Item : 2d" = "Time remaining for Seller to send Item : 2d";
 
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";

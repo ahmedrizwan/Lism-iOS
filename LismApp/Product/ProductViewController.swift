@@ -7,7 +7,7 @@ extension UIImageView {
         self.tintColor = color
     }
 }
-class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout{
+class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource{
     static let ITEM_LIMIT = 10
     
     var items : [Product] = []
@@ -17,11 +17,17 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     var isShowing = false
     var isHiding = false
 
-    
+    var colors :[String] = []
+
     var isShowingTopbar = false
     var isHidingTopbar = false
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var topView : UIView!
+    @IBOutlet weak var sortingView : UIView!
+    @IBOutlet weak var mainSortingView : UIView!
+
+    
+ @IBOutlet weak var sortingTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
      @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
@@ -56,6 +62,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.automaticallyAdjustsScrollViewInsets = false
         tabBar.selectedItem = selectedTabBarItem
         self.getProductList()
+        colors = ["Newest First", "Most <3", "Price: Low - High", "Price: High -Low"]
+        self.mainSortingView.layer.cornerRadius = 10
+        self.mainSortingView.layer.masksToBounds = true
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +83,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sortingViewClose(sneder : AnyObject)
+    {
+    sortingView.isHidden = true
+    }
     func addShadowToView()
     {
         topView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -275,6 +288,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func filterBtnAction(sender: AnyObject)
     {
         
+        sortingView.isHidden = false
+        sortingTableView.reloadData()
         
     }
     @IBAction func listBtnAction(sender: AnyObject)
@@ -282,6 +297,40 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
     }
+    
+    // MARK: UITableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.colors.count
+    }
+    
+    // cell height
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 34
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorsCustomCell", for: indexPath ) as! ColorsCustomCell
+        cell.colorTitle.text = self.colors[indexPath.row]
+        cell.colorImage.layer.cornerRadius =   cell.colorImage.frame.size.width/2
+       
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        self.sortingView.isHidden = true
+        let currentCellValue = tableView.cellForRow(at: indexPath)! as! ColorsCustomCell
+        
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastScrollPos =  self.productsCollectionView.contentOffset
     }

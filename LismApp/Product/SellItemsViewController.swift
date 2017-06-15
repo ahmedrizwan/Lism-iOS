@@ -11,7 +11,8 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var noItemForSalesP2Heading : UILabel!
     @IBOutlet weak var noItemForSalesP1DetailsView : UITextView!
     @IBOutlet weak var noItemForSalesP2DetailsView : UITextView!
-    
+    @IBOutlet weak var myLessLabel : UILabel!
+
     @IBOutlet weak var sellButtonReference : UIButton!
 
     @IBOutlet weak var tabBar : UITabBar!
@@ -28,15 +29,16 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         refresher.tintColor = UIColor.red
         refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
         self.productsTableView!.addSubview(refresher)
-        
+        myLessLabel.text = "My Less".localized(using: "Main")
+self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for: .normal)
         //if no items posted for sale so far then we will show no items details view
     tabBar.selectedItem = selectedTabBarItem
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getProductList()
-        
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -49,12 +51,12 @@ class SellItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     func updateNoItemsDetailsView()
     {
     noItemForSalesView.isHidden = false
-    noItemForSalesHeading.text = Constants.sell_is_more
-    noItemForSalesSubHeading.text = Constants.sell_with_us_it_s_easy
-    noItemForSalesP1Heading.text = Constants.selling_is_fast_and_easy
-    noItemForSalesP2Heading.text = Constants.you_earn_more
-    noItemForSalesP1DetailsView.text = Constants.selling_description
-    noItemForSalesP2DetailsView.text = Constants.earn_more_description
+    noItemForSalesHeading.text = Constants.sell_is_more.localized(using: "Main")
+    noItemForSalesSubHeading.text = Constants.sell_with_us_it_s_easy.localized(using: "Main")
+    noItemForSalesP1Heading.text = Constants.selling_is_fast_and_easy.localized(using: "Main")
+    noItemForSalesP2Heading.text = Constants.you_earn_more.localized(using: "Main")
+    noItemForSalesP1DetailsView.text = Constants.selling_description.localized(using: "Main")
+    noItemForSalesP2DetailsView.text = Constants.earn_more_description.localized(using: "Main")
 
     
     }

@@ -42,6 +42,10 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var colorsTableView : UITableView!
     @IBOutlet weak var colorsTableViewParent : UIView!
+    @IBOutlet weak var myLessLabel : UILabel!
+    @IBOutlet weak var selectColorLabel : UILabel!
+    @IBOutlet weak var see_our_photoLabel : UILabel!
+
 
     @IBOutlet weak var mainColorsView : UIView!
 
@@ -122,6 +126,16 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         allButtons.append(addCamBtn5)
         
         self.hideKeyboardWhenTappedAround()
+        myLessLabel.text = "My Less".localized(using: "Main")
+        selectColorLabel.text = "Select Color".localized(using: "Main")
+        see_our_photoLabel.text = "See our photo tips to sell better!".localized(using: "Main")
+        estimatedPriceLabel.text = "ESTIMATED ORIGINAL RETAIL PRICE (¥)".localized(using: "Main")
+        itemConditionLabel.text = "By continuing, I agree to the Lism Seller Terms.".localized(using: "Main")
+        sellingPriceLabel.text = "SELLING PRICE".localized(using: "Main")
+        itemsConditionBtn.setTitle("ITEM CONDITION".localized(using: "Main"), for: .normal)
+        postForSaleBtn.setTitle("POST FOR SALE".localized(using: "Main"), for: .normal)
+        brandTextfield.placeholder = "BRAND NAME".localized(using: "Main")
+        productNameTextfield.placeholder = "PRODUCT NAME".localized(using: "Main")
         
      
     }

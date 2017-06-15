@@ -112,6 +112,28 @@
 "SKIP" = "跳跃";
 "LINK WITH WE CHAT" = "与WECHAT联系";
 
+"LESS IS MORE" = "少即是多";
+"SELL WITH US IT\'S EASY"  = "和我们一起卖很容易";
+"SELLING IS FAST AND EASY" = "销售是快速和容易的";
+"Step1: Upload the item you wish to sell \nStep2: Receive confirmation within 24 hrs\nStep3: Adda captivating description and post it!" = "步骤1：上传您要销售的商品\n步骤2：24小时内接收确认\n步骤3：添加迷人的描述并发布！";
+"YOU EARN MORE" = "你赚更多";
+"Receive up to 80% of the sale price for your items" = "可以收到您商品销售价格的80％";
+"Time remaining for Seller to send Item : 2d" = "卖家发货时间: 2d";
+
+"My Less" = "我少";
+
+"See our photo tips to sell better!" = "看到我们的照片提示卖更好!";
+"Select Color" =  "选择颜色";
+"ESTIMATED ORIGINAL RETAIL PRICE (¥)" = "估价原价零售价（¥）";
+"By continuing, I agree to the Lism Seller Terms." = "继续，我同意Lism卖家条款。";
+"SELLING PRICE" = "售价";
+"ITEM CONDITION" = "项目情况";
+"POST FOR SALE" = "发售出售";
+"BRAND NAME" = "品牌";
+"PRODUCT NAME" = "产品名称";
+
+
+
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";
 

@@ -27,6 +27,7 @@ class FAQsViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.settingTableView.reloadData()
         
       
     }
@@ -61,7 +62,7 @@ class FAQsViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCustomCell", for: indexPath ) as! SettingsCustomCell
         cell.tag = indexPath.item
-        cell.settingBtn.setTitle(self.items[indexPath.row], for: .normal)
+        cell.settingBtn.setTitle(self.items[indexPath.row].localized(using: "Main"), for: .normal)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell

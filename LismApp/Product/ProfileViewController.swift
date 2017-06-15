@@ -71,9 +71,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.userLabel.text = "@\(userObj.username!)"
             
         }
-        totalLikesLabel.text = "Total Likes".localized(using: "Main")
-        followersLabel.text = "Followers".localized(using: "Main")
-        followingsLabel.text = "Following".localized(using: "Main")
+      
         self.getUserInfo()
         
         Constants.addShadow(button: minusBtn)
@@ -86,8 +84,12 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         super.viewWillAppear(animated)
         tabBar.selectedItem = selectedTabBarItem
         self.productsTableView.reloadData()
+        self.productsCollectionView.reloadData()
         self.updateFollowersAndFollowingInfo()
         self.getFollowerAndFolloweeOfCurrentUser()
+        totalLikesLabel.text = "Total Likes".localized(using: "Main")
+        followersLabel.text = "Followers".localized(using: "Main")
+        followingsLabel.text = "Following".localized(using: "Main")
 
 
     }

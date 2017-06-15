@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController, UITabBarDelegate,UITableViewDele
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     let section = [Constants.SETTINGS.localized(using: "Main"), Constants.SUPPORT.localized(using: "Main"), Constants.LEGAL.localized(using: "Main")]
 
-let items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(using: "Main")], ["FAQ".localized(using: "Main"), "CONTACT US".localized(using: "Main")], ["TERMS + CONDITIONS".localized(using: "Main"), "PRIVACY POLICY".localized(using: "Main"), "RETURN POLICY".localized(using: "Main"), "LOGOUT".localized(using: "Main")]]
+var items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(using: "Main")], ["FAQ".localized(using: "Main"), "CONTACT US".localized(using: "Main")], ["TERMS + CONDITIONS".localized(using: "Main"), "PRIVACY POLICY".localized(using: "Main"), "RETURN POLICY".localized(using: "Main"), "LOGOUT".localized(using: "Main")]]
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTitleLabel.text = "@\(AVUser.current()!.username!)"
@@ -45,6 +45,8 @@ let items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
             })
             
         }
+        items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(using: "Main")], ["FAQ".localized(using: "Main"), "CONTACT US".localized(using: "Main")], ["TERMS + CONDITIONS".localized(using: "Main"), "PRIVACY POLICY".localized(using: "Main"), "RETURN POLICY".localized(using: "Main"), "LOGOUT".localized(using: "Main")]]
+
         self.settingTableView.reloadData()
             }
     override func viewDidAppear(_ animated: Bool) {
@@ -63,7 +65,7 @@ let items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
             let menuHeaderLabel = UILabel(frame: CGRect(x: 16, y: 10, width: self.view.frame.size.width, height: 48))
         menuHeaderLabel.textColor =   UIColor(colorLiteralRed: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 1.0)
 
-            menuHeaderLabel.text = self.section[section]
+            menuHeaderLabel.text = self.section[section].localized(using: "Main")
             menuHeaderLabel.font = UIFont(name: "Avenir-Book", size: 15.0)
 
             headerView.addSubview(menuHeaderLabel)

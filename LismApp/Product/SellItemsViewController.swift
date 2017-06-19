@@ -174,7 +174,13 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
         else if(item.tag == 4)
         {
             //load new view
-            self.performSegue(withIdentifier: "SellToProductView", sender: self)
+            self.performSegue(withIdentifier: "SellToProductView", sender: false)
+        }
+        
+        else if(item.tag == 3)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "SellToProductView", sender: true)
         }
         //SellToProfileViewcontroller
         //This method will be called when user changes tab.
@@ -191,7 +197,11 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
             viewController.productObj = seelctedProductObj
             // pass data to next view
         }
-        
+        else if (segue.identifier == "SellToProductView") {
+            let viewController:ProductViewController = segue.destination as! ProductViewController
+            viewController.isloadingFav = sender as! Bool
+            // pass data to next view
+        }
     }
     
 }

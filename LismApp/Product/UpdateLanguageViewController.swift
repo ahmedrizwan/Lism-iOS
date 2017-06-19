@@ -58,11 +58,15 @@ class UpdateLanguageViewController: UIViewController
         selectedLocale = "zh-Hans"
         self.updateBtnStatus()
 
+
     
     }
     @IBAction func savebuttonAction(sender : AnyObject)
     {
         Localize.setCurrentLanguage(selectedLocale)
+        self.updateBtnStatus()
+
+        
     }
     
     @IBAction func backbuttonAction(sender : AnyObject)

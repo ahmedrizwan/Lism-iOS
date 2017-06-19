@@ -133,6 +133,13 @@
 "PRODUCT NAME" = "产品名称";
 
 
+"Newest First" = "最新优先";
+
+"Most <3" = "大多数<3";
+"Price: Low - High" = "价格：低 - 高";
+"Price: High -Low" = "价格：高 - 低";
+"Sort Items" = "排序项目";
+
 
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";

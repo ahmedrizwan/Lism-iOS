@@ -133,6 +133,13 @@
 "Receive up to 80% of the sale price for your items" = "Receive up to 80% of the sale price for your items";
 "Time remaining for Seller to send Item : 2d" = "Time remaining for Seller to send Item : 2d";
 
+"Newest First" = "Newest First";
+
+"Most <3" = "Most <3";
+"Price: Low - High" = "Price: Low - High";
+"Price: High -Low" = "Price: High -Low";
+"Sort Items"  = "Sort Items" ;
+
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";
 

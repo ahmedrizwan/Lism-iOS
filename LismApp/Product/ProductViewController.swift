@@ -7,21 +7,24 @@ extension UIImageView {
         self.tintColor = color
     }
 }
-class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource{
+class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     static let ITEM_LIMIT = 10
     
     var items : [Product] = []
+    var itemsBackUpArray : [Product] = []
 
     var favoritesList : [Product] = []
     var selectedIndex : Int!
     var isShowing = false
     var isHiding = false
-
+    var isPopulated = false
     var colors :[String] = []
-
+    var isloadingFav = false
     var isShowingTopbar = false
     var isHidingTopbar = false
     @IBOutlet weak var totalItemsLabel : UILabel!
+    @IBOutlet weak var searchBar : UISearchBar!
+
     @IBOutlet weak var topView : UIView!
     @IBOutlet weak var sortingView : UIView!
     @IBOutlet weak var mainSortingView : UIView!
@@ -36,6 +39,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     var lastScrollPos : CGPoint!
     var  refresher = UIRefreshControl()
     var selectedIndexForSorting = 0
+    var textToSearch = ""
+
     var isLoaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,19 +56,36 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         let image = UIImage(named: "logo")
         imageView.image = image
         self.navigationController?.navigationBar.backItem?.title = ""
-        
+        searchBar.showsCancelButton = true
+
         navigationItem.titleView = imageView
         self.navigationController?.navigationBar.isHidden = true
         
         self.productsCollectionView!.alwaysBounceVertical = true
         refresher.tintColor = UIColor.red
-        refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
-        self.productsCollectionView!.addSubview(refresher)
         self.addShadowToView()
         self.automaticallyAdjustsScrollViewInsets = false
+        if(!self.isloadingFav)
+        {
         tabBar.selectedItem = selectedTabBarItem
-        self.getProductList(indexToSort: selectedIndexForSorting)
-        colors = ["Newest First", "Most <3", "Price: Low - High", "Price: High -Low"]
+            refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
+            self.productsCollectionView!.addSubview(refresher)
+            self.getProductList(indexToSort: selectedIndexForSorting)
+
+
+        }
+        else
+        {
+            refresher.addTarget(self, action: #selector(loadFavoritesList), for: .valueChanged)
+            self.productsCollectionView!.addSubview(refresher)
+            self.loadFavoritesList()
+            self.topView.isHidden = true
+            
+            
+            tabBar.selectedItem = tabBar.items?[2]
+
+        }
+        colors = ["Newest First".localized(using: "Main"), "Most <3".localized(using: "Main"), "Price: Low - High".localized(using: "Main"), "Price: High -Low".localized(using: "Main")]
         self.mainSortingView.layer.cornerRadius = 10
         self.mainSortingView.layer.masksToBounds = true
 
@@ -109,13 +131,40 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
       else  if(item.tag == 2)
         {
             //load new view
+            
             self.performSegue(withIdentifier: "ProductToProfileView", sender: self)
+        }
+        
+        else if(item.tag == 3)
+        {
+            //load new view
+            isloadingFav = true
+            self.items = self.favoritesList
+            self.comapreToUpdateFavoriteProductsList()
+            self.topView.isHidden = true
+            refresher.addTarget(self, action: #selector(loadFavoritesList), for: .valueChanged)
+
+        }
+        else
+        {
+            isloadingFav = false
+
+            self.topView.isHidden = false
+            self.items = self.itemsBackUpArray
+            self.productsCollectionView.reloadData()
+
+            refresher.addTarget(self, action: #selector(getProductList), for: .valueChanged)
+
         }
         
         
         //This method will be called when user changes tab.
     }
     
+    @IBAction func searchBtnClicked()
+    {
+    searchBar.isHidden = false
+    }
   
     func getProductList(indexToSort : Int )
     {
@@ -123,10 +172,21 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
         let query: AVQuery = AVQuery(className: "Product")
+        if(textToSearch != "")
+        {
+         query.whereKey("brand", matchesRegex: textToSearch, modifiers: "i")
+            query.whereKey("name", matchesRegex: textToSearch, modifiers: "i")
+
+        }
+
         query.includeKey("images")
         query.includeKey("user")
         query.includeKey("userLikes")
         query.includeKey("buyingUser")
+     
+        
+       
+        
         switch indexToSort
         {
         case 1:
@@ -173,7 +233,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             {
             Constants.showAlert(message: ("Unable to load products.").localized(using: "Main"), view: self)
             }
-            
+            if(!self.isPopulated)
+            {
+                self.itemsBackUpArray = self.items
+            }
         }
         }
             
@@ -196,6 +259,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                     productObj.ProductInintWithDic(dict: obj as! AVObject)
                     self.favoritesList.append(productObj)
                 }
+                if(self.isloadingFav)
+                {
+                self.items = self.favoritesList
+                }
                 Constants.favoritesList = self.favoritesList
                 self.comapreToUpdateFavoriteProductsList()
             }
@@ -211,6 +278,29 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.isHidden = true
+        self.view.endEditing( true)
+      self.items =   itemsBackUpArray
+        textToSearch = ""
+        isPopulated = false;
+        self.productsCollectionView.reloadData()
+        
+    }
+    
+    
+    func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
+    {
+      
+       textToSearch = searchBar.text!
+        if(textToSearch.characters.count > 0)
+        {
+        self.getProductList(indexToSort: selectedIndexForSorting)
+        
+        }
+    
+    }
     func comapreToUpdateFavoriteProductsList()
     {
         for productObj in self.items
@@ -220,6 +310,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 if(productObj.objectId == objFavorite.objectId)
                 {
                     productObj.favorite = true
+                    objFavorite.favorite = true
                 }
             }
             
@@ -240,6 +331,13 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 query.includeKey("userLikes")
                 query.limit = ProductViewController.ITEM_LIMIT
                 query.skip = size
+        if(textToSearch != "")
+        {
+            
+            query.whereKey("brand", contains: textToSearch)
+            
+        }
+
         switch indexToSort
         {
         case 1:
@@ -317,7 +415,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
         Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
-        if (indexPath.row + 1 == self.items.count )
+        if (indexPath.row + 1 == self.items.count  && !isloadingFav)
         {
             self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
         }
@@ -334,31 +432,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func filterBtnAction(sender: AnyObject)
     {
         
-        
-        let alert = UIAlertController(title: "Sort Items",
-                                     message: "",
-                                     preferredStyle: UIAlertControllerStyle.alert)
-        
-       // let image = UIImage(named: "cart_remove")
-        var action = UIAlertAction(title: colors[0], style: .default, handler: perfomrFiltering)
-       // action.setValue(image, forKey: "image")
-        
-        alert .addAction(action)
-         action = UIAlertAction(title:  colors[1], style: .default, handler: perfomrFiltering)
-        // action.setValue(image, forKey: "image")
-        
-        alert .addAction(action)
-         action = UIAlertAction(title:  colors[2], style: .default, handler: perfomrFiltering)
-        // action.setValue(image, forKey: "image")
-        
-        alert .addAction(action)
-         action = UIAlertAction(title:  colors[3], style: .default, handler: perfomrFiltering)
-        // action.setValue(image, forKey: "image")
-        
-        alert .addAction(action)
-        //vc will be the view controller on which you will present your alert as you cannot use self because this method is static.
-        alert.view.tintColor = UIColor.gray
-        self.present(alert, animated: true, completion: nil)
        // sortingView.isHidden = false
         //sortingTableView.reloadData()
         
@@ -390,6 +463,31 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func listBtnAction(sender: AnyObject)
     {
         
+        
+        let alert = UIAlertController(title: "Sort Items".localized(using: "Main"),
+                                      message: "",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        // let image = UIImage(named: "cart_remove")
+        var action = UIAlertAction(title: colors[0], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+        action = UIAlertAction(title:  colors[1], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+        action = UIAlertAction(title:  colors[2], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+        action = UIAlertAction(title:  colors[3], style: .default, handler: perfomrFiltering)
+        // action.setValue(image, forKey: "image")
+        
+        alert .addAction(action)
+        //vc will be the view controller on which you will present your alert as you cannot use self because this method is static.
+        alert.view.tintColor = UIColor.gray
+        self.present(alert, animated: true, completion: nil)
         
     }
     

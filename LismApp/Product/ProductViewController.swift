@@ -420,7 +420,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
         }
         cell.likeButton.isSelected = productObj.favorite
-        
+        cell.likeButton.tag = indexPath.row
+        cell.delegate = self
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -636,6 +637,42 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func plusBtnClickedAction (sender : UIButton)
     {
         
+    }
+    func addToFavoriteButtonAction(index : Int)
+    {
+        let productObj = self.items[index]
+        productObj.favorite = !productObj.favorite
+        if(productObj.favorite )
+        {
+        AVUser.current()?.relation(forKey: "favorites").add(productObj)
+        }
+        else
+        {
+            AVUser.current()?.relation(forKey: "favorites").remove(productObj)
+
+        }
+        AVUser.current()?.saveInBackground { (status, error) in
+            if(productObj.favorite )
+            {
+                self.favoritesList.append(productObj)
+            }
+            else
+            {
+                let index = self.favoritesList.index(of : productObj)
+                if (index != nil)
+                {
+                self.favoritesList.remove(at: index!)
+                }
+                if(self.isloadingFav)
+                {
+                self.items = self.favoritesList
+                }
+            }
+            
+            self.comapreToUpdateFavoriteProductsList()
+        }
+    
+    
     }
     
     

@@ -9,6 +9,7 @@
 import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
+    var delegate : ProductViewController!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var retailPriceTextView: UITextView!
 
@@ -18,5 +19,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var soldBannerImageView: UIImageView!
 
-
+    @IBAction func addToFavoriteViewController(sender : AnyObject)
+    {
+        let btn = sender as! UIButton
+        delegate.addToFavoriteButtonAction(index: btn.tag)
+    }
 }

@@ -277,12 +277,31 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
     }
     
     
-    
-      
-    
+	@IBAction func addtoFavoriteBtnAction(sender  : AnyObject)
+				{
+					self.productBO.favorite = !self.productBO.favorite
+					let btn = sender as! UIButton
+					btn.isSelected = 	self.productBO.favorite 
+					if(self.productBO.favorite )
+					{
+						AVUser.current()?.relation(forKey: "favorites").add(self.productBO)
+					}
+					else
+					{
+						AVUser.current()?.relation(forKey: "favorites").remove(self.productBO)
+						
+					}
+					AVUser.current()?.saveInBackground { (status, error) in
+						
+					}
+
+	
+	}
+	
+	
     func loadComments()
     {
-        
+					
         self.productBO.queryObj.includeKey("user")
 					self.commentsArray.removeAll()
        self.productBO.queryObj.findObjectsInBackground { (objects, error) in

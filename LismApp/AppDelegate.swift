@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
         }
         else{
+            
             mainViewController = MainViewController()
 
         }

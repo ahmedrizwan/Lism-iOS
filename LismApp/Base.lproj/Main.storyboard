@@ -518,6 +518,9 @@ Est. Retail ¥2,00</string>
                                         </constraints>
                                         <state key="normal" image="heart_white.png"/>
                                         <state key="selected" image="heart_red.png"/>
+                                        <connections>
+                                            <action selector="addtoFavoriteBtnActionWithSender:" destination="5QB-nd-WMw" eventType="touchUpInside" id="qgc-0c-Zho"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVo-mj-cU7">
                                         <rect key="frame" x="335" y="48" width="17" height="15"/>
@@ -794,7 +797,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9E60D37E-CD07-4A7E-881D-51E536C3AA43" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8A88EDC3-D669-44D2-8D6E-FAF7F443EB21" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -3594,14 +3597,14 @@ Step3: Adda captivating description and post it!</string>
                         <viewControllerLayoutGuide type="bottom" id="0W0-pU-QfA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wHs-8J-DK4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="UOg-Cr-jBw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="E4F-dl-uPB">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="ATZ-9P-jXq"/>
                                     <constraint firstAttribute="height" constant="20" id="g6J-57-4NZ"/>
@@ -3609,7 +3612,7 @@ Step3: Adda captivating description and post it!</string>
                                 <color key="color" red="0.57918035980000004" green="0.065172873440000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6a-s7-L1y">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="751" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="cbn-tl-D6N"/>
@@ -3633,7 +3636,7 @@ Step3: Adda captivating description and post it!</string>
                                 </connections>
                             </tabBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yUa-vK-kRq">
-                                <rect key="frame" x="0.0" y="217" width="355" height="401"/>
+                                <rect key="frame" x="0.0" y="217" width="355" height="534"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dte-vg-9dz">
                                     <size key="itemSize" width="157" height="240"/>
@@ -3745,7 +3748,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zDt-Qf-GGJ">
-                                <rect key="frame" x="10" y="217" width="355" height="401"/>
+                                <rect key="frame" x="10" y="217" width="355" height="534"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="R1X-t4-vP0">
                                     <size key="itemSize" width="150" height="150"/>
@@ -3798,7 +3801,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </collectionView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-xf-YCp">
-                                <rect key="frame" x="0.0" y="217" width="375" height="401"/>
+                                <rect key="frame" x="0.0" y="217" width="375" height="534"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellItemsCustomCell" rowHeight="120" id="zh4-EA-5to" customClass="SellItemsCustomCell" customModule="LismApp" customModuleProvider="target">
@@ -3873,7 +3876,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not bought any product so far." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot6-Sx-GUL" userLabel="no sell productlabel">
-                                <rect key="frame" x="60" y="342" width="255" height="78"/>
+                                <rect key="frame" x="60" y="408.5" width="255" height="78"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="0GE-7S-7ln"/>
                                     <constraint firstAttribute="width" constant="255" id="eZl-3y-xg6"/>
@@ -4341,14 +4344,14 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="Rw6-9q-gQP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ugV-2l-Odt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="uQE-H7-lYg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yUz-tT-sei">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="vz8-3j-tjw"/>
                                     <constraint firstAttribute="width" constant="20" id="z99-UM-waL"/>
@@ -4356,7 +4359,7 @@ Est. Retail ¥2,00</string>
                                 <color key="color" red="0.57918035980000004" green="0.065172873440000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YSQ-2U-9w0">
-                                <rect key="frame" x="0.0" y="66" width="375" height="552"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="685"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCustomCell" rowHeight="110" id="cOw-oy-hxb" customClass="NotificationCustomCell" customModule="LismApp" customModuleProvider="target">
@@ -4428,7 +4431,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </tableView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GlS-cS-SKy">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="751" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="IVt-2m-vFn"/>
@@ -4533,11 +4536,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="3YG-ET-3mS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Edd-33-qtP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Hh-bj-tb2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5p-GR-wlk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -4586,7 +4589,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRM-Sl-F86">
-                                <rect key="frame" x="0.0" y="63" width="375" height="534"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQd-IX-1GJ">
                                         <rect key="frame" x="15" y="15" width="65" height="65"/>
@@ -4632,7 +4635,7 @@ Est. Retail ¥2,00</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item has been Received" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbE-fO-t2m">
-                                        <rect key="frame" x="62" y="376" width="293" height="31"/>
+                                        <rect key="frame" x="62" y="509" width="293" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="0W4-zo-jsp"/>
                                             <constraint firstAttribute="height" constant="31" id="HOh-iZ-nGz"/>
@@ -4642,7 +4645,7 @@ Est. Retail ¥2,00</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item has been Confirmed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-kj-smm">
-                                        <rect key="frame" x="62" y="475" width="293" height="31"/>
+                                        <rect key="frame" x="62" y="608" width="293" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="cgt-Js-yve"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="sr1-6s-4zT"/>
@@ -4668,7 +4671,7 @@ Est. Retail ¥2,00</string>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghs-X6-msa">
-                                        <rect key="frame" x="28" y="143" width="5" height="363"/>
+                                        <rect key="frame" x="28" y="143" width="5" height="496"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="5" id="tah-cB-E4A"/>
@@ -4693,7 +4696,7 @@ Est. Retail ¥2,00</string>
                                         <state key="selected" image="2_number"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKK-wr-Efd">
-                                        <rect key="frame" x="14" y="376" width="32" height="32"/>
+                                        <rect key="frame" x="14" y="509" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="F0E-vc-Zbv"/>
                                             <constraint firstAttribute="height" constant="32" id="eZb-FM-o1z"/>
@@ -4702,7 +4705,7 @@ Est. Retail ¥2,00</string>
                                         <state key="selected" image="3_number"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cx-X8-riv">
-                                        <rect key="frame" x="14" y="475" width="32" height="32"/>
+                                        <rect key="frame" x="14" y="608" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="IXD-gt-ys0"/>
                                             <constraint firstAttribute="height" constant="32" id="kly-YT-Chj"/>
@@ -4711,7 +4714,7 @@ Est. Retail ¥2,00</string>
                                         <state key="selected" image="4_number"/>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VbU-DW-cje">
-                                        <rect key="frame" x="62" y="241" width="293" height="128"/>
+                                        <rect key="frame" x="62" y="241" width="293" height="261"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </string>
                                         <color key="textColor" red="0.1422139674" green="0.1429585431" blue="0.1429585431" alpha="0.69887126150000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4719,7 +4722,7 @@ Est. Retail ¥2,00</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="acn-q0-hoF">
-                                        <rect key="frame" x="62" y="415" width="293" height="52"/>
+                                        <rect key="frame" x="62" y="548" width="293" height="52"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="y2o-6q-0BJ"/>
@@ -4783,7 +4786,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tW6-mQ-JgR">
-                                <rect key="frame" x="0.0" y="605" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="738" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.50452240820000005" green="0.071154367039999999" blue="0.1068065539" alpha="0.98916794480000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="VdJ-bN-pA7"/>
@@ -4797,7 +4800,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9kQ-Mt-71Y">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Vx9-2m-bbd"/>
                                     <constraint firstAttribute="height" constant="20" id="Zkv-fR-WJ0"/>
@@ -4860,11 +4863,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="hud-ps-vj8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6LB-5K-Q6X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="kVP-xq-SJH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cd-NB-1dW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -4914,7 +4917,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-Tb-zF9">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="730"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowersAndFollowingCustomCell" rowHeight="70" id="T26-bw-0q7" customClass="FollowersAndFollowingCustomCell" customModule="LismApp" customModuleProvider="target">
@@ -4976,7 +4979,7 @@ Est. Retail ¥2,00</string>
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eQm-GR-gmz">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Rne-Qy-QKu"/>
                                     <constraint firstAttribute="height" constant="20" id="pdb-uK-U5m"/>
@@ -5020,11 +5023,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="kqC-6H-pXs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7zu-6c-9cv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="lqL-Kq-PQb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtQ-rT-tGe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -5074,7 +5077,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YDd-vP-2kO">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="730"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowersAndFollowingCustomCell" rowHeight="70" id="fel-70-7Au" customClass="FollowersAndFollowingCustomCell" customModule="LismApp" customModuleProvider="target">
@@ -5135,7 +5138,7 @@ Est. Retail ¥2,00</string>
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wm0-gy-xcW">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="BFT-0n-Of0"/>
                                     <constraint firstAttribute="height" constant="20" id="wHh-tS-ZTJ"/>
@@ -5179,11 +5182,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="fJh-kq-eql"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Avx-0V-ujB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="mPB-GM-BrZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDZ-t1-ANA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -5233,7 +5236,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="4" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="k6B-7s-y9U">
-                                <rect key="frame" x="0.0" y="160" width="375" height="458"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="591"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCustomCell" rowHeight="60" id="tlq-qh-T2d" userLabel="SettingsCustomCell" customClass="SettingsCustomCell" customModule="LismApp" customModuleProvider="target">
@@ -5311,7 +5314,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fyz-TP-lLQ">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="751" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="fLM-53-nCy"/>
@@ -5335,7 +5338,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </tabBar>
                             <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kNv-kw-Xvu">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Ld1-17-HYj"/>
                                     <constraint firstAttribute="width" constant="20" id="r8g-uz-6pt"/>
@@ -5403,11 +5406,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="EgE-cR-fc3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cm7-Co-VM3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="McJ-hW-eQ1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4X-Um-iH4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -5455,7 +5458,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prm-9L-s3t">
-                                <rect key="frame" x="0.0" y="61" width="375" height="491"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="624"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUs-uw-uVq">
                                         <rect key="frame" x="0.0" y="20" width="375" height="94"/>
@@ -5509,7 +5512,7 @@ Est. Retail ¥2,00</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-xo-jFQ">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="211"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="344"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B6-uk-wGZ">
                                                 <rect key="frame" x="16" y="5" width="142" height="21"/>
@@ -5522,7 +5525,7 @@ Est. Retail ¥2,00</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D5g-WB-8GS">
-                                                <rect key="frame" x="14" y="34" width="344" height="173"/>
+                                                <rect key="frame" x="14" y="34" width="344" height="306"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.1646876931" green="0.1647174954" blue="0.1646811664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5544,7 +5547,7 @@ Est. Retail ¥2,00</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cD8-xj-r5c">
-                                        <rect key="frame" x="0.0" y="328" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="461" width="375" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE OF BIRTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIB-jH-pDx">
                                                 <rect key="frame" x="16" y="5" width="142" height="21"/>
@@ -5595,7 +5598,7 @@ Est. Retail ¥2,00</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFQ-tP-WeM">
-                                        <rect key="frame" x="0.0" y="412" width="375" height="76"/>
+                                        <rect key="frame" x="0.0" y="545" width="375" height="76"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT GENDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JL-rs-bfn">
                                                 <rect key="frame" x="16" y="5" width="142" height="21"/>
@@ -5672,7 +5675,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-H3-Iiz">
-                                <rect key="frame" x="16" y="560" width="343" height="49"/>
+                                <rect key="frame" x="16" y="693" width="343" height="49"/>
                                 <color key="backgroundColor" red="0.25858935713768005" green="0.70820897817611694" blue="0.28680017590522766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="CcH-7M-KDf"/>
@@ -5687,7 +5690,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-O3-yBg">
-                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="755" width="375" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpI-u1-5Fm">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="45"/>
@@ -5730,7 +5733,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sN9-Hs-3Q7">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4JB-bo-h56"/>
                                     <constraint firstAttribute="width" constant="20" id="jfr-gC-8bR"/>
@@ -5738,7 +5741,7 @@ Est. Retail ¥2,00</string>
                                 <color key="color" red="0.57918035980000004" green="0.065172873440000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="7MG-3C-TkQ">
-                                <rect key="frame" x="31" y="566" width="44" height="37"/>
+                                <rect key="frame" x="31" y="699" width="44" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="4QJ-eQ-Aas"/>
                                     <constraint firstAttribute="height" constant="37" id="gE2-T7-J85"/>
@@ -5802,11 +5805,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="xie-8e-ww0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QN1-Hv-Vt7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="bRb-Kb-cfd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-pF-cNy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -5856,7 +5859,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="4" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dyk-Hg-OZo">
-                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="728"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCustomCell" rowHeight="60" id="NAM-n4-pcD" userLabel="SettingsCustomCell" customClass="SettingsCustomCell" customModule="LismApp" customModuleProvider="target">
@@ -5905,7 +5908,7 @@ Est. Retail ¥2,00</string>
                                 </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sXq-vD-HRe">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="8d6-aZ-7l6"/>
                                     <constraint firstAttribute="height" constant="20" id="gC9-yf-fpm"/>
@@ -5953,11 +5956,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="LBW-91-0Zl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EUH-vv-cfg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="e7v-Oi-05B">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUj-L7-vH1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -6005,7 +6008,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="igD-Ru-Rk2">
-                                <rect key="frame" x="16" y="72" width="343" height="587"/>
+                                <rect key="frame" x="16" y="72" width="343" height="720"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.31415782489999999" green="0.31415782489999999" blue="0.31415782489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -6047,11 +6050,11 @@ Est. Retail ¥2,00</string>
                         <viewControllerLayoutGuide type="bottom" id="70P-2x-gA8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eY2-u9-UQY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="uEL-3c-HM1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFn-BP-SWu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -6101,7 +6104,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Pf3-tB-Fag">
-                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <rect key="frame" x="178" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="kod-zL-As6"/>
                                     <constraint firstAttribute="width" constant="20" id="qfd-9q-IfV"/>
@@ -6156,7 +6159,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ib-Wh-KY7">
-                                <rect key="frame" x="0.0" y="609" width="375" height="58"/>
+                                <rect key="frame" x="0.0" y="742" width="375" height="58"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF3-GD-Rd8">
                                         <rect key="frame" x="16" y="8" width="344" height="43"/>
@@ -6223,7 +6226,7 @@ Est. Retail ¥2,00</string>
         <image name="3_number" width="88" height="92"/>
         <image name="4_disabled" width="89" height="92"/>
         <image name="4_number" width="88" height="92"/>
-        <image name="9E60D37E-CD07-4A7E-881D-51E536C3AA43" width="2081" height="292">
+        <image name="8A88EDC3-D669-44D2-8D6E-FAF7F443EB21" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -46831,12 +46834,12 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
         <image name="white_arrow" width="24" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mrg-S8-EKf"/>
+        <segue reference="JwF-La-XTU"/>
+        <segue reference="SCc-gm-MfN"/>
         <segue reference="L3M-j5-nQY"/>
         <segue reference="Jlj-Dl-HZl"/>
         <segue reference="dsA-C6-Za7"/>
         <segue reference="4A3-eO-F6e"/>
-        <segue reference="SCc-gm-MfN"/>
         <segue reference="hys-1I-bmp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -107,27 +107,37 @@ var items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
     {        
 
         
-        if(indexPath.section == 0 && indexPath.row == 0)
-        {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
         self.performSegue(withIdentifier: "SettingsToEditProfileVC", sender: self)
-        }
-            else if(indexPath.section == 0 && indexPath.row == 1)
-            {
-                self.performSegue(withIdentifier: "SettingsToUpdateLanguage", sender: self)
-            }
-
-            
-        //
-       else  if(indexPath.section == 1 && indexPath.row == 0)
-        {
+            break
+        case (0, 1):
+            self.performSegue(withIdentifier: "SettingsToUpdateLanguage", sender: self)
+            break
+        case (1,0):
             self.performSegue(withIdentifier: "SettingsToFAQVC", sender: self)
-        }
-        
-       else  if(indexPath.section == 2 && indexPath.row == 1)
-        {
+            break
+        case (2,0):
             self.performSegue(withIdentifier: "SettingsToLegalVC", sender: self)
+            break
+        case (2,1):
+            self.performSegue(withIdentifier: "SettingsToLegalVC", sender: self)
+            break
+        case (2,2):
+            self.performSegue(withIdentifier: "SettingsToLegalVC", sender: self)
+            break
+        case (2,3):
+            AVUser.logOut()
+            let mainViewController = MainViewController()
+            self.navigationController?.pushViewController(mainViewController, animated: true)
+            
+
+            break
+        default:
+            break
         }
-        
+       
+
         
         
         

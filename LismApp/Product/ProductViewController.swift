@@ -279,6 +279,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.isHidden = true
         self.view.endEditing( true)
@@ -294,6 +297,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
       
        textToSearch = searchBar.text!
+        
+        
+        
         if(textToSearch.characters.count > 0)
         {
         self.getProductList(indexToSort: selectedIndexForSorting)

@@ -164,6 +164,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBAction func searchBtnClicked()
     {
     searchBar.isHidden = false
+        
     }
   
     func getProductList(indexToSort : Int )
@@ -171,11 +172,17 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         
         
-        let query: AVQuery = AVQuery(className: "Product")
+        var query: AVQuery = AVQuery(className: "Product")
         if(textToSearch != "")
         {
-         query.whereKey("brand", matchesRegex: textToSearch, modifiers: "i")
-            query.whereKey("name", matchesRegex: textToSearch, modifiers: "i")
+            print("textToSearch",textToSearch)
+            query.whereKey("brand", contains: textToSearch)
+            let nameQuery: AVQuery = AVQuery(className: "Product")
+            nameQuery.whereKey("name", contains: textToSearch)
+            query =   AVQuery.orQuery(withSubqueries: [nameQuery,query])//AVQuery.or(Arrays.asList(parseQuery, nameQuery));
+            
+        // query.whereKey("brand", matchesRegex: textToSearch, modifiers: "i")
+          //  query.whereKey("name", matchesRegex: textToSearch, modifiers: "i")
 
         }
 
@@ -235,6 +242,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             if(!self.isPopulated)
             {
+                self.isPopulated = true
+
                 self.itemsBackUpArray = self.items
             }
         }
@@ -280,7 +289,28 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        textToSearch = searchBar.text!
+        perform(#selector(self.searchRequest), with: searchText, afterDelay: 0.15)
+
+    }
+    
+    func searchRequest()
+    {
+        if(textToSearch.characters.count > 0)
+        {            self.isPopulated = true
+
+            self.getProductList(indexToSort: selectedIndexForSorting)
+            
+        }
+        else
+        {
+            self.items =   itemsBackUpArray
+            self.isPopulated = false
+
+            self.productsCollectionView.reloadData()
+            
+        }
+    
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.isHidden = true
@@ -302,6 +332,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         if(textToSearch.characters.count > 0)
         {
+            self.isPopulated = true
         self.getProductList(indexToSort: selectedIndexForSorting)
         
         }

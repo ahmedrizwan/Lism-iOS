@@ -213,7 +213,11 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         {
         sdWebImageSource.append(SDWebImageSource(urlString: url.absoluteString)!)
         }
-    
+					  if(self.productBO.productImageUrl != nil && self.productBO.productImagesArray.count <= 0)
+							{
+					
+								sdWebImageSource.append(SDWebImageSource(urlString: self.productBO.productImageUrl.absoluteString)!)
+					  }
         if  Date().days(from: self.productBO.updatedAt!) > 0
         
         {

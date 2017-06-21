@@ -117,6 +117,10 @@ var items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
         case (1,0):
             self.performSegue(withIdentifier: "SettingsToFAQVC", sender: self)
             break
+        case (1,1):
+                self.performSegue(withIdentifier: "SettingsToContactUsViewController", sender: self)
+
+                break;
         case (2,0):
             self.performSegue(withIdentifier: "SettingsToLegalVC", sender: self)
             break

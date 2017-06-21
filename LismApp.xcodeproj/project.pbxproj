@@ -115,6 +115,7 @@
 		399A0DF81E90416F00FA1B8C /* topbarimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 399A0DF61E90416F00FA1B8C /* topbarimage.png */; };
 		39A47C641E9D3D2200D32FD9 /* logo_full_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A47C631E9D3D2200D32FD9 /* logo_full_2.png */; };
 		39A688F21E9A7B5100E4A5CC /* bg_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A688F11E9A7B5100E4A5CC /* bg_layer.png */; };
+		39A83B1D1EFAD3CD00C37FEC /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A83B1C1EFAD3CD00C37FEC /* ContactUsViewController.swift */; };
 		39A854441EA7D4EE00B32B3C /* ColorsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A854431EA7D4EE00B32B3C /* ColorsCustomCell.swift */; };
 		39A854461EA7E7FC00B32B3C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A854451EA7E7FC00B32B3C /* TextField.swift */; };
 		39B76E161EA521C900528824 /* SellItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B76E151EA521C900528824 /* SellItemsViewController.swift */; };
@@ -265,6 +266,7 @@
 		399A0DF61E90416F00FA1B8C /* topbarimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarimage.png; sourceTree = "<group>"; };
 		39A47C631E9D3D2200D32FD9 /* logo_full_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_full_2.png; sourceTree = "<group>"; };
 		39A688F11E9A7B5100E4A5CC /* bg_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_layer.png; sourceTree = "<group>"; };
+		39A83B1C1EFAD3CD00C37FEC /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		39A854431EA7D4EE00B32B3C /* ColorsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsCustomCell.swift; sourceTree = "<group>"; };
 		39A854451EA7E7FC00B32B3C /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		39B76E151EA521C900528824 /* SellItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellItemsViewController.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				398271BC1EEC701100B0AA70 /* FAQsViewController.swift */,
 				398271BE1EEC757200B0AA70 /* LgalAndAnswersViewController.swift */,
 				396676DE1EEDA5A900FAF460 /* UpdateLanguageViewController.swift */,
+				39A83B1C1EFAD3CD00C37FEC /* ContactUsViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				3940E5141EE88F1500AD1649 /* Duration.swift in Sources */,
 				3965701E1ECB479100188EA7 /* NotificationLog.swift in Sources */,
 				397019901E882035002F0A9B /* User.swift in Sources */,
+				39A83B1D1EFAD3CD00C37FEC /* ContactUsViewController.swift in Sources */,
 				39CCB90F1EE86FCB0059C3CE /* SettingsViewController.swift in Sources */,
 				390C18A01E8C1D9E00C7E6B9 /* CommentsCustomCell.swift in Sources */,
 				39414B7D1E8622BF004A39A4 /* Constants.swift in Sources */,

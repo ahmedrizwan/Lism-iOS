@@ -96,7 +96,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         if(notificationObj.type == Constants.NotificationType.TYPE_SELL_BOUGHT )
         {
-        Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) bought your product \(notificationObj.product.name).", textView: cell.notificationDesctiption)
+        Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) \("bought your product".localized(using: "Main")) \(notificationObj.product.name).", textView: cell.notificationDesctiption)
             if(notificationObj.product.productImageUrl != nil)
             {
                 cell.productImageView.sd_setImage(with: notificationObj.product.productImageUrl, placeholderImage: nil)
@@ -105,7 +105,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
         else   if(notificationObj.type == Constants.NotificationType.TYPE_FOLLOW )
         {
             
-            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) started following you!", textView: cell.notificationDesctiption)
+            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) \("started following you!".localized(using: "Main"))", textView: cell.notificationDesctiption)
             if let profileImage = notificationObj.otherUser.value(forKey: "profileImage") {
                 self.loadUserImage(parseFile: profileImage as! AVFile, customCellForNotification: cell)
 
@@ -114,7 +114,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
         }
         else   if(notificationObj.type == Constants.NotificationType.TYPE_LIKE )
         {
-            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) liked your product \(notificationObj.product.name).", textView: cell.notificationDesctiption)
+            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) \("liked your product".localized(using: "Main")) \(notificationObj.product.name).", textView: cell.notificationDesctiption)
             if let profileImage = notificationObj.otherUser.value(forKey: "profileImage") {
                 self.loadUserImage(parseFile: profileImage as! AVFile, customCellForNotification: cell)
                 
@@ -127,7 +127,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
         }
         else   if(notificationObj.type == Constants.NotificationType.TYPE_COMMENT )
         {
-            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) commented on your product \(notificationObj.product.name).", textView: cell.notificationDesctiption)
+            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) \("commented on your product".localized(using: "Main")) \(notificationObj.product.name).", textView: cell.notificationDesctiption)
             if let profileImage = notificationObj.otherUser.value(forKey: "profileImage") {
                 self.loadUserImage(parseFile: profileImage as! AVFile, customCellForNotification: cell)
                 
@@ -142,7 +142,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
 
         else   if(notificationObj.type == Constants.NotificationType.TYPE_SELL_CONFIRMED )
         {
-            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) confirmed your product  \(notificationObj.product.name).", textView: cell.notificationDesctiption)
+            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) \("confirmed your product".localized(using: "Main"))  \(notificationObj.product.name).", textView: cell.notificationDesctiption)
             if let profileImage = notificationObj.otherUser.value(forKey: "profileImage") {
                 self.loadUserImage(parseFile: profileImage as! AVFile, customCellForNotification: cell)
                 
@@ -156,7 +156,7 @@ class NotificationsViewcontroller : UIViewController,UITableViewDelegate, UITabl
         
         else   if(notificationObj.type == Constants.NotificationType.TYPE_SELL_SENT )
         {
-            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) sent your product \(notificationObj.product.name).", textView: cell.notificationDesctiption)
+            Constants.produceAttributedTextForItems(string: "\(notificationObj.otherUser.username!) \("sent your product".localized(using: "Main")) \(notificationObj.product.name).", textView: cell.notificationDesctiption)
             if let profileImage = notificationObj.otherUser.value(forKey: "profileImage") {
                 self.loadUserImage(parseFile: profileImage as! AVFile, customCellForNotification: cell)
                 

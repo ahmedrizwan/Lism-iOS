@@ -140,6 +140,24 @@
 "Price: High -Low" = "Price: High -Low";
 "Sort Items"  = "Sort Items" ;
 
+"Please enter a valid username" = "Please enter a valid username" ;
+"Password length should be greater than 5" = "Password length should be greater than 5";
+"Login Unsuccessful" = "Login Unsuccessful";
+"Please enter name" = "Please enter name";
+"Please enter email" = "Please enter email";
+"Email not valid" = "Email not valid";
+"Please enter username" = "Please enter username";
+"Password length should be greater than 6" = "Password length should be greater than 6";
+"Password do not match"  = "Password do not match";
+"LOGIN" = "LOGIN";
+"NEXT" = "NEXT";
+"bought your product" = "bought your product";
+"started following you!" = "started following you!";
+"liked your product" = "liked your product";
+"commented on your product" = "commented on your product";
+"confirmed your product" =  "confirmed your product";
+"sent your product" = "sent your product";
+
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";
 

@@ -20,6 +20,8 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var passwordTextField : UITextField!
     @IBOutlet var retypePasswordTextField : UITextField!
 
+    @IBOutlet var nextBtn : UIButton!
+
       var keyboardIsShowing: Bool = false
     
     override func viewDidLoad() {
@@ -42,7 +44,7 @@ class RegistrationViewController: UIViewController {
         self.styleTextField(textField: firstNameTextField)
         self.styleTextField(textField: lastNameTextField)
 
-
+        nextBtn.setTitle("NEXT".localized(using: "Main"), for: .normal)
 
 
         
@@ -110,25 +112,25 @@ class RegistrationViewController: UIViewController {
 
         if let fullName = firstNameTextField.text, fullName.characters.count == 0   || lastNameTextField.text?.characters.count == 0 {
            
-            Constants.showAlert(message: "Please enter name", view: self)
+            Constants.showAlert(message: "Please enter name".localized(using: "Main"), view: self)
             
         } else if let email = emailTextField.text, email.characters.count == 0 {
-            Constants.showAlert(message: "Please enter email", view: self)
+            Constants.showAlert(message: "Please enter email".localized(using: "Main"), view: self)
 
             
         } else if let email = emailTextField.text, !email.isValidEmail() {
             
-            Constants.showAlert(message: "Email not valid", view: self)
+            Constants.showAlert(message: "Email not valid".localized(using: "Main"), view: self)
 
         } else if let username = usernameTextField.text, username.characters.count == 0 {
-            Constants.showAlert(message: "Please enter username", view: self)
+            Constants.showAlert(message: "Please enter username".localized(using: "Main"), view: self)
 
             
         } else if let password = passwordTextField.text, !password.isValidPassword() {
-            Constants.showAlert(message:  "Password length should be greater than 6", view: self)
+            Constants.showAlert(message:  "Password length should be greater than 6".localized(using: "Main"), view: self)
 
         } else if let password = passwordTextField.text, let rePassword = retypePasswordTextField.text, password != rePassword {
-            Constants.showAlert(message:  "Password do not match", view: self)
+            Constants.showAlert(message:  "Password do not match".localized(using: "Main"), view: self)
 
             
         } else {

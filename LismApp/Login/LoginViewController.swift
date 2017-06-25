@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var usernameTextField : UITextField!
     @IBOutlet var passwordTextField : UITextField!
+    @IBOutlet var loginBtn : UIButton!
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +43,11 @@ class LoginViewController: UIViewController {
        
         usernameTextField.layer.borderWidth = 1.0
         usernameTextField.layer.borderColor = UIColor.gray.cgColor
+        
+        loginBtn.setTitle("LOGIN".localized(using: "Main"), for: .normal)
     }
+   
+    
     
     
     
@@ -65,10 +70,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLoginButtonPress() {
         if let isValidEmail = usernameTextField.text?.isValidEmail(), !isValidEmail {
-            Constants.showAlert(message: "Please enter a valid username", view: self)
+            Constants.showAlert(message: "Please enter a valid username".localized(using: "Main"), view: self)
             
         } else if let isValidPassword = passwordTextField.text?.isValidPassword(), !isValidPassword {
-            Constants.showAlert(message: "Password length should be greater than 5", view: self)
+            Constants.showAlert(message: "Password length should be greater than 5".localized(using: "Main"), view: self)
 
             
         } else {
@@ -93,7 +98,7 @@ class LoginViewController: UIViewController {
                         self.loadMainProductsView()
                         }
                         else {
-                            self.showAlert(message: "Login Unsuccessful")
+                            self.showAlert(message: "Login Unsuccessful".localized(using: "Main"))
                             // TODO: do something here when login has failed
                         }
                     })

@@ -797,7 +797,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="37A0E894-D7BB-4765-A60C-CAC61D3F66CA" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6D4E3A06-2A5E-462D-9A59-3D605E8BD3DD" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="82" width="326" height="2"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -6552,6 +6552,7 @@ Just want to leave a suggestion or let us know how much you love us? Drop us a l
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginBtn" destination="Thw-pV-Zg2" id="aTJ-Yf-rfp"/>
                         <outlet property="passwordTextField" destination="DRu-av-g6g" id="n89-61-p2t"/>
                         <outlet property="usernameTextField" destination="0Ao-gP-ufV" id="0rq-jc-rB1"/>
                     </connections>
@@ -6739,6 +6740,7 @@ Just want to leave a suggestion or let us know how much you love us? Drop us a l
                         <outlet property="emailTextField" destination="7rz-fD-Ytu" id="iCE-zi-FHs"/>
                         <outlet property="firstNameTextField" destination="Dol-pj-Fop" id="qgV-rU-XDI"/>
                         <outlet property="lastNameTextField" destination="fz5-dq-UEt" id="fl4-9a-vWX"/>
+                        <outlet property="nextBtn" destination="DV2-g9-YHJ" id="Y9q-cH-rcN"/>
                         <outlet property="passwordTextField" destination="qJH-AI-ffj" id="623-Hn-VRH"/>
                         <outlet property="retypePasswordTextField" destination="YC2-Dr-pXe" id="gdP-ac-Vtn"/>
                         <outlet property="usernameTextField" destination="Efz-Zj-K9c" id="s2E-bw-CAI"/>
@@ -6754,7 +6756,11 @@ Just want to leave a suggestion or let us know how much you love us? Drop us a l
         <image name="1_number" width="88" height="92"/>
         <image name="2_disabled" width="89" height="92"/>
         <image name="2_number" width="88" height="92"/>
-        <image name="37A0E894-D7BB-4765-A60C-CAC61D3F66CA" width="2081" height="292">
+        <image name="3_disabled" width="89" height="91"/>
+        <image name="3_number" width="88" height="92"/>
+        <image name="4_disabled" width="89" height="92"/>
+        <image name="4_number" width="88" height="92"/>
+        <image name="6D4E3A06-2A5E-462D-9A59-3D605E8BD3DD" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -47320,10 +47326,6 @@ DQAlIRwAJSEgACUhJwAlIS8AJSE8ACUhQQAlIUMAJSFFACUhSgAlIVIAJSFVACUhWgAlIWIAJSFlACUh
 dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
 </mutableData>
         </image>
-        <image name="3_disabled" width="89" height="91"/>
-        <image name="3_number" width="88" height="92"/>
-        <image name="4_disabled" width="89" height="92"/>
-        <image name="4_number" width="88" height="92"/>
         <image name="addPhotoAsset 1" width="120" height="125"/>
         <image name="add_profile" width="119" height="118"/>
         <image name="back_btn.png" width="34" height="28"/>

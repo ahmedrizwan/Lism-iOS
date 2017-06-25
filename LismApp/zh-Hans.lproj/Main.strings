@@ -140,6 +140,26 @@
 "Price: High -Low" = "价格：高 - 低";
 "Sort Items" = "排序项目";
 
+"Please enter a valid username" = "请输入有效的用户名" ;
+"Password length should be greater than 5" = "密码长度应大于5";
+"Login Unsuccessful" = "登录不成功";
+
+"Please enter name" = "请输入名称";
+"Please enter email" = "请输入电子邮件";
+"Email not valid" = "电子邮件无效";
+"Please enter username" = "请输入用户名";
+"Password length should be greater than 6" = "密码长度应大于6";
+"Password do not match"  = "密码不匹配";
+"LOGIN" = "密码不匹配";
+"NEXT" = "下一个";
+"bought your product" = "买了你的产品";
+"started following you!" = "开始关注您!";
+"liked your product" = "喜欢你的产品";
+"commented on your product" = "评论你的产品";
+"confirmed your product" =  "证实您的产品";
+"sent your product" = "发送你的产品";
+
+
 
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";

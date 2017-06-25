@@ -27,83 +27,25 @@ extension String {
 
 class LoginViewController: UIViewController {
     
-    lazy var logoImageView: UIImageView = {
-        let image = UIImage()
-        let imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        let imageViewHeightConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0)
-        imageView.addConstraints([imageViewHeightConstraint])
-        
-        return UIImageView(image: image)
-    }()
     
-    
-    
-    lazy var usernameTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Phone/Email/Username"
-        textField.autocapitalizationType = .none
-        
-        return textField
-    }()
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Password"
-        textField.isSecureTextEntry = true
-        
-        return textField
-    }()
-    
-    lazy var loginButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Login", for: .normal)
-        button.backgroundColor = UIColor.black
-        button.addTarget(self, action: #selector(onLoginButtonPress), for: .touchUpInside)
-        
-        return button
-    }()
-    lazy var forgotPasswordButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Forgot Password", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        
-        return button
-    }()
-    
-    lazy var validationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.red
-        label.font = UIFont(name: "Arial", size: 12.0)
-        
-        return label
-    }()
-    
-    lazy var stackView: UIStackView = {
-        let sV = UIStackView(arrangedSubviews: [self.logoImageView, self.usernameTextField, self.passwordTextField, self.loginButton, self.forgotPasswordButton])
-        sV.translatesAutoresizingMaskIntoConstraints = false
-        sV.axis = .vertical
-        sV.distribution = .fill
-        sV.spacing = 16.0
-        
-        return sV
-    }()
-    
-    lazy var centerXStackView: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.stackView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-        
-        return constraint
-    }()
-    lazy var centerYStackView: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.stackView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        
-        return constraint
-    }()
+    @IBOutlet var usernameTextField : UITextField!
+    @IBOutlet var passwordTextField : UITextField!
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        usernameTextField.autocapitalizationType = .none
+        passwordTextField.isSecureTextEntry = true
+      
+        passwordTextField.layer.borderWidth = 1.0
+        passwordTextField.layer.borderColor = UIColor.gray.cgColor
+       
+        usernameTextField.layer.borderWidth = 1.0
+        usernameTextField.layer.borderColor = UIColor.gray.cgColor
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,10 +53,7 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
 
-        view.backgroundColor = UIColor.white
 
-        view.addSubview(stackView)
-        view.addConstraints([centerXStackView, centerYStackView])
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,11 +65,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLoginButtonPress() {
         if let isValidEmail = usernameTextField.text?.isValidEmail(), !isValidEmail {
-            validationLabel.text = "Please enter a valid username"
-            stackView.insertArrangedSubview(validationLabel, at: 0)
+            Constants.showAlert(message: "Please enter a valid username", view: self)
             
         } else if let isValidPassword = passwordTextField.text?.isValidPassword(), !isValidPassword {
-            validationLabel.text = "Password length should be greater than 5"
+            Constants.showAlert(message: "Password length should be greater than 5", view: self)
+
             
         } else {
             let query = AVUser.query()
@@ -178,30 +117,7 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     // MARK: - Keyboard
-    
-    override func keyboardWillShow(notification: NSNotification) {
-        if(centerYStackView.constant == 0) {
-            
-            if let keyboardFrame = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]! as? CGRect {
-                let finalFrame = view.convert(keyboardFrame, from: nil)
-                centerYStackView.constant = stackView.frame.origin.y + finalFrame.size.height * -1
-            }
-            
-            UIView.animate(withDuration: 1.0) {
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    override func keyboardWillHide(notification: NSNotification) {
-        centerYStackView.constant = 0.0
-        UIView.animate(withDuration: 1.0) { 
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-
-    /*
+      /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

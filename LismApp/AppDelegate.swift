@@ -28,17 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let navigationController = UINavigationController()
         
         var mainViewController = UIViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
         if(AVUser.current() != nil)
         {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
            mainViewController = storyboard.instantiateViewController(withIdentifier: "ProductViewController")
             
         }
         else{
             
-            mainViewController = MainViewController()
-
+            //mainViewController = MainViewController()
+            
+            mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
         }
         navigationController.viewControllers = [mainViewController]
         navigationController.navigationBar.barTintColor = UIColor.white
@@ -50,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         navigationController.navigationBar.backItem?.title = ""
         
         navigationController.navigationItem.titleView = imageView
-
+navigationController.navigationBar.isHidden = true
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController
         self.window?.backgroundColor = UIColor.white

@@ -12,131 +12,15 @@ import DigitsKit
 
 class RegistrationViewController: UIViewController {
 
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        let font = UIFont(name: "Arial", size: 32.0)
-        let attributedTitleString = NSAttributedString(string: "Register Your LisM", attributes: [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: font!])
-        label.attributedText = attributedTitleString
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
-    lazy var validationLabel: UILabel = {
-        var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.red
-        label.font = UIFont(name: "Arial", size: 16.0)
-        
-        return label
-    }()
-    
-    lazy var fullNameTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Full Name"
-        textField.returnKeyType = .next
-        textField.borderStyle = .roundedRect
-        textField.delegate = self
-        
-        return textField
-    }()
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Email"
-        textField.returnKeyType = .next
-        textField.autocapitalizationType = .none
-        textField.borderStyle = .roundedRect
-        textField.delegate = self
-        
-        return textField
-    }()
-    lazy var usernameTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "UserName"
-        textField.returnKeyType = .next
-        textField.borderStyle = .roundedRect
-        textField.delegate = self
-        
-        return textField
-    }()
-    lazy var passwordTextField: UITextField = {
-       let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Password"
-        textField.returnKeyType = .next
-        textField.isSecureTextEntry = true
-        textField.autocapitalizationType = .none
-        textField.borderStyle = .roundedRect
-        textField.delegate = self
-        
-        return textField
-    }()
-    lazy var rePasswordTextField: UITextField = {
-       let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Re-Type Password"
-        textField.returnKeyType = .next
-        textField.isSecureTextEntry = true
-        textField.autocapitalizationType = .none
-        textField.borderStyle = .roundedRect
-        textField.delegate = self
-        
-        return textField
-    }()
-    
-    lazy var nextButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Next", for: .normal)
-        button.backgroundColor = UIColor.gray
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(onNextButtonPress), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    lazy var stackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.validationLabel, self.fullNameTextField, self.emailTextField, self.usernameTextField, self.passwordTextField, self.rePasswordTextField])
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.axis = .vertical
-        sv.distribution = .fill
-        sv.spacing = 16.0
-        
-        return sv
-    }()
-    
-    lazy var centerXStackView: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.stackView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-        
-        return constraint
-    }()
-    lazy var centerYStackView: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.stackView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        
-        return constraint
-    }()
-    lazy var widthStackViewConstraint: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.stackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 240.0)
-        
-        return constraint
-    }()
-    
-    lazy var nextButtonPinToBottomConstraint: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.nextButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-        
-        return constraint
-    }()
-    lazy var nextButtonWidthConstraint: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: self.nextButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.view.frame.width)
-        
-        return constraint
-    }()
-    
-    var keyboardIsShowing: Bool = false
+    @IBOutlet var firstNameTextField : UITextField!
+    @IBOutlet var lastNameTextField : UITextField!
+    @IBOutlet var emailTextField : UITextField!
+
+    @IBOutlet var usernameTextField : UITextField!
+    @IBOutlet var passwordTextField : UITextField!
+    @IBOutlet var retypePasswordTextField : UITextField!
+
+      var keyboardIsShowing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,20 +30,31 @@ class RegistrationViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
-        view.backgroundColor = UIColor.white
-        view.addSubview(stackView)
-        view.addConstraints([centerXStackView, centerYStackView, widthStackViewConstraint])
-        
-        view.addSubview(titleLabel)
-        let titleLabelCenterXConstraint = NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-        let titleLabelTrailingStackViewConstraint = NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: stackView, attribute: .top, multiplier: 1.0, constant: -110.0)
-        view.addConstraints([titleLabelCenterXConstraint, titleLabelTrailingStackViewConstraint])
-        
-        view.addSubview(nextButton)
-        view.addConstraints([nextButtonPinToBottomConstraint, nextButtonWidthConstraint])
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.styleTextField(textField: usernameTextField)
+        self.styleTextField(textField: passwordTextField)
+        self.styleTextField(textField: retypePasswordTextField)
+        self.styleTextField(textField: emailTextField)
+        self.styleTextField(textField: firstNameTextField)
+        self.styleTextField(textField: lastNameTextField)
+
+
+
+
+        
+    }
+    func styleTextField(textField : UITextField)
+    {
+        
+        textField.layer.borderWidth = 1.0
+        textField.layer.borderColor = UIColor.gray.cgColor
+
+    
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -174,12 +69,13 @@ class RegistrationViewController: UIViewController {
         avUser.username = usernameTextField.text!
         avUser.password = passwordTextField.text!
         avUser.email = emailTextField.text!
-        avUser.setObject(fullNameTextField.text!, forKey: "fullName")
+        avUser.setObject("\(firstNameTextField.text!) \(lastNameTextField.text!)", forKey: "fullName")
         avUser.signUpInBackground { (result, error) in
             if error == nil {
                 self.verifyPhoneNumber()
             } else {
                 print("ERROR Signing UP \(error)")
+                Constants.showAlert(message: error!.localizedDescription, view: self)
             }
         }
     }
@@ -210,49 +106,37 @@ class RegistrationViewController: UIViewController {
     
     // MARK: - Button Actions
     
-    func onNextButtonPress() {
+  @IBAction  func onNextButtonPress() {
 
-        if let fullName = fullNameTextField.text, fullName.characters.count == 0 {
-            validationLabel.text = "Please enter name"
+        if let fullName = firstNameTextField.text, fullName.characters.count == 0   || lastNameTextField.text?.characters.count == 0 {
+           
+            Constants.showAlert(message: "Please enter name", view: self)
+            
         } else if let email = emailTextField.text, email.characters.count == 0 {
-            validationLabel.text = "Please enter email"
+            Constants.showAlert(message: "Please enter email", view: self)
+
+            
         } else if let email = emailTextField.text, !email.isValidEmail() {
-            validationLabel.text = "Email not valid"
+            
+            Constants.showAlert(message: "Email not valid", view: self)
+
         } else if let username = usernameTextField.text, username.characters.count == 0 {
-            validationLabel.text = "Please enter username"
+            Constants.showAlert(message: "Please enter username", view: self)
+
+            
         } else if let password = passwordTextField.text, !password.isValidPassword() {
-            validationLabel.text = "Password length should be greater than 6"
-        } else if let password = passwordTextField.text, let rePassword = rePasswordTextField.text, password != rePassword {
-            validationLabel.text = "Password do not match"
+            Constants.showAlert(message:  "Password length should be greater than 6", view: self)
+
+        } else if let password = passwordTextField.text, let rePassword = retypePasswordTextField.text, password != rePassword {
+            Constants.showAlert(message:  "Password do not match", view: self)
+
+            
         } else {
             registerAVUser()
         }
     }
     
-    // MARK: - Keyboard
     
-    override func keyboardWillShow(notification: NSNotification) {
-        if(!keyboardIsShowing) {
-            keyboardIsShowing = true
-            
-            if let keyboardFrame = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]! as? CGRect {
-                let finalFrame = view.convert(keyboardFrame, from: nil)
-                centerYStackView.constant = stackView.frame.origin.y + finalFrame.size.height * -1
-            }
-            
-            UIView.animate(withDuration: 1.0) {
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    override func keyboardWillHide(notification: NSNotification) {
-        keyboardIsShowing = false
-        centerYStackView.constant = 0.0
-        UIView.animate(withDuration: 1.0) {
-            self.view.layoutIfNeeded()
-        }
-    }
   
 
     /*
@@ -275,7 +159,7 @@ extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
-        case fullNameTextField:
+        case firstNameTextField:
             emailTextField.becomeFirstResponder()
             break
         case emailTextField:
@@ -285,7 +169,7 @@ extension RegistrationViewController: UITextFieldDelegate {
             passwordTextField.becomeFirstResponder()
             break
         case passwordTextField:
-            rePasswordTextField.becomeFirstResponder()
+            retypePasswordTextField.becomeFirstResponder()
             break
         default:
             textField.resignFirstResponder()

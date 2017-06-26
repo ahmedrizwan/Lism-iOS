@@ -102,12 +102,12 @@ static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
     {
         
         let attributedString = NSMutableAttributedString(string:string)
-        attributedString.addAttribute(NSFontAttributeName , value: UIFont(name: "Avenir", size: CGFloat(8))!,range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSFontAttributeName , value: UIFont(name: "Avenir", size: CGFloat(9.5))!,range: NSMakeRange(0, attributedString.length))
         
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 0.45
-        paragraphStyle.maximumLineHeight = 8 // change line spacing between each line like 30 or 40
+        paragraphStyle.lineSpacing = 0.75
+        paragraphStyle.maximumLineHeight = 10 // change line spacing between each line like 30 or 40
         
         paragraphStyle.alignment = NSTextAlignment.center
         

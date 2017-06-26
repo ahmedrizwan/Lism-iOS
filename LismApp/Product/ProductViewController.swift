@@ -432,12 +432,12 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "prodcutsCustomCell", for: indexPath as IndexPath) as! ProductCollectionViewCell
         let productObj = self.items[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.nameLabel.text = productObj.brand
+        cell.nameLabel.text = productObj.brand.uppercased()
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
         }
-        cell.priceLabel.text = "¥ \(productObj.sellingPrice)" ;
+        cell.priceLabel.text = "¥\(productObj.sellingPrice)" ;
 
         if(productObj.status == Constants.sent || productObj.status == Constants.waiting_to_be_sent)
         {
@@ -451,7 +451,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
-        Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+        Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
         if (indexPath.row + 1 == self.items.count  && !isloadingFav)
         {
             self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
@@ -463,7 +463,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2)
+        return CGSize(width: collectionView.bounds.width/2 - 20 , height: collectionView.bounds.width/2 + 60)
         
     }
     // MARK: - UICollectionViewDelegate protocol

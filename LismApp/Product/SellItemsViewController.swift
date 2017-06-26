@@ -38,6 +38,7 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.updateNoItemsDetailsView()
         self.getProductList()
 
     }
@@ -87,6 +88,7 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
                 {
                     
                     self.sellButtonReference.setTitle("SELL MORE".localized(using: "Main"), for: UIControlState.normal)
+                    self.noItemForSalesView.isHidden = true
     
               //  self.sellButtonReference.setTitle("SELL MORE", for: .normal)
                 self.productsTableView.reloadData()

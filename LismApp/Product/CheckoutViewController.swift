@@ -19,8 +19,10 @@ extension UINavigationController {
         }
     }
 }
-class CheckoutViewController: UIViewController
+class CheckoutViewController: UIViewController,UITextViewDelegate
 {
+    let PLACEHOLDER_TEXT = "Enter Address"
+
     @IBOutlet weak var progressView : UIActivityIndicatorView!
     @IBOutlet var addressButton : UIButton!
     @IBOutlet var textViewForAddress : UITextView!
@@ -52,6 +54,12 @@ class CheckoutViewController: UIViewController
         defaultAddressLabel.text = "Default address".localized(using: "Main")
         addNewAddressBtn.setTitle("Add New Address".localized(using: "Main"), for: .normal)
         checkOutBtn.setTitle("CHECKOUT".localized(using: "Main"), for: .normal)
+        textViewForAddress.layer.borderColor = UIColor.gray.cgColor
+        
+        textViewForAddress.layer.borderWidth = 1.0
+        textViewForAddress.delegate = self
+        applyPlaceholderStyle(aTextview: textViewForAddress, placeholderText: PLACEHOLDER_TEXT)
+
     }
     override func  viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -126,7 +134,62 @@ class CheckoutViewController: UIViewController
 
     }
     }
- 
+    func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String)
+    {
+        // make it look (initially) like a placeholder
+        aTextview.textColor = UIColor.lightGray
+        aTextview.text = placeholderText
+    }
+    
+    func applyNonPlaceholderStyle(aTextview: UITextView)
+    {
+        // make it look like normal text instead of a placeholder
+        aTextview.textColor = UIColor.darkText
+        aTextview.alpha = 1.0
+        
+    }
+    func textViewShouldBeginEditing(aTextView: UITextView) -> Bool
+    {
+        if aTextView == textViewForAddress && aTextView.text == PLACEHOLDER_TEXT
+        {
+            // move cursor to start
+            //moveCursorToStart(aTextView: aTextView)
+            aTextView.text = ""
+        }
+        return true
+    }
+    func moveCursorToStart(aTextView: UITextView)
+    {
+        aTextView.selectedRange = NSMakeRange(0, 0);
+        
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let newLength = textView.text.utf16.count + text.utf16.count - range.length
+        if newLength > 0 // have text, so don't show the placeholder
+        {
+            // check if the only text is the placeholder and remove it if needed
+            // unless they've hit the delete button with the placeholder displayed
+            if textView == textViewForAddress && textView.text == PLACEHOLDER_TEXT
+            {
+                if text.utf16.count == 0 // they hit the back button
+                {
+                    return false // ignore it
+                }
+                applyNonPlaceholderStyle(aTextview: textView)
+                textView.text = ""
+            }
+            return true
+        }
+        else  // no text, so show the placeholder
+        {
+            applyPlaceholderStyle(aTextview: textView, placeholderText: PLACEHOLDER_TEXT)
+            moveCursorToStart(aTextView: textView)
+            return false
+        }
+    }
+    
+
     
 }
 

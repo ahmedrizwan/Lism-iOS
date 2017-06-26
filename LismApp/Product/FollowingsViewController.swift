@@ -47,7 +47,7 @@ class FollowingsViewController: UIViewController, UITableViewDelegate, UITableVi
     // cell height
     // cell height
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68
+        return 58
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -49,7 +49,7 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
     // cell height
     // cell height
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68
+        return 58
     }
 
     
@@ -65,9 +65,12 @@ class FollowersViewControllers: UIViewController, UITableViewDelegate, UITableVi
         {
             let userImageFile = parseFile as! AVFile
             userImageFile.getDataInBackground({ (data, error) in
+                if(data != nil && error == nil)
+                {
                 cell.userImageView.image = UIImage.init(data: data!)
                   cell.userImageView.layer.cornerRadius =    cell.userImageView.frame.size.width/2
                   cell.userImageView.clipsToBounds = true
+                }
                 
             })
         }

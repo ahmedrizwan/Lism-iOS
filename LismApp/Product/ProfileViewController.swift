@@ -90,6 +90,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         totalLikesLabel.text = "Total Likes".localized(using: "Main")
         followersLabel.text = "Followers".localized(using: "Main")
         followingsLabel.text = "Following".localized(using: "Main")
+        self.favoritesCollectionView.isHidden = true
 
 
     }
@@ -358,10 +359,10 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == productsCollectionView)
         {
-        return CGSize(width: collectionView.bounds.width/2 - 20, height: collectionView.bounds.height/2 + 70)
+       return CGSize(width: collectionView.bounds.width/2 - 20 , height: collectionView.bounds.width/2 + 60)
         
         }
-          return CGSize(width: collectionView.bounds.width/3, height: collectionView.bounds.height/3)
+          return CGSize(width: collectionView.bounds.width/3, height: collectionView.bounds.width/3)
         
     }
 //

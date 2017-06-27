@@ -50,6 +50,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var commentsBtnView : UIView!
     @IBOutlet weak var productDescriptionBtnView : UIView!
     @IBOutlet weak var thirdViewBtnView : UIView!
+	@IBOutlet weak var checkoutBtnsView : UIView!
+
     @IBOutlet var constraintForViewidth : NSLayoutConstraint!
 
 
@@ -100,6 +102,8 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.updateCount(relation: self.relation)
 					heightConstraint.constant = 300
 					heightConstraintForInnerView.constant  = 300
+					
+					
     }
 
 	
@@ -469,6 +473,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonTextView.text = self.productBO.prodcut_description
 					
 					self.produceAttributedText(string: "\("Color:".localized(using: "Main")) \(productBO.color) \n\("Material:".localized(using: "Main")) \(productBO.size) \n\("Condition:".localized(using: "Main")) \(productBO.condition)", textView: colorMaterialTextView)
+					self.checkoutBtnsView.isHidden = false;
 
     }
     
@@ -485,7 +490,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = false;
         policyView.isHidden = true;
-
+					self.checkoutBtnsView.isHidden = true;
         self.loadComments()
     }
     @IBAction func showPolicyView(sender : AnyObject)
@@ -501,7 +506,9 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
         policyView.isHidden = false;
-      
+					self.checkoutBtnsView.isHidden = true;
+
+					
     }
     func updateConstraints()
     {
@@ -586,9 +593,12 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCommentsCustomCell", for: indexPath ) as! PostCommentsCustomCell
 
             cell.delegate = self;
+									var frameRect = cell.inputTextField.frame;
+									frameRect.size.height = 75; // <-- Specify the height you want here.
+									cell.inputTextField.frame = frameRect;
 									cell.inputTextField.placeholder = "write comment to post".localized(using: "Main")
             cell.postBtn.tag  = indexPath.row
-									 cell.postBtn.setTitle("Post".localized(using: "Main"), for: .application)
+									 cell.postBtn.setTitle("POST COMMENT".localized(using: "Main"), for: .application)
         return cell
         }
         else
@@ -599,7 +609,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         
         
         // connect objects with our information from arrays
-        cell.nameLabel.text = commentBO.user.username
+        cell.nameLabel.text = "@\(commentBO.user.username)"
         cell.commentsTextView.text = commentBO.comment
              return cell
         }

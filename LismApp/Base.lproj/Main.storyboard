@@ -796,7 +796,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CD38448C-AEA5-46EC-8BF6-89482E090A4E" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BF74A7EE-61AB-472D-9AC8-D40402A35F87" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="76" width="326" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1800,7 +1800,7 @@ Step3: Adda captivating description and post it!</string>
                                         </constraints>
                                         <state key="normal" image="back_btn_2.png"/>
                                         <connections>
-                                            <action selector="backbuttonActionWithSender:" destination="Un3-Hp-iKM" eventType="touchUpInside" id="e4T-VS-UTM"/>
+                                            <action selector="backbuttonActionWithSender:" destination="9QG-5S-z0u" eventType="touchUpInside" id="QsK-oP-tuW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2402,6 +2402,7 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="itemConditionLabel" destination="4Wd-fQ-cYn" id="qBM-sE-LCt"/>
                         <outlet property="itemsConditionBtn" destination="bJl-7A-mcn" id="Pbx-Iv-h8c"/>
                         <outlet property="mainColorsView" destination="ck2-TG-6g2" id="L1m-wd-Q57"/>
+                        <outlet property="myLessLabel" destination="Vvs-UC-rUc" id="lSP-PS-ZMs"/>
                         <outlet property="postForSaleBtn" destination="jJj-DD-C4B" id="WnG-mY-Z6f"/>
                         <outlet property="productNameTextfield" destination="YMf-P2-DpG" id="vad-G0-ad2"/>
                         <outlet property="progressBar" destination="h1M-ID-4ZG" id="39E-Za-W6B"/>
@@ -2691,7 +2692,7 @@ Step3: Adda captivating description and post it!</string>
                                         </constraints>
                                         <state key="normal" image="back_btn_2.png"/>
                                         <connections>
-                                            <action selector="backbuttonActionWithSender:" destination="Un3-Hp-iKM" eventType="touchUpInside" id="5Ie-WW-7U3"/>
+                                            <action selector="backbuttonActionWithSender:" destination="get-zm-3Aq" eventType="touchUpInside" id="VDr-Wp-FYx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3294,6 +3295,7 @@ Step3: Adda captivating description and post it!</string>
                         <outlet property="itemConditionLabel" destination="3Cp-Ks-6PD" id="IcY-Ms-uGt"/>
                         <outlet property="itemsConditionBtn" destination="ApU-QR-xfK" id="B9p-p5-Ys3"/>
                         <outlet property="mainColorsView" destination="Lq9-pC-khE" id="g5K-bp-aPY"/>
+                        <outlet property="myLessLabel" destination="L17-BJ-L3P" id="nhp-2x-QS5"/>
                         <outlet property="postForSaleBtn" destination="hpq-jn-S7x" id="433-Rk-oMG"/>
                         <outlet property="productNameTextfield" destination="6cz-7m-YGr" id="Pu4-eQ-3xS"/>
                         <outlet property="progressBar" destination="08y-mh-UwD" id="Et2-vN-gLo"/>
@@ -5275,31 +5277,31 @@ Est. Retail ¥2,00</string>
                                     <constraint firstItem="tzc-3A-f7N" firstAttribute="leading" secondItem="FhF-0a-cmN" secondAttribute="leading" id="wgO-Za-VZ6"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="4" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="k6B-7s-y9U">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="4" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="k6B-7s-y9U">
                                 <rect key="frame" x="0.0" y="130" width="375" height="488"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.92148774862289429" green="0.92162030935287476" blue="0.92145884037017822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCustomCell" rowHeight="50" id="tlq-qh-T2d" userLabel="SettingsCustomCell" customClass="SettingsCustomCell" customModule="LismApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="4" width="375" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCustomCell" rowHeight="60" id="tlq-qh-T2d" userLabel="SettingsCustomCell" customClass="SettingsCustomCell" customModule="LismApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="4" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tlq-qh-T2d" id="J0m-Sg-9UK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybG-IX-k7i">
-                                                    <rect key="frame" x="16" y="9" width="344" height="32.5"/>
+                                                    <rect key="frame" x="16" y="9" width="344" height="42"/>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="FOLLOWING">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3je-Jr-Vl4">
-                                                    <rect key="frame" x="341" y="7" width="8" height="35"/>
+                                                    <rect key="frame" x="341" y="7" width="14" height="53"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="3Xi-eX-jCM"/>
-                                                        <constraint firstAttribute="width" constant="8" id="xbS-mp-E6J"/>
+                                                        <constraint firstAttribute="height" constant="53" id="3Xi-eX-jCM"/>
+                                                        <constraint firstAttribute="width" constant="14" id="xbS-mp-E6J"/>
                                                     </constraints>
                                                     <state key="normal" image="white_arrow"/>
                                                 </button>
@@ -5308,10 +5310,10 @@ Est. Retail ¥2,00</string>
                                             <constraints>
                                                 <constraint firstItem="ybG-IX-k7i" firstAttribute="leading" secondItem="J0m-Sg-9UK" secondAttribute="leadingMargin" constant="8" id="3Bu-lA-HVN"/>
                                                 <constraint firstItem="ybG-IX-k7i" firstAttribute="top" secondItem="J0m-Sg-9UK" secondAttribute="topMargin" constant="1" id="8qa-pw-k0X"/>
-                                                <constraint firstAttribute="trailing" secondItem="3je-Jr-Vl4" secondAttribute="trailing" constant="26" id="CuR-Ts-Vgm"/>
+                                                <constraint firstAttribute="trailing" secondItem="3je-Jr-Vl4" secondAttribute="trailing" constant="20" id="CuR-Ts-Vgm"/>
                                                 <constraint firstItem="3je-Jr-Vl4" firstAttribute="top" secondItem="J0m-Sg-9UK" secondAttribute="top" constant="7" id="VpS-w1-VB5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ybG-IX-k7i" secondAttribute="trailing" constant="7" id="g4x-Je-rq9"/>
-                                                <constraint firstAttribute="bottom" secondItem="3je-Jr-Vl4" secondAttribute="bottom" constant="7" id="iGg-26-71j"/>
+                                                <constraint firstAttribute="bottom" secondItem="3je-Jr-Vl4" secondAttribute="bottom" constant="-0.5" id="iGg-26-71j"/>
                                                 <constraint firstItem="ybG-IX-k7i" firstAttribute="bottom" secondItem="J0m-Sg-9UK" secondAttribute="bottomMargin" id="zbz-05-B8p"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -6781,7 +6783,7 @@ Just want to leave a suggestion or let us know how much you love us? Drop us a l
         <image name="3_number" width="88" height="92"/>
         <image name="4_disabled" width="89" height="92"/>
         <image name="4_number" width="88" height="92"/>
-        <image name="CD38448C-AEA5-46EC-8BF6-89482E090A4E" width="2081" height="292">
+        <image name="BF74A7EE-61AB-472D-9AC8-D40402A35F87" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -47393,13 +47395,13 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
         <image name="white_arrow" width="24" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mrg-S8-EKf"/>
-        <segue reference="kkx-cW-Cmg"/>
-        <segue reference="4A3-eO-F6e"/>
-        <segue reference="Jlj-Dl-HZl"/>
+        <segue reference="lXO-Mw-BCE"/>
+        <segue reference="bVG-bH-5WT"/>
+        <segue reference="TDR-ha-byU"/>
+        <segue reference="kKP-eT-nxr"/>
+        <segue reference="hys-1I-bmp"/>
         <segue reference="dsA-C6-Za7"/>
-        <segue reference="SCc-gm-MfN"/>
-        <segue reference="ezl-eM-wPN"/>
+        <segue reference="4A3-eO-F6e"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

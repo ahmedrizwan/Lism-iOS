@@ -28,7 +28,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
     @IBOutlet weak var crossBtn3 : UIButton!
     @IBOutlet weak var crossBtn4 : UIButton!
     @IBOutlet weak var crossBtn5 : UIButton!
-    
+    @IBOutlet weak var myLessLabel : UILabel!
+
     @IBOutlet weak var colorsBtn : UIButton!
     
     @IBOutlet weak var productNameTextfield: UITextField!
@@ -91,6 +92,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         allButtons.append(addCamBtn5)
         
         self.hideKeyboardWhenTappedAround()
+        myLessLabel.text = "My Less".localized(using: "Main")
+
         
         }
 

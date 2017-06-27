@@ -326,6 +326,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.selectedBtn.isUserInteractionEnabled = true
         dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])

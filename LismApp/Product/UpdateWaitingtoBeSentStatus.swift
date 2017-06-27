@@ -33,7 +33,7 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         orderNumLabel.text = "\("Order #:".localized(using: "Main")) \(self.productObj.objectId!)"
         sizeLabel.text = "\("Size".localized(using: "Main")) \(self.productObj.size)"
         trackingField.layer.borderWidth = 1.0
-        trackingField.layer.borderColor = UIColor.gray.cgColor
+        trackingField.layer.borderColor = UIColor.lightGray.cgColor
 
         buyerDetailTextView.isUserInteractionEnabled = false
         self.courierBtn.setTitle("Courier 1", for: .normal)
@@ -49,7 +49,7 @@ class UpdateWaitingtoBeSentStatus: UIViewController,UITabBarDelegate
         }
         
         
-        trackingField.layer.borderColor = UIColor.gray.cgColor
+        trackingField.layer.borderColor = UIColor.lightGray.cgColor
         if(self.productObj.productImageUrl != nil)
         {
             self.imageView.sd_setImage(with: self.productObj.productImageUrl, placeholderImage: nil)

@@ -138,11 +138,11 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         brandTextfield.layer.borderWidth = 1.0
         sellingPriceTextField.layer.borderWidth = 1.0
         estimatedTextField.layer.borderWidth = 1.0
-        descTextView.layer.borderColor = UIColor.gray.cgColor
-        productNameTextfield.layer.borderColor = UIColor.gray.cgColor
-        brandTextfield.layer.borderColor = UIColor.gray.cgColor
-        sellingPriceTextField.layer.borderColor = UIColor.gray.cgColor
-        estimatedTextField.layer.borderColor = UIColor.gray.cgColor
+        descTextView.layer.borderColor = UIColor.lightGray.cgColor
+        productNameTextfield.layer.borderColor = UIColor.lightGray.cgColor
+        brandTextfield.layer.borderColor = UIColor.lightGray.cgColor
+        sellingPriceTextField.layer.borderColor = UIColor.lightGray.cgColor
+        estimatedTextField.layer.borderColor = UIColor.lightGray.cgColor
         
         self.productNameTextfield.text = self.productObj.name
         self.brandTextfield.text = self.productObj.brand

@@ -39,10 +39,10 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
       
         passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.borderColor = UIColor.gray.cgColor
+        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
        
         usernameTextField.layer.borderWidth = 1.0
-        usernameTextField.layer.borderColor = UIColor.gray.cgColor
+        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
         
         loginBtn.setTitle("LOGIN".localized(using: "Main"), for: .normal)
     }

@@ -53,7 +53,7 @@ class RegistrationViewController: UIViewController {
     {
         
         textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor.lightGray.cgColor
 
     
     }

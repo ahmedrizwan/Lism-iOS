@@ -59,7 +59,7 @@
                                 </connections>
                             </tabBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eBP-Wk-OIG">
-                                <rect key="frame" x="0.0" y="86" width="355" height="532"/>
+                                <rect key="frame" x="0.0" y="88" width="355" height="530"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SgD-80-CqW">
                                     <size key="itemSize" width="157" height="240"/>
@@ -276,7 +276,7 @@ Est. Retail ¥2,00</string>
                                 </constraints>
                             </view>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN5-ZA-A2U">
-                                <rect key="frame" x="0.0" y="62" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="25"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.35999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lb1-1b-aZd">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
@@ -412,10 +412,10 @@ Est. Retail ¥2,00</string>
                             <constraint firstAttribute="trailing" secondItem="fVW-ec-Xmy" secondAttribute="trailing" id="NyW-76-2bz"/>
                             <constraint firstAttribute="trailing" secondItem="XN5-ZA-A2U" secondAttribute="trailing" id="RsR-Q4-je6"/>
                             <constraint firstAttribute="trailing" secondItem="eBP-Wk-OIG" secondAttribute="trailing" constant="20" id="ca9-rs-6HS"/>
-                            <constraint firstItem="XN5-ZA-A2U" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="62" id="evH-QX-Jaj"/>
+                            <constraint firstItem="XN5-ZA-A2U" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="55" id="evH-QX-Jaj"/>
                             <constraint firstItem="eCE-av-p6j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ffu-hD-M5k"/>
                             <constraint firstItem="jqN-pI-lRt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nFN-J1-Q1q"/>
-                            <constraint firstItem="eBP-Wk-OIG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="86" id="qez-7b-sHB"/>
+                            <constraint firstItem="eBP-Wk-OIG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="88" id="qez-7b-sHB"/>
                             <constraint firstAttribute="trailing" secondItem="Pv3-ul-Rq6" secondAttribute="trailing" id="sI9-2X-PIW"/>
                             <constraint firstItem="eCE-av-p6j" firstAttribute="top" secondItem="eBP-Wk-OIG" secondAttribute="bottom" id="tXv-80-drF"/>
                             <constraint firstItem="jqN-pI-lRt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wa9-GY-S8m"/>
@@ -796,7 +796,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="628F9C72-F9BB-465C-8389-B29DC1F80B73" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CD38448C-AEA5-46EC-8BF6-89482E090A4E" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="76" width="326" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -958,7 +958,7 @@ Est. Retail ¥2,00</string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                        <color key="textColor" red="0.66770566740000004" green="0.67120150860000005" blue="0.67120150860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.070588235289999995" green="0.047058823530000002" blue="0.043137254899999998" alpha="0.3639402799" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -1258,7 +1258,7 @@ Est. Retail ¥2,00</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3pz-Wq-1qa">
                                 <rect key="frame" x="0.0" y="56" width="375" height="532"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="532" id="I5N-4W-SOW"/>
                                 </constraints>
@@ -1284,25 +1284,25 @@ Est. Retail ¥2,00</string>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-kd-rxH">
-                                                    <rect key="frame" x="43" y="12" width="65" height="70"/>
+                                                    <rect key="frame" x="43" y="12" width="55" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="65" id="PeP-6N-fJg"/>
-                                                        <constraint firstAttribute="height" constant="70" id="nkp-ml-Ck3"/>
+                                                        <constraint firstAttribute="width" constant="55" id="PeP-6N-fJg"/>
+                                                        <constraint firstAttribute="height" constant="60" id="nkp-ml-Ck3"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZhM-dZ-fcw">
-                                                    <rect key="frame" x="120" y="12" width="175" height="45"/>
+                                                    <rect key="frame" x="120" y="11" width="175" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="175" id="l3A-DW-5H9"/>
                                                     </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" red="0.60778832439999997" green="0.60787826779999998" blue="0.60776865479999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIA-RY-VlA">
-                                                    <rect key="frame" x="122" y="54" width="73" height="30"/>
+                                                    <rect key="frame" x="120" y="52" width="73" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="73" id="URW-HK-x24"/>
                                                         <constraint firstAttribute="height" constant="30" id="bJb-QP-JK2"/>
@@ -1314,10 +1314,10 @@ Est. Retail ¥2,00</string>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0vr-1l-dDA">
-                                                    <rect key="frame" x="304" y="20" width="55" height="60"/>
+                                                    <rect key="frame" x="304" y="20" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="6jA-1C-Tep"/>
-                                                        <constraint firstAttribute="width" constant="55" id="AcP-iH-AEj"/>
+                                                        <constraint firstAttribute="height" constant="50" id="6jA-1C-Tep"/>
+                                                        <constraint firstAttribute="width" constant="50" id="AcP-iH-AEj"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSU-ri-BmS">
@@ -1330,22 +1330,22 @@ Est. Retail ¥2,00</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="0vr-1l-dDA" firstAttribute="top" secondItem="TXy-e1-WXn" secondAttribute="topMargin" constant="12" id="2tV-e7-J6Q"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="jIA-RY-VlA" secondAttribute="bottom" constant="-2" id="5os-uC-LiW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jIA-RY-VlA" secondAttribute="bottom" id="5os-uC-LiW"/>
                                                 <constraint firstItem="SLf-Ep-eac" firstAttribute="top" secondItem="TXy-e1-WXn" secondAttribute="topMargin" constant="31" id="9R5-md-O0w"/>
                                                 <constraint firstAttribute="bottom" secondItem="zSU-ri-BmS" secondAttribute="bottom" constant="-10" id="Dow-da-Eje"/>
                                                 <constraint firstItem="SLf-Ep-eac" firstAttribute="leading" secondItem="TXy-e1-WXn" secondAttribute="leadingMargin" constant="8" id="J4a-ZG-ACf"/>
-                                                <constraint firstItem="jIA-RY-VlA" firstAttribute="leading" secondItem="rRY-kd-rxH" secondAttribute="trailing" constant="14" id="JRe-PY-Uqx"/>
+                                                <constraint firstItem="jIA-RY-VlA" firstAttribute="leading" secondItem="rRY-kd-rxH" secondAttribute="trailing" constant="22" id="JRe-PY-Uqx"/>
                                                 <constraint firstItem="rRY-kd-rxH" firstAttribute="leading" secondItem="SLf-Ep-eac" secondAttribute="trailing" constant="9" id="OuK-1k-PZ1"/>
-                                                <constraint firstItem="ZhM-dZ-fcw" firstAttribute="top" secondItem="rRY-kd-rxH" secondAttribute="top" id="YCa-O9-1Ei"/>
+                                                <constraint firstItem="ZhM-dZ-fcw" firstAttribute="top" secondItem="rRY-kd-rxH" secondAttribute="top" constant="-1" id="YCa-O9-1Ei"/>
                                                 <constraint firstItem="rRY-kd-rxH" firstAttribute="top" secondItem="TXy-e1-WXn" secondAttribute="topMargin" constant="4" id="bey-cH-cdb"/>
-                                                <constraint firstItem="ZhM-dZ-fcw" firstAttribute="leading" secondItem="rRY-kd-rxH" secondAttribute="trailing" constant="12" id="gcR-ol-ITX"/>
+                                                <constraint firstItem="ZhM-dZ-fcw" firstAttribute="leading" secondItem="rRY-kd-rxH" secondAttribute="trailing" constant="22" id="gcR-ol-ITX"/>
                                                 <constraint firstItem="zSU-ri-BmS" firstAttribute="leading" secondItem="TXy-e1-WXn" secondAttribute="leading" id="ilE-XN-bwj"/>
-                                                <constraint firstItem="0vr-1l-dDA" firstAttribute="trailing" secondItem="TXy-e1-WXn" secondAttribute="trailingMargin" constant="-8" id="kDd-tQ-9nP"/>
+                                                <constraint firstItem="0vr-1l-dDA" firstAttribute="trailing" secondItem="TXy-e1-WXn" secondAttribute="trailingMargin" constant="-13" id="kDd-tQ-9nP"/>
                                                 <constraint firstItem="rRY-kd-rxH" firstAttribute="top" secondItem="TXy-e1-WXn" secondAttribute="topMargin" constant="4" id="la4-P6-Wzh"/>
-                                                <constraint firstItem="jIA-RY-VlA" firstAttribute="top" secondItem="ZhM-dZ-fcw" secondAttribute="bottom" constant="-3" id="nU1-uA-s4e"/>
+                                                <constraint firstItem="jIA-RY-VlA" firstAttribute="top" secondItem="ZhM-dZ-fcw" secondAttribute="bottom" constant="1" id="nU1-uA-s4e"/>
                                                 <constraint firstAttribute="trailing" secondItem="zSU-ri-BmS" secondAttribute="trailing" id="rcF-dW-iur"/>
                                                 <constraint firstItem="0vr-1l-dDA" firstAttribute="leading" secondItem="ZhM-dZ-fcw" secondAttribute="trailing" constant="9" id="rof-1J-Yfr"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="rRY-kd-rxH" secondAttribute="bottom" id="vdh-Af-8K6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rRY-kd-rxH" secondAttribute="bottom" constant="10" id="vdh-Af-8K6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2454,7 +2454,7 @@ Step3: Adda captivating description and post it!</string>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTg-L0-bpm">
-                                        <rect key="frame" x="12" y="16" width="17" height="16"/>
+                                        <rect key="frame" x="28" y="16" width="17" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="7Nh-e5-3Ft"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="DZ6-BY-Vgi"/>
@@ -2470,7 +2470,7 @@ Step3: Adda captivating description and post it!</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2J7-vB-HkX"/>
-                                    <constraint firstItem="QTg-L0-bpm" firstAttribute="leading" secondItem="ICE-GP-65x" secondAttribute="leading" constant="12" id="INc-hI-ejn"/>
+                                    <constraint firstItem="QTg-L0-bpm" firstAttribute="leading" secondItem="ICE-GP-65x" secondAttribute="leading" constant="28" id="INc-hI-ejn"/>
                                     <constraint firstItem="1mD-qz-C2m" firstAttribute="centerX" secondItem="ICE-GP-65x" secondAttribute="centerX" id="JLd-TD-yz8"/>
                                     <constraint firstAttribute="trailing" secondItem="eni-BN-Uww" secondAttribute="trailing" id="TG3-Mu-LFa"/>
                                     <constraint firstAttribute="bottom" secondItem="QTg-L0-bpm" secondAttribute="bottom" constant="18" id="b9r-fC-pkc"/>
@@ -3405,7 +3405,7 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstAttribute="height" constant="32" id="fCu-r9-Irx"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="qqB-Pf-3mQ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -3417,29 +3417,29 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstAttribute="height" constant="32" id="ZMg-WD-a7Z"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="127" id="gbI-ru-rFu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buyer Information:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4w-vc-bUY">
-                                        <rect key="frame" x="22" y="140" width="353" height="32"/>
+                                        <rect key="frame" x="22" y="131" width="353" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="Syv-AP-hCB"/>
                                             <constraint firstAttribute="height" constant="32" id="xJm-5V-cFb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-Rh-wBh">
-                                        <rect key="frame" x="22" y="8" width="70" height="70"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-Rh-wBh">
+                                        <rect key="frame" x="22" y="14" width="55" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="3iy-Ag-XtQ"/>
-                                            <constraint firstAttribute="height" constant="70" id="Xwl-Op-bdn"/>
+                                            <constraint firstAttribute="width" constant="55" id="3iy-Ag-XtQ"/>
+                                            <constraint firstAttribute="height" constant="60" id="Xwl-Op-bdn"/>
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fcp-PW-qSe">
-                                        <rect key="frame" x="22" y="180" width="332" height="184"/>
+                                        <rect key="frame" x="22" y="171" width="332" height="184"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="184" id="p0L-Q5-Y0j"/>
@@ -3449,16 +3449,16 @@ Step3: Adda captivating description and post it!</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rj-sh-UcZ">
-                                        <rect key="frame" x="22" y="373" width="332" height="47"/>
+                                        <rect key="frame" x="22" y="363" width="332" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="47" id="RDh-CJ-Bte"/>
+                                            <constraint firstAttribute="height" constant="37" id="RDh-CJ-Bte"/>
                                         </constraints>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Courier 1">
                                                     <attributes>
                                                         <color key="NSColor" red="0.1422139674" green="0.1429585431" blue="0.1429585431" alpha="0.69887126150000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                        <font key="NSFont" size="15" name="Avenir-Book"/>
                                                         <integer key="NSUnderline" value="1"/>
                                                     </attributes>
                                                 </fragment>
@@ -3469,13 +3469,13 @@ Step3: Adda captivating description and post it!</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TRACKING NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxS-Fp-ngA">
-                                        <rect key="frame" x="22" y="439" width="332" height="45"/>
+                                        <rect key="frame" x="22" y="423" width="332" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="FTc-XV-1QD"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="U8d-Tg-TWc"/>
+                                            <constraint firstAttribute="height" constant="37" id="FTc-XV-1QD"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="U8d-Tg-TWc"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" red="0.31415782489999999" green="0.31415782489999999" blue="0.31415782489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syh-uQ-X0J">
@@ -3484,7 +3484,7 @@ Step3: Adda captivating description and post it!</string>
                                             <constraint firstAttribute="height" constant="32" id="H9N-vH-y7U"/>
                                             <constraint firstAttribute="width" constant="127" id="aqp-bg-fN7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -3496,31 +3496,31 @@ Step3: Adda captivating description and post it!</string>
                                     <constraint firstItem="syh-uQ-X0J" firstAttribute="top" secondItem="DTK-EF-N8G" secondAttribute="bottom" id="3Qt-wN-Ug9"/>
                                     <constraint firstAttribute="trailing" secondItem="Fcp-PW-qSe" secondAttribute="trailing" constant="21" id="4go-04-oq5"/>
                                     <constraint firstItem="Fcp-PW-qSe" firstAttribute="top" secondItem="g4w-vc-bUY" secondAttribute="bottom" constant="8" id="7yK-1p-9fZ"/>
-                                    <constraint firstItem="YxS-Fp-ngA" firstAttribute="top" secondItem="6rj-sh-UcZ" secondAttribute="bottom" constant="19" id="AlA-wC-zku"/>
+                                    <constraint firstItem="YxS-Fp-ngA" firstAttribute="top" secondItem="6rj-sh-UcZ" secondAttribute="bottom" constant="23" id="AlA-wC-zku"/>
                                     <constraint firstItem="YxS-Fp-ngA" firstAttribute="leading" secondItem="I30-fY-TRm" secondAttribute="leading" constant="22" id="FGW-IR-SNn"/>
-                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="9" id="FrR-Br-8uD"/>
-                                    <constraint firstAttribute="bottom" secondItem="YxS-Fp-ngA" secondAttribute="bottom" constant="5" id="GpU-Np-RnD"/>
+                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="8" id="FrR-Br-8uD"/>
+                                    <constraint firstAttribute="bottom" secondItem="YxS-Fp-ngA" secondAttribute="bottom" constant="29" id="GpU-Np-RnD"/>
                                     <constraint firstItem="pMU-cL-sKb" firstAttribute="top" secondItem="syh-uQ-X0J" secondAttribute="bottom" constant="13" id="HmN-l4-VXr"/>
-                                    <constraint firstItem="pMU-cL-sKb" firstAttribute="top" secondItem="lOm-Rh-wBh" secondAttribute="bottom" constant="13" id="IEy-Go-gdn"/>
+                                    <constraint firstItem="pMU-cL-sKb" firstAttribute="top" secondItem="lOm-Rh-wBh" secondAttribute="bottom" constant="17" id="IEy-Go-gdn"/>
                                     <constraint firstItem="DTK-EF-N8G" firstAttribute="top" secondItem="I30-fY-TRm" secondAttribute="top" constant="14" id="JtN-ZE-iih"/>
                                     <constraint firstItem="Fcp-PW-qSe" firstAttribute="leading" secondItem="I30-fY-TRm" secondAttribute="leading" constant="22" id="MCO-BS-IFQ"/>
                                     <constraint firstItem="syh-uQ-X0J" firstAttribute="top" secondItem="DTK-EF-N8G" secondAttribute="bottom" id="NFF-ef-zzQ"/>
-                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="9" id="OSf-ih-kGb"/>
+                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="8" id="OSf-ih-kGb"/>
                                     <constraint firstItem="6rj-sh-UcZ" firstAttribute="leading" secondItem="I30-fY-TRm" secondAttribute="leading" constant="22" id="V7c-El-NQo"/>
-                                    <constraint firstItem="YxS-Fp-ngA" firstAttribute="top" secondItem="6rj-sh-UcZ" secondAttribute="bottom" constant="19" id="Wsh-CZ-FWT"/>
+                                    <constraint firstItem="YxS-Fp-ngA" firstAttribute="top" secondItem="6rj-sh-UcZ" secondAttribute="bottom" constant="23" id="Wsh-CZ-FWT"/>
                                     <constraint firstAttribute="trailing" secondItem="YxS-Fp-ngA" secondAttribute="trailing" constant="21" id="aiy-hE-CUi"/>
-                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="9" id="awm-Nt-mQy"/>
-                                    <constraint firstItem="YxS-Fp-ngA" firstAttribute="top" secondItem="6rj-sh-UcZ" secondAttribute="bottom" constant="19" id="dAm-5r-Iis"/>
+                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="8" id="awm-Nt-mQy"/>
+                                    <constraint firstItem="YxS-Fp-ngA" firstAttribute="top" secondItem="6rj-sh-UcZ" secondAttribute="bottom" constant="23" id="dAm-5r-Iis"/>
                                     <constraint firstItem="Fcp-PW-qSe" firstAttribute="top" secondItem="g4w-vc-bUY" secondAttribute="bottom" constant="8" id="em6-M2-OFb"/>
                                     <constraint firstItem="g4w-vc-bUY" firstAttribute="leading" secondItem="I30-fY-TRm" secondAttribute="leading" constant="22" id="hKl-yH-3cr"/>
-                                    <constraint firstItem="syh-uQ-X0J" firstAttribute="leading" secondItem="lOm-Rh-wBh" secondAttribute="trailing" constant="8" id="kPT-EB-br7"/>
-                                    <constraint firstItem="g4w-vc-bUY" firstAttribute="top" secondItem="pMU-cL-sKb" secondAttribute="bottom" constant="17" id="kai-7a-1fs"/>
-                                    <constraint firstItem="DTK-EF-N8G" firstAttribute="leading" secondItem="lOm-Rh-wBh" secondAttribute="trailing" constant="8" id="nPF-Rl-4WL"/>
-                                    <constraint firstItem="DTK-EF-N8G" firstAttribute="leading" secondItem="lOm-Rh-wBh" secondAttribute="trailing" constant="8" id="srd-Yc-qGz"/>
+                                    <constraint firstItem="syh-uQ-X0J" firstAttribute="leading" secondItem="lOm-Rh-wBh" secondAttribute="trailing" constant="23" id="kPT-EB-br7"/>
+                                    <constraint firstItem="g4w-vc-bUY" firstAttribute="top" secondItem="pMU-cL-sKb" secondAttribute="bottom" constant="8" id="kai-7a-1fs"/>
+                                    <constraint firstItem="DTK-EF-N8G" firstAttribute="leading" secondItem="lOm-Rh-wBh" secondAttribute="trailing" constant="23" id="nPF-Rl-4WL"/>
+                                    <constraint firstItem="DTK-EF-N8G" firstAttribute="leading" secondItem="lOm-Rh-wBh" secondAttribute="trailing" constant="23" id="srd-Yc-qGz"/>
                                     <constraint firstAttribute="trailing" secondItem="6rj-sh-UcZ" secondAttribute="trailing" constant="21" id="vCh-4U-8WJ"/>
                                     <constraint firstItem="pMU-cL-sKb" firstAttribute="leading" secondItem="I30-fY-TRm" secondAttribute="leading" constant="22" id="vQl-gs-r14"/>
-                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="9" id="xDe-e4-BxB"/>
-                                    <constraint firstItem="g4w-vc-bUY" firstAttribute="top" secondItem="pMU-cL-sKb" secondAttribute="bottom" constant="17" id="xQm-4p-tT8"/>
+                                    <constraint firstItem="6rj-sh-UcZ" firstAttribute="top" secondItem="Fcp-PW-qSe" secondAttribute="bottom" constant="8" id="xDe-e4-BxB"/>
+                                    <constraint firstItem="g4w-vc-bUY" firstAttribute="top" secondItem="pMU-cL-sKb" secondAttribute="bottom" constant="8" id="xQm-4p-tT8"/>
                                     <constraint firstAttribute="trailing" secondItem="pMU-cL-sKb" secondAttribute="trailing" id="y2F-VP-J4h"/>
                                 </constraints>
                             </view>
@@ -6045,7 +6045,7 @@ Est. Retail ¥2,00</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.31415782489999999" green="0.31415782489999999" blue="0.31415782489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -6324,7 +6324,7 @@ Let us know the steps you take and the result/error you receive.
 
 Just want to leave a suggestion or let us know how much you love us? Drop us a line.</string>
                                 <color key="textColor" red="0.31415782489999999" green="0.31415782489999999" blue="0.31415782489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHQ-yx-NIh">
@@ -6781,7 +6781,7 @@ Just want to leave a suggestion or let us know how much you love us? Drop us a l
         <image name="3_number" width="88" height="92"/>
         <image name="4_disabled" width="89" height="92"/>
         <image name="4_number" width="88" height="92"/>
-        <image name="628F9C72-F9BB-465C-8389-B29DC1F80B73" width="2081" height="292">
+        <image name="CD38448C-AEA5-46EC-8BF6-89482E090A4E" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -47394,12 +47394,12 @@ dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Mrg-S8-EKf"/>
-        <segue reference="L3M-j5-nQY"/>
+        <segue reference="kkx-cW-Cmg"/>
+        <segue reference="4A3-eO-F6e"/>
         <segue reference="Jlj-Dl-HZl"/>
         <segue reference="dsA-C6-Za7"/>
-        <segue reference="4A3-eO-F6e"/>
         <segue reference="SCc-gm-MfN"/>
-        <segue reference="hys-1I-bmp"/>
+        <segue reference="ezl-eM-wPN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

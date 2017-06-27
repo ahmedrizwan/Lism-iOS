@@ -183,12 +183,12 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         sellingPriceTextField.layer.borderWidth = 1.0
         estimatedTextField.layer.borderWidth = 1.0
 
-        productNameTextfield.layer.borderColor = UIColor.gray.cgColor
-        brandTextfield.layer.borderColor = UIColor.gray.cgColor
-        sellingPriceTextField.layer.borderColor = UIColor.gray.cgColor
-        estimatedTextField.layer.borderColor = UIColor.gray.cgColor
+        productNameTextfield.layer.borderColor = UIColor.lightGray.cgColor
+        brandTextfield.layer.borderColor = UIColor.lightGray.cgColor
+        sellingPriceTextField.layer.borderColor = UIColor.lightGray.cgColor
+        estimatedTextField.layer.borderColor = UIColor.lightGray.cgColor
 
-        descTextView.layer.borderColor = UIColor.gray.cgColor
+        descTextView.layer.borderColor = UIColor.lightGray.cgColor
 
         descTextView.layer.borderWidth = 1.0
         descTextView.delegate = self

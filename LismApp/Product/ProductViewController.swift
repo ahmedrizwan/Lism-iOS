@@ -578,7 +578,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             UIView.animate(withDuration:0.35, animations: {
                 //
                 //write a code to hide
-                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 40, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 49, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             }, completion: { _ in
                 self.isHiding = false
               //  print("hiding collection")
@@ -600,7 +600,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 //
                 
                 //write a code to hide
-                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 80, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 89, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             },  completion: { _ in
                 self.isShowing = false
                 // completion
@@ -637,7 +637,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
             UIView.animate(withDuration: 0.75, animations: {
                 //
-                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 45, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 55, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: { _ in
                 self.isShowingTopbar = false
                 // completion

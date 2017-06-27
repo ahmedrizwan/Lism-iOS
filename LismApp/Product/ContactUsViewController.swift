@@ -14,7 +14,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        textViewDesc.layer.borderColor = UIColor.gray.cgColor
+        textViewDesc.layer.borderColor = UIColor.lightGray.cgColor
         
         textViewDesc.layer.borderWidth = 1.0
         textViewDesc.delegate = self

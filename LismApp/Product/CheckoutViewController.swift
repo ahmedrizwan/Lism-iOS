@@ -54,7 +54,7 @@ class CheckoutViewController: UIViewController,UITextViewDelegate
         defaultAddressLabel.text = "Default address".localized(using: "Main")
         addNewAddressBtn.setTitle("Add New Address".localized(using: "Main"), for: .normal)
         checkOutBtn.setTitle("CHECKOUT".localized(using: "Main"), for: .normal)
-        textViewForAddress.layer.borderColor = UIColor.gray.cgColor
+        textViewForAddress.layer.borderColor = UIColor.lightGray.cgColor
         
         textViewForAddress.layer.borderWidth = 1.0
         textViewForAddress.delegate = self

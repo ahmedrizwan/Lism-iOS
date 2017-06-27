@@ -609,7 +609,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         
         
         // connect objects with our information from arrays
-        cell.nameLabel.text = "@\(commentBO.user.username)"
+        cell.nameLabel.text = "@\(commentBO.user.username!)"
         cell.commentsTextView.text = commentBO.comment
              return cell
         }

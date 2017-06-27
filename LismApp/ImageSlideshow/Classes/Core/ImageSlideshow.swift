@@ -178,6 +178,8 @@ open class ImageSlideshow: UIView {
 
         addSubview(pageControl)
         pageControl.addTarget(self, action: #selector(pageControlValueChanged), for: .valueChanged)
+        pageControl.pageIndicatorTintColor =  UIColor.white
+        pageControl.currentPageIndicatorTintColor = UIColor.init(colorLiteralRed: 129.0/255.0, green: 18.0/255.0, blue: 27.0/255.0, alpha: 1.0);
 
         setTimerIfNeeded()
         layoutScrollView()

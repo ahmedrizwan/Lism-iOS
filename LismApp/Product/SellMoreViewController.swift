@@ -178,6 +178,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     {
         sizesBtnHeightConstaint.constant = 0
         productNameTextfield.layer.borderWidth = 1.0
+        
         brandTextfield.layer.borderWidth = 1.0
         sellingPriceTextField.layer.borderWidth = 1.0
         estimatedTextField.layer.borderWidth = 1.0

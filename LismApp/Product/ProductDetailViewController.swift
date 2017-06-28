@@ -205,7 +205,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 									self.produceAttributedText(string: "\(productBO.name) \n\("Size".localized(using: "Main")) \(productBO.size) \n\("Est. Retail ¥".localized(using: "Main")) \(productBO.priceRetail)", textView:  priceSizeNameTextView)
 
 					
-					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) && AVUser.current()!.username! == self.productBO.user!.username!
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) || AVUser.current()!.username! == self.productBO.user!.username!
 
 					{
 						checkoutBtnsView.isHidden = true
@@ -219,15 +219,17 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 
 					let updatedValue = "Updated".localized(using: "Main")
           var sdWebImageSource = [InputSource]()
-        for url in self.productBO.productImagesArray
-        {
-        sdWebImageSource.append(SDWebImageSource(urlString: url.absoluteString)!)
-        }
+					
 					  if(self.productBO.productImageUrl != nil && self.productBO.productImagesArray.count <= 0)
 							{
 					
 								sdWebImageSource.append(SDWebImageSource(urlString: self.productBO.productImageUrl.absoluteString)!)
 					  }
+					for url in self.productBO.productImagesArray
+					{
+						sdWebImageSource.append(SDWebImageSource(urlString: url.absoluteString)!)
+					}
+					sdWebImageSource = sdWebImageSource.reversed()
         if  Date().days(from: self.productBO.updatedAt!) > 0
         
         {
@@ -479,9 +481,9 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonTextView.text = self.productBO.prodcut_description
 					
 					self.produceAttributedText(string: "\("Color:".localized(using: "Main")) \(productBO.color) \n\("Material:".localized(using: "Main")) \(productBO.size) \n\("Condition:".localized(using: "Main")) \(productBO.condition)", textView: colorMaterialTextView)
-			if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent)
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent || AVUser.current()!.username! == self.productBO.user!.username!)
 			{
-					self.checkoutBtnsView.isHidden = false;
+					self.checkoutBtnsView.isHidden = true;
 					}
     }
     
@@ -498,7 +500,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = false;
         policyView.isHidden = true;
-					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent)  && AVUser.current()!.username! == self.productBO.user!.username!
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent)  || AVUser.current()!.username! == self.productBO.user!.username!
 					{
 					self.checkoutBtnsView.isHidden = true;
 					}
@@ -517,7 +519,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
         policyView.isHidden = false;
-					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) && AVUser.current()!.username! == self.productBO.user!.username!
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) || AVUser.current()!.username! == self.productBO.user!.username!
 					{
 					self.checkoutBtnsView.isHidden = true;
 					}

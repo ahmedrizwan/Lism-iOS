@@ -619,7 +619,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 //
                 
                 //write a code to hide
-                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 89, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 88, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             },  completion: { _ in
                 self.isShowing = false
                 // completion
@@ -656,7 +656,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
             UIView.animate(withDuration: 0.75, animations: {
                 //
-                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 55, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 51, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: { _ in
                 self.isShowingTopbar = false
                 // completion

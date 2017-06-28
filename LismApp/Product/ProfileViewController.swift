@@ -151,8 +151,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         if(!userObj.isEqual(AVUser.current()))
         {
-            plusBtn.setImage(UIImage(named : "heart"), for: .normal)
-            plusBtnForClick.setImage(UIImage(named : "heart"), for: .normal)
+            plusBtn.setImage(UIImage(named : "heart_new"), for: .normal)
+            plusBtnForClick.setImage(UIImage(named : "heart_new"), for: .normal)
             
         }
         else//its me profile

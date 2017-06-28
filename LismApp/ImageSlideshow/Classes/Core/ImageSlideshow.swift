@@ -132,7 +132,7 @@ open class ImageSlideshow: UIView {
     open var preload = ImagePreload.all
 
     /// Content mode of each image in the slideshow
-    open var contentScaleMode: UIViewContentMode = UIViewContentMode.scaleAspectFit {
+    open var contentScaleMode: UIViewContentMode = UIViewContentMode.scaleAspectFill {
         didSet {
             for view in slideshowItems {
                 view.imageView.contentMode = contentScaleMode

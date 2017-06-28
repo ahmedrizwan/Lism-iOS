@@ -131,7 +131,15 @@ totalTextLabel.text = "TOTAL".localized(using: "Main")
         let cell = tableView.dequeueReusableCell(withIdentifier: "CheckoutCustomCell", for: indexPath ) as! CheckoutCustomCell
         let productObj = self.checkoutArray[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.sizeAndPriceTextView.text = "\("Size".localized(using: "Main")) \(productObj.size) \n ¥ \(productObj.sellingPrice)"
+        let brandInfo = (productObj.brand).uppercased()
+        if(productObj.size == "")
+        {
+          cell.sizeAndPriceTextView.text = "\(brandInfo) \(productObj.name)\n¥ \(productObj.sellingPrice)"
+        }
+        else
+        {
+        cell.sizeAndPriceTextView.text = "\(brandInfo) \(productObj.name)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)"
+        }
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)

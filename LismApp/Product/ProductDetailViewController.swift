@@ -204,7 +204,12 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 
 									self.produceAttributedText(string: "\(productBO.name) \n\("Size".localized(using: "Main")) \(productBO.size) \n\("Est. Retail ¥".localized(using: "Main")) \(productBO.priceRetail)", textView:  priceSizeNameTextView)
 
-		
+					
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) && AVUser.current()!.username! == self.productBO.user!.username!
+
+					{
+						checkoutBtnsView.isHidden = true
+					}
 					
 					var textFieldText = "¥ \(productBO.sellingPrice)"
 					let attributedString = NSMutableAttributedString(string: textFieldText)
@@ -247,7 +252,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 						// daysAgoLabel.isHidden = false
 						daysAgoLabel.text =   "\(updatedValue) \(Date().seconds(from:  self.productBO.updatedAt!)) \("second ago".localized(using: "Main"))"
 					}
-        slideshow.slideshowInterval = 5.0
+        slideshow.slideshowInterval = 0.0
        // slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
         slideshow.pageControl.pageIndicatorTintColor = UIColor.black
@@ -474,8 +479,10 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonTextView.text = self.productBO.prodcut_description
 					
 					self.produceAttributedText(string: "\("Color:".localized(using: "Main")) \(productBO.color) \n\("Material:".localized(using: "Main")) \(productBO.size) \n\("Condition:".localized(using: "Main")) \(productBO.condition)", textView: colorMaterialTextView)
+			if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent)
+			{
 					self.checkoutBtnsView.isHidden = false;
-
+					}
     }
     
     @IBAction func showCommentsView(sender : AnyObject)
@@ -491,7 +498,10 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = false;
         policyView.isHidden = true;
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent)  && AVUser.current()!.username! == self.productBO.user!.username!
+					{
 					self.checkoutBtnsView.isHidden = true;
+					}
         self.loadComments()
     }
     @IBAction func showPolicyView(sender : AnyObject)
@@ -507,8 +517,10 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
         policyView.isHidden = false;
+					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) && AVUser.current()!.username! == self.productBO.user!.username!
+					{
 					self.checkoutBtnsView.isHidden = true;
-
+					}
 					
     }
     func updateConstraints()

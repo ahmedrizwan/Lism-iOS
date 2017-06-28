@@ -132,9 +132,10 @@ var items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
             break
         case (2,3):
             AVUser.logOut()
-            let mainViewController = MainViewController()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let  mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        
             self.navigationController?.pushViewController(mainViewController, animated: true)
-            
 
             break
         default:

@@ -52,7 +52,7 @@ class RegistrationViewController: UIViewController {
     func styleTextField(textField : UITextField)
     {
         
-        textField.layer.borderWidth = 1.0
+        textField.layer.borderWidth =  0.5
         textField.layer.borderColor = UIColor.lightGray.cgColor
 
     

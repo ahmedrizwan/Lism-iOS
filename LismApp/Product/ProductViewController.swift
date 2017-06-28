@@ -7,7 +7,7 @@ extension UIImageView {
         self.tintColor = color
     }
 }
-class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class ProductViewController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     static let ITEM_LIMIT = 10
     
     var items : [Product] = []
@@ -91,7 +91,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
     }
     override func viewWillAppear(_ animated: Bool) {
-   
+        self.getProductsCount()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -165,6 +166,15 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
     searchBar.isHidden = false
         
+    }
+    func getProductsCount()
+    {
+        
+        let query: AVQuery = AVQuery(className: "Product")
+        query.countObjectsInBackground { (count, error) in
+            //update count infor
+            self.totalItemsLabel.text = "\("Total items".localized(using: "Main")) \(count)"
+        }
     }
   
     func getProductList(indexToSort : Int )
@@ -433,6 +443,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         let productObj = self.items[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.nameLabel.text = productObj.brand.uppercased()
+      
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
@@ -451,7 +462,14 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         //cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
         
+        if(productObj.size != "")
+        {
         Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+        }
+        else
+        {
+        Constants.produceAttributedText(string: "\("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+        }
         if (indexPath.row + 1 == self.items.count  && !isloadingFav)
         {
             self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
@@ -498,6 +516,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.getProductList(indexToSort: selectedIndexForSorting)
         //Use action.title
     }
+    
     @IBAction func listBtnAction(sender: AnyObject)
     {
         

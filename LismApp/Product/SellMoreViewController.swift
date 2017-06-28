@@ -177,11 +177,11 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     func setUpDescriptionTextView()
     {
         sizesBtnHeightConstaint.constant = 0
-        productNameTextfield.layer.borderWidth = 1.0
+        productNameTextfield.layer.borderWidth = 0.5
         
-        brandTextfield.layer.borderWidth = 1.0
-        sellingPriceTextField.layer.borderWidth = 1.0
-        estimatedTextField.layer.borderWidth = 1.0
+        brandTextfield.layer.borderWidth = 0.5
+        sellingPriceTextField.layer.borderWidth = 0.5
+        estimatedTextField.layer.borderWidth = 0.5
 
         productNameTextfield.layer.borderColor = UIColor.lightGray.cgColor
         brandTextfield.layer.borderColor = UIColor.lightGray.cgColor
@@ -190,7 +190,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 
         descTextView.layer.borderColor = UIColor.lightGray.cgColor
 
-        descTextView.layer.borderWidth = 1.0
+        descTextView.layer.borderWidth = 0.5
         descTextView.delegate = self
         applyPlaceholderStyle(aTextview: descTextView, placeholderText: PLACEHOLDER_TEXT)
         

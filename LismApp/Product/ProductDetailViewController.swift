@@ -319,15 +319,22 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 					btn.isSelected = 	self.productBO.favorite 
 					if(self.productBO.favorite )
 					{
+						 self.productBO.productLikes = self.productBO.productLikes + 1
+						self.productBO.setObject(self.productBO.productLikes, forKey: "productLikes")
 						AVUser.current()?.relation(forKey: "favorites").add(self.productBO)
 					}
 					else
 					{
+						if((self.productBO.productLikes - 1) >= 0 )
+						{
+							self.productBO.productLikes  = self.productBO.productLikes - 1
+						self.productBO.setObject(self.productBO.productLikes , forKey: "productLikes")
+						}
 						AVUser.current()?.relation(forKey: "favorites").remove(self.productBO)
 						
 					}
 					AVUser.current()?.saveInBackground { (status, error) in
-						
+						self.likesLabel.text = "\(self.productBO.productLikes)"
 					}
 
 	

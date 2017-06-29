@@ -22,6 +22,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     var isloadingFav = false
     var isShowingTopbar = false
     var isHidingTopbar = false
+    var totalItems : Int = 0
     @IBOutlet weak var totalItemsLabel : UILabel!
     @IBOutlet weak var searchBar : UISearchBar!
 
@@ -29,8 +30,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var sortingView : UIView!
     @IBOutlet weak var mainSortingView : UIView!
 
-    
- @IBOutlet weak var sortingTableView : UITableView!
+    @IBOutlet weak var allCartBtn : UIButton!
+    @IBOutlet weak var sortingTableView : UITableView!
     @IBOutlet weak var progressView : UIActivityIndicatorView!
      @IBOutlet weak var tabBar : UITabBar!
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
@@ -92,7 +93,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     }
     override func viewWillAppear(_ animated: Bool) {
         self.getProductsCount()
-
+        self.getCartCount()
+        self.productsCollectionView.reloadData() //to sync favorite info
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,6 +107,27 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getCartCount()
+    {
+        (AVUser.current()!.relation(forKey: "userCart")).query().countObjectsInBackground{(objects, error) in
+            
+            if(error == nil)
+            {
+                
+                if(objects > 0)
+                {
+                    self.allCartBtn.isHidden = false
+                    self.allCartBtn.setTitle("\(objects)", for: .normal)
+                }
+                else
+                {
+                    self.allCartBtn.isHidden = true
+                }
+            }
+        }
+
     }
     
     @IBAction func sortingViewClose(sneder : AnyObject)
@@ -173,6 +196,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         let query: AVQuery = AVQuery(className: "Product")
         query.countObjectsInBackground { (count, error) in
             //update count infor
+            self.totalItems = count ;
             self.totalItemsLabel.text = "\("Total items".localized(using: "Main")) \(count)"
         }
     }
@@ -470,7 +494,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         {
         Constants.produceAttributedText(string: "\("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
         }
-        if (indexPath.row + 1 == self.items.count  && !isloadingFav)
+        if (indexPath.row + 1 == self.items.count  && !isloadingFav && self.items.count < totalItems)
         {
             self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
         }
@@ -698,12 +722,18 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
         let productObj = self.items[index]
         productObj.favorite = !productObj.favorite
+        
         if(productObj.favorite )
         {
-        AVUser.current()?.relation(forKey: "favorites").add(productObj)
+            productObj.setObject(productObj.productLikes + 1, forKey: "productLikes")
+            AVUser.current()?.relation(forKey: "favorites").add(productObj)
         }
         else
         {
+            if((productObj.productLikes-1) >= 0)
+            {
+            productObj.setObject(productObj.productLikes - 1, forKey: "productLikes")
+            }
             AVUser.current()?.relation(forKey: "favorites").remove(productObj)
 
         }

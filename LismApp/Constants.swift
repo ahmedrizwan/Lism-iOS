@@ -192,6 +192,29 @@ static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
         )
     }
 
+    
+  static  func updateCount(relation : AVRelation) -> Int
+    {
+        var count = 0 ;
+        (AVUser.current()!.relation(forKey: "userCart")).query().countObjectsInBackground{(objects, error) in
+            
+            if(error == nil)
+            {
+                print (objects)
+                if( objects > 0 )
+                {
+                    //self.cartCountLabel.text = "\(objects)"
+                  count = objects
+                }
+            }
+            else
+            {
+                //show error mesage
+            }
+        }
+        return count;
+        
+    }
 
 
 }

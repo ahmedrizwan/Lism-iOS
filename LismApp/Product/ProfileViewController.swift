@@ -151,8 +151,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         if(!userObj.isEqual(AVUser.current()))
         {
-            plusBtn.setImage(UIImage(named : "heart_new"), for: .normal)
-            plusBtnForClick.setImage(UIImage(named : "heart_new"), for: .normal)
+            plusBtn.setImage(UIImage(named : "heart"), for: .normal)
+            plusBtnForClick.setImage(UIImage(named : "heart"), for: .normal)
             
         }
         else//its me profile
@@ -248,7 +248,6 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         progressView.isHidden = false
         progressView.startAnimating()
         query.whereKey("userId", equalTo: AVUser.current()!.objectId! as Any)
-        self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
@@ -443,6 +442,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
                 DispatchQueue.main.async(execute: {
                     self.comapreToUpdateFavoriteProductsList()
+                    self.progressView.isHidden = true
                     
                 })
             }
@@ -573,6 +573,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
             self.favoritesList =   Constants.favoritesList
         self.comapreToUpdateFavoriteProductsList()
+        self.progressView.isHidden = true
+        self.progressView.stopAnimating()
         if(!self.userObj.isEqual(AVUser.current()))
         {
             self.boughtItems = self.favoritesList

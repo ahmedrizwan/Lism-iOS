@@ -258,7 +258,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
        // slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
         slideshow.pageControl.pageIndicatorTintColor = UIColor.black
-        slideshow.contentScaleMode = UIViewContentMode.scaleToFill
+        slideshow.contentScaleMode = UIViewContentMode.scaleAspectFill
         slideshow.currentPageChanged = { page in
             print("current page:", page)
         }

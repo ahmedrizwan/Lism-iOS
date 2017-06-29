@@ -799,7 +799,7 @@ Est. Retail ¥2,00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C246B6CA-D65A-4DED-9B19-E2C51723AC9A" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="08E3CD70-23A2-4FC1-8004-6586330DBCCB" translatesAutoresizingMaskIntoConstraints="NO" id="neH-Xz-7bl">
                                                         <rect key="frame" x="25" y="76" width="326" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -3723,7 +3723,7 @@ Est. Retail ¥2,00</string>
                                                         <constraint firstAttribute="height" constant="15" id="7TE-U1-0LB"/>
                                                         <constraint firstAttribute="width" constant="17" id="Zpk-9N-NTO"/>
                                                     </constraints>
-                                                    <state key="normal" image="C6FEB28D-FB93-4A04-AE7E-66DEDCC24840"/>
+                                                    <state key="normal" image="F435B87F-8410-479F-8F08-2936EAD9C098"/>
                                                     <state key="selected" image="heart_red.png"/>
                                                     <connections>
                                                         <action selector="addToFavoriteViewControllerWithSender:" destination="GuS-50-iYS" eventType="touchUpInside" id="b21-YG-TLQ"/>
@@ -6790,15 +6790,7 @@ Just want to leave a suggestion or let us know how much you love us? Drop us a l
         </scene>
     </scenes>
     <resources>
-        <image name="1_disabled" width="89" height="92"/>
-        <image name="1_number" width="88" height="92"/>
-        <image name="2_disabled" width="89" height="92"/>
-        <image name="2_number" width="88" height="92"/>
-        <image name="3_disabled" width="89" height="91"/>
-        <image name="3_number" width="88" height="92"/>
-        <image name="4_disabled" width="89" height="92"/>
-        <image name="4_number" width="88" height="92"/>
-        <image name="C246B6CA-D65A-4DED-9B19-E2C51723AC9A" width="2081" height="292">
+        <image name="08E3CD70-23A2-4FC1-8004-6586330DBCCB" width="2081" height="292">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -47364,7 +47356,15 @@ DQAlIRwAJSEgACUhJwAlIS8AJSE8ACUhQQAlIUMAJSFFACUhSgAlIVIAJSFVACUhWgAlIWIAJSFlACUh
 dwAlIXoAJSF/AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAAlIYE
 </mutableData>
         </image>
-        <image name="C6FEB28D-FB93-4A04-AE7E-66DEDCC24840" width="21" height="18">
+        <image name="1_disabled" width="89" height="92"/>
+        <image name="1_number" width="88" height="92"/>
+        <image name="2_disabled" width="89" height="92"/>
+        <image name="2_number" width="88" height="92"/>
+        <image name="3_disabled" width="89" height="91"/>
+        <image name="3_number" width="88" height="92"/>
+        <image name="4_disabled" width="89" height="92"/>
+        <image name="4_number" width="88" height="92"/>
+        <image name="F435B87F-8410-479F-8F08-2936EAD9C098" width="21" height="18">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -47427,12 +47427,12 @@ Afg
         <image name="white_arrow" width="24" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mrg-S8-EKf"/>
-        <segue reference="oeG-YO-Czw"/>
-        <segue reference="4Vk-bV-igI"/>
-        <segue reference="9Bk-jH-cnv"/>
-        <segue reference="cbm-TA-IBD"/>
+        <segue reference="viE-un-nvt"/>
         <segue reference="Pef-BG-f2j"/>
+        <segue reference="L3M-j5-nQY"/>
+        <segue reference="dsA-C6-Za7"/>
+        <segue reference="4A3-eO-F6e"/>
+        <segue reference="9Bk-jH-cnv"/>
         <segue reference="hys-1I-bmp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

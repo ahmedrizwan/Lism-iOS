@@ -159,7 +159,9 @@
 "sent your product" = "sent your product";
 "POST COMMENT" = "POST COMMENT";
 "Total items" = "Total items";
-
+"You May Also Like" = "You May Also Like";
+"From The Same Seller" = "From The Same Seller" ;
+"No Items Found..." = "No Items Found..."
 
 /* Class = "UILabel"; text = "750"; ObjectID = "1J5-6D-lD8"; */
 "1J5-6D-lD8.text" = "750";

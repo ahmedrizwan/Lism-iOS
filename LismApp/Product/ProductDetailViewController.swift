@@ -66,6 +66,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 	@IBOutlet weak var noLikedLabel : UILabel!
 	@IBOutlet weak var noMoreSellerLabel : UILabel!
 
+	
+	@IBOutlet weak var youMayAlsoLikeLabel : UILabel!
+	@IBOutlet weak var sellerLabel : UILabel!
+	
     @IBOutlet weak var descriptonTextView : UITextView!
     @IBOutlet weak var colorMaterialTextView : UITextView!
 
@@ -114,6 +118,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					heightConstraint.constant = 788
 					heightConstraintForInnerView.constant  = 788
 					
+					noLikedLabel.text = "No Items Found...".localized(using: "Main")
+					noMoreSellerLabel.text = "No Items Found...".localized(using: "Main")
+					sellerLabel.text = "From The Same Seller".localized(using: "Main")
+					youMayAlsoLikeLabel.text = "You May Also Like".localized(using: "Main")
 					self.getProductListByThisSeller()
 					self.getProductYouMayLike()
     }
@@ -180,7 +188,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1220)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1300)
         horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height + 60)
 					
         
@@ -882,6 +890,10 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 			selectedPorudct = items [indexPath.item]
 	
 		}
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewController")
+		self.navigationController!.pushViewController(vc, animated: true)
+
 	//	self.performSegue(withIdentifier: "ThisProductDetailsVC", sender: self)
 		
 	}

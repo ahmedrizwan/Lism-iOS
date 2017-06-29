@@ -322,6 +322,8 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 						 self.productBO.productLikes = self.productBO.productLikes + 1
 						self.productBO.setObject(self.productBO.productLikes, forKey: "productLikes")
 						AVUser.current()?.relation(forKey: "favorites").add(self.productBO)
+						self.likesLabel.text = "\(self.productBO.productLikes)"
+
 					}
 					else
 					{
@@ -329,12 +331,14 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 						{
 							self.productBO.productLikes  = self.productBO.productLikes - 1
 						self.productBO.setObject(self.productBO.productLikes , forKey: "productLikes")
+							self.likesLabel.text = "\(self.productBO.productLikes)"
+
 						}
 						AVUser.current()?.relation(forKey: "favorites").remove(self.productBO)
 						
 					}
+					self.productBO.saveInBackground()
 					AVUser.current()?.saveInBackground { (status, error) in
-						self.likesLabel.text = "\(self.productBO.productLikes)"
 					}
 
 	

@@ -735,8 +735,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             productObj.setObject(productObj.productLikes - 1, forKey: "productLikes")
             }
             AVUser.current()?.relation(forKey: "favorites").remove(productObj)
+            
 
         }
+        productObj.saveInBackground()
         AVUser.current()?.saveInBackground { (status, error) in
             if(productObj.favorite )
             {

@@ -17,7 +17,7 @@ extension Date {
 		return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
 	}
 }
-class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UIScrollViewDelegate, UITextViewDelegate
+class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UIScrollViewDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     @IBOutlet weak var scrollView : UIScrollView!
     var productBO : Product!
@@ -25,7 +25,10 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var progressBar : UIActivityIndicatorView!
 	   @IBOutlet weak var heightConstraint : NSLayoutConstraint!
 	@IBOutlet weak var heightConstraintForInnerView : NSLayoutConstraint!
+	@IBOutlet weak var heightConstraintForSeller : NSLayoutConstraint!
+	@IBOutlet weak var heightConstraintForLike : NSLayoutConstraint!
 
+	var selectedPorudct : Product!
     @IBOutlet weak var userImage : UIImageView!
     @IBOutlet weak var favoriteBtn : UIButton!
     @IBOutlet weak var productNameLabel : UILabel!
@@ -53,8 +56,15 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 	@IBOutlet weak var checkoutBtnsView : UIView!
 
     @IBOutlet var constraintForViewidth : NSLayoutConstraint!
+	var favoritesList : [Product] = []
+	var items : [Product] = []
 
+	var moreByThisSellerItems : [Product] = []
 
+	@IBOutlet weak var  youMayLikeColectionView : UICollectionView!
+	@IBOutlet weak var moreBySellerCollectionView : UICollectionView!
+	@IBOutlet weak var noLikedLabel : UILabel!
+	@IBOutlet weak var noMoreSellerLabel : UILabel!
 
     @IBOutlet weak var descriptonTextView : UITextView!
     @IBOutlet weak var colorMaterialTextView : UITextView!
@@ -101,10 +111,11 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					self.relation =  (AVUser.current()!.relation(forKey: "userCart"))
 
         self.updateCount(relation: self.relation)
-					heightConstraint.constant = 300
-					heightConstraintForInnerView.constant  = 300
+					heightConstraint.constant = 788
+					heightConstraintForInnerView.constant  = 788
 					
-					
+					self.getProductListByThisSeller()
+					self.getProductYouMayLike()
     }
 
 	
@@ -169,7 +180,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 850)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1220)
         horizontalScrolView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: horizontalScrolView.frame.size.height + 60)
 					
         
@@ -525,6 +536,211 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 					}
 					
     }
+	
+	
+	
+	// MARK: - UICollectionViewDataSource protocol
+	
+	
+	func getProductYouMayLike()
+	{
+		
+		
+		
+		self.view.isUserInteractionEnabled = false
+		let query: AVQuery = AVQuery(className: "Product")
+  query.includeKey("images")
+		query.includeKey("user")
+		query.includeKey("userLikes")
+		query.includeKey("buyingUser")
+		query.whereKey("category", equalTo: self.productBO.category)
+		query.whereKey("objectId", notEqualTo: self.productBO.objectId!)
+	 query.limit = 2
+		
+		self.progressBar.isHidden = false
+		query.findObjectsInBackground { (objects, error) in
+			self.progressBar.isHidden = true
+			self.view.isUserInteractionEnabled = true
+			if(error == nil)
+			{
+				self.items.removeAll()
+				for obj in objects!
+				{
+					let productObj:Product =  obj as! Product
+					
+					
+					productObj.ProductInintWithDic(dict: obj as! AVObject)
+					self.items.append(productObj)
+				}
+				if(self.items.count <= 0)
+				{
+						self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: self.scrollView.contentSize.height - 	self.heightConstraintForLike.constant)
+					self.heightConstraintForLike.constant = 20
+
+					self.noLikedLabel.isHidden = false
+				}
+				else
+				{
+					self.loadFavoritesList(listToUpdate: self.items , viewToLoad : self.youMayLikeColectionView)
+				}
+			}
+			else
+			{
+				Constants.showAlert(message: "Unable to load products.".localized(using: "Main"), view: self)
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	func getProductListByThisSeller()
+	{
+		
+		
+		
+		self.view.isUserInteractionEnabled = false
+		let query: AVQuery = AVQuery(className: "Product")
+  query.includeKey("images")
+		query.includeKey("user")
+		query.includeKey("userLikes")
+		query.includeKey("buyingUser")
+		query.whereKey("user", equalTo: self.productBO.user)
+		query.whereKey("objectId", notEqualTo: self.productBO.objectId!)
+
+	 query.limit = 2
+		self.progressBar.isHidden = false
+		query.findObjectsInBackground { (objects, error) in
+			self.progressBar.isHidden = true
+			self.view.isUserInteractionEnabled = true
+			if(error == nil)
+			{
+				self.moreByThisSellerItems.removeAll()
+				for obj in objects!
+				{
+					let productObj:Product =  obj as! Product
+					
+					
+					productObj.ProductInintWithDic(dict: obj as! AVObject)
+					self.moreByThisSellerItems.append(productObj)
+				}
+				if(self.moreByThisSellerItems.count <= 0)
+				{
+					self.noMoreSellerLabel.isHidden = false
+					self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: self.scrollView.contentSize.height - 	self.heightConstraintForSeller.constant)
+					self.heightConstraintForSeller.constant = 20
+
+				}
+				else
+				{
+				self.loadFavoritesList(listToUpdate: self.moreByThisSellerItems , viewToLoad : self.moreBySellerCollectionView)
+				}
+			}
+			else
+			{
+				Constants.showAlert(message: "Unable to load products.".localized(using: "Main"), view: self)
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	func loadFavoritesList(listToUpdate : [Product],viewToLoad : UICollectionView)
+	{
+		self.favoritesList =   Constants.favoritesList
+		self.comapreToUpdateFavoriteProductsList(listToUpdate : listToUpdate , viewToLoad  : viewToLoad)
+
+			}
+	
+	func comapreToUpdateFavoriteProductsList(listToUpdate : [Product],viewToLoad : UICollectionView)
+
+	{
+		for productObj in listToUpdate
+		{
+			for objFavorite in self.favoritesList
+			{
+				if(productObj.objectId == objFavorite.objectId)
+				{
+					productObj.favorite = true
+				}
+			}
+			
+		}
+		viewToLoad.reloadData()
+	}
+	
+	// tell the collection view how many cells to make
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		if(collectionView == youMayLikeColectionView)
+		{
+		return self.items.count
+		}
+		else
+		{
+		return self.moreByThisSellerItems.count
+		}
+	}
+	
+	// make a cell for each cell index path
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		
+		// get a reference to our storyboard cell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "prodcutsCustomCell", for: indexPath as IndexPath) as! ProductCollectionViewCell
+		var productObj  = Product()
+		if(collectionView == youMayLikeColectionView)
+		{
+		 productObj = self.items[indexPath.item]
+		}
+		else
+		{
+			productObj = self.moreByThisSellerItems[indexPath.item]
+
+		}
+			// Use the outlet in our custom class to get a reference to the UILabel in the cell
+		cell.nameLabel.text = productObj.brand.uppercased()
+		
+		if(productObj.productImageUrl != nil)
+		{
+			cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)
+		}
+		cell.priceLabel.text = "¥\(productObj.sellingPrice)" ;
+		
+		if(productObj.status == Constants.sent || productObj.status == Constants.waiting_to_be_sent)
+		{
+			cell.soldBannerImageView.isHidden = false
+		}
+		else
+		{
+			cell.soldBannerImageView.isHidden = true
+			
+		}
+		
+		//cell.retailPriceTextView.text = "Size\(productObj.size) \n  Est. Retail ¥ \(productObj.priceRetail)"
+		
+		if(productObj.size != "")
+		{
+			Constants.produceAttributedText(string: "\("Size".localized(using: "Main")) \(productObj.size) \n  \("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+		}
+		else
+		{
+			Constants.produceAttributedText(string: "\("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
+		}
+		
+		cell.likeButton.isSelected = productObj.favorite
+		cell.likeButton.tag = indexPath.row
+		return cell
+	}
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		
+		return CGSize(width: collectionView.bounds.width/2 - 20 , height: collectionView.bounds.width/2 + 60)
+		
+	}
+
     func updateConstraints()
     {
         self.view.setNeedsUpdateConstraints()
@@ -535,7 +751,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
     {
 					
         AVUser.current()!.saveInBackground { (objects, error) in
-            
+									
             if(error == nil)
             {
                 self.updateCount(relation: (AVUser.current()!.relation(forKey: "userCart")))
@@ -550,43 +766,7 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.x)
-
-        if(scrollView == self.horizontalScrolView)
-        {
-        if(scrollView.contentOffset.x == 0)
-        {
-          //  self.showDescriptionView(sender: UIButton())
-        }
-        else if (scrollView.contentOffset.x ==  UIScreen.main.bounds.width)
-        {
-        //    self.showCommentsView(sender: UIButton())
-        }
-        else if (scrollView.contentOffset.x ==  UIScreen.main.bounds.width*2)
-        {
-          //ƒself.showPolicyView(sender: UIButton())
-        }
-        }
-        else if(scrollView.contentOffset.y < (self.scrollView.contentSize.height - self.scrollView.bounds.size.height)/2)
-        {
-     //       scrollBtn.isHidden = false;
-
-        }
-        else
-        {
-       //     scrollBtn.isHidden = true;
-
-        }
-//        if(scrollView.contentOffset.y >= 50)
-//        {
-//        constraintForViewHeight.constant = constraintForViewHeight.constant  - 1        }
-//      else
-//        {
-//            constraintForViewHeight.constant = constraintForViewHeight.constant  + 1
-//
-//        }
-    }
+ 
     
     @IBAction func moveToScrollBottom()
     {
@@ -690,7 +870,21 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 			return false
 		}
 	}
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		// handle tap events
+		//print("You selected cell #\(indexPath.item)!")
+		if(collectionView == moreBySellerCollectionView)
+		{
+		selectedPorudct = moreByThisSellerItems [indexPath.item]
+		}
+		else
+		{
+			selectedPorudct = items [indexPath.item]
 	
+		}
+	//	self.performSegue(withIdentifier: "ThisProductDetailsVC", sender: self)
+		
+	}
 	
 	//
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -699,6 +893,12 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 			viewController.userObj = self.productBO.user
 			// pass data to next view
 		}
+		else   if (segue.identifier == "ThisProductDetailsVC") {
+			let viewController:ProductDetailViewController = segue.destination as! ProductDetailViewController
+			viewController.productBO = selectedPorudct
+			// pass data to next view
+		}
+
 	}
 	
 

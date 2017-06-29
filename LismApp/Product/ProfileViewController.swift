@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var notifcationsBtn : UIButton!
     @IBOutlet weak var redDotView : UIView? = UIView()
     @IBOutlet weak var selectedTabBarItem : UITabBarItem!
-    var items : [Product] = []
+   
     var boughtItems : [Product] = []
     var isFollowingUser = false
     @IBOutlet weak var likesCountLabel : UILabel!
@@ -41,6 +41,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     var userMeFollowersArray : [AVUser] = [AVUser]()
     
     var favoritesList : [Product] = []
+     var items : [Product] = []
     @IBOutlet weak var  productsTableView : UITableView!
     var seelctedProductObj : Product!
     var userObj : AVUser  = AVUser.current()!

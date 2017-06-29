@@ -68,6 +68,8 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
         self.view.isUserInteractionEnabled = false
         let query: AVQuery = (AVUser.current()?.relation(forKey: "sellProducts").query())!
         query.includeKey("user")
+        query.whereKey("user", equalTo:  AVUser.current())
+
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true

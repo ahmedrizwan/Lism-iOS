@@ -138,7 +138,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
 
                     }
                 }
-               
+               else
+                {
+                    self.likesCountLabel.text = "-"
+
+                    }
                 if let prod_desc = object?["description"] {
                     Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
                     self.descriptionTextView.textAlignment = NSTextAlignment.left
@@ -337,7 +341,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             
             if (indexPath.row + 1 == self.items.count )
             {
-                self.getMoreProductList(size: self.items.count)
+                //self.getMoreProductList(size: self.items.count)
             }
         cell.likeButton.isSelected = productObj.favorite
         
@@ -388,7 +392,9 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         self.view.isUserInteractionEnabled = false
         let query: AVQuery = (userObj.relation(forKey: "sellProducts").query())
         query.includeKey("user")
-        query.limit = 6
+        query.whereKey("user", equalTo: self.userObj)
+
+//        query.limit = 6
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
@@ -429,6 +435,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.includeKey("images")
         query.includeKey("user")
         query.includeKey("userLikes")
+        query.whereKey("user", equalTo: self.userObj)
+
         query.limit = 6
         query.skip = size
         query.findObjectsInBackground { (objects, error) in
@@ -572,9 +580,13 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     func loadFavoritesList()
     {
             self.favoritesList =   Constants.favoritesList
-        self.comapreToUpdateFavoriteProductsList()
-        self.progressView.isHidden = true
-        self.progressView.stopAnimating()
+        DispatchQueue.main.async(execute: {
+            self.comapreToUpdateFavoriteProductsList()
+            self.progressView.isHidden = true
+            self.progressView.stopAnimating()
+
+            
+        })
         if(!self.userObj.isEqual(AVUser.current()))
         {
             self.boughtItems = self.favoritesList

@@ -38,7 +38,7 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateNoItemsDetailsView()
+       // self.updateNoItemsDetailsView()
         self.getProductList()
 
     }
@@ -71,12 +71,15 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
         query.whereKey("user", equalTo:  AVUser.current())
 
         self.progressView.isHidden = false
+        self.progressView.startAnimating()
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
             self.refresher.endRefreshing()
             self.view.isUserInteractionEnabled = true
             if(error == nil)
             {
+                self.progressView.isHidden = true
+                self.progressView.stopAnimating()
                 self.items.removeAll()
                 for obj in objects!
                 {
@@ -121,7 +124,7 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
     
     // cell height
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 100
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

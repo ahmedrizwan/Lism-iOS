@@ -2,7 +2,7 @@
 import Foundation
 import AVOSCloud
 
-class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate , UIGestureRecognizerDelegate
+class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate , UIGestureRecognizerDelegate , UITextFieldDelegate
 {
     
     @IBOutlet weak var colorsTableView : UITableView!
@@ -96,6 +96,65 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
 
         
         }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        enableBtn()
+        return true
+    }
+    func enableBtn()
+    {
+        
+        var isEnabled = true
+        if((self.productNameTextfield.text?.characters.count)! < 2)
+        {
+            isEnabled = false
+        }
+        if((self.descTextView.text?.characters.count)! < 2)
+        {
+            isEnabled = false
+            
+        }
+        if((self.brandTextfield.text?.characters.count)! < 2)
+        {
+            isEnabled = false
+            
+            
+        }
+       
+        
+        if((colorsBtn.title(for: .normal)!) == "SELECT COLOR".localized(using: "Main"))
+        {
+            isEnabled = false
+            
+        }
+        if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY".localized(using: "Main"))
+        {
+            isEnabled = false
+            
+        }
+        if((itemsConditionBtn.title(for: .normal)!) == "ITEM CONDITION".localized(using: "Main"))
+        {
+            isEnabled = false
+        }
+        
+        if((self.estimatedTextField.text?.characters.count)! <= 0 )
+        {
+            isEnabled = false
+            
+        }
+        if((self.sellingPriceTextField.text?.characters.count)! <= 0 )
+        {
+            isEnabled = false
+        }
+        
+        if(isEnabled)
+        {
+            postForSaleBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+            
+        }
+        
+    }
 
     @IBAction func closeTableView(sender : AnyObject)
     {
@@ -641,6 +700,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
         productInfo?.saveInBackground  { (objects, error) in
             if(error == nil)
             {
+                self.enableBtn()
+
                 if(self.itemToPostcount == 0)
                 {
                     
@@ -875,6 +936,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                     self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])
                 }
                 print(result.title!)
+                self.enableBtn()
+
             }
             alertController.addAction(okAction)
             
@@ -904,6 +967,8 @@ class UpdatePostedItemForSaleViewController: UIViewController,UIImagePickerContr
                 self.btnToUpdateText.setTitle(key , for: .normal)
                 
                 print(result.title!)
+                self.enableBtn()
+
             }
             alertController.addAction(okAction)
             

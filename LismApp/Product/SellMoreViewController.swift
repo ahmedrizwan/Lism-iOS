@@ -37,7 +37,7 @@ extension UIViewController {
     }
 }
 
-class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIGestureRecognizerDelegate
+class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate,    UINavigationControllerDelegate,UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate
 {
     
     @IBOutlet weak var colorsTableView : UITableView!
@@ -136,8 +136,10 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         postForSaleBtn.setTitle("POST FOR SALE".localized(using: "Main"), for: .normal)
         brandTextfield.placeholder = "BRAND NAME".localized(using: "Main")
         productNameTextfield.placeholder = "PRODUCT NAME".localized(using: "Main")
-        
-     
+          self.viewHeightConstaint.constant = 115
+        sizesBtnHeightConstaint.constant = 0
+
+     applyPlaceholderStyle(aTextview: descTextView, placeholderText: PLACEHOLDER_TEXT)
     }
     
     @IBAction func closeTableView(sender : AnyObject)
@@ -147,7 +149,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewHeightConstaint.constant = 115
+      
         self.setUpDescriptionTextView()
         loadInfo() {
             print("Background Fetch Complete")
@@ -176,7 +178,6 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 
     func setUpDescriptionTextView()
     {
-        sizesBtnHeightConstaint.constant = 0
         productNameTextfield.layer.borderWidth = 0.5
         
         brandTextfield.layer.borderWidth = 0.5
@@ -192,7 +193,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
 
         descTextView.layer.borderWidth = 0.5
         descTextView.delegate = self
-        applyPlaceholderStyle(aTextview: descTextView, placeholderText: PLACEHOLDER_TEXT)
+       // applyPlaceholderStyle(aTextview: descTextView, placeholderText: PLACEHOLDER_TEXT)
         
     }
     func loadInfo(completionHandler: (() -> Void)!) {
@@ -472,21 +473,21 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             
         }
         
-        if((colorsBtn.title(for: .normal)!) == "SELECT COLOR")
+        if((colorsBtn.title(for: .normal)!) == "SELECT COLOR".localized(using: "Main"))
         {
             self.showAlert(error: "Please choose color".localized(using: "Main"))
             
             return false
             
         }
-        if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY")
+        if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY".localized(using: "Main"))
         {
             self.showAlert(error: "Please select category".localized(using: "Main"))
             
             return false
             
         }
-        if((itemsConditionBtn.title(for: .normal)!) == "ITEM CONDITION")
+        if((itemsConditionBtn.title(for: .normal)!) == "ITEM CONDITION".localized(using: "Main"))
         {
             self.showAlert(error: "Please choose item condition".localized(using: "Main"))
             
@@ -517,6 +518,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         if(self.checkIfAllDataSet())
         {
             postForSaleBtn.isUserInteractionEnabled = false
+            
         self.itemToPostcount = arrayOFEnabledButtons.count
         productObj = self.uploadProductWithImage()
         // All done!
@@ -568,7 +570,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             
             AVUser.current()?.saveInBackground { (objects, error) in
                 self.postForSaleBtn.isUserInteractionEnabled = false
-
+                self.enableBtn()
                 if(error == nil)
                 {
                                          self.progressBar.isHidden = true
@@ -610,12 +612,67 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         }
         else{
             self.postForSaleBtn.isUserInteractionEnabled = false
-
         }
     }
     
     }
     
+    func enableBtn()
+    {
+    
+        var isEnabled = true
+        if((self.productNameTextfield.text?.characters.count)! < 2)
+        {
+            isEnabled = false
+        }
+        if((self.descTextView.text?.characters.count)! < 2)
+        {
+            isEnabled = false
+            
+        }
+        if((self.brandTextfield.text?.characters.count)! < 2)
+        {
+            isEnabled = false
+
+            
+        }
+        if(isPrimary == false)
+        {
+            isEnabled = false
+        }
+        
+        if((colorsBtn.title(for: .normal)!) == "SELECT COLOR".localized(using: "Main"))
+        {
+            isEnabled = false
+            
+        }
+        if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY".localized(using: "Main"))
+        {
+            isEnabled = false
+            
+        }
+        if((itemsConditionBtn.title(for: .normal)!) == "ITEM CONDITION".localized(using: "Main"))
+        {
+            isEnabled = false
+        }
+        
+        if((self.estimatedTextField.text?.characters.count)! <= 0 )
+        {
+            isEnabled = false
+            
+        }
+        if((self.sellingPriceTextField.text?.characters.count)! <= 0 )
+        {
+            isEnabled = false
+        }
+        
+        if(isEnabled)
+        {
+            postForSaleBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+
+        }
+    
+    }
     func primaryImageUploaded (imageFile : AVFile , product : Product , isPrimary : Bool)
     {
         let object = AVObject.init(className: "ProductImage")
@@ -630,11 +687,18 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             product.setObject(imageFile.url!, forKey: "primaryImageUrl")
             
             }
+            
             self.saveProductWithImage(productBO: product , imagesObject : object)
         }
     }
     }
 
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+       enableBtn()
+        return true
+    }
     
     func productImageUploaded (imageFile : AVFile , product : Product)
     {
@@ -775,11 +839,13 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
                 self.viewHeightConstaint.constant = 115
 
             }
-            self.scrollView.updateConstraintsIfNeeded()
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1060)
+
             if(value is NSArray)
             {
             self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])
             }
+            self.enableBtn()
                 print(result.title!)
         }
         alertController.addAction(okAction)
@@ -808,7 +874,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
                 
                 
                 self.btnToUpdateText.setTitle(key , for: .normal)
-          
+                self.enableBtn()
                 print(result.title!)
             }
             alertController.addAction(okAction)

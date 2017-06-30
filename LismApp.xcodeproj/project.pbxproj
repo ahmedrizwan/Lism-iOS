@@ -1084,7 +1084,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twinbinary.LismApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "acaf2986-02d6-4740-baa0-e99a4aff7d08";
+				PROVISIONING_PROFILE = "f730664e-156b-4e2e-b6a4-922153c2cfab";
 				PROVISIONING_PROFILE_SPECIFIER = dev_app;
 				SWIFT_OBJC_BRIDGING_HEADER = "LismApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

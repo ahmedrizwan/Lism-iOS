@@ -106,8 +106,9 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
         self.commentsTableView.rowHeight = UITableViewAutomaticDimension
         self.progressBar.isHidden = true
 					descriptionLabel.text = "Description".localized(using: "Main")
-					
-
+					self.getProductListByThisSeller()
+					self.getProductYouMayLike()
+					self.hideKeyboardWhenTappedAround()
     }
     
     
@@ -122,8 +123,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					noMoreSellerLabel.text = "No Items Found...".localized(using: "Main")
 					sellerLabel.text = "From The Same Seller".localized(using: "Main")
 					youMayAlsoLikeLabel.text = "You May Also Like".localized(using: "Main")
-					self.getProductListByThisSeller()
-					self.getProductYouMayLike()
+
     }
 
 	
@@ -376,6 +376,9 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
     {
         let indexPath = IndexPath(row: 0, section: 0)
 
+					self.progressBar.startAnimating()
+					self.progressBar.isHidden  = false
+					
         let cell: PostCommentsCustomCell = self.commentsTableView.cellForRow(at: indexPath) as! PostCommentsCustomCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
 					var avobjectsArray : [AVObject] = []
@@ -389,7 +392,8 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 									avobjectsArray.append(notificationLog)
 
             AVObject.saveAll(inBackground: avobjectsArray, block: { (objects, error) in
-                
+													self.progressBar.stopAnimating()
+													self.progressBar.isHidden  = true
                 if(error == nil)
                 {
 																	let commentRelation =  self.productBO.relation(forKey: "comments")
@@ -530,10 +534,9 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = false;
         policyView.isHidden = true;
-					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent)  || AVUser.current()!.username! == self.productBO.user!.username!
-					{
+					
 					self.checkoutBtnsView.isHidden = true;
-					}
+					
         self.loadComments()
     }
     @IBAction func showPolicyView(sender : AnyObject)
@@ -549,10 +552,9 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
         descriptonView.isHidden = true;
         commentsView.isHidden = true;
         policyView.isHidden = false;
-					if(productBO.status == Constants.sent || productBO.status == Constants.waiting_to_be_sent) || AVUser.current()!.username! == self.productBO.user!.username!
-					{
+				
 					self.checkoutBtnsView.isHidden = true;
-					}
+					
 					
     }
 	
@@ -861,7 +863,11 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 	}
 	func moveCursorToStart(aTextView: UITextView)
 	{
+		aTextView.text = ""
 		aTextView.selectedRange = NSMakeRange(0, 0);
+		
+	}
+	func textViewDidChangeSelection(_ textView: UITextView) {
 		
 	}
 	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -902,7 +908,8 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 	
 		}
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewController")
+		let vc = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewController") as! ProductDetailViewController
+		vc.productBO = selectedPorudct
 		self.navigationController!.pushViewController(vc, animated: true)
 
 	//	self.performSegue(withIdentifier: "ThisProductDetailsVC", sender: self)

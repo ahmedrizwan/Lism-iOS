@@ -87,8 +87,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         }
         colors = ["Newest First".localized(using: "Main"), "Most <3".localized(using: "Main"), "Price: Low - High".localized(using: "Main"), "Price: High -Low".localized(using: "Main")]
-        self.mainSortingView.layer.cornerRadius = 10
-        self.mainSortingView.layer.masksToBounds = true
+     //   self.mainSortingView.layer.cornerRadius = 10
+       // self.mainSortingView.layer.masksToBounds = true
 
     }
     override func viewWillAppear(_ animated: Bool) {

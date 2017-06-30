@@ -500,6 +500,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         }
         cell.likeButton.isSelected = productObj.favorite
         cell.likeButton.tag = indexPath.row
+        cell.likeButtonForInteraction.tag = indexPath.row
         cell.delegate = self
         return cell
     }

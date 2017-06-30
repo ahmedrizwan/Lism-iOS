@@ -570,7 +570,6 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             
             AVUser.current()?.saveInBackground { (objects, error) in
                 self.postForSaleBtn.isUserInteractionEnabled = false
-                self.enableBtn()
                 if(error == nil)
                 {
                                          self.progressBar.isHidden = true

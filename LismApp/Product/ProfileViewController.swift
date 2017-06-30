@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
     @IBOutlet weak var followingCountLabel : UILabel!
     @IBOutlet weak var follwerCountLabel : UILabel!
     @IBOutlet weak var userImageview : UIImageView!
-    @IBOutlet weak var descriptionTextView : UITextView!
+    @IBOutlet weak var descriptionTextView : UILabel!
     @IBOutlet weak var emailLabel : UILabel!
     @IBOutlet weak var noProductBoughtSoFar : UILabel!
     var notificationItems : [NotificationLog] = []
@@ -119,7 +119,15 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                 }
                 if let website = object!.value(forKey: "website")
                 {
-               self.emailLabel.text =  website as? String
+                    
+                    let attrs = [NSUnderlineStyleAttributeName : 1]
+                    
+                    let attributedString = NSMutableAttributedString(string:"")
+                    
+                    let buttonTitleStr = NSMutableAttributedString(string:(website as? String)!, attributes:attrs)
+                    attributedString.append(buttonTitleStr)
+                    self.emailLabel.attributedText = attributedString
+
                     if(website as? String == "")
                     {
                         self.emailLabel.text  = "No website".localized(using: "Main")
@@ -145,7 +153,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
 
                     }
                 if let prod_desc = object?["description"] {
-                    Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
+                 //   Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
+                    self.descriptionTextView.text = prod_desc as! String
                     self.descriptionTextView.textAlignment = NSTextAlignment.left
                 }
                 }
@@ -756,6 +765,12 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             
             
         }
+        else if (segue.identifier == "ProfileToProductView") {
+            let viewController:ProductViewController = segue.destination as! ProductViewController
+            viewController.isloadingFav = sender as! Bool
+            // pass data to next view
+        }
+
         //ProfileToSettingsVC
     }
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -766,11 +781,18 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
             //load new view
             self.performSegue(withIdentifier: "ProfileToSellView", sender: self)
         }
+   
             
+        else if(item.tag == 3)
+        {
+            //load new view
+            self.performSegue(withIdentifier: "ProfileToProductView", sender: true)
+        }
+
        else if(item.tag == 4)
         {
             //load new view
-            self.performSegue(withIdentifier: "ProfileToProductView", sender: self)
+            self.performSegue(withIdentifier: "ProfileToProductView", sender: false)
         }
         
         //This method will be called when user changes tab.

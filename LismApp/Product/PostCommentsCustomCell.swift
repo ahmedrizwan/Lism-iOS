@@ -14,5 +14,12 @@ class PostCommentsCustomCell: UITableViewCell {
     }
     
     
+    @IBAction func triggerInputField(sender : UIButton)
+    {
+        delegate.postComment(index: sender.tag)
+        
+    }
+
+    
     
 }

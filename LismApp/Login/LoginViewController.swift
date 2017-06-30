@@ -25,7 +25,7 @@ extension String {
     }
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController , UITextFieldDelegate{
     
     
     @IBOutlet var usernameTextField : UITextField!
@@ -43,6 +43,9 @@ class LoginViewController: UIViewController {
        
         usernameTextField.layer.borderWidth =  0.5
         usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         
         loginBtn.setTitle("LOGIN".localized(using: "Main"), for: .normal)
     }
@@ -67,7 +70,16 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - IBActions
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        if  (usernameTextField.text?.isValidEmail())! &&  (passwordTextField.text?.isValidPassword())!
+        {
+          loginBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        }
+        return true
+    }
+
     @IBAction func onLoginButtonPress() {
         if let isValidEmail = usernameTextField.text?.isValidEmail(), !isValidEmail {
             Constants.showAlert(message: "Please enter a valid username".localized(using: "Main"), view: self)

@@ -136,7 +136,14 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
         let cell = tableView.dequeueReusableCell(withIdentifier: "SellItemsCustomCell", for: indexPath ) as! SellItemsCustomCell
         let productObj = self.items[indexPath.item]
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        Constants.produceAttributedTextForItems(string: "\(productObj.name)\n\(productObj.brand)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        if(productObj.size != "" && productObj.size != "SIZE")
+        {
+        Constants.produceAttributedTextForItems(string: "\(productObj.brand.uppercased()) \(productObj.name)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        }
+        else
+        {
+          Constants.produceAttributedTextForItems(string: "\(productObj.brand.uppercased()) \(productObj.name)\n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        }
         if(productObj.productImageUrl != nil)
         {
             cell.productImageView.sd_setImage(with: productObj.productImageUrl, placeholderImage: nil)

@@ -328,6 +328,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.selectedBtn.isUserInteractionEnabled = true
+        self.enableBtn()
         dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -439,7 +440,8 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     
     func showAlert (error : String)
     {
-        let alert = UIAlertController(title: "Error".localized(using: "Main"), message: error, preferredStyle: UIAlertControllerStyle.alert)
+        // "Error".localized(using: "Main"
+        let alert = UIAlertController(title: "" , message: error, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok".localized(using: "Main"), style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

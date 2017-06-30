@@ -723,7 +723,8 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     {
         let productObj = self.items[index]
         productObj.favorite = !productObj.favorite
-        
+        self.progressView.isHidden = false
+        self.progressView.startAnimating()
         if(productObj.favorite )
         {
             productObj.setObject(productObj.productLikes + 1, forKey: "productLikes")
@@ -759,7 +760,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             
             self.comapreToUpdateFavoriteProductsList()
+            self.progressView.isHidden = true
+            self.progressView.stopAnimating()
         }
+        
     
     
     }

@@ -10,7 +10,7 @@ import UIKit
 import AVOSCloud
 import DigitsKit
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController  {
 
     @IBOutlet var firstNameTextField : UITextField!
     @IBOutlet var lastNameTextField : UITextField!
@@ -55,6 +55,7 @@ class RegistrationViewController: UIViewController {
         
         textField.layer.borderWidth =  0.5
         textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.delegate = self
 
     
     }
@@ -181,4 +182,15 @@ extension RegistrationViewController: UITextFieldDelegate {
         return false
     }
     
+    // MARK: - IBActions
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        if  (emailTextField.text?.isValidEmail())! &&  (passwordTextField.text?.isValidPassword())! &&  (passwordTextField.text?.isValidPassword())! && (firstNameTextField.text?.characters.count)! > 3
+        {
+            nextBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        }
+        return true
+    }
+
 }

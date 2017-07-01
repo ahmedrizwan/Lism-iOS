@@ -110,7 +110,7 @@ class ProductDetailViewController: UIViewController,UITableViewDelegate,UITableV
 					self.getProductYouMayLike()
 					self.hideKeyboardWhenTappedAround()
     }
-    
+	
     
     override func viewWillAppear(_ animated: Bool) {
 					self.relation =  (AVUser.current()!.relation(forKey: "userCart"))
@@ -315,8 +315,8 @@ else if  Date().minute(from: self.productBO.updatedAt!) > 0
 	@IBAction func addtoFavoriteBtnAction(sender  : AnyObject)
 				{
 					self.productBO.favorite = !self.productBO.favorite
-					let btn = sender as! UIButton
-					btn.isSelected = 	self.productBO.favorite 
+					//let btn = sender as! UIButton
+					favoriteBtn.isSelected = 	self.productBO.favorite
 					if(self.productBO.favorite )
 					{
 						 self.productBO.productLikes = self.productBO.productLikes + 1

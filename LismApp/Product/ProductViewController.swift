@@ -252,7 +252,6 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
         query.limit = ProductViewController.ITEM_LIMIT
         self.progressView.isHidden = false
-        DispatchQueue.global(qos: .background).async {
 
         query.findObjectsInBackground { (objects, error) in
              self.items.removeAll()
@@ -280,7 +279,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
                 self.itemsBackUpArray = self.items
             }
-        }
+        
         }
             
     }
@@ -295,7 +294,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
+                
                 self.isLoaded = true
+                 self.favoritesList.removeAll()
                 for obj in objects!
                 {
                     let productObj:Product =  obj as! Product
@@ -386,10 +387,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             }
             
         }
-        DispatchQueue.main.async {
 
         self.productsCollectionView.reloadData()
-        }
+        
     }
     func getMoreProductList(size: Int,indexToSort : Int)
     {
@@ -441,10 +441,9 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                             productObj.ProductInintWithDic(dict: obj as! AVObject)
                             self.items.append(productObj)
                         }
-                        DispatchQueue.main.async(execute: {
                             self.comapreToUpdateFavoriteProductsList()
 
-                        })
+                        
                     }
                     
                 }
@@ -622,7 +621,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
             UIView.animate(withDuration:0.35, animations: {
                 //
                 //write a code to hide
-                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 49, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 55, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             }, completion: { _ in
                 self.isHiding = false
               //  print("hiding collection")
@@ -644,7 +643,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
                 //
                 
                 //write a code to hide
-                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 88, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
+                self.productsCollectionView.frame = CGRect(x: self.productsCollectionView.frame.origin.x, y: 93, width:  self.productsCollectionView.frame.size.width, height:  self.productsCollectionView.frame.size.height)
             },  completion: { _ in
                 self.isShowing = false
                 // completion
@@ -681,7 +680,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
 
             UIView.animate(withDuration: 0.75, animations: {
                 //
-                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 51, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
+                self.topView.frame = CGRect(x: self.topView.frame.origin.x, y: 56, width:  self.topView.frame.size.width, height:  self.topView.frame.size.height)
             }, completion: { _ in
                 self.isShowingTopbar = false
                 // completion

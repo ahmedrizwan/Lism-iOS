@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
    
     var boughtItems : [Product] = []
     var isFollowingUser = false
+    var boughtsItemCount =  0
+    var myItemsCount =  0
+
     @IBOutlet weak var likesCountLabel : UILabel!
     @IBOutlet weak var followingCountLabel : UILabel!
     @IBOutlet weak var follwerCountLabel : UILabel!
@@ -77,7 +80,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
         Constants.addShadow(button: minusBtn)
         Constants.addShadow(button: plusBtn)
-
+        self.getBoughtItemsCount()
+        self.getMyPostedProductItemsCount()
 
         
     }
@@ -95,6 +99,25 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
 
 
     }
+    func getBoughtItemsCount()
+    {
+        let query: AVQuery = AVQuery(className: "Product")
+        query.whereKey("buyingUser", equalTo: userObj as Any)
+            query.countObjectsInBackground { (count, error) in
+                self.boughtsItemCount = count
+            }
+    }
+    func getMyPostedProductItemsCount()
+    {
+        let query: AVQuery = AVQuery(className: "Product")
+        query.whereKey("user", equalTo: self.userObj)
+      
+        query.countObjectsInBackground { (count, error) in
+            self.myItemsCount = count
+        }
+    
+    }
+    
     func getUserInfo()
     {
         let query = AVUser.query()
@@ -154,7 +177,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
                     }
                 if let prod_desc = object?["description"] {
                  //   Constants.produceAttributedText(string: prod_desc as! String, textView:  self.descriptionTextView)
-                    self.descriptionTextView.text = prod_desc as! String
+                    self.descriptionTextView.text = prod_desc as? String
                     self.descriptionTextView.textAlignment = NSTextAlignment.left
                 }
                 }
@@ -349,9 +372,9 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
             Constants.produceAttributedText(string: "\("Size".localized(using: "Main"))\(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
             
-            if (indexPath.row + 1 == self.items.count )
+            if (indexPath.row + 1 == self.items.count && self.myItemsCount > self.items.count )
             {
-                //self.getMoreProductList(size: self.items.count)
+                self.getMoreProductList(size: self.items.count)
             }
         cell.likeButton.isSelected = productObj.favorite
         
@@ -403,8 +426,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         let query: AVQuery = (userObj.relation(forKey: "sellProducts").query())
         query.includeKey("user")
         query.whereKey("user", equalTo: self.userObj)
-
-//        query.limit = 6
+        query.limit = 6
         self.progressView.isHidden = false
         query.findObjectsInBackground { (objects, error) in
             self.progressView.isHidden = true
@@ -680,7 +702,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.tag = indexPath.item
         cell.productStatusLabel.text = productObj.status.localized(using: "Main")
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
-        if (indexPath.row + 1 == self.boughtItems.count )
+        if (indexPath.row + 1 == self.boughtItems.count && boughtsItemCount > self.boughtItems.count  )
         {
             self.getBoughtProductList(size: self.boughtItems.count)
         }

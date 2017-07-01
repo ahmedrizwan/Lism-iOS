@@ -200,7 +200,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         self.loadBrandsInfo()
         self.loadColorsInfo()
         self.loadCategoriesInfo()
-        self.loadItemsConditionInfo()
+        self.loadItemsConditionInfo(shouldShowConditions: false)
         completionHandler()
     }
     func createColrosDict()
@@ -261,6 +261,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         buttonToAdd.setBackgroundImage(UIImage(named :"addPhotoAsset 1"), for: .normal)
        //set all others as cam
         self.setAllOtherCamExcept(buttonWithAdd: buttonToAdd)
+        
         // imageToClear.setBackgroundImage(UIImage(named :"camera"), for: .normal)
     }
     
@@ -274,6 +275,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
                 button.setBackgroundImage(UIImage(named :"camera"), for: .normal)
             }
         }
+        self.enableBtn()
     }
 
     
@@ -329,6 +331,7 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.selectedBtn.isUserInteractionEnabled = true
         self.enableBtn()
+
         dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -341,11 +344,15 @@ class SellMoreViewController: UIViewController,UIImagePickerControllerDelegate, 
         } else {
 
         }
+
         self.isPrimary = true
         self.nextBtnToEnable = updateImageIfNotset()
 nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .normal)
          self.crossBtnToEnable.isHidden = false
+        self.enableBtn()
+
         dismiss(animated:true, completion: nil) //5
+        
     }
     
     func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String)
@@ -406,21 +413,38 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
     @IBAction func itemCoditionButtonAction(sender : AnyObject)
     {
         btnToUpdateText = sender as! UIButton
-         let dict = itemConditions as NSDictionary
-         if(self.selectedCategoryBtn.titleLabel?.text == "Shoes" || self.selectedCategoryBtn.titleLabel?.text == "Handbags")
-         {
-           
-            self.itemConditionsToRender = dict.value(forKey: "Shoes and Handbags") as! [String: Any]
-  
+        
+        if(itemConditions != nil)
+        {
+            self.updateItemsInfo()
         }
         else
-         {
-            self.itemConditionsToRender = dict.value(forKey: "Clothing And Accessories") as! [String: Any]
-
+        {
+        self.loadItemsConditionInfo(shouldShowConditions: true)
         }
-              self.showAlertcontrollerForITemsCondtion(title: "Item Condition" , objectToDisplay : self.itemConditionsToRender)
-}
+    }
     
+    func updateItemsInfo()
+    {
+        let dict = itemConditions as NSDictionary
+          if((selectedCategoryBtn.title(for: .normal)!) == "CATEGORY".localized(using: "Main"))
+          {
+            self.showAlert(error: "Please select Product category first.")
+            return
+        }
+        if(self.selectedCategoryBtn.titleLabel?.text == "Shoes" || self.selectedCategoryBtn.titleLabel?.text == "Handbags")
+        {
+            
+            self.itemConditionsToRender = dict.value(forKey: "Shoes and Handbags") as! [String: Any]
+            
+        }
+        else
+        {
+            self.itemConditionsToRender = dict.value(forKey: "Clothing And Accessories") as! [String: Any]
+            
+        }
+        self.showAlertcontrollerForITemsCondtion(title: "Item Condition" , objectToDisplay : self.itemConditionsToRender)
+    }
     @IBAction func categoryButtonAction(sender : AnyObject)
     {
         btnToUpdateText = sender as! UIButton
@@ -672,7 +696,8 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             postForSaleBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
 
         }
-    
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1060)
+
     }
     func primaryImageUploaded (imageFile : AVFile , product : Product , isPrimary : Bool)
     {
@@ -789,16 +814,21 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
         }
         
     }
-    func loadItemsConditionInfo()
+    func loadItemsConditionInfo(shouldShowConditions : Bool)
     {
         
+        if(self.itemConditions == nil)
+        {
         let query: AVQuery = AVQuery(className: "ItemConditions")
         query.findObjectsInBackground { (objects, error) in
             if(error == nil)
             {
                 
                 self.itemConditions = self.convertToDictionary(text:(objects?[0] as! AVObject).value(forKey: "value") as! String)!
-                
+                if(shouldShowConditions)
+                {
+                    self.updateItemsInfo()
+                }
             
             }
             
@@ -806,6 +836,7 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             
         }
     }
+}
 
     func showAlertcontroller(title: String, objectToDisplay : [String: Any])
 {
@@ -846,7 +877,6 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             {
             self.showAlertcontrollerArray(title: "\(key)" , objectToDisplay: value as! [Any])
             }
-            self.enableBtn()
                 print(result.title!)
         }
         alertController.addAction(okAction)
@@ -934,6 +964,8 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
                 self.btnToUpdateText.setTitle(result.title!, for: .normal)
 
                 print(result.title!)
+                self.enableBtn()
+
             }
                 alertController.addAction(okAction)
 

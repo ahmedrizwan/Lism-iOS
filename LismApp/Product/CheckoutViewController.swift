@@ -113,6 +113,8 @@ class CheckoutViewController: UIViewController,UITextViewDelegate
                                 {
                                 Constants.sendPushToChannel(vc: self, channelInfo: product.user.objectId!, message: "\("Your product".localized(using: "Main")) \(product.name) \("has been sold!".localized(using: "Main"))", content: "")
                                 }
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GetUpdatedList"), object: nil)
+
                                 
                                 let alert = UIAlertController(title: "",message:"Order placed (without payment)!".localized(using: "Main"),
                                                               preferredStyle: UIAlertControllerStyle.alert)

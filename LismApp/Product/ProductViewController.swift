@@ -66,6 +66,10 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         refresher.tintColor = UIColor.red
         self.addShadowToView()
         self.automaticallyAdjustsScrollViewInsets = false
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getProductList), name: NSNotification.Name(rawValue: "GetUpdatedList"), object: nil)
+
+
         if(!self.isloadingFav)
         {
         tabBar.selectedItem = selectedTabBarItem
@@ -325,7 +329,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         textToSearch = searchBar.text!
-        perform(#selector(self.searchRequest), with: searchText, afterDelay: 0.15)
+        perform(#selector(self.searchRequest), with: searchText, afterDelay: 1.0)
 
     }
     

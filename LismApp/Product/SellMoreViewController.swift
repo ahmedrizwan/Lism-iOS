@@ -696,6 +696,11 @@ nextBtnToEnable.setBackgroundImage(UIImage(named : "addPhotoAsset 1"), for: .nor
             postForSaleBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
 
         }
+        else
+        {
+            postForSaleBtn.backgroundColor =  UIColor(colorLiteralRed: 200.0/255.0, green: 200.0/255.0, blue: 198.0/255.0, alpha: 1.0)
+
+        }
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1060)
 
     }

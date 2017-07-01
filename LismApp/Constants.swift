@@ -161,7 +161,7 @@ static let time_remaining_text = "Time remaining for Seller to send Item : 2d"
         push.setPushToAndroid(true)
         push.setData(jsonObject)
         push.setChannel(channelInfo)
-        AVPush.setProductionMode(false)
+     //   AVPush.setProductionMode(false)
         
         push.sendInBackground { (status, error) in
             print(status)

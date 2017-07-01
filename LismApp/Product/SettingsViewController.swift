@@ -131,7 +131,11 @@ var items = [["EDIT PROFILE".localized(using: "Main"), "LANGUAGE".localized(usin
             self.performSegue(withIdentifier: "SettingsToLegalVC", sender: self)
             break
         case (2,3):
+            let currentInstallation = AVInstallation.current()
+            currentInstallation.setDeviceTokenFrom(Data())
+            currentInstallation.saveInBackground()
             AVUser.logOut()
+
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let  mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
         

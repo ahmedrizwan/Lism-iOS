@@ -497,7 +497,7 @@ class ProductViewController: UIViewController ,UICollectionViewDataSource, UICol
         {
         Constants.produceAttributedText(string: "\("Est. Retail¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
         }
-        if (indexPath.row + 1 == self.items.count  && !isloadingFav && self.items.count < totalItems)
+        if (indexPath.row + 1 == self.items.count  && !isloadingFav && self.items.count < totalItems - 1)
         {
             self.getMoreProductList(size: self.items.count,indexToSort: selectedIndexForSorting)
         }

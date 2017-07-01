@@ -372,7 +372,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         
             Constants.produceAttributedText(string: "\("Size".localized(using: "Main"))\(productObj.size) \n  \("Est. Retail ¥".localized(using: "Main")) \(productObj.priceRetail)", textView: cell.retailPriceTextView)
             
-            if (indexPath.row + 1 == self.items.count && self.myItemsCount > self.items.count )
+            if (indexPath.row + 1 == self.items.count && self.myItemsCount - 1 > self.items.count )
             {
                 self.getMoreProductList(size: self.items.count)
             }
@@ -702,7 +702,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDataSource, UICol
         cell.tag = indexPath.item
         cell.productStatusLabel.text = productObj.status.localized(using: "Main")
         cell.selectionStyle = UITableViewCellSelectionStyle.none;
-        if (indexPath.row + 1 == self.boughtItems.count && boughtsItemCount > self.boughtItems.count  )
+        if (indexPath.row + 1 == self.boughtItems.count && boughtsItemCount - 1 > self.boughtItems.count  )
         {
             self.getBoughtProductList(size: self.boughtItems.count)
         }

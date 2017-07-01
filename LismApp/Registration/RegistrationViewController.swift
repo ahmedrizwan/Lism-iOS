@@ -21,6 +21,7 @@ class RegistrationViewController: UIViewController  {
     @IBOutlet var retypePasswordTextField : UITextField!
 
     @IBOutlet var nextBtn : UIButton!
+    @IBOutlet var spinner : UIActivityIndicatorView!
 
       var keyboardIsShowing: Bool = false
     
@@ -46,7 +47,7 @@ class RegistrationViewController: UIViewController  {
         self.styleTextField(textField: lastNameTextField)
 
         nextBtn.setTitle("NEXT".localized(using: "Main"), for: .normal)
-
+        self.spinner.isHidden = true
 
         
     }
@@ -69,12 +70,16 @@ class RegistrationViewController: UIViewController  {
     // MARK: - AV Actions
     
     func registerAVUser() {
+        spinner.isHidden = false
+        spinner.startAnimating()
         let avUser = AVUser()
         avUser.username = usernameTextField.text!
         avUser.password = passwordTextField.text!
         avUser.email = emailTextField.text!
         avUser.setObject("\(firstNameTextField.text!) \(lastNameTextField.text!)", forKey: "fullName")
         avUser.signUpInBackground { (result, error) in
+            self.spinner.isHidden = true
+            self.spinner.stopAnimating()
             if error == nil {
                 self.verifyPhoneNumber()
             } else {
@@ -100,6 +105,14 @@ class RegistrationViewController: UIViewController  {
                // AVInstallation.current().addUniqueObject(AVUser.current()?.objectId! as Any, forKey: "channels")
 
                 avUser?.saveEventually()
+                UserDefaults.standard.set(true, forKey: "isLoggedIn") //Bool
+                UserDefaults.standard.set(self.usernameTextField.text, forKey: "username")
+                // self.showAlert(message: "Login Successful")
+                // TODO: do something here when login is successfull
+                
+                self.loadMainProductsView()
+
+                
             } else {
                 avUser?.deleteEventually()
                 print("Auth error \(error!.localizedDescription)")
@@ -108,6 +121,12 @@ class RegistrationViewController: UIViewController  {
         
     }
     
+    func loadMainProductsView()
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProductViewController")
+        self.navigationController!.pushViewController(vc, animated: true)
+    }
     // MARK: - Button Actions
     
   @IBAction  func onNextButtonPress() {
@@ -186,9 +205,15 @@ extension RegistrationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         
-        if  (emailTextField.text?.isValidEmail())! &&  (passwordTextField.text?.isValidPassword())! &&  (passwordTextField.text?.isValidPassword())! && (firstNameTextField.text?.characters.count)! > 3
+        if  (emailTextField.text?.isValidEmail())! &&  (passwordTextField.text?.isValidPassword())! &&  (passwordTextField.text?.isValidPassword())! && (firstNameTextField.text?.characters.count)! > 2
         {
             nextBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        }
+        else
+        {
+        //disable it
+            nextBtn.backgroundColor =  UIColor(colorLiteralRed: 192.0/255.0, green: 191.0/255.0, blue: 191.0/255.0, alpha: 1.0)
+
         }
         return true
     }

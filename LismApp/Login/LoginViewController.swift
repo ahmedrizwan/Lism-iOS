@@ -21,7 +21,7 @@ extension String {
     
     func isValidPassword() -> Bool {
         
-        return self.characters.count > 5
+        return self.characters.count > 3
     }
 }
 
@@ -32,7 +32,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet var passwordTextField : UITextField!
     @IBOutlet var loginBtn : UIButton!
 
-    
+    @IBOutlet var spinner : UIActivityIndicatorView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         usernameTextField.autocapitalizationType = .none
@@ -48,6 +48,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         passwordTextField.delegate = self
         
         loginBtn.setTitle("LOGIN".localized(using: "Main"), for: .normal)
+        self.spinner.isHidden = true
+
     }
    
     
@@ -77,6 +79,11 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         {
           loginBtn.backgroundColor =  UIColor(colorLiteralRed: 128.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
         }
+        else
+        {
+            loginBtn.backgroundColor =  UIColor(colorLiteralRed: 192.0/255.0, green: 191.0/255.0, blue: 191.0/255.0, alpha: 1.0)
+
+        }
         return true
     }
 
@@ -92,7 +99,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
             let query = AVUser.query()
             let username = usernameTextField.text!
             query.whereKey("email", equalTo: username)
-
+            spinner.isHidden = false
+            spinner.startAnimating()
             query.getFirstObjectInBackground({ (object, error) in
                 if object !== nil {
                     let avUser = object as! AVUser
@@ -100,7 +108,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                     
                     AVUser.logInWithUsername(inBackground: avUsername, password: self.passwordTextField.text!, block: { (user, error) in
                         if error == nil {
-                            
+                            self.spinner.isHidden = true
+                            self.spinner.stopAnimating()
                             //AVInstallation.current().addUniqueObject(AVUser.current()?.objectId! as Any, forKey: "channels")
                             UserDefaults.standard.set(true, forKey: "isLoggedIn") //Bool
                              UserDefaults.standard.set(username, forKey: "username")

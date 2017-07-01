@@ -138,11 +138,11 @@ self.sellButtonReference.setTitle("START SELLING".localized(using: "Main"), for:
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         if(productObj.size != "" && productObj.size != "SIZE")
         {
-        Constants.produceAttributedTextForItems(string: "\(productObj.brand.uppercased()) \(productObj.name)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+        Constants.produceAttributedTextForItems(string: "\(productObj.brand.uppercased()) \n\(productObj.name)\n\("Size".localized(using: "Main")) \(productObj.size) \n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
         }
         else
         {
-          Constants.produceAttributedTextForItems(string: "\(productObj.brand.uppercased()) \(productObj.name)\n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
+          Constants.produceAttributedTextForItems(string: "\(productObj.brand.uppercased()) \n\(productObj.name)\n¥ \(productObj.sellingPrice)", textView: cell.sizeAndPriceTextView)
         }
         if(productObj.productImageUrl != nil)
         {
